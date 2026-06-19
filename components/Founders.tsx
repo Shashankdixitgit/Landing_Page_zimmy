@@ -17,7 +17,7 @@ const FOUNDERS: Founder[] = [
   {
     name: "Ranveer Kochhar",
     linkedin: "https://www.linkedin.com/in/ranveerkochhar/",
-    creds: ["ex-Titan Capital", "ex-Emergent", "BITS Pilani", "University at Buffalo"],
+    creds: ["ex-Titan Capital", "ex-Emergent", "BITS Pilani"],
   },
 ];
 
