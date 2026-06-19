@@ -10,7 +10,7 @@ const CARDS = [
     tag: "RESULT · 01",
     stat: "12×",
     label: "faster to launch a campaign",
-    brand: "Cardboard",
+    brand: "Eddy Finance",
     bg: "bg-yellow",
     pos: "lg:left-2 lg:top-0 lg:rotate-[-4deg]",
   },

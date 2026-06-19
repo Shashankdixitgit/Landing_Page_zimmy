@@ -5,7 +5,6 @@ type Brand = {
 };
 
 const BRANDS: Brand[] = [
-  { name: "Cardboard", url: "https://www.usecardboard.com/", backer: "YC" },
   { name: "Agnost AI", url: "https://agnost.ai/", backer: "YC" },
   { name: "Supatest", url: "https://supatest.ai/" },
   { name: "Docterz", url: "https://docterz.in/" },

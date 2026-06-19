@@ -8,7 +8,7 @@ const ITEMS = [
     quote:
       "Zimmy felt like hiring a full influencer team overnight. We handed it the brief and it ran a campaign across dozens of creators.",
     name: "Maya Chen",
-    role: "Head of Growth · Cardboard",
+    role: "Head of Growth · Eddy Finance",
     bg: "bg-yellow",
   },
   {

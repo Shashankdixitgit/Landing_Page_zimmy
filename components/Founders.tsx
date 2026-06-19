@@ -13,7 +13,6 @@ const FOUNDERS: Founder[] = [
     name: "Shashank Dixit",
     linkedin: "https://www.linkedin.com/in/shashankdixitt/",
     creds: ["ex-Bentolabs", "ex-Emergent", "ex-Entrepreneur First"],
-    note: "Automated yearly campaign funnels worth up to $30M.",
   },
   {
     name: "Ranveer Kochhar",
