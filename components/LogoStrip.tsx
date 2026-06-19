@@ -10,6 +10,7 @@ const BRANDS: Brand[] = [
   { name: "Supatest", url: "https://supatest.ai/" },
   { name: "Docterz", url: "https://docterz.in/" },
   { name: "Novelty", url: "https://www.novelty.sh/", backer: "EF" },
+  { name: "Eddy Finance", url: "https://eddy.finance/" },
 ];
 
 function BackerBadge({ backer }: { backer: "YC" | "EF" }) {
