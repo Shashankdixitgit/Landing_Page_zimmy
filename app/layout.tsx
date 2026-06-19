@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Zimmy: Agentic AI Influencer Marketing, Run End-to-End",
   description:
     "Zimmy is the agentic AI that runs your influencer marketing end-to-end, creator discovery, outreach, negotiation, scripts, and clean revenue attribution. You stay in control.",
-  metadataBase: new URL("https://zimmy.ai"),
+  metadataBase: new URL("https://www.zimmy.art"),
   openGraph: {
     title: "Zimmy: Agentic AI Influencer Marketing",
     description:
