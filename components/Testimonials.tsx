@@ -8,7 +8,7 @@ const ITEMS = [
     quote:
       "Zimmy felt like hiring a full influencer team overnight. We handed it the brief and it ran a campaign across dozens of creators.",
     name: "Maya Chen",
-    role: "Head of Growth · Nuvora",
+    role: "Head of Growth · Cardboard",
     bg: "bg-yellow",
   },
   {
@@ -17,7 +17,7 @@ const ITEMS = [
     quote:
       "The scripts matched each creator's voice so well that engagement jumped, and we never touched a single DM.",
     name: "Daniel Brooks",
-    role: "Marketing Lead · Brightwell",
+    role: "Marketing Lead · Agnost AI",
     bg: "bg-mint",
   },
   {
@@ -26,7 +26,7 @@ const ITEMS = [
     quote:
       "It took over the manual outreach and negotiation, so we could focus on strategy, and revenue jumped over the quarter.",
     name: "Priya Nair",
-    role: "Growth · Lumora",
+    role: "Growth · Supatest",
     bg: "bg-pink",
   },
   {
@@ -35,7 +35,7 @@ const ITEMS = [
     quote:
       "From kickoff to our first creators going live took barely a week, and the BigQuery attribution is finally clean.",
     name: "Sam Whitfield",
-    role: "Performance · Cedar & Co",
+    role: "Performance · Docterz",
     bg: "bg-sky",
   },
 ];
