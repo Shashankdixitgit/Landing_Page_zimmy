@@ -41,11 +41,14 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t-2 border-ink/10 pt-7 text-[13.5px] text-muted sm:flex-row">
           <p>© 2026 Zimmy. All rights reserved.</p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <a href="#" className="font-medium hover:text-ink">Privacy</a>
             <a href="#" className="font-medium hover:text-ink">Terms</a>
-            <a href="mailto:hello@zimmy.ai" className="font-medium hover:text-ink">
-              hello@zimmy.ai
+            <a href="mailto:shashank@zimmy.ai" className="font-medium hover:text-ink">
+              shashank@zimmy.ai
+            </a>
+            <a href="mailto:ranveer@zimmy.ai" className="font-medium hover:text-ink">
+              ranveer@zimmy.ai
             </a>
           </div>
         </div>

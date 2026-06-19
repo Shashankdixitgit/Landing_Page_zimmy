@@ -1,4 +1,9 @@
-const BRANDS = ["Nuvora", "Brightwell", "Lumora", "Cedar & Co", "Verda", "Kindred"];
+const BRANDS = [
+  { name: "Agnost AI", url: "https://agnost.ai/" },
+  { name: "Supatest", url: "https://supatest.ai/" },
+  { name: "Docterz", url: "https://docterz.in/" },
+  { name: "Novelty", url: "https://www.novelty.sh/" },
+];
 
 export default function LogoStrip() {
   return (
@@ -11,12 +16,15 @@ export default function LogoStrip() {
         </p>
         <div className="flex flex-1 flex-wrap items-center justify-center gap-x-9 gap-y-3 md:justify-between">
           {BRANDS.map((b) => (
-            <span
-              key={b}
-              className="whitespace-nowrap text-[19px] font-bold tracking-tight text-ink/35"
+            <a
+              key={b.name}
+              href={b.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="whitespace-nowrap text-[19px] font-bold tracking-tight text-ink/35 transition-colors hover:text-ink"
             >
-              {b}
-            </span>
+              {b.name}
+            </a>
           ))}
         </div>
       </div>

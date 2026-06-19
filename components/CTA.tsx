@@ -38,6 +38,22 @@ export default function CTA() {
               See how it works
             </a>
           </div>
+          <p className="mt-7 text-[14.5px] text-cream/60">
+            Prefer email?{" "}
+            <a
+              href="mailto:shashank@zimmy.ai"
+              className="font-semibold text-cream underline underline-offset-2 hover:text-accent"
+            >
+              shashank@zimmy.ai
+            </a>{" "}
+            ·{" "}
+            <a
+              href="mailto:ranveer@zimmy.ai"
+              className="font-semibold text-cream underline underline-offset-2 hover:text-accent"
+            >
+              ranveer@zimmy.ai
+            </a>
+          </p>
         </div>
       </Reveal>
     </section>
