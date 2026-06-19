@@ -105,7 +105,9 @@ export default function Hero() {
 
           <div data-h="cta" className="mt-9 flex flex-wrap items-center gap-3.5">
             <a
-              href="#cta"
+              href="https://cal.com/ranveerkochhar"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-accent px-6 py-3.5 text-[15.5px] font-semibold text-white shadow-hard transition-transform hover:-translate-y-0.5"
             >
               Book a Demo <ArrowUpRight className="h-4 w-4" />
