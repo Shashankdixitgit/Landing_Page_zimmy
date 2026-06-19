@@ -14,18 +14,18 @@ const BRANDS: Brand[] = [
 
 function BackerBadge({ backer }: { backer: "YC" | "EF" }) {
   return (
-    <span className="mt-1.5 inline-flex items-center gap-1 text-[10.5px] font-bold uppercase tracking-[0.08em] text-ink/45">
+    <span className="inline-flex items-center gap-1 text-[9.5px] font-bold uppercase tracking-[0.06em] text-ink/45">
       {backer === "YC" ? (
         <span
           aria-hidden
-          className="inline-grid h-[15px] w-[15px] place-items-center rounded-[3px] bg-[#ed702e] text-[10px] font-bold leading-none text-white"
+          className="inline-grid h-[13px] w-[13px] place-items-center rounded-[3px] bg-[#ed702e] text-[9px] font-bold leading-none text-white"
         >
           Y
         </span>
       ) : (
         <span
           aria-hidden
-          className="inline-grid h-[15px] place-items-center rounded-[3px] bg-[#5b0dd5] px-[3px] text-[9px] font-extrabold leading-none text-[#ee7d55]"
+          className="inline-grid h-[13px] place-items-center rounded-[3px] bg-[#5b0dd5] px-[2.5px] text-[8px] font-extrabold leading-none text-[#ee7d55]"
         >
           EF
         </span>
@@ -44,19 +44,23 @@ export default function LogoStrip() {
           <br className="hidden md:block" />
           defining brands →
         </p>
-        <div className="flex flex-1 flex-wrap items-start justify-center gap-x-9 gap-y-4 md:justify-between">
+        <div className="flex flex-1 flex-wrap items-center justify-center gap-x-9 gap-y-3 md:justify-between">
           {BRANDS.map((b) => (
             <a
               key={b.name}
               href={b.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center md:items-start"
+              className="group inline-flex items-end gap-1.5 whitespace-nowrap"
             >
-              <span className="whitespace-nowrap text-[19px] font-bold tracking-tight text-ink/35 transition-colors group-hover:text-ink">
+              <span className="text-[19px] font-bold tracking-tight text-ink/35 transition-colors group-hover:text-ink">
                 {b.name}
               </span>
-              {b.backer ? <BackerBadge backer={b.backer} /> : null}
+              {b.backer ? (
+                <span className="relative top-[2px]">
+                  <BackerBadge backer={b.backer} />
+                </span>
+              ) : null}
             </a>
           ))}
         </div>
