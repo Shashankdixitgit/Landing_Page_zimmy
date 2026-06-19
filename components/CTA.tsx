@@ -43,17 +43,17 @@ export default function CTA() {
           <p className="mt-7 text-[14.5px] text-cream/60">
             Prefer email?{" "}
             <a
-              href="mailto:shashank@zimmy.ai"
+              href="mailto:shashank@zimmy.art"
               className="font-semibold text-cream underline underline-offset-2 hover:text-accent"
             >
-              shashank@zimmy.ai
+              shashank@zimmy.art
             </a>{" "}
             ·{" "}
             <a
-              href="mailto:ranveer@zimmy.ai"
+              href="mailto:ranveer@zimmy.art"
               className="font-semibold text-cream underline underline-offset-2 hover:text-accent"
             >
-              ranveer@zimmy.ai
+              ranveer@zimmy.art
             </a>
           </p>
         </div>

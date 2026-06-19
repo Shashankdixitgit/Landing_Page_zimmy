@@ -44,11 +44,11 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <a href="#" className="font-medium hover:text-ink">Privacy</a>
             <a href="#" className="font-medium hover:text-ink">Terms</a>
-            <a href="mailto:shashank@zimmy.ai" className="font-medium hover:text-ink">
-              shashank@zimmy.ai
+            <a href="mailto:shashank@zimmy.art" className="font-medium hover:text-ink">
+              shashank@zimmy.art
             </a>
-            <a href="mailto:ranveer@zimmy.ai" className="font-medium hover:text-ink">
-              ranveer@zimmy.ai
+            <a href="mailto:ranveer@zimmy.art" className="font-medium hover:text-ink">
+              ranveer@zimmy.art
             </a>
           </div>
         </div>
