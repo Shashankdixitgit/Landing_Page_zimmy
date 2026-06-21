@@ -8,7 +8,7 @@ const BRANDS: Brand[] = [
   { name: "Agnost AI", url: "https://agnost.ai/", backer: "YC" },
   { name: "Supatest", url: "https://supatest.ai/" },
   { name: "Docterz", url: "https://docterz.in/" },
-  { name: "Novelty", url: "https://www.novelty.sh/", backer: "EF" },
+  { name: "Novelty", url: "https://www.novelty.sh/" },
   { name: "Eddy Finance", url: "https://eddy.finance/" },
 ];
 
