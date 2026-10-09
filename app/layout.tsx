@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import SelectionFeedback from "@/components/SelectionFeedback";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body>
         <SmoothScroll>{children}</SmoothScroll>
+        <SelectionFeedback />
         <Analytics />
       </body>
     </html>
