@@ -116,30 +116,52 @@ const MARKETS: Market[] = [
 
 export default function ResearchDemo() {
   const [marketId, setMarketId] = useState("in");
-  const [found, setFound] = useState(false);
+  const [running, setRunning] = useState(false);
+  const [step, setStep] = useState(0); // how many pointers have finished
   const panel = useRef<HTMLDivElement>(null);
   const market = MARKETS.find((m) => m.id === marketId) ?? MARKETS[0];
 
-  // Fill the board on its own once the demo scrolls into view, so it never sits empty.
+  // What Zimmy is doing, shown as pointers that appear one by one.
+  const POINTERS = [
+    "Niche: self-improvement and productivity",
+    `Market: ${market.label} · ${market.language}`,
+    "Scanning videos from the last 30 days",
+    "Comparing each one to its account's usual views",
+    "Picking the outliers and why they worked",
+  ];
+  const found = step >= POINTERS.length;
+
+  // Start the run on its own once the demo scrolls into view, so the board never sits empty.
   useEffect(() => {
     const el = panel.current;
     if (!el) return;
-    let t: ReturnType<typeof setTimeout>;
     const io = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {
-          t = setTimeout(() => setFound(true), 900);
+          setRunning(true);
           io.disconnect();
         }
       },
       { threshold: 0.35 }
     );
     io.observe(el);
-    return () => {
-      io.disconnect();
-      clearTimeout(t);
-    };
+    return () => io.disconnect();
   }, []);
+
+  // Tick through the pointers while running.
+  useEffect(() => {
+    if (!running || step >= POINTERS.length) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const t = setTimeout(() => setStep((n) => (reduce ? POINTERS.length : n + 1)), step === 0 ? 500 : 650);
+    return () => clearTimeout(t);
+  }, [running, step, POINTERS.length]);
+
+  const pickMarket = (id: string) => {
+    if (id === marketId) return;
+    setMarketId(id);
+    setStep(0); // replay the run for the new market
+    setRunning(true);
+  };
 
   return (
     <section id="research" className="px-5 py-24 sm:py-32">
@@ -165,7 +187,7 @@ export default function ResearchDemo() {
                   key={m.id}
                   role="tab"
                   aria-selected={m.id === marketId}
-                  onClick={() => setMarketId(m.id)}
+                  onClick={() => pickMarket(m.id)}
                   className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-colors ${
                     m.id === marketId ? "bg-ink text-white" : "bg-surface text-ink hover:bg-white/70"
                   }`}
@@ -197,13 +219,29 @@ export default function ResearchDemo() {
                   <p className="mt-5 text-[14.5px] leading-[1.8] text-ink/80">
                     <mark className="rounded bg-highlight px-1 text-ink">Show me outliers from the last 30 days.</mark>
                   </p>
+                  <ul className="mt-5 space-y-2" aria-live="polite">
+                    {POINTERS.map((t, i) =>
+                      running && i <= step ? (
+                        <li key={`${market.id}-${i}`} className="pop flex items-center gap-2.5 text-[13.5px]">
+                          {i < step ? (
+                            <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mint text-accent">
+                              <Check className="h-3 w-3" strokeWidth={3} />
+                            </span>
+                          ) : (
+                            <span className="h-5 w-5 shrink-0 animate-spin rounded-full border-2 border-[#cfe2ef] border-t-accent" />
+                          )}
+                          <span className={i < step ? "text-ink" : "text-muted"}>{t}</span>
+                        </li>
+                      ) : null
+                    )}
+                  </ul>
                   <div className="mt-auto flex items-center justify-between gap-4 pt-8">
                     <span />
                     <button
-                      onClick={() => setFound(true)}
+                      onClick={() => setRunning(true)}
                       className="inline-flex shrink-0 items-center gap-2.5 rounded-full bg-accent px-5 py-3 text-[13.5px] font-medium text-white transition-colors hover:bg-accent-hover"
                     >
-                      {found ? "Board ready" : "Find outliers"}
+                      {found ? "Board ready" : running ? "Finding outliers…" : "Find outliers"}
                       {found ? <Check className="h-4 w-4" /> : <Search className="h-4 w-4" />}
                     </button>
                   </div>
@@ -241,7 +279,7 @@ export default function ResearchDemo() {
                       <br />
                       will appear here.
                     </p>
-                    <p className="mt-2 text-[13px] text-muted">Press &ldquo;Find outliers&rdquo; to try it.</p>
+                    <p className="mt-2 text-[13px] text-muted">{running ? "Searching your market…" : "Press “Find outliers” to try it."}</p>
                   </div>
                 )}
               </div>
