@@ -9,13 +9,23 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Zimmy for creators: your next post, already proven",
-  description: "See what's taking off in your niche, post it, and get paid by brands that fit your audience.",
+  description: "Get paid brand deals that fit your audience, and learn why your best posts hit.",
+  openGraph: {
+    title: "Zimmy for creators: your next post, already proven",
+    description: "Get paid brand deals that fit your audience, and learn why your best posts hit.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zimmy for creators",
+    description: "Get paid brand deals that fit your audience, and learn why your best posts hit.",
+  },
 };
 
 export default function CreatorsPage() {
   return (
     <>
-      <Navbar overHero={false} />
+      <Navbar overHero={false} onCreators />
       <main>
         <Creators asHero />
         <CreatorInsights />

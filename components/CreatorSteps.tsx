@@ -4,7 +4,7 @@ import { Chip, SplitHead } from "./ui";
 
 const STEPS = [
   { n: "01", icon: Search, title: "Tell us your niche", status: "Live" },
-  { n: "02", icon: CalendarDays, title: "Get a weekly plan of what's working", status: "Coming soon" },
+  { n: "02", icon: CalendarDays, title: "Get a weekly plan of what’s working", status: "Coming soon" },
   { n: "03", icon: BadgeDollarSign, title: "Get matched with brands that fit", status: "Live" },
 ];
 

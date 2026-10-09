@@ -160,7 +160,7 @@ export default function PlatformScorecard() {
                     <>
                       <p className="rounded-xl rounded-bl-sm bg-soft px-3 py-2 text-[13px] leading-snug text-ink">{p.comment}</p>
                       <p className="mt-2 text-[12px] text-muted">
-                        {p.commentGood ? "Comments are about the product" : "Viewers couldn't tell what it was"}
+                        {p.commentGood ? "Comments are about the product" : "Viewers couldn’t tell what it was"}
                       </p>
                     </>
                   ) : i === 2 ? (

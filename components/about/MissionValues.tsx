@@ -6,12 +6,12 @@ const VALUES = [
   {
     icon: Crosshair,
     head: "Control over chaos",
-    body: "Every creator, script and dollar is approved by you and tracked to real revenue. Never a black box.",
+    body: "You approve every test, creator and script. Nothing goes out in your name without it.",
   },
   {
     icon: BarChart3,
     head: "Data over guesswork",
-    body: "The best creator mix comes from real audience data and clean attribution, not follower counts.",
+    body: "Start from videos already beating their usual views in your market, not from hunches.",
   },
   {
     icon: Rocket,
@@ -27,14 +27,13 @@ export default function MissionValues() {
         <Reveal>
           <p className="text-[13px] font-medium text-accent">Our mission</p>
           <h2 className="display mt-4 text-[36px] text-ink sm:text-[46px]">
-            Make influencer marketing something one person can run.
+            Make viral content predictable, not lucky.
           </h2>
           <p className="mt-6 max-w-md text-[15.5px] leading-relaxed text-muted">
-            Brands should be able to reach the right creators with clear data, fair
-            negotiation and honest attribution, without an agency retainer or a
-            spreadsheet army.
+            Find what already works in your niche, test it cheaply with AI UGC, and
+            scale the winners with real creators and ads.
           </p>
-          <OutlineButton href="/#what" className="mt-8">
+          <OutlineButton href="/#research" className="mt-8">
             Explore the product
           </OutlineButton>
         </Reveal>

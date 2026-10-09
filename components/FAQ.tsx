@@ -12,14 +12,14 @@ const FAQS = [
   },
   {
     q: "Why not just ask ChatGPT for ideas?",
-    a: "It doesn't know what's winning in your niche this month. Zimmy starts from real, recent videos in your market, and a person checks the reasoning.",
+    a: "It doesn’t know what’s winning in your niche this month. Zimmy starts from real, recent videos in your market, and a person checks the reasoning.",
   },
   {
     q: "Do I stay in control?",
     a: "Always. You pick the tests, approve every creator and script, and decide what gets ad spend. We use your real product footage, never a made-up screen.",
   },
   {
-    q: "What's live today?",
+    q: "What’s live today?",
     a: "Outlier research per market, why-it-worked breakdowns, shoot-ready briefs, and finding and briefing creators. AI UGC test videos are coming soon.",
   },
 ];

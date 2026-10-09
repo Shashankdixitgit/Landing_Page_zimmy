@@ -123,3 +123,7 @@ html.lenis body { height: auto; }
 }
 .ping { opacity: 0; animation: ping-pop 4.8s var(--ease-soft) infinite both; }
 @media (prefers-reduced-motion: reduce) { .ping { opacity: 1; animation: none; } }
+
+/* Hero entrance: hidden until the GSAP timeline takes over (avoids a flash on load) */
+[data-hero-pending] [data-h], [data-hero-pending] [data-fan], [data-hero-pending] [data-pill] { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { [data-hero-pending] [data-h], [data-hero-pending] [data-fan], [data-hero-pending] [data-pill] { opacity: 1; } }

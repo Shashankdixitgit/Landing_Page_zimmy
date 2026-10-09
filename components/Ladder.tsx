@@ -5,7 +5,7 @@ import { Chip, SplitHead } from "./ui";
 const RUNGS = [
   { n: "01", title: "AI UGC finds the winner.", status: "Coming soon", box: "bg-sky", h: "lg:min-h-[220px]" },
   { n: "02", title: "Real creators make it trusted.", status: "Live", box: "bg-mint", h: "lg:min-h-[260px]" },
-  { n: "03", title: "Ads scale what's proven.", status: "Done by our team", box: "bg-night text-white", h: "lg:min-h-[300px]" },
+  { n: "03", title: "Ads scale what’s proven.", status: "Done by our team", box: "bg-night text-white", h: "lg:min-h-[300px]" },
 ];
 
 export default function Ladder() {

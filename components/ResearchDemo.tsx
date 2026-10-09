@@ -97,7 +97,7 @@ const MARKETS: Market[] = [
       {
         handle: "@tinywins.uk",
         multiple: "5.6× usual",
-        why: "Green-screen over the app's progress chart. The proof is the background.",
+        why: "Green-screen over the app’s progress chart. The proof is the background.",
         chips: ["Format: green screen", "UK"],
         scene: ["#ffb703", "#7b2cbf"],
         media: "jay",
@@ -126,7 +126,7 @@ export default function ResearchDemo() {
     "Niche: self-improvement and productivity",
     `Market: ${market.label} · ${market.language}`,
     "Scanning videos from the last 30 days",
-    "Comparing each one to its account's usual views",
+    "Comparing each one to its account’s usual views",
     "Picking the outliers and why they worked",
   ];
   const [found, setFound] = useState(false); // board stays filled once the first run finishes
@@ -229,7 +229,7 @@ export default function ResearchDemo() {
                   <ul className="mt-5 space-y-2" aria-live="polite">
                     {POINTERS.map((t, i) =>
                       running && i <= step ? (
-                        <li key={`${market.id}-${i}`} className="pop flex items-center gap-2.5 text-[13.5px]">
+                        <li key={`${market.id}-${i}`} className="pop flex min-h-6 items-center gap-2.5 text-[13.5px]">
                           {i < step ? (
                             <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mint text-accent">
                               <Check className="h-3 w-3" strokeWidth={3} />
@@ -239,18 +239,31 @@ export default function ResearchDemo() {
                           )}
                           <span className={i < step ? "text-ink" : "text-muted"}>{t}</span>
                         </li>
-                      ) : null
+                      ) : (
+                        // placeholder keeps the card height fixed while the list loops
+                        <li key={`${market.id}-${i}-wait`} aria-hidden className="invisible flex min-h-6 items-center gap-2.5 text-[13.5px]">
+                          <span className="h-5 w-5 shrink-0" />
+                          <span>{t}</span>
+                        </li>
+                      )
                     )}
                   </ul>
                   <div className="mt-auto flex items-center justify-between gap-4 pt-8">
                     <span />
-                    <button
-                      onClick={() => setRunning(true)}
-                      className="inline-flex shrink-0 items-center gap-2.5 rounded-full bg-accent px-5 py-3 text-[13.5px] font-medium text-white transition-colors hover:bg-accent-hover"
-                    >
-                      {found ? "Board ready" : running ? "Finding outliers…" : "Find outliers"}
-                      {found ? <Check className="h-4 w-4" /> : <Search className="h-4 w-4" />}
-                    </button>
+                    {found ? (
+                      <span className="inline-flex shrink-0 items-center gap-2.5 rounded-full bg-mint px-5 py-3 text-[13.5px] font-medium text-accent">
+                        Board ready <Check className="h-4 w-4" />
+                      </span>
+                    ) : (
+                      <button
+                        onClick={() => setRunning(true)}
+                        disabled={running}
+                        className="inline-flex shrink-0 items-center gap-2.5 rounded-full bg-accent px-5 py-3 text-[13.5px] font-medium text-white transition-colors hover:bg-accent-hover disabled:cursor-default disabled:hover:bg-accent"
+                      >
+                        {running ? "Finding outliers…" : "Find outliers"}
+                        <Search className="h-4 w-4" />
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -277,7 +290,7 @@ export default function ResearchDemo() {
                     ))}
                   </ul>
                 ) : (
-                  <div className="flex flex-1 flex-col items-center justify-center py-12 text-center">
+                  <div className="flex min-h-[500px] flex-1 flex-col items-center justify-center py-12 text-center sm:min-h-[485px]">
                     <span className="grid h-14 w-14 place-items-center rounded-2xl bg-sky text-[#2e6f9e] lift">
                       <Search className="h-6 w-6" strokeWidth={1.8} />
                     </span>

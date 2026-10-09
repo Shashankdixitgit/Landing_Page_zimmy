@@ -184,6 +184,9 @@ export default function Flow() {
                     >
                       <div className="overflow-hidden">
                         <div className="px-3 pb-4 sm:px-4 sm:pl-[3.1rem]">
+                          <div className="mt-2 rounded-[16px] bg-sky p-3 lg:hidden">
+                            <StageView i={i} />
+                          </div>
                           {i === STAGES.length - 1 ? (
                             <p className="mt-3 inline-flex items-center gap-1.5 rounded-md bg-mint px-2 py-1 text-[12px] font-medium text-accent">
                               <RotateCcw className="h-3.5 w-3.5" /> Back to 03
@@ -198,7 +201,7 @@ export default function Flow() {
             </ol>
 
             {/* stage view */}
-            <div className="flex flex-col justify-center rounded-[22px] bg-sky p-5 sm:p-8">
+            <div className="hidden flex-col justify-center rounded-[22px] bg-sky p-5 sm:p-8 lg:flex">
               <div key={active} className="pop">
                 <p className="mb-4 text-[12.5px] text-[#4b6878]">{STAGES[active].title}</p>
                 <StageView i={active} />

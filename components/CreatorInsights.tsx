@@ -35,12 +35,12 @@ const POSTS = [
     why: [
       ["A list people save", "Short, useful and easy to come back to, so saves did the work."],
       ["Shown, not told", "Each app appears on screen within the first two seconds."],
-      ["One clear payoff", "Ends on the app he'd keep, which gave people a reason to comment."],
+      ["One clear payoff", "Ends on the app he’d keep, which gave people a reason to comment."],
     ],
   },
   {
     clip: "mira",
-    caption: "day 14 and I'm genuinely shocked",
+    caption: "day 14 and I’m genuinely shocked",
     views: "18K",
     multiple: "19×",
     why: [
@@ -66,7 +66,7 @@ function BestPosts() {
                 best posts hit.
               </>
             }
-            sub="Every post judged against your own median, not someone else's. Then the reason, in plain words."
+            sub="Every post judged against your own median, not someone else’s. Then the reason, in plain words."
           />
         </Reveal>
 
@@ -143,8 +143,8 @@ const DIMS = [
   { k: "Hook & opening", v: 9, note: "A high-stakes, relatable line in the first second." },
   { k: "Product integration", v: 9, note: "The product is the hero of the story, not an add-on." },
   { k: "Use-case clarity", v: 6, note: "The use case is clear, but the result is described, not shown." },
-  { k: "Trust & proof", v: 9, note: "Creator's own experience plus a live demo on screen." },
-  { k: "Conversion design", v: 8, note: "“Comment ‘app’ and I'll DM you the link” gives a clear next step." },
+  { k: "Trust & proof", v: 9, note: "Creator’s own experience plus a live demo on screen." },
+  { k: "Conversion design", v: 8, note: "“Comment ‘app’ and I’ll DM you the link” gives a clear next step." },
   { k: "Production", v: 9, note: "Talking head, real story, tight edit." },
 ];
 
@@ -179,13 +179,13 @@ function DealScore() {
               </div>
               <div className="shrink-0 text-right">
                 <p className="text-[48px] font-semibold leading-none tracking-[-0.04em] text-ink">
-                  8.4<span className="text-[18px] font-medium text-muted">/10</span>
+                  8.3<span className="text-[18px] font-medium text-muted">/10</span>
                 </p>
                 <p className="mt-1 text-[12px] font-semibold uppercase tracking-[0.12em] text-accent">Strong</p>
               </div>
             </div>
 
-            <Reveal stagger={0.06} className="mt-3 grid gap-px overflow-hidden rounded-[20px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+            <Reveal className="mt-3 grid gap-px overflow-hidden rounded-[20px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
               {DIMS.map((d) => (
                 <div key={d.k} className="bg-surface p-5">
                   <div className="flex items-baseline justify-between">

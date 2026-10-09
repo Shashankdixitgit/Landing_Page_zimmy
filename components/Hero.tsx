@@ -22,6 +22,8 @@ export default function Hero() {
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // CSS hides the hero until this runs, so there is no flash of the final state before the entrance.
+    root.current?.removeAttribute("data-hero-pending");
     if (reduce) return;
     const ctx = gsap.context(() => {
       gsap
@@ -34,8 +36,8 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={root} id="top" className="px-2 pt-2 sm:px-3 sm:pt-3">
-      <div className="relative overflow-hidden rounded-[28px] bg-[#3f86c9] sm:rounded-[36px]">
+    <section ref={root} id="top" data-hero-pending="" className="px-2 pt-2 sm:px-3 sm:pt-3">
+      <div className="relative isolate overflow-hidden rounded-[28px] bg-[#3f86c9] sm:rounded-[36px]">
         {/* Video: "A Wheat Field Swaying in the Wind", Pexels #17442173 (Pexels License) */}
         <video
           className="absolute inset-0 h-full w-full object-cover object-[center_30%] motion-reduce:hidden"

@@ -10,7 +10,7 @@ export default function CreatorJoin() {
         <Image src="/hero-wheat-poster.jpg" alt="" fill sizes="100vw" className="object-cover object-[center_30%]" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_55%_at_50%_45%,rgb(12_38_66/0.45),transparent_75%)]" aria-hidden />
         <div className="relative">
-          <h2 className="display mx-auto max-w-xl text-[42px] text-white [text-shadow:0_2px_30px_rgb(10_40_70/0.35)] sm:text-[60px]">
+          <h2 className="display mx-auto max-w-xl text-[34px] text-white [text-shadow:0_2px_30px_rgb(10_40_70/0.35)] sm:text-[60px]">
             Post what works.
             <br />
             Get paid for it.

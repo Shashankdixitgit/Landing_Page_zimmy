@@ -3,9 +3,9 @@ import Reveal from "../Reveal";
 import CreatorCard, { CREATORS } from "../CreatorCard";
 
 const STEPS = [
-  { i: Search, t: "Discovering creators" },
-  { i: PenLine, t: "Writing scripts & links" },
-  { i: LineChart, t: "Tracking revenue" },
+  { i: Search, t: "Finding outliers in your niche" },
+  { i: PenLine, t: "Decoding why they worked" },
+  { i: LineChart, t: "Writing shoot-ready briefs" },
 ];
 
 export default function AboutHero() {
@@ -15,9 +15,9 @@ export default function AboutHero() {
         <Reveal>
           <p className="text-[13px] font-medium text-white/85">About Zimmy</p>
           <h1 className="display mx-auto mt-5 max-w-3xl text-[44px] text-white [text-shadow:0_2px_30px_rgb(20_60_100/0.25)] sm:text-[64px] md:text-[72px]">
-            Influencer marketing,
+            Viral content,
             <br />
-            run end-to-end by AI.
+            researched first.
           </h1>
         </Reveal>
 

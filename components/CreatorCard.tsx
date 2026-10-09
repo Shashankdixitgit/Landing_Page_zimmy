@@ -40,8 +40,8 @@ export const CREATORS: Creator[] = [
     handle: "@mira.moves",
     niche: "Fitness",
     followers: "1.2M",
-    caption: "day 14 and I'm genuinely shocked",
-    status: "AI test · live on Reels",
+    caption: "day 14 and I’m genuinely shocked",
+    status: "Creator post · live on Reels",
     tone: "live",
     scene: ["#ffb703", "#fb5607", "#2a0d05"],
     media: "mira", // Pexels #6548012

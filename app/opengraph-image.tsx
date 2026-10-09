@@ -13,7 +13,7 @@ const SKY = "linear-gradient(180deg, #2e78b8 0%, #4f97cf 40%, #8cc0e4 75%, #cfe6
 // Illustrative creator cards, same look as the hero.
 const CARDS = [
   { a: "#4cc9f0", b: "#3a0ca3", d: "#0b0a24", status: "Outlier · 6.2× usual", left: 40, top: 120, rotate: "-9deg", z: 1 },
-  { a: "#ffb703", b: "#fb5607", d: "#2a0d05", status: "AI test · live", left: 200, top: 70, rotate: "0deg", z: 3 },
+  { a: "#ffb703", b: "#fb5607", d: "#2a0d05", status: "Live on Reels", left: 200, top: 70, rotate: "0deg", z: 3 },
   { a: "#ff99c8", b: "#a05195", d: "#1e0c1f", status: "Remade by a creator", left: 360, top: 120, rotate: "9deg", z: 2 },
 ];
 

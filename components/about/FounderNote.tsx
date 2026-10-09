@@ -3,10 +3,10 @@ import Reveal from "../Reveal";
 
 const PARAS = [
   "Dear founders and marketers,",
-  "When I started Zimmy, the goal was simple: let one person run a full influencer program, without an agency, a spreadsheet army or a team of ten.",
-  "I'd spent years inside growth and product at Bentolabs and Emergent, and before that at Entrepreneur First, automating yearly campaign funnels worth up to $30M. The same problem kept showing up: influencer marketing worked, but the execution was brutal. Sourcing, outreach, negotiation, scripts, links and attribution, all by hand.",
-  "So I built the operating system I always wished I had. Zimmy finds the creators, runs the outreach and negotiation, writes the scripts and ties every dollar back to real revenue, while you stay in control.",
-  "We're just getting started.",
+  "Most teams still guess what to post. They brief creators, pay for videos and hope something lands.",
+  "I spent years inside growth and product at Bentolabs and Emergent, and before that at Entrepreneur First, automating yearly campaign funnels worth $30M+. The pattern was always the same: the winners were already out there, in other accounts, in other markets. Nobody had time to study them.",
+  "So I built Zimmy. It finds the videos already beating their usual views in your niche, works out why, and turns that into tests you can run, first with AI UGC, then with real creators and ads.",
+  "We’re just getting started.",
 ];
 
 export default function FounderNote() {

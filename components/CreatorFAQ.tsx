@@ -11,7 +11,7 @@ const FAQS = [
   },
   {
     q: "How do I join?",
-    a: "Email us your handle and niche. We'll get back to you with next steps.",
+    a: "Email us your handle and niche. We’ll get back to you with next steps.",
   },
   {
     q: "Will brands tell me exactly what to say?",

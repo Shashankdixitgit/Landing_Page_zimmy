@@ -4,7 +4,7 @@ import CardVideo from "./CardVideo";
 import { CREATOR_JOIN_HREF } from "./ui";
 
 const PERKS = [
-  { icon: TrendingUp, title: "See what's taking off in your niche", status: "Coming soon" },
+  { icon: TrendingUp, title: "See what’s taking off in your niche", status: "Coming soon" },
   { icon: CalendarDays, title: "Get a weekly posting plan built from it", status: "Coming soon" },
   { icon: BadgeDollarSign, title: "Get paid by brands that fit your audience", status: "Live" },
 ];
@@ -13,7 +13,7 @@ const PERKS = [
 const PINGS = [
   { icon: Flame, text: "Before/after hooks are up 6× in Fitness", cls: "left-0 top-10 -rotate-2 sm:-left-8" },
   { icon: BadgeDollarSign, text: "Brand deal approved · $400", cls: "right-0 top-[44%] rotate-2 sm:-right-10" },
-  { icon: UserPlus, text: "+2.1K followers this week", cls: "bottom-12 left-2 -rotate-1 sm:-left-4" },
+  { icon: UserPlus, text: "+2.1K followers this week", cls: "top-[62%] left-0 -rotate-1 sm:-left-10" },
 ];
 
 export default function Creators({ asHero = false }: { asHero?: boolean }) {
