@@ -28,6 +28,7 @@ const MARKETS: Market[] = [
         why: "Shows the streak screen in the first second. The payoff is visible before anyone reads a word.",
         chips: ["Hook: before/after", "Hindi + English"],
         scene: ["#ffb703", "#fb5607"],
+        media: "mira",
       },
       {
         handle: "@studywithriya",
@@ -35,6 +36,7 @@ const MARKETS: Market[] = [
         why: "Opens on a question students already ask. The app answers it on screen.",
         chips: ["Hook: question", "Talking head"],
         scene: ["#ff99c8", "#a05195"],
+        media: "jay",
       },
       {
         handle: "@the30dayguy",
@@ -42,6 +44,7 @@ const MARKETS: Market[] = [
         why: "Day-by-day sequence keeps people watching to see day 30.",
         chips: ["Format: diary", "Series"],
         scene: ["#90e0a8", "#2d6a4f"],
+        media: "camper",
       },
     ],
   },
@@ -57,6 +60,7 @@ const MARKETS: Market[] = [
         why: "Quiet, unhurried morning shot. The habit check-in appears as part of the routine, not as an ad.",
         chips: ["Format: routine", "German"],
         scene: ["#a9d3ff", "#3a0ca3"],
+        media: "noor",
       },
       {
         handle: "@petitpas.camille",
@@ -64,6 +68,7 @@ const MARKETS: Market[] = [
         why: "Starts with a small failure everyone recognises, then shows one tiny fix.",
         chips: ["Hook: relatable fail", "French"],
         scene: ["#ff7a59", "#7b2cbf"],
+        media: "sana",
       },
       {
         handle: "@buildhabits.eu",
@@ -71,6 +76,7 @@ const MARKETS: Market[] = [
         why: "Three-second screen recording with big captions. Works with the sound off.",
         chips: ["Format: screen demo", "Captions"],
         scene: ["#c8f560", "#3a7d44"],
+        media: "ben",
       },
     ],
   },
@@ -86,6 +92,7 @@ const MARKETS: Market[] = [
         why: "Says the uncomfortable number out loud, then shows how the app made it smaller.",
         chips: ["Hook: confession", "Talking head"],
         scene: ["#4cc9f0", "#3a0ca3"],
+        media: "ben",
       },
       {
         handle: "@tinywins.uk",
@@ -93,6 +100,7 @@ const MARKETS: Market[] = [
         why: "Green-screen over the app's progress chart. The proof is the background.",
         chips: ["Format: green screen", "UK"],
         scene: ["#ffb703", "#7b2cbf"],
+        media: "jay",
       },
       {
         handle: "@habitlab.sam",
@@ -100,6 +108,7 @@ const MARKETS: Market[] = [
         why: "Ranks five habit apps fast. Ends on the one he still uses.",
         chips: ["Format: ranking", "Comparison"],
         scene: ["#ff99c8", "#fb5607"],
+        media: "mira",
       },
     ],
   },

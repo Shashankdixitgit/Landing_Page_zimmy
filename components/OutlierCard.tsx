@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check, Plus, UserCheck } from "lucide-react";
 import { Chip } from "./ui";
+import CardVideo from "./CardVideo";
 
 export type Outlier = {
   handle: string;
@@ -10,6 +11,8 @@ export type Outlier = {
   why: string;
   chips: string[];
   scene: [string, string];
+  /** clip in /public/creators (Pexels, Pexels License) */
+  media: string;
 };
 
 /** One video on the research board. All data shown is illustrative. */
@@ -24,7 +27,9 @@ export default function OutlierCard({ o, delay = 0 }: { o: Outlier; delay?: numb
         className="grain relative aspect-[9/16] w-14 shrink-0 overflow-hidden rounded-lg"
         style={{ background: `linear-gradient(160deg, ${o.scene[0]}, ${o.scene[1]})` }}
         aria-hidden
-      />
+      >
+        <CardVideo name={o.media} />
+      </span>
       <div className="min-w-0 flex-1">
         <div className="flex items-center justify-between gap-2">
           <p className="truncate text-[13px] font-medium text-ink">{o.handle}</p>
