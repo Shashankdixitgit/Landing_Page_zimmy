@@ -55,9 +55,7 @@ export default function Navbar() {
         </ul>
 
         <a
-          href="https://cal.com/ranveerkochhar"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="mailto:shashank@zimmy.art?subject=Zimmy%20demo"
           className={`hidden items-center gap-1.5 rounded-full border-2 border-ink bg-accent text-[14.5px] font-semibold text-white shadow-hard-sm transition-all duration-300 hover:-translate-y-0.5 md:inline-flex ${
             scrolled ? "px-4 py-1.5" : "px-4 py-2"
           }`}
@@ -90,9 +88,7 @@ export default function Navbar() {
             ))}
           </ul>
           <a
-            href="https://cal.com/ranveerkochhar"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:shashank@zimmy.art?subject=Zimmy%20demo"
             onClick={() => setOpen(false)}
             className="mt-2 block rounded-full border-2 border-ink bg-accent px-4 py-3 text-center text-[15px] font-semibold text-white"
           >
