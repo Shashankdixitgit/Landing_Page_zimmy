@@ -1,74 +1,107 @@
-import { ArrowRight, CalendarDays, Handshake } from "lucide-react";
+import { ArrowRight, TrendingUp, CalendarDays, BadgeDollarSign, Flame, UserPlus } from "lucide-react";
 import Reveal from "./Reveal";
-import { Chip, CREATOR_HREF, SplitHead } from "./ui";
+import CardVideo from "./CardVideo";
+import { CREATOR_HREF } from "./ui";
 
-const WEEK = [
-  ["Mon", "Hook test"],
-  ["Tue", "Reel"],
-  ["Wed", "Rest"],
-  ["Thu", "Remake"],
-  ["Fri", "Series"],
+const PERKS = [
+  { icon: TrendingUp, title: "See what's taking off in your niche", status: "Coming soon" },
+  { icon: CalendarDays, title: "Get a weekly posting plan built from it", status: "Coming soon" },
+  { icon: BadgeDollarSign, title: "Get paid by brands that fit your audience", status: "Live" },
+];
+
+// Notifications that pop in around the phone. Illustrative.
+const PINGS = [
+  { icon: Flame, text: "Before/after hooks are up 6× in Fitness", cls: "left-0 top-10 -rotate-2 sm:-left-8" },
+  { icon: BadgeDollarSign, text: "Brand deal approved · $400", cls: "right-0 top-[44%] rotate-2 sm:-right-10" },
+  { icon: UserPlus, text: "+2.1K followers this week", cls: "bottom-12 left-2 -rotate-1 sm:-left-4" },
 ];
 
 export default function Creators() {
   return (
-    <section id="creators" className="px-5 py-24 sm:py-32">
-      <div className="mx-auto max-w-[1100px]">
-        <Reveal>
-          <SplitHead
-            title={
-              <>
-                Creators:
-                <br />
-                grow on purpose.
-              </>
-            }
-            sub="Post what's already working in your niche. Get paid by brands for it."
-          />
-        </Reveal>
+    <section id="creators" className="px-2 py-10 sm:px-3">
+      <div className="relative overflow-hidden rounded-[28px] bg-[#13201c] text-white sm:rounded-[36px]">
+        {/* soft glow */}
+        <div
+          className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full opacity-40 blur-[120px]"
+          style={{ background: "radial-gradient(closest-side, #5ccf98, transparent)" }}
+          aria-hidden
+        />
 
-        <Reveal stagger={0.1} className="mt-12 grid gap-4 md:grid-cols-2">
-          <article className="flex flex-col rounded-[24px] bg-sky p-7 sm:p-8">
-            <div className="flex items-center justify-between">
-              <CalendarDays className="h-5 w-5 text-[#235a80]" strokeWidth={1.8} />
-              <Chip>Coming soon</Chip>
+        <div className="relative mx-auto grid max-w-[1100px] items-center gap-14 px-6 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.05fr_1fr]">
+          {/* message */}
+          <Reveal>
+            <span className="inline-flex rounded-full bg-white/10 px-3.5 py-1.5 text-[12.5px] font-medium text-accent-bright">
+              For creators
+            </span>
+            <h2 className="display mt-6 text-[44px] sm:text-[60px]">
+              Your next post,
+              <br />
+              <span className="text-accent-bright">already proven.</span>
+            </h2>
+            <p className="mt-5 max-w-md text-[16px] leading-relaxed text-white/70">
+              Stop guessing what to post. Make what&rsquo;s already working, and get paid by brands
+              for it.
+            </p>
+
+            <ul className="mt-9 space-y-3">
+              {PERKS.map((p) => {
+                const Icon = p.icon;
+                return (
+                  <li key={p.title} className="flex items-center gap-4 rounded-2xl bg-white/[0.05] px-4 py-3.5">
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/10 text-accent-bright">
+                      <Icon className="h-[18px] w-[18px]" strokeWidth={1.8} />
+                    </span>
+                    <span className="flex-1 text-[15px] font-medium">{p.title}</span>
+                    <span
+                      className={`shrink-0 rounded-md px-2 py-0.5 text-[11px] font-medium ${
+                        p.status === "Live" ? "bg-accent-bright text-[#05130d]" : "bg-white/10 text-white/70"
+                      }`}
+                    >
+                      {p.status}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <a
+              href={CREATOR_HREF}
+              className="group mt-9 inline-flex items-center gap-2.5 rounded-full bg-accent-bright px-7 py-3.5 text-[15.5px] font-semibold text-[#05130d] transition-transform duration-300 hover:-translate-y-0.5"
+            >
+              Join as a creator
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </a>
+          </Reveal>
+
+          {/* phone with live creator clip and popping notifications */}
+          <Reveal delay={0.1} className="relative mx-auto w-full max-w-[340px]">
+            <div className="relative mx-auto aspect-[9/16] w-[250px] overflow-hidden rounded-[34px] border-[6px] border-[#0b1512] bg-black shadow-[0_40px_80px_-20px_rgb(0_0_0/0.7)] sm:w-[270px]">
+              <CardVideo name="mira" />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(0_0_0/0.35)_0%,transparent_25%,transparent_60%,rgb(0_0_0/0.65)_100%)]" />
+              <p className="absolute left-4 top-5 text-[12px] font-semibold">@mira.moves</p>
+              <p className="absolute inset-x-5 bottom-6 text-center text-[14px] font-bold leading-snug [text-shadow:0_2px_8px_rgb(0_0_0/0.7)]">
+                day 14 and I&rsquo;m genuinely shocked
+              </p>
             </div>
-            <h3 className="display mt-6 text-[26px] text-ink">A content calendar built on what works.</h3>
-            <div className="mt-6 grid grid-cols-5 gap-1.5">
-              {WEEK.map(([d, t]) => (
-                <div key={d} className={`rounded-xl px-1.5 py-3 text-center ${t === "Rest" ? "bg-white/50" : "bg-surface"}`}>
-                  <p className="text-[11px] text-muted">{d}</p>
-                  <p className="mt-1 text-[11.5px] font-medium leading-tight text-ink">{t}</p>
+
+            {PINGS.map((n, i) => {
+              const Icon = n.icon;
+              return (
+                <div
+                  key={n.text}
+                  className={`ping absolute z-10 flex items-center gap-2.5 rounded-2xl bg-white px-3.5 py-2.5 text-[12.5px] font-medium text-ink shadow-[0_18px_40px_-12px_rgb(0_0_0/0.6)] ${n.cls}`}
+                  style={{ animationDelay: `${i * 1.6}s` }}
+                >
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-mint text-accent">
+                    <Icon className="h-3.5 w-3.5" strokeWidth={2} />
+                  </span>
+                  {n.text}
                 </div>
-              ))}
-            </div>
-          </article>
-
-          <article className="flex flex-col rounded-[24px] bg-mint p-7 sm:p-8">
-            <div className="flex items-center justify-between">
-              <Handshake className="h-5 w-5 text-accent" strokeWidth={1.8} />
-              <Chip tone="mint">Live</Chip>
-            </div>
-            <h3 className="display mt-6 text-[26px] text-ink">Paid brand deals that fit your audience.</h3>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {["Clear brief", "Agreed terms", "Your tracking link"].map((t) => (
-                <span key={t} className="rounded-full bg-surface px-3.5 py-1.5 text-[13px] font-medium text-ink">
-                  {t}
-                </span>
-              ))}
-            </div>
-          </article>
-        </Reveal>
-
-        <Reveal delay={0.15} className="mt-6 flex justify-center">
-          <a
-            href={CREATOR_HREF}
-            className="group inline-flex items-center gap-2.5 rounded-full bg-ink px-6 py-3 text-[15px] font-medium text-white transition-transform duration-300 hover:-translate-y-0.5"
-          >
-            Join as a creator
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-          </a>
-        </Reveal>
+              );
+            })}
+            <p className="mt-6 text-center text-[11.5px] text-white/40">Illustrative example</p>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
