@@ -1,29 +1,29 @@
-import { ShoppingBag, Cpu, Store } from "lucide-react";
+import { Smartphone, ShoppingBag, Globe } from "lucide-react";
 import Reveal from "./Reveal";
 import { SplitHead } from "./ui";
 
 const SOLUTIONS = [
   {
-    icon: ShoppingBag,
-    title: "For DTC brands",
-    head: "A steady supply of creator ads that sell.",
-    body: "For brands scaling on Meta and TikTok. Creator content you can run organically or as paid ads, with every sale traced back.",
+    icon: Smartphone,
+    title: "For consumer apps",
+    head: "Demos people actually watch.",
+    body: "Real app footage, hooks taken from what's already winning in your category, and creators who can show the product in use.",
     bg: "bg-mint",
     fg: "text-accent",
   },
   {
-    icon: Cpu,
-    title: "For consumer tech & apps",
-    head: "Demos from creators people trust.",
-    body: "Tech-fluent creators on TikTok, Instagram and YouTube, briefed for accuracy and tuned for installs and sign-ups.",
+    icon: ShoppingBag,
+    title: "For DTC brands",
+    head: "A steady supply of creator ads.",
+    body: "Find the idea with cheap tests, remake it with creators, then run the proven ones as paid ads on Meta and TikTok.",
     bg: "bg-sky",
     fg: "text-[#235a80]",
   },
   {
-    icon: Store,
-    title: "For retail & FMCG",
-    head: "Reach at scale, built for shelf and search.",
-    body: "Large seeding runs, affiliate programs and creator content that drives discovery, trial and repeat purchase.",
+    icon: Globe,
+    title: "For new markets",
+    head: "Local research before local spend.",
+    body: "Launching in India, Europe or another English-speaking market? Start from what already works there, not from your home market.",
     bg: "bg-[#f6efe2]",
     fg: "text-[#7a5a1e]",
   },
@@ -37,12 +37,12 @@ export default function Solutions() {
           <SplitHead
             title={
               <>
-                Built for brands
+                Built for teams
                 <br />
-                that sell to people.
+                that need content to work.
               </>
             }
-            sub="Every category has its own creator playbook. Zimmy tunes discovery, scripts and attribution to how your industry wins."
+            sub="If you post often and can't say why some videos work, Zimmy is for you."
           />
         </Reveal>
 

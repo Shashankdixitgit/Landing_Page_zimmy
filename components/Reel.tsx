@@ -2,20 +2,27 @@ import CreatorCard, { CREATORS } from "./CreatorCard";
 import Reveal from "./Reveal";
 import { SplitHead } from "./ui";
 
+const QUESTIONS = [
+  "Did the opening earn attention?",
+  "Did people understand the product?",
+  "Did it lead to action?",
+  "Is it repeatable enough to fund?",
+];
+
 export default function Reel() {
   const row = [...CREATORS, ...CREATORS];
   return (
-    <section className="overflow-hidden py-24 sm:py-32" aria-label="Creator campaigns in progress">
+    <section id="platforms" className="overflow-hidden py-24 sm:py-32" aria-label="Example creator videos">
       <Reveal className="mx-auto max-w-[1100px] px-5">
         <SplitHead
           title={
             <>
-              Every niche.
+              Every platform,
               <br />
-              Every post tracked.
+              read on its own.
             </>
           }
-          sub="Food, tech, beauty, fitness, finance. Zimmy matches you with creators whose audience already looks like your customer."
+          sub="A weak TikTok doesn't cancel a strong Reel. Zimmy reads each platform separately and asks the same four questions."
         />
       </Reveal>
 
@@ -27,6 +34,20 @@ export default function Reel() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="mx-auto mt-8 max-w-[1100px] px-5">
+        <Reveal stagger={0.08} className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {QUESTIONS.map((q, i) => (
+            <div key={q} className="rounded-[18px] border border-line bg-surface p-5">
+              <span className="text-[13px] font-medium text-faint">0{i + 1}</span>
+              <p className="mt-6 text-[17px] font-medium leading-snug tracking-[-0.015em] text-ink">{q}</p>
+            </div>
+          ))}
+        </Reveal>
+        <p className="mt-5 text-center text-[13px] text-muted">
+          Views per platform and clicks per creator link are tracked today. Sales tracking is coming soon.
+        </p>
       </div>
     </section>
   );

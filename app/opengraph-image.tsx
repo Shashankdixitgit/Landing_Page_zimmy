@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Zimmy: creators found, deals done, every sale tracked.";
+export const alt = "Zimmy: a recipe for viral content.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -12,9 +12,9 @@ const SKY = "linear-gradient(180deg, #2e78b8 0%, #4f97cf 40%, #8cc0e4 75%, #cfe6
 
 // Illustrative creator cards, same look as the hero.
 const CARDS = [
-  { a: "#4cc9f0", b: "#3a0ca3", d: "#0b0a24", status: "Negotiating", left: 40, top: 120, rotate: "-9deg", z: 1 },
-  { a: "#ffb703", b: "#fb5607", d: "#2a0d05", status: "Live · tracking", left: 200, top: 70, rotate: "0deg", z: 3 },
-  { a: "#ff99c8", b: "#a05195", d: "#1e0c1f", status: "Shortlisted", left: 360, top: 120, rotate: "9deg", z: 2 },
+  { a: "#4cc9f0", b: "#3a0ca3", d: "#0b0a24", status: "Outlier · 6.2× usual", left: 40, top: 120, rotate: "-9deg", z: 1 },
+  { a: "#ffb703", b: "#fb5607", d: "#2a0d05", status: "AI test · live", left: 200, top: 70, rotate: "0deg", z: 3 },
+  { a: "#ff99c8", b: "#a05195", d: "#1e0c1f", status: "Remade by a creator", left: 360, top: 120, rotate: "9deg", z: 2 },
 ];
 
 export default function OpengraphImage() {
@@ -65,7 +65,7 @@ export default function OpengraphImage() {
               color: MUTED,
             }}
           >
-            The AI operator for influencer marketing
+            Creator content, researched first
           </div>
 
           <div
@@ -79,9 +79,8 @@ export default function OpengraphImage() {
               letterSpacing: -2.6,
             }}
           >
-            <span style={{ width: "100%" }}>Creators found.</span>
-            <span style={{ width: "100%" }}>Deals done.</span>
-            <span>Every sale tracked.</span>
+            <span style={{ width: "100%" }}>A recipe for</span>
+            <span>viral content.</span>
           </div>
         </div>
 

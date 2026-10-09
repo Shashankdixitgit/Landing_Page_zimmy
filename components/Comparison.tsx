@@ -4,18 +4,18 @@ import { SplitHead } from "./ui";
 
 type Cell = "yes" | "part" | "no";
 
-const COLS = ["DIY tools", "Zimmy", "Agencies"] as const;
+const COLS = ["Research tools", "Zimmy", "UGC agencies"] as const;
 
 const ROWS: { label: string; cells: [Cell, Cell, Cell] }[] = [
-  { label: "Finds best-fit creators with real audience data", cells: ["part", "yes", "yes"] },
-  { label: "Runs outreach and negotiation for you", cells: ["no", "yes", "yes"] },
-  { label: "Writes scripts in each creator's voice", cells: ["no", "yes", "part"] },
-  { label: "A unique tracking link for every creator", cells: ["part", "yes", "part"] },
-  { label: "Ties posts to real revenue in BigQuery", cells: ["no", "yes", "no"] },
-  { label: "You approve every creator", cells: ["yes", "yes", "no"] },
-  { label: "Runs without adding headcount", cells: ["no", "yes", "yes"] },
-  { label: "Keeps refining the creator mix", cells: ["no", "yes", "part"] },
-  { label: "Transparent, flat pricing", cells: ["yes", "yes", "no"] },
+  { label: "Finds outlier videos, not just big view counts", cells: ["yes", "yes", "no"] },
+  { label: "Explains why each video worked", cells: ["part", "yes", "part"] },
+  { label: "A person checks the reasoning", cells: ["no", "yes", "part"] },
+  { label: "Research for your market, not just the US", cells: ["part", "yes", "part"] },
+  { label: "Turns research into a shoot-ready brief", cells: ["part", "yes", "yes"] },
+  { label: "Tests ideas cheaply before paying creators", cells: ["no", "yes", "no"] },
+  { label: "Finds and signs real creators", cells: ["no", "yes", "yes"] },
+  { label: "Reads each platform on its own", cells: ["no", "yes", "no"] },
+  { label: "You see every creator, script and number", cells: ["yes", "yes", "no"] },
 ];
 
 function Mark({ v }: { v: Cell }) {
@@ -32,12 +32,13 @@ export default function Comparison() {
           <SplitHead
             title={
               <>
-                Agency results.
+                Tools stop at ideas.
                 <br />
-                Software speed.
+                Agencies start with a guess.
               </>
             }
-            sub="DIY tools hand the work back to you. Agencies do the work, but they're slow, opaque and expensive. Zimmy does the work and shows you everything."
+            wide
+            sub="Research tools show you what went viral and leave the rest to you. Agencies make videos, but rarely start from data. Zimmy does both, and shows you its reasoning."
           />
         </Reveal>
 
@@ -76,6 +77,9 @@ export default function Comparison() {
               ))}
             </div>
           </div>
+          <p className="mt-3 text-center text-[12.5px] text-muted">
+            Based on publicly listed features of typical tools and agencies.
+          </p>
         </Reveal>
       </div>
     </section>

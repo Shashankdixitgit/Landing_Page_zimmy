@@ -6,9 +6,10 @@ import Logo from "./Logo";
 import { DEMO_HREF } from "./ui";
 
 const LINKS = [
-  { label: "Product", href: "/#what" },
   { label: "How it works", href: "/#how" },
+  { label: "The ladder", href: "/#ladder" },
   { label: "Why Zimmy", href: "/#compare" },
+  { label: "For creators", href: "/#creators" },
   { label: "About", href: "/about" },
 ];
 

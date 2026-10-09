@@ -17,7 +17,7 @@ export const CREATORS: Creator[] = [
     niche: "Food",
     followers: "212K",
     caption: "ok this replaced my whole morning routine",
-    status: "Script approved",
+    status: "Hook decoded",
     tone: "done",
     scene: ["#ff7a59", "#7b2cbf", "#1b0f2e"],
   },
@@ -26,7 +26,7 @@ export const CREATORS: Creator[] = [
     niche: "Tech",
     followers: "84K",
     caption: "3 apps I actually use every day",
-    status: "Negotiating rate",
+    status: "Outlier · 6.2× usual",
     tone: "work",
     scene: ["#4cc9f0", "#3a0ca3", "#0b0a24"],
   },
@@ -35,7 +35,7 @@ export const CREATORS: Creator[] = [
     niche: "Fitness",
     followers: "1.2M",
     caption: "day 14 and I'm genuinely shocked",
-    status: "Live · tracking",
+    status: "AI test · live on Reels",
     tone: "live",
     scene: ["#ffb703", "#fb5607", "#2a0d05"],
   },
@@ -44,8 +44,8 @@ export const CREATORS: Creator[] = [
     niche: "Beauty",
     followers: "560K",
     caption: "honest review, no filter",
-    status: "Shortlisted",
-    tone: "work",
+    status: "Remade by a creator",
+    tone: "done",
     scene: ["#ff99c8", "#a05195", "#1e0c1f"],
   },
   {
@@ -53,7 +53,7 @@ export const CREATORS: Creator[] = [
     niche: "Outdoors",
     followers: "39K",
     caption: "packed it all in one bag",
-    status: "Live · tracking",
+    status: "Scaling as an ad",
     tone: "live",
     scene: ["#90e0a8", "#2d6a4f", "#07170f"],
   },
@@ -62,16 +62,16 @@ export const CREATORS: Creator[] = [
     niche: "Finance",
     followers: "148K",
     caption: "how I stopped overspending",
-    status: "Contract signed",
-    tone: "done",
+    status: "Next test queued",
+    tone: "work",
     scene: ["#c8f560", "#3a7d44", "#0a1a0c"],
   },
 ];
 
 const TONE: Record<Creator["tone"], string> = {
-  live: "bg-lime text-night",
-  work: "bg-white/90 text-night",
-  done: "bg-accent text-white",
+  live: "bg-[#d6f5c9] text-[#0b4a31]",
+  work: "bg-white/90 text-[#19292d]",
+  done: "bg-[#0f7a52] text-white",
 };
 
 export default function CreatorCard({
@@ -144,7 +144,7 @@ export default function CreatorCard({
 
 
       {/* burned-in caption */}
-      <p className="absolute inset-x-4 bottom-14 text-center font-display text-[13px] font-bold leading-snug text-white [text-shadow:0_2px_8px_rgb(0_0_0/0.7)]">
+      <p className="absolute inset-x-4 bottom-14 text-center text-[13px] font-bold leading-snug text-white [text-shadow:0_2px_8px_rgb(0_0_0/0.7)]">
         {c.caption}
       </p>
 
@@ -154,7 +154,7 @@ export default function CreatorCard({
           className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10.5px] font-semibold ${TONE[c.tone]}`}
         >
           {c.tone === "live" ? (
-            <span className="live-dot h-1.5 w-1.5 rounded-full bg-night" />
+            <span className="live-dot h-1.5 w-1.5 rounded-full bg-[#0b4a31]" />
           ) : null}
           {c.status}
         </span>

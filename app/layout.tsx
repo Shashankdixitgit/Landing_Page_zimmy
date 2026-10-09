@@ -11,14 +11,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Zimmy: The AI Operator for Influencer Marketing",
+  title: "Zimmy: A recipe for viral content",
   description:
-    "Zimmy runs your influencer marketing end-to-end: it finds the right creators, handles outreach and negotiation, writes the scripts, and ties every post to real revenue. You approve every step.",
+    "Zimmy finds the videos already winning in your niche, works out why, and helps you test and scale them: AI videos first, then real creators, then ads.",
   metadataBase: new URL("https://www.zimmy.art"),
   openGraph: {
-    title: "Zimmy: The AI Operator for Influencer Marketing",
+    title: "Zimmy: A recipe for viral content",
     description:
-      "Creators found, signed, scripted and tracked to revenue, by one AI operator. You approve every step.",
+      "Research what's already winning, decode why, test with AI, then scale with real creators and ads.",
     type: "website",
   },
 };

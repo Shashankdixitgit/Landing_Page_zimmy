@@ -7,28 +7,36 @@ import { TextLink } from "./ui";
 
 const FAQS = [
   {
-    q: "How does Zimmy find the right creators?",
-    a: "You share your site, socials, audience, brand guidelines and budget. Zimmy searches the Modash creator database and ranks creators by audience match, engagement quality and past performance, then hands you a vetted shortlist to approve.",
+    q: "Can Zimmy guarantee a viral video?",
+    a: "No one honestly can. What Zimmy changes is where you start: from videos that already beat their account's usual views, with a clear reason why. That makes results more predictable, and it means you stop paying for guesses.",
+  },
+  {
+    q: "What is an outlier?",
+    a: "A video doing far better than that account usually does. A small account with a breakout often tells you more than a big account's average post. An outlier is a reason to look closer, not proof, which is why a strategist checks each one.",
+  },
+  {
+    q: "How is this different from asking ChatGPT for video ideas?",
+    a: "ChatGPT doesn't know what is winning in your niche this month. Zimmy starts from real, recent videos in your market, explains why they worked, and a person checks that reasoning before you see it.",
+  },
+  {
+    q: "How is this different from a UGC agency?",
+    a: "Agencies usually start with a creative guess and charge per video. Zimmy starts with research, tests ideas cheaply first, and only then brings in real creators. You see every step and every number.",
   },
   {
     q: "Do I stay in control?",
-    a: "Always. You can approve, edit, remove or add any creator, and nothing is sent in your brand's name without your sign-off.",
+    a: "Always. You pick the tests, approve every creator and script, and decide what gets ad spend. Nothing goes out in your name without your sign-off.",
   },
   {
-    q: "Does Zimmy really handle outreach and negotiation?",
-    a: "Yes, over email and DM. Zimmy pitches each creator, negotiates rate and usage rights within the limits you set, and locks go-live dates.",
+    q: "Will the AI videos show a fake version of my product?",
+    a: "No. We use real footage of your product or app. A model is never allowed to invent a screen or feature you don't have.",
   },
   {
-    q: "How does attribution work?",
-    a: "Every creator gets a unique tracking link. Connect your BigQuery and Zimmy ties each click and sale back to the creator behind it.",
+    q: "Which markets do you cover?",
+    a: "Research is filtered by country and audience, so a launch in India starts from what works in India. Tell us your markets on the demo call and we'll confirm the coverage.",
   },
   {
-    q: "How is this different from hiring an agency?",
-    a: "Agency-level execution at software pricing. No retainer and no black box: you see every creator, message and number.",
-  },
-  {
-    q: "How fast can I launch?",
-    a: "We onboard you personally. Your shortlist arrives within 24 hours of the brief, and campaigns can go live in days, not weeks.",
+    q: "What's live today, and what's coming?",
+    a: "Live today: outlier research, why-it-worked breakdowns, shoot-ready briefs, creator discovery and outreach, and click tracking per creator. Coming soon: AI test videos in the product, the experiment board, posting across platforms and sales tracking. Our team covers the gaps for you in the meantime.",
   },
 ];
 

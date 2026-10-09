@@ -5,10 +5,10 @@ const COLS = [
   {
     title: "Product",
     links: [
-      { label: "What Zimmy does", href: "/#what" },
       { label: "How it works", href: "/#how" },
-      { label: "Technology", href: "/#tech" },
-      { label: "Who it's for", href: "/#solutions" },
+      { label: "The ladder", href: "/#ladder" },
+      { label: "Why Zimmy", href: "/#compare" },
+      { label: "For creators", href: "/#creators" },
     ],
   },
   {
@@ -24,14 +24,14 @@ const COLS = [
 
 export default function Footer() {
   return (
-    <footer className="px-5 pb-10 pt-16">
+    <footer className="px-5 pb-24 pt-16">
       <div className="mx-auto max-w-[1100px]">
         <div className="grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
           <div className="max-w-xs">
             <Logo />
             <p className="mt-4 text-[14px] leading-relaxed text-muted">
-              The AI operator for influencer marketing. Discovery, outreach, scripts and
-              attribution, run end-to-end.
+              Zimmy researches what&rsquo;s already working, decodes why, and helps you test and
+              scale it: AI videos first, then real creators, then ads.
             </p>
           </div>
           {COLS.map((c) => (

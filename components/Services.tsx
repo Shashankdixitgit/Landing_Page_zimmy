@@ -1,26 +1,51 @@
-import { Search, MessagesSquare, PenLine, LineChart, Link2, ShieldCheck, Layers } from "lucide-react";
+import { Search, ScanSearch, PenLine, ListOrdered, UserCheck, Clapperboard, Globe } from "lucide-react";
 import Reveal from "./Reveal";
 import { Chip, SplitHead, TextLink, DEMO_HREF } from "./ui";
 
-const BARS = [36, 50, 42, 66, 58, 84, 96];
-
 const FEATURES = [
   {
-    icon: Link2,
-    title: "Every link tells a story.",
-    body: "Each creator gets a unique tracking link, so clicks and sales always lead back to the person who drove them.",
+    icon: UserCheck,
+    title: "People check the judgement calls.",
+    body: "AI does the research and drafts. A strategist reviews the reasoning before anything reaches you, so the system learns and improves.",
   },
   {
-    icon: Layers,
-    title: "The right mix, over time.",
-    body: "Zimmy keeps re-booking creators who sell and balances nano, micro and macro creators toward your return on spend.",
+    icon: Clapperboard,
+    title: "Your real product, on screen.",
+    body: "Videos use real footage of your product or app. We never let a model invent a screen or feature you don't have.",
   },
   {
-    icon: ShieldCheck,
-    title: "Your brand, your call.",
-    body: "Nothing goes out in your name without your sign-off. Approve, edit or remove any creator, message or script.",
+    icon: Globe,
+    title: "Researched per market.",
+    body: "What works in India is not what works in Germany or the US. Research is filtered to the country and audience you're selling to.",
   },
 ];
+
+const BREAKDOWN = [
+  ["Hook", "“I stopped doing this and my skin changed”"],
+  ["Open question", "What did she stop?"],
+  ["Sequence", "Problem, three quick cuts, reveal"],
+  ["Payoff", "Product shown in use at 0:09"],
+];
+
+const BEATS = [
+  ["0:00", "Hook"],
+  ["0:03", "Setup"],
+  ["0:08", "Payoff"],
+  ["0:13", "Call to action"],
+];
+
+const TESTS = ["New hook, same video", "Same hook, outdoor setting", "Shorter cut, 12 seconds"];
+
+function CardLabel({ icon: Icon, children, status }: { icon: typeof Search; children: React.ReactNode; status: string }) {
+  return (
+    <div className="flex items-center justify-between gap-3">
+      <p className="flex items-center gap-2 text-[12.5px] text-muted">
+        <Icon className="h-3.5 w-3.5" /> {children}
+      </p>
+      <Chip tone={status === "Live" ? "mint" : "soft"}>{status}</Chip>
+    </div>
+  );
+}
 
 export default function Services() {
   return (
@@ -30,95 +55,95 @@ export default function Services() {
           <SplitHead
             title={
               <>
-                One operator.
+                What goes into
                 <br />
-                Every part of the job.
+                the recipe.
               </>
             }
-            sub="Discovery, outreach, scripts and attribution usually take an agency or three hires. Zimmy runs them as one connected workflow."
+            sub="A view count tells you that a video worked. Zimmy works out why, then turns the answer into something you can shoot and test."
           />
         </Reveal>
 
         <Reveal delay={0.1} className="mt-12">
           <div className="rounded-[28px] border border-line bg-[#f4f8f9] p-4 sm:p-8">
             <div className="flex items-center justify-between px-1 pb-6 sm:px-0">
-              <span className="text-[15px] font-medium text-ink">What Zimmy handles</span>
-              <span className="hidden text-[13px] text-muted sm:inline">Four jobs, one workflow</span>
+              <span className="text-[15px] font-medium text-ink">What Zimmy makes for you</span>
+              <span className="hidden text-[13px] text-muted sm:inline">From research to a shoot-ready brief</span>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2">
-              {/* discovery */}
               <article className="flex flex-col rounded-[18px] bg-surface p-6 lift">
-                <p className="flex items-center gap-2 text-[12.5px] text-muted">
-                  <Search className="h-3.5 w-3.5" /> Creator discovery
-                </p>
-                <h3 className="display mt-2 text-[22px] text-ink">The right creators, ranked.</h3>
+                <CardLabel icon={Search} status="Live">Outlier research</CardLabel>
+                <h3 className="display mt-3 text-[22px] text-ink">Videos that beat their own average.</h3>
                 <p className="mt-2 text-[14.5px] leading-relaxed text-muted">
-                  Zimmy searches the Modash database by audience, fit and budget, and ranks
-                  creators by how likely they are to perform for you.
+                  Zimmy ranks videos by how far they beat the account&rsquo;s usual views, not by raw
+                  view counts. A small account with a breakout tells you more than a big
+                  account&rsquo;s normal day.
                 </p>
-                <div className="mt-5 flex gap-1.5">
-                  <Chip tone="mint">Audience match</Chip>
-                  <Chip>Engagement</Chip>
-                </div>
-              </article>
-
-              {/* outreach */}
-              <article className="flex flex-col rounded-[18px] bg-mint p-6">
-                <p className="flex items-center gap-2 text-[12.5px] text-accent">
-                  <MessagesSquare className="h-3.5 w-3.5" /> Outreach &amp; negotiation
-                </p>
-                <div className="mt-4 space-y-2 text-[13.5px]">
-                  <p className="max-w-[85%] rounded-2xl rounded-bl-md bg-surface px-3.5 py-2.5 text-ink/85">
-                    My rate for one Reel is $1,400.
-                  </p>
-                  <p className="ml-auto max-w-[85%] rounded-2xl rounded-br-md bg-accent px-3.5 py-2.5 text-white">
-                    Could we do $1,100 with 30 days of paid usage?
-                  </p>
-                  <p className="max-w-[85%] rounded-2xl rounded-bl-md bg-surface px-3.5 py-2.5 text-ink/85">
-                    Deal. Going live on the 14th.
-                  </p>
-                </div>
-                <div className="mt-5 flex gap-1.5">
-                  <Chip>Email</Chip>
-                  <Chip>DM</Chip>
-                </div>
-              </article>
-
-              {/* scripts */}
-              <article className="flex flex-col rounded-[18px] bg-surface p-6 lift">
-                <p className="flex items-center gap-2 text-[12.5px] text-muted">
-                  <PenLine className="h-3.5 w-3.5" /> Scripts &amp; hooks
-                </p>
-                <h3 className="display mt-2 text-[22px] text-ink">Written in their voice.</h3>
-                <p className="mt-2 text-[14.5px] leading-relaxed text-muted">
-                  A brief, a hook and talking points for every creator, shared with you for
-                  sign-off before anything goes out.
-                </p>
-                <p className="mt-4 rounded-xl bg-soft px-4 py-3 text-[13.5px] text-ink/85">
-                  &ldquo;I didn&rsquo;t believe it either, until{" "}
-                  <mark className="rounded bg-highlight px-1 text-ink">day three</mark>.&rdquo;
-                </p>
-              </article>
-
-              {/* attribution */}
-              <article className="flex flex-col rounded-[18px] bg-surface p-6 lift">
-                <p className="flex items-center gap-2 text-[12.5px] text-muted">
-                  <LineChart className="h-3.5 w-3.5" /> Revenue attribution
-                </p>
-                <h3 className="display mt-2 text-[22px] text-ink">Sales, not just views.</h3>
-                <p className="mt-2 text-[14.5px] leading-relaxed text-muted">
-                  Connect BigQuery and every link is tied to the clicks and sales it drove.
-                </p>
-                <div className="mt-5 flex h-20 items-end gap-1.5">
-                  {BARS.map((b, i) => (
-                    <div
-                      key={i}
-                      className={`flex-1 rounded-t-[5px] ${i === BARS.length - 1 ? "bg-accent" : "bg-sky"}`}
-                      style={{ height: `${b}%` }}
-                    />
+                <div className="mt-5 space-y-2">
+                  {[
+                    ["@devwithjay", "6.2× usual"],
+                    ["@noor.cooks", "4.0× usual"],
+                  ].map(([h, m]) => (
+                    <div key={h} className="flex items-center justify-between rounded-xl bg-soft px-3.5 py-2.5 text-[13px]">
+                      <span className="text-ink">{h}</span>
+                      <span className="rounded-md bg-accent px-1.5 py-0.5 text-[11px] font-semibold text-white">{m}</span>
+                    </div>
                   ))}
                 </div>
+              </article>
+
+              <article className="flex flex-col rounded-[18px] bg-mint p-6">
+                <CardLabel icon={ScanSearch} status="Live">Why it worked</CardLabel>
+                <h3 className="display mt-3 text-[22px] text-ink">The hook, the question, the payoff.</h3>
+                <dl className="mt-4 divide-y divide-[#cfe9c4] rounded-xl bg-surface px-4 text-[13px]">
+                  {BREAKDOWN.map(([k, v]) => (
+                    <div key={k} className="flex justify-between gap-4 py-2.5">
+                      <dt className="shrink-0 text-muted">{k}</dt>
+                      <dd className="text-right text-ink">{v}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <p className="mt-4 flex items-center gap-2 text-[12.5px] text-accent">
+                  <UserCheck className="h-3.5 w-3.5" /> Checked by a strategist before it reaches you
+                </p>
+              </article>
+
+              <article className="flex flex-col rounded-[18px] bg-surface p-6 lift">
+                <CardLabel icon={PenLine} status="Live">Shoot-ready brief</CardLabel>
+                <h3 className="display mt-3 text-[22px] text-ink">Beat by beat, ready to film.</h3>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-muted">
+                  Each winning idea becomes a brief for your brand: hook options, script, timings,
+                  where the product appears, on-screen text and caption.
+                </p>
+                <ol className="mt-5 space-y-1.5 text-[13px]">
+                  {BEATS.map(([t, l]) => (
+                    <li key={t} className="flex items-center gap-3 rounded-lg bg-soft px-3 py-2">
+                      <span className="font-mono text-[12px] text-muted">{t}</span>
+                      <span className="text-ink">{l}</span>
+                    </li>
+                  ))}
+                </ol>
+              </article>
+
+              <article className="flex flex-col rounded-[18px] bg-surface p-6 lift">
+                <CardLabel icon={ListOrdered} status="Coming soon">Experiment board</CardLabel>
+                <h3 className="display mt-3 text-[22px] text-ink">Change one thing at a time.</h3>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-muted">
+                  Tests are ranked by how likely they are to work and how cheap they are to run.
+                  Each test changes one thing, such as the hook or the setting, so you can tell
+                  what moved the numbers.
+                </p>
+                <ol className="mt-5 space-y-1.5 text-[13px]">
+                  {TESTS.map((t, i) => (
+                    <li key={t} className="flex items-center gap-3 rounded-lg bg-soft px-3 py-2">
+                      <span className="grid h-5 w-5 place-items-center rounded-full bg-sky text-[11px] font-semibold text-[#235a80]">
+                        {i + 1}
+                      </span>
+                      <span className="text-ink">{t}</span>
+                    </li>
+                  ))}
+                </ol>
               </article>
             </div>
 

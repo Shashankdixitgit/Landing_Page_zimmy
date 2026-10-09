@@ -17,7 +17,7 @@ export default function Founders() {
                 Not just a tool-maker.
               </>
             }
-            sub="Zimmy comes from years of running growth and product at Emergent, Bentolabs and Entrepreneur First."
+            sub="Zimmy comes from years of running growth and campaign funnels at Emergent, Bentolabs and Entrepreneur First, where guessing was expensive."
           />
         </Reveal>
 
