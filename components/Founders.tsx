@@ -14,11 +14,6 @@ const FOUNDERS: Founder[] = [
     linkedin: "https://www.linkedin.com/in/shashankdixitt/",
     creds: ["ex-Bentolabs", "ex-Emergent", "ex-Entrepreneur First"],
   },
-  {
-    name: "Ranveer Kochhar",
-    linkedin: "https://www.linkedin.com/in/ranveerkochhar/",
-    creds: ["ex-Titan Capital", "ex-Emergent", "BITS Pilani"],
-  },
 ];
 
 export default function Founders() {
@@ -32,18 +27,18 @@ export default function Founders() {
               Built by operators
             </span>
             <h2 className="mt-6 max-w-2xl text-[30px] font-bold leading-[1.08] tracking-[-0.025em] text-ink sm:text-[40px]">
-              Two founders, building Zimmy from{" "}
-              <span className="mark">Titan Capital, Emergent &amp; Bentolabs.</span>
+              Built by a founder from{" "}
+              <span className="mark">Emergent, Bentolabs &amp; Entrepreneur First.</span>
             </h2>
             <p className="mt-5 max-w-2xl text-[16px] leading-relaxed text-muted sm:text-[17px]">
-              Zimmy is built by operators who shipped product, growth, and capital
-              across Titan Capital, Emergent, Bentolabs, and Entrepreneur First.
+              Zimmy is built by an operator who shipped product and growth
+              across Emergent, Bentolabs, and Entrepreneur First.
               That operating system is now Zimmy.
             </p>
           </Reveal>
 
           {/* founder cards */}
-          <div className="mt-9 grid gap-5 sm:grid-cols-2">
+          <div className="mt-9 grid gap-5">
             {FOUNDERS.map((f, i) => (
               <Reveal key={f.name} delay={0.08 * (i + 1)}>
                 <a
