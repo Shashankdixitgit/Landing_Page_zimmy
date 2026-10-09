@@ -48,7 +48,7 @@ const PLATFORMS: Platform[] = [
     commentGood: true,
     clicks: 74,
     clickNote: "Strong link clicks",
-    runs: ["strong", "strong", "mixed"],
+    runs: ["strong", "strong", "strong"],
     verdicts: ["strong", "strong", "strong", "strong"],
     decision: "Remake this one with a real creator, then test it as an ad.",
     decisionTone: "strong",

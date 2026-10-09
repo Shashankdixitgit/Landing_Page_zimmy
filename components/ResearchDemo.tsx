@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Check, Search, Sparkle } from "lucide-react";
 import Reveal from "./Reveal";
 import OutlierCard, { type Outlier } from "./OutlierCard";
@@ -108,7 +108,29 @@ const MARKETS: Market[] = [
 export default function ResearchDemo() {
   const [marketId, setMarketId] = useState("in");
   const [found, setFound] = useState(false);
+  const panel = useRef<HTMLDivElement>(null);
   const market = MARKETS.find((m) => m.id === marketId) ?? MARKETS[0];
+
+  // Fill the board on its own once the demo scrolls into view, so it never sits empty.
+  useEffect(() => {
+    const el = panel.current;
+    if (!el) return;
+    let t: ReturnType<typeof setTimeout>;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          t = setTimeout(() => setFound(true), 900);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.35 }
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      clearTimeout(t);
+    };
+  }, []);
 
   return (
     <section id="research" className="px-5 py-24 sm:py-32">
@@ -122,21 +144,13 @@ export default function ResearchDemo() {
                 Then make videos.
               </>
             }
-            sub={
-              <>
-                Asking an AI for &ldquo;a viral video&rdquo; gets you a guess. Zimmy starts by
-                finding videos that beat their own account&rsquo;s usual views, in your niche
-                and your market.
-              </>
-            }
           />
         </Reveal>
 
         <Reveal delay={0.1} className="mt-12">
-          <div className="rounded-[28px] bg-sky p-4 sm:p-10">
+          <div ref={panel} className="rounded-[28px] bg-sky p-4 sm:p-10">
             {/* market picker */}
             <div className="mb-5 flex flex-wrap items-center justify-center gap-2" role="tablist" aria-label="Pick a market">
-              <span className="mr-1 text-[13px] text-[#4b6878]">Pick a market:</span>
               {MARKETS.map((m) => (
                 <button
                   key={m.id}
@@ -161,7 +175,7 @@ export default function ResearchDemo() {
                     <span className="h-2 w-2 rounded-full bg-[#d4dfe6]" />
                     <span className="h-2 w-2 rounded-full bg-[#d4dfe6]" />
                   </span>
-                  <span className="text-[12px] text-muted">Research brief · example</span>
+                  <span className="text-[12px] text-muted">Brief</span>
                   <span className="w-8" />
                 </div>
                 <div className="flex flex-1 flex-col p-6 sm:p-8">
@@ -172,12 +186,10 @@ export default function ResearchDemo() {
                     for people building habits.
                   </h3>
                   <p className="mt-5 text-[14.5px] leading-[1.8] text-ink/80">
-                    Niche: self-improvement and productivity. Market: {market.label}, {market.language}.{" "}
-                    <mark className="rounded bg-highlight px-1 text-ink">Show me outliers from the last 30 days,</mark>{" "}
-                    and what a viewer can see that makes the benefit obvious.
+                    <mark className="rounded bg-highlight px-1 text-ink">Show me outliers from the last 30 days.</mark>
                   </p>
                   <div className="mt-auto flex items-center justify-between gap-4 pt-8">
-                    <span className="text-[12.5px] text-muted">Takes a few minutes on real data</span>
+                    <span />
                     <button
                       onClick={() => setFound(true)}
                       className="inline-flex shrink-0 items-center gap-2.5 rounded-full bg-accent px-5 py-3 text-[13.5px] font-medium text-white transition-colors hover:bg-accent-hover"
@@ -226,7 +238,7 @@ export default function ResearchDemo() {
               </div>
             </div>
             <p className="mt-5 text-center text-[12.5px] text-[#4b6878]">
-              Illustrative example. Real boards come from public video data in your niche and market.
+              Illustrative example
             </p>
           </div>
         </Reveal>

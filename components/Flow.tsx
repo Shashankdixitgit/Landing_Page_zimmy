@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Check, RotateCcw, Target, Search, ScanSearch, Send, BarChart3 } from "lucide-react";
+import { useState } from "react";
+import { Check, RotateCcw, Target, Search, ScanSearch, Send, BarChart3, ShieldCheck } from "lucide-react";
 import Reveal from "./Reveal";
-import { OutlineButton, PrimaryButton, SplitHead, DEMO_HREF } from "./ui";
+import { PrimaryButton, SplitHead, DEMO_HREF } from "./ui";
+import PlatformScorecard from "./PlatformScorecard";
 
 const STAGES = [
   {
@@ -133,19 +134,9 @@ function StageView({ i }: { i: number }) {
 }
 
 const YOU = ["Set the product, market and budget", "Pick which tests to run", "Approve every creator and script", "Decide what gets ad spend"];
-const ZIMMY = ["Find and decode outlier videos", "Rank the tests and write the briefs", "Find, contact and agree terms with creators", "Track clicks for every creator link"];
 
 export default function Flow() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  // Auto-advance through the stages until the visitor picks one.
-  useEffect(() => {
-    if (paused) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const t = setInterval(() => setActive((a) => (a + 1) % STAGES.length), 5000);
-    return () => clearInterval(t);
-  }, [paused]);
 
   return (
     <section id="how" className="px-5 py-24 sm:py-32">
@@ -159,7 +150,7 @@ export default function Flow() {
                 not a lucky guess.
               </>
             }
-            sub="Every round teaches the next one. You make the calls at each checkpoint. Zimmy does the work in between."
+            sub="Every round teaches the next one."
           />
         </Reveal>
 
@@ -173,10 +164,7 @@ export default function Flow() {
                 return (
                   <li key={s.n}>
                     <button
-                      onClick={() => {
-                        setActive(i);
-                        setPaused(true);
-                      }}
+                      onClick={() => setActive(i)}
                       aria-expanded={open}
                       className="flex w-full items-center gap-4 px-3 py-4 text-left sm:px-4"
                     >
@@ -190,21 +178,11 @@ export default function Flow() {
                       className={`grid transition-all duration-500 ease-out ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
                     >
                       <div className="overflow-hidden">
-                        <div className="px-3 pb-5 sm:px-4 sm:pl-[3.1rem]">
-                          <p className="flex items-start gap-2 text-[14.5px] leading-relaxed text-muted">
-                            <Icon className="mt-1 h-4 w-4 shrink-0 text-accent" strokeWidth={1.8} />
-                            {s.body}
-                          </p>
+                        <div className="px-3 pb-4 sm:px-4 sm:pl-[3.1rem]">
                           {i === STAGES.length - 1 ? (
                             <p className="mt-3 inline-flex items-center gap-1.5 rounded-md bg-mint px-2 py-1 text-[12px] font-medium text-accent">
-                              <RotateCcw className="h-3.5 w-3.5" /> Back to 03 with what you learned
+                              <RotateCcw className="h-3.5 w-3.5" /> Back to 03
                             </p>
-                          ) : null}
-                          {/* progress bar while auto-advancing */}
-                          {!paused ? (
-                            <div className="mt-4 h-[3px] overflow-hidden rounded-full bg-soft">
-                              <div key={active} className="story-bar h-full rounded-full bg-accent [animation-duration:5s]" />
-                            </div>
                           ) : null}
                         </div>
                       </div>
@@ -217,24 +195,26 @@ export default function Flow() {
             {/* stage view */}
             <div className="flex flex-col justify-center rounded-[22px] bg-sky p-5 sm:p-8">
               <div key={active} className="pop">
-                <p className="mb-4 text-[12.5px] text-[#4b6878]">
-                  Stage {STAGES[active].n} · {STAGES[active].title}
-                </p>
+                <p className="mb-4 text-[12.5px] text-[#4b6878]">{STAGES[active].title}</p>
                 <StageView i={active} />
               </div>
               <p className="mt-6 text-[12px] text-[#4b6878]">Illustrative example</p>
             </div>
           </div>
           <p className="mt-3 text-center text-[12.5px] text-muted">
-            Timings are typical for a first round and depend on your niche.
+            Timings are typical for a first round.
           </p>
+        </Reveal>
+
+        <Reveal className="mt-16">
+          <h3 className="display mb-6 text-[28px] text-ink sm:text-[34px]">Every platform, read on its own.</h3>
+          <PlatformScorecard />
         </Reveal>
 
         <Reveal stagger={0.1} className="mt-8 grid gap-5 md:grid-cols-2">
           <div className="flex flex-col rounded-[22px] border border-[#cfe2ef] bg-[#eef6fb] p-7 sm:p-8">
             <p className="text-[12.5px] text-muted">Your part</p>
             <h3 className="display mt-3 text-[30px] text-ink">Decide. Approve.</h3>
-            <p className="mt-2 text-[14.5px] text-muted">A few minutes at each checkpoint.</p>
             <ul className="mt-6 space-y-3">
               {YOU.map((t) => (
                 <li key={t} className="flex items-center gap-3 text-[14px] text-ink/85">
@@ -242,22 +222,14 @@ export default function Flow() {
                 </li>
               ))}
             </ul>
-            <OutlineButton href="#faq" wide className="mt-8">
-              Read the FAQ
-            </OutlineButton>
+            <p className="mt-6 flex items-center gap-2 text-[13px] font-medium text-ink">
+              <ShieldCheck className="h-4 w-4 text-accent" /> Nothing goes out in your name without your sign-off.
+            </p>
           </div>
           <div className="flex flex-col rounded-[22px] border border-[#d5ecd0] bg-[#f5fbf3] p-7 sm:p-8">
             <p className="text-[12.5px] text-accent">Zimmy&rsquo;s part</p>
             <h3 className="display mt-3 text-[30px] text-ink">Everything in between.</h3>
-            <p className="mt-2 text-[14.5px] text-muted">Research, briefs, creators and tracking.</p>
-            <ul className="mt-6 space-y-3">
-              {ZIMMY.map((t) => (
-                <li key={t} className="flex items-center gap-3 text-[14px] text-ink/85">
-                  <Check className="h-4 w-4 text-accent" strokeWidth={2} /> {t}
-                </li>
-              ))}
-            </ul>
-            <PrimaryButton href={DEMO_HREF} wide className="mt-8" />
+            <PrimaryButton href={DEMO_HREF} wide className="mt-auto" />
           </div>
         </Reveal>
       </div>

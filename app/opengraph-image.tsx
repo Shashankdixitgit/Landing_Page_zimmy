@@ -36,21 +36,10 @@ export default function OpengraphImage() {
         {/* LEFT */}
         <div style={{ display: "flex", flexDirection: "column", width: 600, justifyContent: "center" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <div
-              style={{
-                display: "flex",
-                width: 48,
-                height: 48,
-                borderRadius: 13,
-                background: ACCENT,
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <svg width="27" height="27" viewBox="0 0 24 24" fill="#fff">
-                <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
-              </svg>
-            </div>
+            <svg width="52" height="52" viewBox="0 0 48 48">
+              <path d="M6 40 V33 A5 5 0 0 1 16 33 V40 M16 40 V26 A6 6 0 0 1 28 26 V40" fill="none" stroke="#ffffff" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M28 40 V17 A7 7 0 0 1 42 17 V40" fill="none" stroke="#7fe0b0" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
             <div style={{ fontSize: 34, fontWeight: 800 }}>zimmy</div>
           </div>
 
