@@ -1,4 +1,5 @@
 import { Heart, MessageCircle, Send } from "lucide-react";
+import CardVideo from "./CardVideo";
 
 export type Creator = {
   handle: string;
@@ -8,9 +9,12 @@ export type Creator = {
   status: string;
   tone: "live" | "work" | "done";
   scene: [string, string, string];
+  /** clip in /public/creators, from Pexels (Pexels License) */
+  media: string;
 };
 
-// Illustrative creators for the product mock-ups. Not real people or clients.
+// Illustrative creators for the product mock-ups. Handles, numbers and captions are made up;
+// the footage is free stock video from Pexels (IDs noted per entry), not real clients.
 export const CREATORS: Creator[] = [
   {
     handle: "@noor.cooks",
@@ -20,6 +24,7 @@ export const CREATORS: Creator[] = [
     status: "Hook decoded",
     tone: "done",
     scene: ["#ff7a59", "#7b2cbf", "#1b0f2e"],
+    media: "noor", // Pexels #8051336
   },
   {
     handle: "@devwithjay",
@@ -29,6 +34,7 @@ export const CREATORS: Creator[] = [
     status: "Outlier · 6.2× usual",
     tone: "work",
     scene: ["#4cc9f0", "#3a0ca3", "#0b0a24"],
+    media: "jay", // Pexels #6324569
   },
   {
     handle: "@mira.moves",
@@ -38,6 +44,7 @@ export const CREATORS: Creator[] = [
     status: "AI test · live on Reels",
     tone: "live",
     scene: ["#ffb703", "#fb5607", "#2a0d05"],
+    media: "mira", // Pexels #6548012
   },
   {
     handle: "@sana.skin",
@@ -47,6 +54,7 @@ export const CREATORS: Creator[] = [
     status: "Remade by a creator",
     tone: "done",
     scene: ["#ff99c8", "#a05195", "#1e0c1f"],
+    media: "sana", // Pexels #5927936
   },
   {
     handle: "@theweekendcamper",
@@ -56,6 +64,7 @@ export const CREATORS: Creator[] = [
     status: "Scaling as an ad",
     tone: "live",
     scene: ["#90e0a8", "#2d6a4f", "#07170f"],
+    media: "camper", // Pexels #9130066
   },
   {
     handle: "@budgetwithben",
@@ -65,6 +74,7 @@ export const CREATORS: Creator[] = [
     status: "Next test queued",
     tone: "work",
     scene: ["#c8f560", "#3a7d44", "#0a1a0c"],
+    media: "ben", // Pexels #6326935
   },
 ];
 
@@ -84,7 +94,6 @@ export default function CreatorCard({
   compact?: boolean;
 }) {
   const [a, b, d] = c.scene;
-  const gid = `s-${c.handle.replace(/[^a-z0-9]/gi, "")}`;
   return (
     <div
       className={`grain relative aspect-[9/16] overflow-hidden rounded-[22px] border border-white/10 shadow-[0_30px_80px_-20px_rgb(0_0_0/0.8)] ${className}`}
@@ -92,25 +101,9 @@ export default function CreatorCard({
         background: `radial-gradient(120% 70% at 30% 18%, ${a} 0%, transparent 60%), radial-gradient(90% 60% at 85% 70%, ${b} 0%, transparent 70%), ${d}`,
       }}
     >
-      {/* subject silhouette */}
-      <svg
-        viewBox="0 0 90 160"
-        className="absolute inset-x-0 bottom-0 h-[78%] w-full"
-        preserveAspectRatio="xMidYMax meet"
-        aria-hidden
-      >
-        <defs>
-          <linearGradient id={gid} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#000" stopOpacity="0.1" />
-            <stop offset="1" stopColor="#000" stopOpacity="0.55" />
-          </linearGradient>
-        </defs>
-        <ellipse cx="45" cy="62" rx="17" ry="20" fill={`url(#${gid})`} />
-        <path
-          d="M8 160 C 10 118, 26 98, 45 98 C 64 98, 80 118, 82 160 Z"
-          fill={`url(#${gid})`}
-        />
-      </svg>
+      <CardVideo name={c.media} />
+      {/* shade top and bottom so handle, caption and status stay readable */}
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(0_0_0/0.45)_0%,transparent_22%,transparent_55%,rgb(0_0_0/0.7)_100%)]" />
 
       {/* story bar */}
       <div className="absolute inset-x-3 top-3 h-[3px] overflow-hidden rounded-full bg-white/25">
