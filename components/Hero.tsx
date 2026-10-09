@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ArrowDown, ArrowRight, ShieldCheck, Link2, Timer } from "lucide-react";
 import CreatorCard, { CREATORS } from "./CreatorCard";
@@ -39,7 +40,21 @@ export default function Hero() {
 
   return (
     <section ref={root} id="top" className="px-2 pt-2 sm:px-3 sm:pt-3">
-      <div className="sky-frame relative overflow-hidden rounded-[28px] sm:rounded-[36px]">
+      <div className="relative overflow-hidden rounded-[28px] bg-[#3f86c9] sm:rounded-[36px]">
+        {/* Photo: Łukasz Szmigiel on Unsplash (Unsplash License) */}
+        <Image
+          src="/hero-field.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_38%]"
+        />
+        {/* keep the headline readable over the brightest clouds */}
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_42%_at_50%_42%,rgb(12_38_66/0.42),transparent_75%),linear-gradient(180deg,rgb(18_60_110/0.3)_0%,transparent_60%)]"
+          aria-hidden
+        />
         <div className="relative mx-auto max-w-4xl px-5 pt-36 text-center sm:pt-44">
           <h1
             data-h
@@ -49,7 +64,7 @@ export default function Hero() {
             <br />
             Every sale tracked.
           </h1>
-          <p data-h className="mx-auto mt-6 max-w-xl text-[16px] leading-relaxed text-white/95 sm:text-[17px]">
+          <p data-h className="mx-auto mt-6 max-w-xl text-[16px] leading-relaxed text-white [text-shadow:0_1px_12px_rgb(10_30_50/0.55)] sm:text-[17px]">
             Zimmy is the AI operator for influencer marketing. It finds the right
             creators, runs outreach and negotiation, writes the scripts, and ties
             every post to real revenue. You approve every step.
@@ -63,7 +78,7 @@ export default function Hero() {
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </a>
           </div>
-          <p data-h className="mt-6 text-[13px] text-white/85">
+          <p data-h className="mt-6 text-[13px] text-white [text-shadow:0_1px_10px_rgb(10_30_50/0.6)]">
             For DTC brands, consumer apps and retail teams
           </p>
         </div>
@@ -89,7 +104,6 @@ export default function Hero() {
               </div>
             </div>
           ))}
-          <div className="clouds pointer-events-none absolute inset-x-0 bottom-0 z-[55] h-40" />
         </div>
 
         {/* corner pills */}
