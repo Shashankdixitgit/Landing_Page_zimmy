@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
-import { DEMO_HREF } from "./ui";
+import { CREATOR_HREF, DEMO_HREF } from "./ui";
 
 const LINKS = [
   { label: "How it works", href: "/#how" },
@@ -38,12 +38,12 @@ export default function Navbar({ overHero = true }: { overHero?: boolean }) {
           <Logo light={light} />
         </a>
 
-        <ul className="hidden items-center gap-7 md:flex">
+        <ul className="hidden items-center gap-7 lg:flex">
           {LINKS.map((l) => (
             <li key={l.label}>
               <a
                 href={l.href}
-                className={`text-[13.5px] font-medium transition-opacity hover:opacity-70 ${
+                className={`whitespace-nowrap text-[13.5px] font-medium transition-opacity hover:opacity-70 ${
                   light ? "text-white" : "text-ink"
                 }`}
               >
@@ -53,19 +53,31 @@ export default function Navbar({ overHero = true }: { overHero?: boolean }) {
           ))}
         </ul>
 
-        <a
-          href={DEMO_HREF}
-          className={`hidden rounded-full px-4 py-2 text-[13.5px] font-medium transition-colors md:inline-flex ${
-            light ? "bg-white text-accent hover:bg-white/90" : "bg-accent text-white hover:bg-accent-hover"
-          }`}
-        >
-          Book a demo
-        </a>
+        <div className="ml-auto mr-2 hidden items-center gap-2 md:flex lg:ml-0 lg:mr-0">
+          <a
+            href={CREATOR_HREF}
+            className={`whitespace-nowrap rounded-full border px-4 py-2 text-[13.5px] font-medium transition-colors ${
+              light
+                ? "border-white/60 text-white hover:bg-white/15"
+                : "border-line text-ink hover:border-ink/30"
+            }`}
+          >
+            Join as a creator
+          </a>
+          <a
+            href={DEMO_HREF}
+            className={`whitespace-nowrap rounded-full px-4 py-2 text-[13.5px] font-medium transition-colors ${
+              light ? "bg-white text-accent hover:bg-white/90" : "bg-accent text-white hover:bg-accent-hover"
+            }`}
+          >
+            Book a demo
+          </a>
+        </div>
 
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
-          className={`grid h-9 w-9 place-items-center rounded-full md:hidden ${
+          className={`grid h-9 w-9 shrink-0 place-items-center rounded-full lg:hidden ${
             light ? "bg-white/20 text-white" : "bg-soft text-ink"
           }`}
         >
@@ -74,7 +86,7 @@ export default function Navbar({ overHero = true }: { overHero?: boolean }) {
       </nav>
 
       {open && (
-        <div className="mx-auto mt-2 max-w-[1180px] rounded-3xl border border-line bg-surface p-3 lift md:hidden">
+        <div className="mx-auto mt-2 max-w-[1180px] rounded-3xl border border-line bg-surface p-3 lift lg:hidden">
           <ul className="flex flex-col">
             {LINKS.map((l) => (
               <li key={l.label}>
@@ -94,6 +106,13 @@ export default function Navbar({ overHero = true }: { overHero?: boolean }) {
             className="mt-2 block rounded-full bg-accent px-4 py-3 text-center text-[15px] font-medium text-white"
           >
             Book a demo
+          </a>
+          <a
+            href={CREATOR_HREF}
+            onClick={() => setOpen(false)}
+            className="mt-2 block rounded-full border border-line px-4 py-3 text-center text-[15px] font-medium text-ink"
+          >
+            Join as a creator
           </a>
         </div>
       )}
