@@ -1,48 +1,43 @@
-import { ArrowUpRight } from "lucide-react";
 import Reveal from "./Reveal";
+import CreatorCard, { CREATORS } from "./CreatorCard";
+import { GhostButton, PrimaryButton } from "./ui";
 
 export default function CTA() {
   return (
-    <section id="cta" className="px-5 pb-16 pt-4">
-      <Reveal className="relative mx-auto max-w-6xl overflow-hidden rounded-[28px] border-2 border-ink bg-ink px-6 py-20 text-center shadow-hard-lg sm:py-28">
+    <section id="cta" className="px-5 pb-16 pt-8">
+      <Reveal className="card-glow relative mx-auto max-w-6xl overflow-hidden px-6 py-20 text-center sm:py-28">
         <div
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/25 blur-[120px]"
+          className="pointer-events-none absolute left-1/2 top-full h-[520px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 blur-[130px]"
+          style={{ background: "radial-gradient(closest-side, #ff4d3d, rgb(155 140 255 / 0.5), transparent)" }}
           aria-hidden
         />
+
+        {/* side cards, desktop only */}
+        <div className="pointer-events-none absolute -left-10 top-1/2 hidden -translate-y-1/2 -rotate-12 opacity-80 lg:block" aria-hidden>
+          <CreatorCard c={CREATORS[5]} className="w-[180px]" compact />
+        </div>
+        <div className="pointer-events-none absolute -right-10 top-1/2 hidden -translate-y-1/2 rotate-12 opacity-80 lg:block" aria-hidden>
+          <CreatorCard c={CREATORS[2]} className="w-[180px]" compact />
+        </div>
+
         <div className="relative">
-          <span className="inline-flex items-center gap-2 rounded-full border-2 border-cream/25 py-1 pl-1 pr-3 text-[12.5px] font-bold uppercase tracking-[0.14em] text-cream/80">
-            <span className="rounded-full border-2 border-cream/25 bg-accent px-2.5 py-0.5 text-[11px] text-white">
-              Start
-            </span>
-            the conversation
-          </span>
-          <h2 className="mx-auto mt-7 max-w-2xl text-[36px] font-bold leading-[1.04] tracking-[-0.025em] text-cream sm:text-[56px]">
-            Let&rsquo;s build your{" "}
-            <span className="text-accent">creator engine.</span>
+          <h2 className="mx-auto max-w-3xl font-display text-[40px] font-bold leading-[1.0] tracking-[-0.04em] text-snow sm:text-[64px]">
+            Your next campaign could be{" "}
+            <span className="serif glow-text">live next week.</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-[16.5px] leading-relaxed text-cream/65 sm:text-[18px]">
-            From discovery to whitelisted attribution, one AI operator running every
-            creator dollar end-to-end. Book a demo and we onboard you personally.
+          <p className="mx-auto mt-6 max-w-xl text-[16.5px] leading-relaxed text-muted sm:text-[18px]">
+            Book a demo and we&rsquo;ll onboard you personally. Send us your brief and
+            you&rsquo;ll have a vetted creator shortlist within 24 hours.
           </p>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-3.5">
-            <a
-              href="mailto:shashank@zimmy.art?subject=Zimmy%20demo"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-accent px-7 py-3.5 text-[15.5px] font-semibold text-white shadow-[4px_4px_0_0_rgba(255,255,255,0.85)] transition-transform hover:-translate-y-0.5"
-            >
-              Book a Demo <ArrowUpRight className="h-4 w-4" />
-            </a>
-            <a
-              href="#how"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-cream/30 px-7 py-3.5 text-[15.5px] font-semibold text-cream transition-transform hover:-translate-y-0.5"
-            >
-              See how it works
-            </a>
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+            <PrimaryButton />
+            <GhostButton href="#how">See how it works</GhostButton>
           </div>
-          <p className="mt-7 text-[14.5px] text-cream/60">
+          <p className="mt-7 text-[14.5px] text-muted">
             Prefer email?{" "}
             <a
               href="mailto:shashank@zimmy.art"
-              className="font-semibold text-cream underline underline-offset-2 hover:text-accent"
+              className="font-semibold text-snow underline underline-offset-4 hover:text-accent"
             >
               shashank@zimmy.art
             </a>

@@ -1,79 +1,62 @@
-import { ArrowUpRight, Sparkles, Search, LineChart } from "lucide-react";
+import { Sparkle, Search, PenLine, LineChart } from "lucide-react";
 import Reveal from "../Reveal";
+import CreatorCard, { CREATORS } from "../CreatorCard";
+import { Eyebrow } from "../ui";
+
+const STEPS = [
+  { i: Search, t: "Discovering creators" },
+  { i: PenLine, t: "Writing scripts & links" },
+  { i: LineChart, t: "Tracking revenue" },
+];
 
 export default function AboutHero() {
   return (
-    <section className="px-5 pt-32 sm:pt-40">
-      <div className="mx-auto max-w-5xl text-center">
+    <section className="relative overflow-hidden px-5 pt-36 sm:pt-44">
+      <div className="grid-bg pointer-events-none absolute inset-0" aria-hidden />
+      <div className="relative mx-auto max-w-5xl text-center">
         <Reveal>
-          <span className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-cream px-4 py-1.5 text-[12.5px] font-bold uppercase tracking-[0.14em] text-ink/70 shadow-hard-sm">
-            About Zimmy
-          </span>
-          <h1 className="mx-auto mt-7 max-w-4xl text-[40px] font-bold leading-[1.02] tracking-[-0.03em] text-ink sm:text-[58px] md:text-[66px]">
-            Running influencer marketing{" "}
-            <span className="mark">end-to-end, with AI.</span>
+          <Eyebrow>About Zimmy</Eyebrow>
+          <h1 className="mx-auto mt-8 max-w-4xl font-display text-[44px] font-bold leading-[1.0] tracking-[-0.045em] text-snow sm:text-[64px] md:text-[76px]">
+            Influencer marketing,{" "}
+            <span className="serif glow-text">run end-to-end by AI.</span>
           </h1>
         </Reveal>
       </div>
 
-      {/* hero visual banner */}
-      <Reveal delay={0.1} className="mx-auto mt-12 max-w-6xl">
-        <div className="relative h-[340px] overflow-hidden rounded-[28px] border-2 border-ink shadow-hard-lg sm:h-[460px]">
+      <Reveal delay={0.1} className="relative mx-auto mt-14 max-w-6xl">
+        <div className="card-glow relative h-[380px] overflow-hidden sm:h-[460px]">
           <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "linear-gradient(135deg, #a9d3ff 0%, #fff9e8 46%, #9be7c4 100%)",
-            }}
-            aria-hidden
-          />
-          <div
-            className="absolute inset-0 opacity-[0.5]"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at center, rgba(21,18,11,0.10) 1px, transparent 1.4px)",
-              backgroundSize: "24px 24px",
-            }}
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[480px] w-[780px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-60 blur-[120px]"
+            style={{ background: "radial-gradient(closest-side, #ff4d3d, rgb(155 140 255 / 0.45), transparent)" }}
             aria-hidden
           />
 
-          {/* center mock panel */}
-          <div className="absolute left-1/2 top-1/2 w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-[18px] border-2 border-ink bg-cream p-5 shadow-hard sm:w-[340px]">
-            <p className="flex items-center gap-2 text-[12px] font-bold uppercase tracking-wide text-ink/60">
-              <span className="live-dot h-2 w-2 rounded-full bg-accent" /> Campaign engine
+          <div className="absolute left-[8%] top-1/2 hidden -translate-y-1/2 -rotate-6 sm:block" aria-hidden>
+            <CreatorCard c={CREATORS[3]} className="w-[170px]" compact />
+          </div>
+          <div className="absolute right-[8%] top-1/2 hidden -translate-y-1/2 rotate-6 sm:block" aria-hidden>
+            <CreatorCard c={CREATORS[4]} className="w-[170px]" compact />
+          </div>
+
+          <div className="absolute left-1/2 top-1/2 w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-line-strong bg-coal/90 p-5 text-left shadow-2xl backdrop-blur-xl sm:w-[320px]">
+            <p className="flex items-center gap-2 text-[11.5px] font-semibold uppercase tracking-[0.14em] text-muted">
+              <span className="grid h-5 w-5 place-items-center rounded-md bg-accent text-white">
+                <Sparkle className="h-3 w-3" fill="currentColor" />
+              </span>
+              Campaign engine
+              <span className="live-dot ml-auto h-2 w-2 rounded-full bg-lime" />
             </p>
-            <div className="mt-3 space-y-2">
-              {[
-                { i: Search, t: "Discovering creators", c: "bg-yellow" },
-                { i: Sparkles, t: "Writing scripts & UTMs", c: "bg-pink" },
-                { i: LineChart, t: "Tracking revenue", c: "bg-mint" },
-              ].map((r, k) => {
+            <div className="mt-4 space-y-2">
+              {STEPS.map((r) => {
                 const Icon = r.i;
                 return (
-                  <div key={k} className="flex items-center gap-2.5 rounded-lg border-2 border-ink/10 bg-paper px-3 py-2">
-                    <span className={`grid h-7 w-7 place-items-center rounded-md border-2 border-ink ${r.c} text-ink`}>
-                      <Icon className="h-3.5 w-3.5" strokeWidth={2.3} />
-                    </span>
-                    <span className="text-[13px] font-semibold text-ink">{r.t}</span>
+                  <div key={r.t} className="flex items-center gap-3 rounded-xl border border-line bg-slate px-3 py-2.5">
+                    <Icon className="h-4 w-4 text-accent-soft" strokeWidth={2.2} />
+                    <span className="text-[13.5px] font-medium text-snow">{r.t}</span>
                   </div>
                 );
               })}
             </div>
-          </div>
-
-          {/* floating stat cards */}
-          <div className="absolute left-4 top-5 hidden rotate-[-5deg] rounded-2xl border-2 border-ink bg-yellow px-4 py-3 shadow-hard sm:left-10 sm:block">
-            <p className="text-[26px] font-bold leading-none text-ink">12×</p>
-            <p className="mt-1 text-[12px] font-semibold text-ink/70">faster to launch</p>
-          </div>
-          <div className="absolute bottom-6 right-5 hidden rotate-[4deg] rounded-2xl border-2 border-ink bg-pink px-4 py-3 shadow-hard sm:right-12 sm:block">
-            <p className="text-[26px] font-bold leading-none text-ink">+128%</p>
-            <p className="mt-1 text-[12px] font-semibold text-ink/70">attributed revenue</p>
-          </div>
-          <div className="absolute right-8 top-8 hidden rotate-[6deg] rounded-xl border-2 border-ink bg-cream px-3 py-2 shadow-hard-sm lg:block">
-            <p className="flex items-center gap-1.5 text-[12px] font-bold text-ink">
-              <ArrowUpRight className="h-3.5 w-3.5 text-accent" /> $30M+ automated
-            </p>
           </div>
         </div>
       </Reveal>

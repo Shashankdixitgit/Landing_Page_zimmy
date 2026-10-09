@@ -1,13 +1,13 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import LogoStrip from "@/components/LogoStrip";
-import Founders from "@/components/Founders";
-import CreatorKit from "@/components/CreatorKit";
-import Testimonials from "@/components/Testimonials";
+import Ticker from "@/components/Ticker";
+import Services from "@/components/Services";
 import Flow from "@/components/Flow";
+import Reel from "@/components/Reel";
 import Technology from "@/components/Technology";
 import Comparison from "@/components/Comparison";
 import Solutions from "@/components/Solutions";
+import Founders from "@/components/Founders";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -18,14 +18,14 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <LogoStrip />
-        <Founders />
-        <CreatorKit />
-        <Testimonials />
+        <Ticker />
+        <Services />
         <Flow />
+        <Reel />
         <Technology />
         <Comparison />
         <Solutions />
+        <Founders />
         <FAQ />
         <CTA />
       </main>

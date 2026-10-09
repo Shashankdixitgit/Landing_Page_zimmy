@@ -1,76 +1,66 @@
 import { ShoppingBag, Cpu, Store } from "lucide-react";
 import Reveal from "./Reveal";
-import SectionLabel from "./SectionLabel";
+import { SectionHead } from "./ui";
 
 const SOLUTIONS = [
   {
-    n: "01",
     icon: ShoppingBag,
-    title: "DTC Brands",
-    head: "Performance creator marketing for direct-to-consumer.",
-    body: "Built for DTC brands scaling on Meta and TikTok, turn creators into a renewable, ad-ready content engine with clean attribution.",
-    bg: "bg-yellow",
+    title: "DTC brands",
+    head: "Turn creators into a steady supply of ads that sell.",
+    body: "For brands scaling on Meta and TikTok. Zimmy builds a renewable pipeline of creator content you can run organically or as paid ads, with every sale traced back.",
+    glow: "#ff4d3d",
   },
   {
-    n: "02",
     icon: Cpu,
-    title: "Consumer Tech",
-    head: "Educate, demo, and convert through credible creators.",
-    body: "Tech-fluent creators across TikTok and Instagram, briefed for technical accuracy, with output optimised for organic and paid.",
-    bg: "bg-mint",
+    title: "Consumer tech & apps",
+    head: "Explain, demo and convert through creators people trust.",
+    body: "Tech-fluent creators on TikTok, Instagram and YouTube, briefed for accuracy, with content tuned for installs and sign-ups.",
+    glow: "#9b8cff",
   },
   {
-    n: "03",
     icon: Store,
     title: "Retail & FMCG",
-    head: "Mass-reach creator content built for shelf and search.",
-    body: "Large-scale seeding, affiliate programmes, and creator content that drives discovery, trial, and repeat purchase.",
-    bg: "bg-pink",
+    head: "Reach at scale, built for shelf and search.",
+    body: "Large seeding runs, affiliate programs and creator content that drives discovery, trial and repeat purchase.",
+    glow: "#c8f560",
   },
 ];
 
 export default function Solutions() {
   return (
-    <section id="solutions" className="py-24 sm:py-32">
+    <section id="solutions" className="py-24 sm:py-36">
       <div className="mx-auto max-w-6xl px-5">
         <Reveal>
-          <SectionLabel n="⑥">Solutions</SectionLabel>
-          <h2 className="mt-6 max-w-2xl text-[34px] font-bold leading-[1.05] tracking-[-0.025em] text-ink sm:text-[48px]">
-            Built for the brands{" "}
-            <span className="mark">shaping consumer.</span>
-          </h2>
-          <p className="mt-5 max-w-2xl text-[16.5px] leading-relaxed text-muted sm:text-[17.5px]">
-            Every category has its own creator playbook. Zimmy tunes the engine
-            across discovery, outreach, scripts, and attribution to the way your
-            industry wins.
-          </p>
+          <SectionHead
+            eyebrow="Who it's for"
+            title={
+              <>
+                Built for brands that{" "}
+                <span className="serif text-accent-soft">sell to people.</span>
+              </>
+            }
+            sub="Every category has its own creator playbook. Zimmy tunes discovery, scripts and attribution to the way your industry wins."
+          />
         </Reveal>
 
-        <Reveal stagger={0.12} className="mt-12 grid gap-5 md:grid-cols-3">
+        <Reveal stagger={0.12} className="mt-14 grid gap-5 md:grid-cols-3">
           {SOLUTIONS.map((s) => {
             const Icon = s.icon;
             return (
-              <article
-                key={s.n}
-                className={`flex flex-col rounded-[var(--radius-card)] border-2 border-ink ${s.bg} p-7 shadow-hard transition-transform hover:-translate-y-1`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="grid h-12 w-12 place-items-center rounded-xl border-2 border-ink bg-cream text-ink">
-                    <Icon className="h-5 w-5" strokeWidth={2.2} />
-                  </span>
-                  <span className="text-[13px] font-bold uppercase tracking-wide text-ink/55">
-                    {s.n}
-                  </span>
-                </div>
-                <h3 className="mt-5 text-[21px] font-bold tracking-tight text-ink">
-                  {s.title}
-                </h3>
-                <p className="mt-2 text-[15px] font-semibold leading-snug text-ink/80">
+              <article key={s.title} className="card relative flex flex-col overflow-hidden p-7">
+                <div
+                  className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full opacity-30 blur-3xl"
+                  style={{ background: s.glow }}
+                  aria-hidden
+                />
+                <span className="relative grid h-11 w-11 place-items-center rounded-xl border border-line-strong text-snow">
+                  <Icon className="h-5 w-5" strokeWidth={2} />
+                </span>
+                <p className="relative mt-6 text-[12px] font-semibold uppercase tracking-[0.14em] text-faint">{s.title}</p>
+                <h3 className="relative mt-2 font-display text-[22px] font-bold leading-snug tracking-tight text-snow">
                   {s.head}
-                </p>
-                <p className="mt-3 text-[14.5px] leading-relaxed text-ink/65">
-                  {s.body}
-                </p>
+                </h3>
+                <p className="relative mt-3 text-[15px] leading-relaxed text-muted">{s.body}</p>
               </article>
             );
           })}

@@ -2,42 +2,39 @@
 
 @theme {
   /* surfaces */
-  --color-paper: #fbf4e0;       /* warm cream, main background */
-  --color-cream: #fff9e8;       /* lighter cream for cards */
-  --color-ink: #15120b;         /* warm near-black, borders + text */
-  --color-muted: #6b675c;       /* warm gray text */
-  --color-faint: #9c978a;
+  --color-night: #09090b;       /* page background */
+  --color-coal: #121215;        /* cards */
+  --color-slate: #1a1a1f;       /* raised cards, inputs */
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-line-strong: rgb(255 255 255 / 0.16);
 
-  /* pastels */
-  --color-yellow: #ffd66b;
-  --color-mint: #9be7c4;
-  --color-pink: #ffb8d1;
-  --color-sky: #a9d3ff;
+  /* text */
+  --color-snow: #f5f3ee;
+  --color-muted: #a09ea6;
+  --color-faint: #6c6a72;
 
   /* brand */
-  --color-accent: #f23a35;      /* red, primary buttons, marker underline */
-  --color-accent-ink: #c22b27;
+  --color-accent: #ff4d3d;      /* Zimmy red, primary actions */
+  --color-accent-soft: #ff8a6b;
+  --color-lime: #c8f560;        /* "live" and positive states */
+  --color-violet: #9b8cff;
+  --color-sky: #6cc6ff;
 
-  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
-
-  --radius-card: 18px;
-}
-
-:root {
-  --background: var(--color-paper);
-  --foreground: var(--color-ink);
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-geist), ui-sans-serif, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
 }
 
 html {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  background: var(--color-night);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-night);
+  color: var(--color-snow);
   font-family: var(--font-sans);
-  letter-spacing: -0.012em;
   overflow-x: hidden;
 }
 
@@ -47,54 +44,96 @@ html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: hidden; }
 
-/* ---- Tano-style primitives ---- */
+::selection { background: var(--color-accent); color: #fff; }
 
-/* chunky ink border */
-.bd { border: 2px solid var(--color-ink); }
+/* Headline italic accent, e.g. <em className="serif">itself</em> */
+.serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
 
-/* hard offset shadow (sticker feel) */
-.shadow-hard { box-shadow: 4px 4px 0 0 var(--color-ink); }
-.shadow-hard-lg { box-shadow: 6px 6px 0 0 var(--color-ink); }
-.shadow-hard-sm { box-shadow: 3px 3px 0 0 var(--color-ink); }
+/* Warm gradient text for the key phrase in a headline */
+.glow-text {
+  background: linear-gradient(100deg, #ff4d3d 0%, #ff8a6b 45%, #ffc48a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
-/* hand-drawn marker underline (red squiggle) */
-.mark { position: relative; white-space: nowrap; }
-.mark::after {
+/* Hairline card */
+.card {
+  background: var(--color-coal);
+  border: 1px solid var(--color-line);
+  border-radius: 24px;
+}
+
+/* Card with a soft gradient edge */
+.card-glow {
+  position: relative;
+  background: var(--color-coal);
+  border-radius: 24px;
+}
+.card-glow::before {
   content: "";
   position: absolute;
-  left: -0.04em;
-  right: -0.04em;
-  bottom: -0.04em;
-  height: 0.26em;
-  background: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%2016'%20preserveAspectRatio='none'%3E%3Cpath%20d='M3%2010%20C%2060%204,%20120%2013,%20180%207%20C%20235%202,%20270%2011,%20297%206'%20stroke='%23f23a35'%20stroke-width='6'%20fill='none'%20stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
-  z-index: -1;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(140deg, rgb(255 77 61 / 0.55), rgb(255 255 255 / 0.06) 40%, rgb(155 140 255 / 0.35));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   pointer-events: none;
 }
 
-/* little tape accent on cards */
-.tape {
+/* Faint grid behind the hero */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+}
+
+/* Film grain on creator cards */
+.grain::after {
+  content: "";
   position: absolute;
-  top: -10px;
-  left: 50%;
-  width: 54px;
-  height: 18px;
-  transform: translateX(-50%) rotate(-3deg);
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  inset: 0;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
 }
 
 /* GSAP reveal initial state */
 .reveal { opacity: 0; transform: translateY(24px); will-change: transform, opacity; }
 
-::selection { background: var(--color-accent); color: #fff; }
-
-.mock-scroll::-webkit-scrollbar { height: 6px; width: 6px; }
-.mock-scroll::-webkit-scrollbar-thumb { background: #d4cdb8; border-radius: 999px; }
-
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 .live-dot { animation: blink 1.4s ease-in-out infinite; }
 
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.marquee-track { animation: marquee 32s linear infinite; display: flex; width: max-content; }
+.marquee-track { animation: marquee 40s linear infinite; display: flex; width: max-content; }
+.marquee-track.fast { animation-duration: 28s; }
 
-@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+/* Story progress bar on creator cards */
+@keyframes story { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.story-bar { transform-origin: left; animation: story 6s linear infinite; }
+
+@keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.floaty { animation: floaty 6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track, .story-bar, .floaty, .live-dot { animation: none; }
+}
+
+/* SplitText wraps words in their own elements; carry the gradient onto each */
+.glow-text > * {
+  background: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

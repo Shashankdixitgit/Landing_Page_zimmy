@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "About Zimmy",
   description:
-    "Zimmy is built by the engineers and marketers behind Bentolabs and Emergent, with a founder who automated yearly campaign funnels worth up to $30M.",
+    "Zimmy is built by an operator from Emergent, Bentolabs and Entrepreneur First who automated yearly campaign funnels worth up to $30M.",
 };
 
 export default function AboutPage() {

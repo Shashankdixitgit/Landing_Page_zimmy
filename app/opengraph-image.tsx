@@ -1,45 +1,19 @@
 import { ImageResponse } from "next/og";
 
-export const alt =
-  "Zimmy — your entire influencer program, run by one AI operator.";
+export const alt = "Zimmy: creator campaigns that run themselves.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const INK = "#15120b";
-const PAPER = "#fbf4e0";
-const ACCENT = "#f23a35";
+const NIGHT = "#09090b";
+const SNOW = "#f5f3ee";
+const MUTED = "#a09ea6";
+const ACCENT = "#ff4d3d";
 
+// Illustrative creator cards, same look as the hero.
 const CARDS = [
-  {
-    tag: "RESULT · 01",
-    stat: "12×",
-    label: "faster to launch a campaign",
-    brand: "Eddy Finance",
-    bg: "#ffd66b",
-    rotate: "-5deg",
-    top: 2,
-    left: 70,
-  },
-  {
-    tag: "RESULT · 02",
-    stat: "+128%",
-    label: "attributed revenue",
-    brand: "Supatest",
-    bg: "#9be7c4",
-    rotate: "4deg",
-    top: 168,
-    left: 180,
-  },
-  {
-    tag: "RESULT · 03",
-    stat: "−41%",
-    label: "lower cost per acquisition",
-    brand: "Agnost AI",
-    bg: "#ffb8d1",
-    rotate: "-2deg",
-    top: 330,
-    left: 40,
-  },
+  { a: "#4cc9f0", b: "#3a0ca3", d: "#0b0a24", status: "Negotiating", left: 40, top: 120, rotate: "-9deg", z: 1 },
+  { a: "#ffb703", b: "#fb5607", d: "#2a0d05", status: "Live · tracking", left: 200, top: 70, rotate: "0deg", z: 3 },
+  { a: "#ff99c8", b: "#a05195", d: "#1e0c1f", status: "Shortlisted", left: 360, top: 120, rotate: "9deg", z: 2 },
 ];
 
 export default function OpengraphImage() {
@@ -50,22 +24,16 @@ export default function OpengraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          background: PAPER,
-          color: INK,
-          padding: 56,
+          background: NIGHT,
+          color: SNOW,
+          padding: 64,
           position: "relative",
           fontFamily: "sans-serif",
+          overflow: "hidden",
         }}
       >
         {/* LEFT */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: 600,
-            justifyContent: "center",
-          }}
-        >
+        <div style={{ display: "flex", flexDirection: "column", width: 600, justifyContent: "center" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <div
               style={{
@@ -74,7 +42,6 @@ export default function OpengraphImage() {
                 height: 48,
                 borderRadius: 13,
                 background: ACCENT,
-                border: `3px solid ${INK}`,
                 alignItems: "center",
                 justifyContent: "center",
               }}
@@ -83,117 +50,74 @@ export default function OpengraphImage() {
                 <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
               </svg>
             </div>
-            <div style={{ fontSize: 32, fontWeight: 800 }}>zimmy</div>
+            <div style={{ fontSize: 34, fontWeight: 800 }}>zimmy</div>
           </div>
 
           <div
             style={{
               display: "flex",
-              alignItems: "center",
-              gap: 10,
               marginTop: 44,
-              fontSize: 16,
-              fontWeight: 700,
-              letterSpacing: 1.4,
+              fontSize: 17,
+              fontWeight: 600,
+              letterSpacing: 1.6,
               textTransform: "uppercase",
-              color: "#6b675c",
+              color: MUTED,
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                background: ACCENT,
-                color: "#fff",
-                borderRadius: 999,
-                padding: "4px 13px",
-                border: `2px solid ${INK}`,
-              }}
-            >
-              New
-            </div>
-            <div style={{ display: "flex" }}>Agentic AI × Done-for-you</div>
+            The AI operator for influencer marketing
           </div>
 
           <div
             style={{
               display: "flex",
               flexWrap: "wrap",
-              marginTop: 26,
+              marginTop: 22,
               fontSize: 60,
               fontWeight: 800,
-              lineHeight: 1.04,
-              letterSpacing: -2.2,
+              lineHeight: 1.0,
+              letterSpacing: -2.6,
             }}
           >
-            <span style={{ marginRight: 16 }}>
-              Your entire influencer program, run by
-            </span>
-            <span style={{ color: ACCENT }}>one AI operator.</span>
+            <span style={{ width: "100%" }}>Creator campaigns</span>
+            <span style={{ marginRight: 16 }}>that</span>
+            <span style={{ color: ACCENT }}>run themselves.</span>
           </div>
         </div>
 
-        {/* RIGHT — floating stat cards */}
+        {/* RIGHT: creator cards */}
         <div style={{ display: "flex", position: "relative", flex: 1 }}>
           {CARDS.map((c) => (
             <div
-              key={c.tag}
+              key={c.status}
               style={{
                 position: "absolute",
-                top: c.top,
                 left: c.left,
+                top: c.top,
+                width: 200,
+                height: 356,
                 display: "flex",
-                flexDirection: "column",
-                width: 290,
-                background: c.bg,
-                border: `3px solid ${INK}`,
-                borderRadius: 20,
-                padding: 22,
-                boxShadow: `8px 8px 0 ${INK}`,
+                alignItems: "flex-end",
+                justifyContent: "center",
+                paddingBottom: 18,
+                borderRadius: 22,
+                border: "1px solid rgba(255,255,255,0.14)",
+                background: `radial-gradient(120% 70% at 30% 18%, ${c.a} 0%, rgba(0,0,0,0) 60%), radial-gradient(90% 60% at 85% 70%, ${c.b} 0%, rgba(0,0,0,0) 70%), ${c.d}`,
                 transform: `rotate(${c.rotate})`,
+                boxShadow: "0 30px 60px rgba(0,0,0,0.6)",
               }}
             >
               <div
                 style={{
                   display: "flex",
-                  fontSize: 14,
+                  background: c.status.startsWith("Live") ? "#c8f560" : "rgba(255,255,255,0.92)",
+                  color: NIGHT,
+                  fontSize: 15,
                   fontWeight: 700,
-                  letterSpacing: 1,
-                  textTransform: "uppercase",
-                  color: "rgba(21,18,11,0.7)",
+                  borderRadius: 999,
+                  padding: "6px 14px",
                 }}
               >
-                {c.tag}
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  fontSize: 52,
-                  fontWeight: 800,
-                  letterSpacing: -2,
-                  marginTop: 8,
-                }}
-              >
-                {c.stat}
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  fontSize: 16,
-                  marginTop: 6,
-                  color: "rgba(21,18,11,0.78)",
-                }}
-              >
-                {c.label}
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  fontSize: 20,
-                  fontWeight: 800,
-                  marginTop: 18,
-                }}
-              >
-                {c.brand}
+                {c.status}
               </div>
             </div>
           ))}
