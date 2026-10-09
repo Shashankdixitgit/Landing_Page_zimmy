@@ -44,13 +44,22 @@ export default function CTA() {
             <br />
             a creator.
           </h3>
-          <a
-            href={CREATOR_HREF}
-            className="group mt-6 inline-flex items-center justify-center gap-2.5 self-start rounded-full bg-ink px-6 py-3 text-[15px] font-medium text-white transition-transform duration-300 hover:-translate-y-0.5"
-          >
-            Join as a creator
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-          </a>
+          <div className="mt-6 flex flex-wrap gap-2.5">
+            <a
+              href={CREATOR_HREF}
+              className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-3 text-[15px] font-medium text-white transition-transform duration-300 hover:-translate-y-0.5"
+            >
+              Join as a creator
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </a>
+            <a
+              href={DEMO_HREF}
+              className="group inline-flex items-center justify-center gap-2.5 rounded-full border border-line px-6 py-3 text-[15px] font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-ink/30"
+            >
+              I&rsquo;m a brand · Book a demo
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </a>
+          </div>
           <div className="mt-auto pt-8">
             <div className="flex items-center gap-3 rounded-2xl bg-soft p-4">
               <Image src="/founder-avatar.jpg" alt="" width={40} height={40} className="h-10 w-10 shrink-0 rounded-xl object-cover" />
