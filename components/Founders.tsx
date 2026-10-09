@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight, Check } from "lucide-react";
 import Reveal from "./Reveal";
 import { SplitHead } from "./ui";
@@ -26,23 +27,32 @@ export default function Founders() {
             href="https://www.linkedin.com/in/shashankdixitt/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col rounded-[26px] border border-line bg-surface p-7 transition-colors hover:border-ink/20 sm:p-8"
+            className="group grid overflow-hidden rounded-[26px] border border-line bg-surface transition-colors hover:border-ink/20 sm:grid-cols-[0.95fr_1fr]"
           >
-            <div className="flex items-start justify-between">
-              <span className="grid h-14 w-14 place-items-center rounded-2xl bg-sky text-[18px] font-medium text-[#235a80]">
-                SD
-              </span>
-              <ArrowUpRight className="h-5 w-5 text-muted transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            <div className="relative aspect-[4/5] sm:aspect-auto sm:min-h-[340px]">
+              <Image
+                src="/founder.jpg"
+                alt="Shashank Dixit, founder of Zimmy"
+                fill
+                sizes="(min-width: 768px) 25vw, 100vw"
+                className="object-cover object-[center_30%]"
+              />
             </div>
-            <h3 className="display mt-8 text-[30px] text-ink">Shashank Dixit</h3>
-            <p className="mt-1 text-[14.5px] text-muted">Founder &amp; CEO</p>
-            <ul className="mt-6 space-y-3 border-t border-line pt-6">
-              {CREDS.map((c) => (
-                <li key={c} className="flex items-center gap-3 text-[14px] text-ink/85">
-                  <Check className="h-4 w-4 text-accent" strokeWidth={2} /> {c}
-                </li>
-              ))}
-            </ul>
+            <div className="flex flex-col p-7 sm:p-8">
+              <div className="flex items-start justify-between">
+                <span className="rounded-full bg-sky px-3 py-1 text-[12px] font-medium text-[#235a80]">Founder &amp; CEO</span>
+                <ArrowUpRight className="h-5 w-5 text-muted transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </div>
+              <h3 className="display mt-auto pt-8 text-[30px] text-ink">Shashank Dixit</h3>
+              <p className="mt-1 text-[14px] text-muted">Say hi on LinkedIn</p>
+              <ul className="mt-6 space-y-3 border-t border-line pt-6">
+                {CREDS.map((c) => (
+                  <li key={c} className="flex items-center gap-3 text-[14px] text-ink/85">
+                    <Check className="h-4 w-4 text-accent" strokeWidth={2} /> {c}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </a>
 
           <div className="flex flex-col justify-between rounded-[26px] border border-[#2c4a3c] bg-night p-7 text-white sm:p-8">

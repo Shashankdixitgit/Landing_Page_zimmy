@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Reveal from "../Reveal";
 
 const PARAS = [
@@ -23,9 +24,7 @@ export default function FounderNote() {
                 <h3 className="text-[19px] font-medium text-ink">Our journey</h3>
                 <p className="mt-1 text-[14px] text-muted">A note from the founder</p>
               </div>
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-sky text-[16px] font-medium text-[#235a80]" aria-hidden>
-                SD
-              </span>
+              <Image src="/founder-avatar.jpg" alt="" width={48} height={48} className="h-12 w-12 shrink-0 rounded-2xl object-cover" />
             </div>
 
             <div className="mt-8 space-y-5">
