@@ -75,22 +75,21 @@ export default function Hero() {
             data-h
             className="mx-auto mt-6 max-w-2xl text-[16px] leading-relaxed text-white [text-shadow:0_1px_12px_rgb(10_30_50/0.6)] sm:text-[17px]"
           >
-            Find what&rsquo;s winning in your niche. Test it with AI UGC. Scale what works.
+            Find the hooks already winning in your niche, test them cheaply with AI UGC, and scale the winners into creator content and ads.
           </p>
-          <div data-h className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div data-h className="mt-8 flex flex-col items-center gap-4">
             <a
               href={DEMO_HREF}
-              className="group inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-[15px] font-medium text-[#1d5f8f] transition-transform duration-300 hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-3 rounded-full bg-white px-7 py-3.5 text-[15.5px] font-medium text-[#1d5f8f] transition-transform duration-300 hover:-translate-y-0.5"
             >
-              I&rsquo;m a brand · Book a demo
+              Book a demo
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </a>
             <a
               href={CREATOR_HREF}
-              className="group inline-flex items-center gap-3 rounded-full border border-white/70 bg-white/10 px-6 py-3 text-[15px] font-medium text-white backdrop-blur-md transition-transform duration-300 hover:-translate-y-0.5"
+              className="text-[13.5px] font-medium text-white underline-offset-4 [text-shadow:0_1px_10px_rgb(10_30_50/0.6)] hover:underline"
             >
-              I&rsquo;m a creator · Join
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+              Are you a creator? Start here &rarr;
             </a>
           </div>
         </div>

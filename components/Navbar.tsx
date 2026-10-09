@@ -6,11 +6,11 @@ import Logo from "./Logo";
 import { CREATOR_HREF, DEMO_HREF } from "./ui";
 
 const LINKS = [
-  { label: "For creators", href: "/#creators" },
   { label: "Research", href: "/#research" },
   { label: "How it works", href: "/#how" },
   { label: "FAQ", href: "/#faq" },
   { label: "About", href: "/about" },
+  { label: "For creators", href: "/creators" },
 ];
 
 /** `overHero` renders white text until the page scrolls past the hero frame. */

@@ -137,6 +137,7 @@ function StageView({ i }: { i: number }) {
   );
 }
 
+const ZIMMY = ["Outlier research in your niche and market", "Why-it-worked breakdowns", "Shoot-ready briefs and hooks", "Creators found and briefed"];
 const YOU = ["Set the product, market and budget", "Pick which tests to run", "Approve every creator and script", "Decide what gets ad spend"];
 
 export default function Flow() {
@@ -233,7 +234,14 @@ export default function Flow() {
           <div className="flex flex-col rounded-[22px] border border-[#d5ecd0] bg-[#f5fbf3] p-7 sm:p-8">
             <p className="text-[12.5px] text-accent">Zimmy&rsquo;s part</p>
             <h3 className="display mt-3 text-[30px] text-ink">Everything in between.</h3>
-            <PrimaryButton href={DEMO_HREF} wide className="mt-auto" />
+            <ul className="mt-6 space-y-3">
+              {ZIMMY.map((t) => (
+                <li key={t} className="flex items-center gap-3 text-[14px] text-ink/85">
+                  <Check className="h-4 w-4 text-accent" strokeWidth={2} /> {t}
+                </li>
+              ))}
+            </ul>
+            <PrimaryButton href={DEMO_HREF} wide className="mt-8" />
           </div>
         </Reveal>
       </div>

@@ -1,7 +1,8 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export const DEMO_HREF = "mailto:shashank@zimmy.art?subject=Zimmy%20demo";
-export const CREATOR_HREF = "https://creator.zimmy.art";
+export const CREATOR_HREF = "/creators";
+export const CREATOR_JOIN_HREF = "mailto:shashank@zimmy.art?subject=Join%20Zimmy%20as%20a%20creator";
 
 /** Two-line headline on the left, supporting copy on the right. */
 export function SplitHead({

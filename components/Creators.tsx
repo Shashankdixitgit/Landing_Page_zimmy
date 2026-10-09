@@ -1,7 +1,7 @@
 import { ArrowRight, TrendingUp, CalendarDays, BadgeDollarSign, Flame, UserPlus } from "lucide-react";
 import Reveal from "./Reveal";
 import CardVideo from "./CardVideo";
-import { CREATOR_HREF } from "./ui";
+import { CREATOR_JOIN_HREF } from "./ui";
 
 const PERKS = [
   { icon: TrendingUp, title: "See what's taking off in your niche", status: "Coming soon" },
@@ -16,9 +16,9 @@ const PINGS = [
   { icon: UserPlus, text: "+2.1K followers this week", cls: "bottom-12 left-2 -rotate-1 sm:-left-4" },
 ];
 
-export default function Creators() {
+export default function Creators({ asHero = false }: { asHero?: boolean }) {
   return (
-    <section id="creators" className="px-2 py-10 sm:px-3">
+    <section id="creators" className={`px-2 sm:px-3 ${asHero ? "pt-24 sm:pt-28" : "py-10"}`}>
       <div className="relative overflow-hidden text-ink">
         <div className="relative mx-auto grid max-w-[1100px] items-center gap-14 px-6 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.05fr_1fr]">
           {/* message */}
@@ -26,7 +26,7 @@ export default function Creators() {
             <span className="inline-flex rounded-full bg-mint px-3.5 py-1.5 text-[12.5px] font-medium text-accent">
               For creators
             </span>
-            <h2 className="display mt-6 text-[44px] sm:text-[60px]">
+            <h2 className="display mt-6 text-[44px] sm:text-[64px]">
               Your next post,
               <br />
               <span className="text-accent">already proven.</span>
@@ -58,7 +58,7 @@ export default function Creators() {
             </ul>
 
             <a
-              href={CREATOR_HREF}
+              href={CREATOR_JOIN_HREF}
               className="group mt-9 inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-3.5 text-[15.5px] font-semibold text-white hover:bg-accent-hover transition-transform duration-300 hover:-translate-y-0.5"
             >
               Join as a creator

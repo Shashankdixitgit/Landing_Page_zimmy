@@ -5,7 +5,7 @@ const COLS = [
   {
     title: "Product",
     links: [
-      { label: "For creators", href: "/#creators" },
+      { label: "For creators", href: "/creators" },
       { label: "Research", href: "/#research" },
       { label: "How it works", href: "/#how" },
       { label: "FAQ", href: "/#faq" },

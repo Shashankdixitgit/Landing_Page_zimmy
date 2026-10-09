@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Creators from "@/components/Creators";
 import ResearchDemo from "@/components/ResearchDemo";
 import Ladder from "@/components/Ladder";
 import Flow from "@/components/Flow";
@@ -15,7 +14,6 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Creators />
         <ResearchDemo />
         <Ladder />
         <Flow />

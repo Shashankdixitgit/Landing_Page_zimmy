@@ -20,7 +20,7 @@ const FAQS = [
   },
   {
     q: "What's live today?",
-    a: "Outlier research per market, why-it-worked breakdowns, shoot-ready briefs and creator brand deals. AI UGC videos and the creator calendar are coming soon.",
+    a: "Outlier research per market, why-it-worked breakdowns, shoot-ready briefs, and finding and briefing creators. AI UGC test videos are coming soon.",
   },
 ];
 
