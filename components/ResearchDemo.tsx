@@ -129,7 +129,7 @@ export default function ResearchDemo() {
     "Comparing each one to its account's usual views",
     "Picking the outliers and why they worked",
   ];
-  const found = step >= POINTERS.length;
+  const [found, setFound] = useState(false); // board stays filled once the first run finishes
 
   // Start the run on its own once the demo scrolls into view, so the board never sits empty.
   useEffect(() => {
@@ -148,11 +148,17 @@ export default function ResearchDemo() {
     return () => io.disconnect();
   }, []);
 
-  // Tick through the pointers while running.
+  // Tick through the pointers, hold when all are done, then clear and loop.
   useEffect(() => {
-    if (!running || step >= POINTERS.length) return;
+    if (!running) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const t = setTimeout(() => setStep((n) => (reduce ? POINTERS.length : n + 1)), step === 0 ? 500 : 650);
+    if (step >= POINTERS.length) {
+      setFound(true);
+      if (reduce) return; // no looping for reduced motion
+      const t = setTimeout(() => setStep(0), 2600);
+      return () => clearTimeout(t);
+    }
+    const t = setTimeout(() => setStep((n) => (reduce ? POINTERS.length : n + 1)), step === 0 ? 600 : 650);
     return () => clearTimeout(t);
   }, [running, step, POINTERS.length]);
 
@@ -160,6 +166,7 @@ export default function ResearchDemo() {
     if (id === marketId) return;
     setMarketId(id);
     setStep(0); // replay the run for the new market
+    setFound(false);
     setRunning(true);
   };
 
