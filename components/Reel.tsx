@@ -5,7 +5,10 @@ import PlatformScorecard from "./PlatformScorecard";
 
 
 export default function Reel() {
-  const row = [...CREATORS, ...CREATORS];
+  // Each half of the track must be wider than the widest screen, or the loop shows a gap.
+  // 12 cards per half is about 2,760px; the track holds two halves and slides by one.
+  const half = [...CREATORS, ...CREATORS];
+  const row = [...half, ...half];
   return (
     <section id="platforms" className="overflow-hidden py-24 sm:py-32" aria-label="Example creator videos">
       <Reveal className="mx-auto max-w-[1100px] px-5">
@@ -22,9 +25,9 @@ export default function Reel() {
       </Reveal>
 
       <div className="mt-14 pb-10 [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]" aria-hidden>
-        <div className="marquee-track gap-5">
+        <div className="marquee-track [animation-duration:88s]">
           {row.map((c, i) => (
-            <div key={i} className={i % 2 ? "translate-y-8" : ""}>
+            <div key={i} className={`pr-5 ${i % 2 ? "translate-y-8" : ""}`}>
               <CreatorCard c={c} className="w-[180px] sm:w-[210px]" />
             </div>
           ))}
