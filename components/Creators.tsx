@@ -19,26 +19,19 @@ const PINGS = [
 export default function Creators() {
   return (
     <section id="creators" className="px-2 py-10 sm:px-3">
-      <div className="relative overflow-hidden rounded-[28px] bg-[#13201c] text-white sm:rounded-[36px]">
-        {/* soft glow */}
-        <div
-          className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full opacity-40 blur-[120px]"
-          style={{ background: "radial-gradient(closest-side, #5ccf98, transparent)" }}
-          aria-hidden
-        />
-
+      <div className="relative overflow-hidden text-ink">
         <div className="relative mx-auto grid max-w-[1100px] items-center gap-14 px-6 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.05fr_1fr]">
           {/* message */}
           <Reveal>
-            <span className="inline-flex rounded-full bg-white/10 px-3.5 py-1.5 text-[12.5px] font-medium text-accent-bright">
+            <span className="inline-flex rounded-full bg-mint px-3.5 py-1.5 text-[12.5px] font-medium text-accent">
               For creators
             </span>
             <h2 className="display mt-6 text-[44px] sm:text-[60px]">
               Your next post,
               <br />
-              <span className="text-accent-bright">already proven.</span>
+              <span className="text-accent">already proven.</span>
             </h2>
-            <p className="mt-5 max-w-md text-[16px] leading-relaxed text-white/70">
+            <p className="mt-5 max-w-md text-[16px] leading-relaxed text-muted">
               Stop guessing what to post. Make what&rsquo;s already working, and get paid by brands
               for it.
             </p>
@@ -47,14 +40,14 @@ export default function Creators() {
               {PERKS.map((p) => {
                 const Icon = p.icon;
                 return (
-                  <li key={p.title} className="flex items-center gap-4 rounded-2xl bg-white/[0.05] px-4 py-3.5">
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/10 text-accent-bright">
+                  <li key={p.title} className="flex items-center gap-4 rounded-2xl border border-line bg-surface px-4 py-3.5">
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-mint text-accent">
                       <Icon className="h-[18px] w-[18px]" strokeWidth={1.8} />
                     </span>
                     <span className="flex-1 text-[15px] font-medium">{p.title}</span>
                     <span
                       className={`shrink-0 rounded-md px-2 py-0.5 text-[11px] font-medium ${
-                        p.status === "Live" ? "bg-accent-bright text-[#05130d]" : "bg-white/10 text-white/70"
+                        p.status === "Live" ? "bg-mint text-accent" : "bg-soft text-muted"
                       }`}
                     >
                       {p.status}
@@ -66,7 +59,7 @@ export default function Creators() {
 
             <a
               href={CREATOR_HREF}
-              className="group mt-9 inline-flex items-center gap-2.5 rounded-full bg-accent-bright px-7 py-3.5 text-[15.5px] font-semibold text-[#05130d] transition-transform duration-300 hover:-translate-y-0.5"
+              className="group mt-9 inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-3.5 text-[15.5px] font-semibold text-white hover:bg-accent-hover transition-transform duration-300 hover:-translate-y-0.5"
             >
               Join as a creator
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -75,11 +68,11 @@ export default function Creators() {
 
           {/* phone with live creator clip and popping notifications */}
           <Reveal delay={0.1} className="relative mx-auto w-full max-w-[340px]">
-            <div className="relative mx-auto aspect-[9/16] w-[250px] overflow-hidden rounded-[34px] border-[6px] border-[#0b1512] bg-black shadow-[0_40px_80px_-20px_rgb(0_0_0/0.7)] sm:w-[270px]">
+            <div className="relative mx-auto aspect-[9/16] w-[250px] overflow-hidden rounded-[34px] border-[6px] border-ink bg-black shadow-[0_40px_80px_-24px_rgb(25_41_45/0.45)] sm:w-[270px]">
               <CardVideo name="mira" />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(0_0_0/0.35)_0%,transparent_25%,transparent_60%,rgb(0_0_0/0.65)_100%)]" />
-              <p className="absolute left-4 top-5 text-[12px] font-semibold">@mira.moves</p>
-              <p className="absolute inset-x-5 bottom-6 text-center text-[14px] font-bold leading-snug [text-shadow:0_2px_8px_rgb(0_0_0/0.7)]">
+              <p className="absolute left-4 top-5 text-[12px] font-semibold text-white">@mira.moves</p>
+              <p className="absolute inset-x-5 bottom-6 text-center text-[14px] font-bold leading-snug text-white [text-shadow:0_2px_8px_rgb(0_0_0/0.7)]">
                 day 14 and I&rsquo;m genuinely shocked
               </p>
             </div>
@@ -89,7 +82,7 @@ export default function Creators() {
               return (
                 <div
                   key={n.text}
-                  className={`ping absolute z-10 flex items-center gap-2.5 rounded-2xl bg-white px-3.5 py-2.5 text-[12.5px] font-medium text-ink shadow-[0_18px_40px_-12px_rgb(0_0_0/0.6)] ${n.cls}`}
+                  className={`ping absolute z-10 flex items-center gap-2.5 rounded-2xl bg-white px-3.5 py-2.5 text-[12.5px] font-medium text-ink border border-line shadow-[0_18px_40px_-14px_rgb(25_41_45/0.35)] ${n.cls}`}
                   style={{ animationDelay: `${i * 1.6}s` }}
                 >
                   <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-mint text-accent">
@@ -99,7 +92,7 @@ export default function Creators() {
                 </div>
               );
             })}
-            <p className="mt-6 text-center text-[11.5px] text-white/40">Illustrative example</p>
+            <p className="mt-6 text-center text-[11.5px] text-faint">Illustrative example</p>
           </Reveal>
         </div>
       </div>
