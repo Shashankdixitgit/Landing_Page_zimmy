@@ -45,13 +45,6 @@ export default function CTA() {
               className="font-semibold text-cream underline underline-offset-2 hover:text-accent"
             >
               shashank@zimmy.art
-            </a>{" "}
-            ·{" "}
-            <a
-              href="mailto:ranveer@zimmy.art"
-              className="font-semibold text-cream underline underline-offset-2 hover:text-accent"
-            >
-              ranveer@zimmy.art
             </a>
           </p>
         </div>

@@ -47,9 +47,6 @@ export default function Footer() {
             <a href="mailto:shashank@zimmy.art" className="font-medium hover:text-ink">
               shashank@zimmy.art
             </a>
-            <a href="mailto:ranveer@zimmy.art" className="font-medium hover:text-ink">
-              ranveer@zimmy.art
-            </a>
           </div>
         </div>
       </div>
