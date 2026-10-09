@@ -3,7 +3,7 @@ import { ArrowUpRight, Check } from "lucide-react";
 import Reveal from "./Reveal";
 import { SplitHead } from "./ui";
 
-const CREDS = ["College dropout, IIT Madras", "ex-Emergent", "ex-Entrepreneur First"];
+const CREDS = ["IIT Madras, BS degree", "ex-Emergent", "ex-Entrepreneur First"];
 
 export default function Founders() {
   return (
