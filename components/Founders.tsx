@@ -1,79 +1,65 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import Reveal from "./Reveal";
-import { SectionHead } from "./ui";
+import { SplitHead } from "./ui";
 
 const CREDS = ["ex-Bentolabs", "ex-Emergent", "ex-Entrepreneur First"];
 
 export default function Founders() {
   return (
-    <section id="founder" className="py-24 sm:py-36">
-      <div className="mx-auto max-w-6xl px-5">
+    <section id="founder" className="px-5 py-24 sm:py-32">
+      <div className="mx-auto max-w-[1100px]">
         <Reveal>
-          <SectionHead
-            eyebrow="Who's building it"
+          <SplitHead
             title={
               <>
-                Built by an operator,{" "}
-                <span className="serif text-accent-soft">not just a tool-maker.</span>
+                Built by an operator.
+                <br />
+                Not just a tool-maker.
               </>
             }
-            sub="Zimmy comes from years of running growth and product at Emergent, Bentolabs and Entrepreneur First, and automating the campaign funnels behind them."
+            sub="Zimmy comes from years of running growth and product at Emergent, Bentolabs and Entrepreneur First."
           />
         </Reveal>
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-[1.1fr_1fr]">
-          <Reveal>
-            <a
-              href="https://www.linkedin.com/in/shashankdixitt/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card group flex h-full flex-col justify-between p-8 transition-colors hover:border-line-strong"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <span className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-accent to-violet font-display text-[22px] font-bold text-white">
-                    SD
-                  </span>
-                  <div>
-                    <h3 className="font-display text-[26px] font-bold tracking-tight text-snow">Shashank Dixit</h3>
-                    <p className="text-[14.5px] text-muted">Founder &amp; CEO</p>
-                  </div>
-                </div>
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line-strong text-snow transition-transform group-hover:rotate-45">
-                  <ArrowUpRight className="h-4 w-4" />
-                </span>
-              </div>
-              <div className="mt-10 flex flex-wrap gap-2">
-                {CREDS.map((c) => (
-                  <span key={c} className="rounded-full border border-line-strong bg-white/[0.03] px-3.5 py-1.5 text-[13px] font-medium text-snow/85">
-                    {c}
-                  </span>
-                ))}
-              </div>
-            </a>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="card-glow relative flex h-full flex-col justify-between overflow-hidden p-8">
-              <div
-                className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full opacity-50 blur-[90px]"
-                style={{ background: "#ff4d3d" }}
-                aria-hidden
-              />
-              <p className="relative text-[12px] font-semibold uppercase tracking-[0.14em] text-faint">
-                Founder track record
-              </p>
-              <div className="relative mt-10">
-                <p className="font-display text-[72px] font-bold leading-none tracking-[-0.04em] text-snow sm:text-[88px]">
-                  $30M+
-                </p>
-                <p className="mt-3 max-w-sm text-[15.5px] leading-relaxed text-muted">
-                  in yearly campaign funnels automated end-to-end, before Zimmy.
-                </p>
-              </div>
+        <Reveal stagger={0.1} className="mt-12 grid items-stretch gap-5 md:grid-cols-2">
+          <a
+            href="https://www.linkedin.com/in/shashankdixitt/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col rounded-[26px] border border-line bg-surface p-7 transition-colors hover:border-ink/20 sm:p-8"
+          >
+            <div className="flex items-start justify-between">
+              <span className="grid h-14 w-14 place-items-center rounded-2xl bg-sky text-[18px] font-medium text-[#235a80]">
+                SD
+              </span>
+              <ArrowUpRight className="h-5 w-5 text-muted transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </div>
-          </Reveal>
-        </div>
+            <h3 className="display mt-8 text-[30px] text-ink">Shashank Dixit</h3>
+            <p className="mt-1 text-[14.5px] text-muted">Founder &amp; CEO</p>
+            <ul className="mt-6 space-y-3 border-t border-line pt-6">
+              {CREDS.map((c) => (
+                <li key={c} className="flex items-center gap-3 text-[14px] text-ink/85">
+                  <Check className="h-4 w-4 text-accent" strokeWidth={2} /> {c}
+                </li>
+              ))}
+            </ul>
+          </a>
+
+          <div className="flex flex-col justify-between rounded-[26px] border border-[#2c4a3c] bg-night p-7 text-white sm:p-8">
+            <div className="flex items-center justify-between">
+              <p className="text-[14px] text-white/70">Founder track record</p>
+              <span className="rounded-full bg-accent-bright px-3 py-1 text-[12px] font-medium text-[#05130d]">
+                Before Zimmy
+              </span>
+            </div>
+            <div className="mt-12">
+              <p className="text-[64px] font-semibold leading-none tracking-[-0.04em] sm:text-[80px]">$30M+</p>
+              <p className="mt-4 max-w-xs border-t border-white/10 pt-4 text-[14.5px] text-white/70">
+                in yearly campaign funnels automated end-to-end.
+              </p>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

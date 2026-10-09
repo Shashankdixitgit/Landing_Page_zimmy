@@ -1,66 +1,64 @@
 import { ShoppingBag, Cpu, Store } from "lucide-react";
 import Reveal from "./Reveal";
-import { SectionHead } from "./ui";
+import { SplitHead } from "./ui";
 
 const SOLUTIONS = [
   {
     icon: ShoppingBag,
-    title: "DTC brands",
-    head: "Turn creators into a steady supply of ads that sell.",
-    body: "For brands scaling on Meta and TikTok. Zimmy builds a renewable pipeline of creator content you can run organically or as paid ads, with every sale traced back.",
-    glow: "#ff4d3d",
+    title: "For DTC brands",
+    head: "A steady supply of creator ads that sell.",
+    body: "For brands scaling on Meta and TikTok. Creator content you can run organically or as paid ads, with every sale traced back.",
+    bg: "bg-mint",
+    fg: "text-accent",
   },
   {
     icon: Cpu,
-    title: "Consumer tech & apps",
-    head: "Explain, demo and convert through creators people trust.",
-    body: "Tech-fluent creators on TikTok, Instagram and YouTube, briefed for accuracy, with content tuned for installs and sign-ups.",
-    glow: "#9b8cff",
+    title: "For consumer tech & apps",
+    head: "Demos from creators people trust.",
+    body: "Tech-fluent creators on TikTok, Instagram and YouTube, briefed for accuracy and tuned for installs and sign-ups.",
+    bg: "bg-sky",
+    fg: "text-[#235a80]",
   },
   {
     icon: Store,
-    title: "Retail & FMCG",
+    title: "For retail & FMCG",
     head: "Reach at scale, built for shelf and search.",
     body: "Large seeding runs, affiliate programs and creator content that drives discovery, trial and repeat purchase.",
-    glow: "#c8f560",
+    bg: "bg-[#f6efe2]",
+    fg: "text-[#7a5a1e]",
   },
 ];
 
 export default function Solutions() {
   return (
-    <section id="solutions" className="py-24 sm:py-36">
-      <div className="mx-auto max-w-6xl px-5">
+    <section id="solutions" className="px-5 py-24 sm:py-32">
+      <div className="mx-auto max-w-[1100px]">
         <Reveal>
-          <SectionHead
-            eyebrow="Who it's for"
+          <SplitHead
             title={
               <>
-                Built for brands that{" "}
-                <span className="serif text-accent-soft">sell to people.</span>
+                Built for brands
+                <br />
+                that sell to people.
               </>
             }
-            sub="Every category has its own creator playbook. Zimmy tunes discovery, scripts and attribution to the way your industry wins."
+            sub="Every category has its own creator playbook. Zimmy tunes discovery, scripts and attribution to how your industry wins."
           />
         </Reveal>
 
-        <Reveal stagger={0.12} className="mt-14 grid gap-5 md:grid-cols-3">
+        <Reveal stagger={0.1} className="mt-12 grid gap-4 md:grid-cols-3">
           {SOLUTIONS.map((s) => {
             const Icon = s.icon;
             return (
-              <article key={s.title} className="card relative flex flex-col overflow-hidden p-7">
-                <div
-                  className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full opacity-30 blur-3xl"
-                  style={{ background: s.glow }}
-                  aria-hidden
-                />
-                <span className="relative grid h-11 w-11 place-items-center rounded-xl border border-line-strong text-snow">
-                  <Icon className="h-5 w-5" strokeWidth={2} />
-                </span>
-                <p className="relative mt-6 text-[12px] font-semibold uppercase tracking-[0.14em] text-faint">{s.title}</p>
-                <h3 className="relative mt-2 font-display text-[22px] font-bold leading-snug tracking-tight text-snow">
-                  {s.head}
-                </h3>
-                <p className="relative mt-3 text-[15px] leading-relaxed text-muted">{s.body}</p>
+              <article key={s.title} className="flex flex-col rounded-[22px] border border-line bg-surface p-2">
+                <div className={`rounded-[16px] ${s.bg} px-5 py-10`}>
+                  <Icon className={`h-7 w-7 ${s.fg}`} strokeWidth={1.6} />
+                  <p className={`mt-6 text-[13px] font-medium ${s.fg}`}>{s.title}</p>
+                </div>
+                <div className="p-5">
+                  <h3 className="text-[19px] font-medium leading-snug tracking-[-0.015em] text-ink">{s.head}</h3>
+                  <p className="mt-2 text-[14px] leading-relaxed text-muted">{s.body}</p>
+                </div>
               </article>
             );
           })}

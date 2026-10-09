@@ -10,48 +10,38 @@ const PARAS = [
 
 export default function FounderNote() {
   return (
-    <section className="px-5 pb-24 sm:pb-36">
-      <div className="mx-auto max-w-4xl">
-        <Reveal className="text-center">
-          <h2 className="font-display text-[38px] font-bold tracking-[-0.04em] text-snow sm:text-[56px]">
-            How Zimmy <span className="serif text-accent-soft">started.</span>
-          </h2>
+    <section className="px-5 pb-24 sm:pb-32">
+      <div className="mx-auto max-w-3xl">
+        <Reveal>
+          <h2 className="display text-[38px] text-ink sm:text-[52px]">How Zimmy started.</h2>
         </Reveal>
 
-        <Reveal delay={0.1} className="mt-12">
-          <div className="card-glow relative overflow-hidden p-8 sm:p-12">
-            <div
-              className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full opacity-40 blur-[90px]"
-              style={{ background: "#9b8cff" }}
-              aria-hidden
-            />
-            <div className="relative flex items-start justify-between gap-4">
+        <Reveal delay={0.1} className="mt-10">
+          <div className="rounded-[26px] border border-line bg-surface p-8 lift sm:p-12">
+            <div className="flex items-start justify-between gap-4">
               <div>
-                <h3 className="font-display text-[22px] font-bold tracking-tight text-snow">Our journey</h3>
-                <p className="mt-1 text-[14.5px] text-muted">A note from the founder</p>
+                <h3 className="text-[19px] font-medium text-ink">Our journey</h3>
+                <p className="mt-1 text-[14px] text-muted">A note from the founder</p>
               </div>
-              <span
-                className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-accent to-violet font-display text-[18px] font-bold text-white"
-                aria-hidden
-              >
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-sky text-[16px] font-medium text-[#235a80]" aria-hidden>
                 SD
               </span>
             </div>
 
-            <div className="relative mt-8 max-w-2xl space-y-5">
+            <div className="mt-8 space-y-5">
               {PARAS.map((p, i) => (
-                <p key={i} className="text-[16px] leading-relaxed text-snow/80 sm:text-[17px]">
+                <p key={i} className="text-[15.5px] leading-[1.75] text-ink/80">
                   {p}
                 </p>
               ))}
             </div>
 
-            <div className="relative mt-9">
+            <div className="mt-9 border-t border-line pt-6">
               <a
                 href="https://www.linkedin.com/in/shashankdixitt/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-display text-[18px] font-bold text-snow underline-offset-4 hover:underline"
+                className="text-[16px] font-medium text-accent underline-offset-4 hover:underline"
               >
                 Shashank Dixit
               </a>

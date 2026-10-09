@@ -1,41 +1,20 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export const DEMO_HREF = "mailto:shashank@zimmy.art?subject=Zimmy%20demo";
 
-export function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-line-strong bg-white/[0.03] px-3.5 py-1.5 text-[12px] font-medium uppercase tracking-[0.16em] text-muted">
-      <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-      {children}
-    </span>
-  );
-}
-
-export function SectionHead({
-  eyebrow,
+/** Two-line headline on the left, supporting copy on the right. */
+export function SplitHead({
   title,
   sub,
-  center = false,
 }: {
-  eyebrow: string;
   title: React.ReactNode;
   sub?: React.ReactNode;
-  center?: boolean;
 }) {
   return (
-    <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
-      <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className="mt-6 font-display text-[36px] font-bold leading-[1.02] tracking-[-0.035em] text-snow sm:text-[52px]">
-        {title}
-      </h2>
+    <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
+      <h2 className="display max-w-2xl text-[38px] text-ink sm:text-[52px]">{title}</h2>
       {sub ? (
-        <p
-          className={`mt-5 text-[16.5px] leading-relaxed text-muted sm:text-[18px] ${
-            center ? "mx-auto max-w-2xl" : "max-w-2xl"
-          }`}
-        >
-          {sub}
-        </p>
+        <p className="max-w-[23rem] text-[15.5px] leading-relaxed text-muted lg:pb-2">{sub}</p>
       ) : null}
     </div>
   );
@@ -45,37 +24,60 @@ export function PrimaryButton({
   href = DEMO_HREF,
   children = "Book a demo",
   className = "",
+  wide = false,
 }: {
   href?: string;
   children?: React.ReactNode;
   className?: string;
+  wide?: boolean;
 }) {
   return (
     <a
       href={href}
-      className={`group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-[15px] font-semibold text-white shadow-[0_10px_40px_-10px_rgb(255_77_61/0.8)] transition-all hover:-translate-y-0.5 hover:bg-[#ff5f50] ${className}`}
+      className={`group inline-flex items-center justify-center gap-2.5 rounded-full bg-accent px-6 py-3 text-[15px] font-medium text-white transition-colors duration-300 hover:bg-accent-hover ${
+        wide ? "w-full py-3.5" : ""
+      } ${className}`}
     >
       {children}
-      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
     </a>
   );
 }
 
-export function GhostButton({
+export function OutlineButton({
   href,
   children,
   className = "",
+  wide = false,
 }: {
   href: string;
   children: React.ReactNode;
   className?: string;
+  wide?: boolean;
 }) {
   return (
     <a
       href={href}
-      className={`inline-flex items-center gap-2 rounded-full border border-line-strong bg-white/[0.03] px-6 py-3.5 text-[15px] font-semibold text-snow transition-all hover:-translate-y-0.5 hover:bg-white/[0.07] ${className}`}
+      className={`group inline-flex items-center justify-center gap-2.5 rounded-full border border-line bg-surface px-6 py-3 text-[15px] font-medium text-ink transition-colors duration-300 hover:border-ink/25 ${
+        wide ? "w-full py-3.5" : ""
+      } ${className}`}
     >
       {children}
+      <ArrowUpRight className="h-4 w-4" />
     </a>
   );
+}
+
+export function TextLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a href={href} className="group inline-flex items-center gap-2 text-[14.5px] font-medium text-accent">
+      {children}
+      <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+    </a>
+  );
+}
+
+export function Chip({ children, tone = "soft" }: { children: React.ReactNode; tone?: "soft" | "mint" | "sky" }) {
+  const bg = tone === "mint" ? "bg-mint text-accent" : tone === "sky" ? "bg-sky text-[#235a80]" : "bg-soft text-muted";
+  return <span className={`inline-flex rounded-md px-2 py-0.5 text-[11.5px] font-medium ${bg}`}>{children}</span>;
 }

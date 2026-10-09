@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Ticker from "@/components/Ticker";
+import BriefDemo from "@/components/BriefDemo";
 import Services from "@/components/Services";
 import Flow from "@/components/Flow";
 import Reel from "@/components/Reel";
@@ -18,7 +18,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Ticker />
+        <BriefDemo />
         <Services />
         <Flow />
         <Reel />

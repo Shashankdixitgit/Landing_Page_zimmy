@@ -1,6 +1,6 @@
 import { Check, Minus, X } from "lucide-react";
 import Reveal from "./Reveal";
-import { SectionHead } from "./ui";
+import { SplitHead } from "./ui";
 
 type Cell = "yes" | "part" | "no";
 
@@ -19,76 +19,57 @@ const ROWS: { label: string; cells: [Cell, Cell, Cell] }[] = [
 ];
 
 function Mark({ v }: { v: Cell }) {
-  if (v === "yes")
-    return (
-      <span className="grid h-7 w-7 place-items-center rounded-full bg-lime text-night">
-        <Check className="h-4 w-4" strokeWidth={3} />
-      </span>
-    );
-  if (v === "part")
-    return (
-      <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 text-snow/70">
-        <Minus className="h-4 w-4" strokeWidth={3} />
-      </span>
-    );
-  return (
-    <span className="grid h-7 w-7 place-items-center rounded-full border border-line text-faint">
-      <X className="h-3.5 w-3.5" strokeWidth={3} />
-    </span>
-  );
+  if (v === "yes") return <Check className="h-4.5 w-4.5 text-accent" strokeWidth={2.2} aria-label="Yes" />;
+  if (v === "part") return <Minus className="h-4.5 w-4.5 text-faint" strokeWidth={2.2} aria-label="Partly" />;
+  return <X className="h-4 w-4 text-[#c3c9ca]" strokeWidth={2.2} aria-label="No" />;
 }
 
 export default function Comparison() {
   return (
-    <section id="compare" className="py-24 sm:py-36">
-      <div className="mx-auto max-w-6xl px-5">
+    <section id="compare" className="px-5 py-24 sm:py-32">
+      <div className="mx-auto max-w-[1100px]">
         <Reveal>
-          <SectionHead
-            eyebrow="Why Zimmy"
+          <SplitHead
             title={
               <>
-                Agency results.{" "}
-                <span className="serif text-accent-soft">Software speed.</span>
+                Agency results.
+                <br />
+                Software speed.
               </>
             }
-            sub="DIY tools hand the work back to you. Agencies do the work, but they're slow, opaque and expensive. Zimmy does the work, shows you everything, and costs a fraction of a retainer."
+            sub="DIY tools hand the work back to you. Agencies do the work, but they're slow, opaque and expensive. Zimmy does the work and shows you everything."
           />
         </Reveal>
 
-        <Reveal delay={0.1} className="mt-14">
+        <Reveal delay={0.1} className="mt-12">
           <div className="overflow-x-auto">
-            <div className="card min-w-[640px] overflow-hidden">
-              <div className="grid grid-cols-[1.8fr_1fr_1fr_1fr] border-b border-line">
-                <div className="px-6 py-5 text-[12px] font-semibold uppercase tracking-[0.14em] text-faint">
-                  Capability
-                </div>
+            <div className="min-w-[620px] overflow-hidden rounded-[22px] border border-line bg-surface">
+              <div className="grid grid-cols-[1.9fr_1fr_1fr_1fr] border-b border-line text-[13.5px] font-medium">
+                <div className="px-6 py-4 text-muted">Capability</div>
                 {COLS.map((c) => (
                   <div
                     key={c}
-                    className={`px-4 py-5 text-center font-display text-[16px] font-bold ${
-                      c === "Zimmy" ? "bg-accent text-white" : "text-snow/80"
-                    }`}
+                    className={`px-4 py-4 text-center ${c === "Zimmy" ? "bg-mint text-accent" : "text-ink"}`}
                   >
                     {c}
                   </div>
                 ))}
               </div>
-
               {ROWS.map((r, i) => (
                 <div
                   key={r.label}
-                  className={`grid grid-cols-[1.8fr_1fr_1fr_1fr] items-center ${
+                  className={`grid grid-cols-[1.9fr_1fr_1fr_1fr] items-center ${
                     i < ROWS.length - 1 ? "border-b border-line" : ""
                   }`}
                 >
-                  <div className="px-6 py-4 text-[14.5px] font-medium text-snow/85">{r.label}</div>
-                  <div className="flex justify-center px-4 py-4">
+                  <div className="px-6 py-3.5 text-[14px] text-ink/85">{r.label}</div>
+                  <div className="flex justify-center px-4 py-3.5">
                     <Mark v={r.cells[0]} />
                   </div>
-                  <div className="flex justify-center self-stretch bg-accent/[0.07] px-4 py-4">
+                  <div className="flex justify-center self-stretch bg-mint/50 px-4 py-3.5">
                     <Mark v={r.cells[1]} />
                   </div>
-                  <div className="flex justify-center px-4 py-4">
+                  <div className="flex justify-center px-4 py-3.5">
                     <Mark v={r.cells[2]} />
                   </div>
                 </div>

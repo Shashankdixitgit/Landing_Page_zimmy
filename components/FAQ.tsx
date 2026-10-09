@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import Reveal from "./Reveal";
-import { SectionHead } from "./ui";
+import { TextLink } from "./ui";
 
 const FAQS = [
   {
@@ -12,43 +12,39 @@ const FAQS = [
   },
   {
     q: "Do I stay in control?",
-    a: "Always. You can approve, edit, remove or add any creator, and nothing is sent in your brand's name without your sign-off. Zimmy does the work; you make the calls.",
+    a: "Always. You can approve, edit, remove or add any creator, and nothing is sent in your brand's name without your sign-off.",
   },
   {
     q: "Does Zimmy really handle outreach and negotiation?",
-    a: "Yes, over email and DM. Zimmy pitches each creator, negotiates rate and usage rights within the limits you set, and locks go-live dates, whether you're running a one-week push or an always-on program.",
+    a: "Yes, over email and DM. Zimmy pitches each creator, negotiates rate and usage rights within the limits you set, and locks go-live dates.",
   },
   {
     q: "How does attribution work?",
-    a: "Every creator gets a unique tracking link. Connect your BigQuery and Zimmy ties each click and sale back to the creator behind it, so you see real revenue rather than views and likes.",
+    a: "Every creator gets a unique tracking link. Connect your BigQuery and Zimmy ties each click and sale back to the creator behind it.",
   },
   {
     q: "How is this different from hiring an agency?",
-    a: "You get agency-level execution at software pricing. There's no retainer and no black box: you can see every creator, message and number, and you're in control the whole way.",
+    a: "Agency-level execution at software pricing. No retainer and no black box: you see every creator, message and number.",
   },
   {
     q: "How fast can I launch?",
-    a: "Book a demo and we'll onboard you personally. Once your brief is in, your shortlist arrives within 24 hours and campaigns can go live in days, not weeks.",
+    a: "We onboard you personally. Your shortlist arrives within 24 hours of the brief, and campaigns can go live in days, not weeks.",
   },
 ];
 
 function Item({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className={`card overflow-hidden transition-colors ${open ? "border-line-strong" : ""}`}>
+    <div className="border-b border-line">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+        className="flex w-full items-center justify-between gap-4 py-5 text-left"
         aria-expanded={open}
       >
-        <span className="font-display text-[17px] font-semibold text-snow sm:text-[19px]">{q}</span>
-        <span
-          className={`grid h-9 w-9 shrink-0 place-items-center rounded-full transition-all duration-300 ${
-            open ? "rotate-45 bg-accent text-white" : "bg-white/[0.06] text-snow"
-          }`}
-        >
-          <Plus className="h-4 w-4" strokeWidth={2.5} />
-        </span>
+        <span className="text-[15.5px] font-medium text-ink">{q}</span>
+        <Plus
+          className={`h-4 w-4 shrink-0 text-muted transition-transform duration-300 ${open ? "rotate-45" : ""}`}
+        />
       </button>
       <div
         className={`grid transition-all duration-300 ease-out ${
@@ -56,7 +52,7 @@ function Item({ q, a }: { q: string; a: string }) {
         }`}
       >
         <div className="overflow-hidden">
-          <p className="px-6 pb-6 pr-14 text-[15.5px] leading-relaxed text-muted">{a}</p>
+          <p className="pb-5 pr-8 text-[14.5px] leading-relaxed text-muted">{a}</p>
         </div>
       </div>
     </div>
@@ -65,21 +61,20 @@ function Item({ q, a }: { q: string; a: string }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-24 sm:py-36">
-      <div className="mx-auto max-w-3xl px-5">
+    <section id="faq" className="px-5 py-24 sm:py-32">
+      <div className="mx-auto grid max-w-[1100px] gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
         <Reveal>
-          <SectionHead
-            center
-            eyebrow="FAQ"
-            title={
-              <>
-                Questions, <span className="serif text-accent-soft">answered.</span>
-              </>
-            }
-          />
+          <h2 className="display text-[38px] text-ink sm:text-[52px]">
+            Questions,
+            <br />
+            answered.
+          </h2>
+          <p className="mt-5 text-[15px] text-muted">Anything else? Ask the founder directly.</p>
+          <div className="mt-6">
+            <TextLink href="mailto:shashank@zimmy.art">shashank@zimmy.art</TextLink>
+          </div>
         </Reveal>
-
-        <Reveal stagger={0.08} className="mt-12 flex flex-col gap-3">
+        <Reveal stagger={0.06}>
           {FAQS.map((f) => (
             <Item key={f.q} q={f.q} a={f.a} />
           ))}

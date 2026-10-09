@@ -1,12 +1,20 @@
 import { Sparkle } from "lucide-react";
 
-export default function Logo({ className = "" }: { className?: string }) {
+export default function Logo({
+  className = "",
+  light = false,
+}: {
+  className?: string;
+  light?: boolean;
+}) {
   return (
     <span className={`inline-flex items-center gap-2 ${className}`}>
-      <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-accent text-white shadow-[0_0_24px_-4px_rgb(255_77_61/0.7)]">
-        <Sparkle className="h-4 w-4" strokeWidth={2.5} fill="currentColor" />
+      <span className="grid h-7 w-7 place-items-center rounded-[8px] bg-zimmy text-white">
+        <Sparkle className="h-3.5 w-3.5" strokeWidth={2.5} fill="currentColor" />
       </span>
-      <span className="font-display text-[21px] font-bold tracking-tight text-snow">
+      <span
+        className={`text-[21px] font-semibold tracking-[-0.03em] ${light ? "text-white" : "text-ink"}`}
+      >
         zimmy
       </span>
     </span>

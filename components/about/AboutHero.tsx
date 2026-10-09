@@ -1,7 +1,6 @@
 import { Sparkle, Search, PenLine, LineChart } from "lucide-react";
 import Reveal from "../Reveal";
 import CreatorCard, { CREATORS } from "../CreatorCard";
-import { Eyebrow } from "../ui";
 
 const STEPS = [
   { i: Search, t: "Discovering creators" },
@@ -11,55 +10,47 @@ const STEPS = [
 
 export default function AboutHero() {
   return (
-    <section className="relative overflow-hidden px-5 pt-36 sm:pt-44">
-      <div className="grid-bg pointer-events-none absolute inset-0" aria-hidden />
-      <div className="relative mx-auto max-w-5xl text-center">
+    <section className="px-2 pt-2 sm:px-3 sm:pt-3">
+      <div className="sky-frame relative overflow-hidden rounded-[28px] px-5 pb-16 pt-36 text-center sm:rounded-[36px] sm:pt-44">
         <Reveal>
-          <Eyebrow>About Zimmy</Eyebrow>
-          <h1 className="mx-auto mt-8 max-w-4xl font-display text-[44px] font-bold leading-[1.0] tracking-[-0.045em] text-snow sm:text-[64px] md:text-[76px]">
-            Influencer marketing,{" "}
-            <span className="serif glow-text">run end-to-end by AI.</span>
+          <p className="text-[13px] font-medium text-white/85">About Zimmy</p>
+          <h1 className="display mx-auto mt-5 max-w-3xl text-[44px] text-white [text-shadow:0_2px_30px_rgb(20_60_100/0.25)] sm:text-[64px] md:text-[72px]">
+            Influencer marketing,
+            <br />
+            run end-to-end by AI.
           </h1>
         </Reveal>
-      </div>
 
-      <Reveal delay={0.1} className="relative mx-auto mt-14 max-w-6xl">
-        <div className="card-glow relative h-[380px] overflow-hidden sm:h-[460px]">
-          <div
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[480px] w-[780px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-60 blur-[120px]"
-            style={{ background: "radial-gradient(closest-side, #ff4d3d, rgb(155 140 255 / 0.45), transparent)" }}
-            aria-hidden
-          />
-
-          <div className="absolute left-[8%] top-1/2 hidden -translate-y-1/2 -rotate-6 sm:block" aria-hidden>
-            <CreatorCard c={CREATORS[3]} className="w-[170px]" compact />
+        <Reveal delay={0.1} className="relative mx-auto mt-14 flex max-w-4xl items-center justify-center gap-6">
+          <div className="hidden -rotate-6 sm:block" aria-hidden>
+            <CreatorCard c={CREATORS[3]} className="w-[160px]" compact />
           </div>
-          <div className="absolute right-[8%] top-1/2 hidden -translate-y-1/2 rotate-6 sm:block" aria-hidden>
-            <CreatorCard c={CREATORS[4]} className="w-[170px]" compact />
-          </div>
-
-          <div className="absolute left-1/2 top-1/2 w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-line-strong bg-coal/90 p-5 text-left shadow-2xl backdrop-blur-xl sm:w-[320px]">
-            <p className="flex items-center gap-2 text-[11.5px] font-semibold uppercase tracking-[0.14em] text-muted">
-              <span className="grid h-5 w-5 place-items-center rounded-md bg-accent text-white">
+          <div className="w-[290px] rounded-[20px] bg-surface p-5 text-left lift sm:w-[320px]">
+            <p className="flex items-center gap-2 text-[13px] font-medium text-ink">
+              <span className="grid h-6 w-6 place-items-center rounded-md bg-zimmy text-white">
                 <Sparkle className="h-3 w-3" fill="currentColor" />
               </span>
               Campaign engine
-              <span className="live-dot ml-auto h-2 w-2 rounded-full bg-lime" />
+              <span className="live-dot ml-auto h-2 w-2 rounded-full bg-accent" />
             </p>
             <div className="mt-4 space-y-2">
               {STEPS.map((r) => {
                 const Icon = r.i;
                 return (
-                  <div key={r.t} className="flex items-center gap-3 rounded-xl border border-line bg-slate px-3 py-2.5">
-                    <Icon className="h-4 w-4 text-accent-soft" strokeWidth={2.2} />
-                    <span className="text-[13.5px] font-medium text-snow">{r.t}</span>
+                  <div key={r.t} className="flex items-center gap-3 rounded-xl bg-soft px-3 py-2.5">
+                    <Icon className="h-4 w-4 text-accent" strokeWidth={1.9} />
+                    <span className="text-[13.5px] text-ink">{r.t}</span>
                   </div>
                 );
               })}
             </div>
           </div>
-        </div>
-      </Reveal>
+          <div className="hidden rotate-6 sm:block" aria-hidden>
+            <CreatorCard c={CREATORS[4]} className="w-[160px]" compact />
+          </div>
+        </Reveal>
+        <div className="clouds pointer-events-none absolute inset-x-0 bottom-0 h-32" aria-hidden />
+      </div>
     </section>
   );
 }

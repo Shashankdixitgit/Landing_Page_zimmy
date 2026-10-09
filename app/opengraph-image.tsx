@@ -1,13 +1,14 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Zimmy: creator campaigns that run themselves.";
+export const alt = "Zimmy: creators found, deals done, every sale tracked.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const NIGHT = "#09090b";
-const SNOW = "#f5f3ee";
-const MUTED = "#a09ea6";
-const ACCENT = "#ff4d3d";
+const NIGHT = "#19292d";
+const SNOW = "#ffffff";
+const MUTED = "rgba(255,255,255,0.85)";
+const ACCENT = "#f2493a";
+const SKY = "linear-gradient(180deg, #2e78b8 0%, #4f97cf 40%, #8cc0e4 75%, #cfe6ef 100%)";
 
 // Illustrative creator cards, same look as the hero.
 const CARDS = [
@@ -24,7 +25,7 @@ export default function OpengraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          background: NIGHT,
+          background: SKY,
           color: SNOW,
           padding: 64,
           position: "relative",
@@ -78,9 +79,9 @@ export default function OpengraphImage() {
               letterSpacing: -2.6,
             }}
           >
-            <span style={{ width: "100%" }}>Creator campaigns</span>
-            <span style={{ marginRight: 16 }}>that</span>
-            <span style={{ color: ACCENT }}>run themselves.</span>
+            <span style={{ width: "100%" }}>Creators found.</span>
+            <span style={{ width: "100%" }}>Deals done.</span>
+            <span>Every sale tracked.</span>
           </div>
         </div>
 
@@ -109,7 +110,7 @@ export default function OpengraphImage() {
               <div
                 style={{
                   display: "flex",
-                  background: c.status.startsWith("Live") ? "#c8f560" : "rgba(255,255,255,0.92)",
+                  background: c.status.startsWith("Live") ? "#d6f5c9" : "rgba(255,255,255,0.92)",
                   color: NIGHT,
                   fontSize: 15,
                   fontWeight: 700,
