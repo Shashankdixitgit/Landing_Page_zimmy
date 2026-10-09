@@ -7,15 +7,17 @@ import { CREATOR_HREF, DEMO_HREF } from "./ui";
 export default function CTA() {
   return (
     <section id="cta" className="px-2 pb-2 pt-8 sm:px-3 sm:pb-3">
-      <Reveal className="grid gap-2 sm:gap-3 lg:grid-cols-[1.6fr_1fr]">
-        {/* left: the ask, over the same wheat scene as the hero */}
-        <div className="relative overflow-hidden rounded-[28px] bg-[#3f86c9] px-6 pb-24 pt-20 text-center sm:rounded-[36px] sm:pt-28">
-          <Image src="/hero-wheat-poster.jpg" alt="" fill sizes="(min-width: 1024px) 60vw, 100vw" className="object-cover object-[center_30%]" />
-          <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_65%_55%_at_50%_40%,rgb(12_38_66/0.45),transparent_75%)]"
-            aria-hidden
-          />
-          <div className="relative">
+      {/* one wheat image behind the whole block; left side sits on it, right side is a white card */}
+      <Reveal className="relative grid items-center gap-6 overflow-hidden rounded-[28px] bg-[#3f86c9] p-3 sm:rounded-[36px] sm:p-5 lg:grid-cols-[1.5fr_1fr] lg:gap-4">
+        <Image src="/hero-wheat-poster.jpg" alt="" fill sizes="100vw" className="object-cover object-[center_30%]" />
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_45%_60%_at_30%_45%,rgb(12_38_66/0.45),transparent_75%)]"
+          aria-hidden
+        />
+
+        {/* left: transparent, over the image */}
+        <div className="relative px-4 pb-10 pt-16 text-center sm:pb-16 sm:pt-20">
+          <div>
             <h2 className="display mx-auto max-w-xl text-[42px] text-white [text-shadow:0_2px_30px_rgb(10_40_70/0.35)] sm:text-[60px]">
               Find your recipe.
               <br />
@@ -36,8 +38,8 @@ export default function CTA() {
           </div>
         </div>
 
-        {/* right: the creator door, plus the founder's email */}
-        <div className="flex flex-col rounded-[28px] border border-line bg-surface p-7 sm:rounded-[36px] sm:p-9">
+        {/* right: white card on top of the image */}
+        <div className="relative flex flex-col rounded-[22px] bg-surface p-7 shadow-[0_20px_50px_-20px_rgb(12_38_66/0.45)] sm:rounded-[28px] sm:p-9 lg:self-stretch">
           <p className="text-[13px] font-medium text-accent">Making videos?</p>
           <h3 className="display mt-3 text-[28px] text-ink">
             Join as
