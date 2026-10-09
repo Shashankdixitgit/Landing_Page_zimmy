@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Creators from "@/components/Creators";
 import CreatorSteps from "@/components/CreatorSteps";
+import CreatorInsights from "@/components/CreatorInsights";
 import CreatorFAQ from "@/components/CreatorFAQ";
 import CreatorJoin from "@/components/CreatorJoin";
 import Footer from "@/components/Footer";
@@ -17,6 +18,7 @@ export default function CreatorsPage() {
       <Navbar overHero={false} />
       <main>
         <Creators asHero />
+        <CreatorInsights />
         <CreatorSteps />
         <CreatorFAQ />
         <CreatorJoin />
