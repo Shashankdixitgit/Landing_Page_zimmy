@@ -5,6 +5,7 @@ import { Check, RotateCcw, Target, Search, ScanSearch, Send, BarChart3, ShieldCh
 import Reveal from "./Reveal";
 import { PrimaryButton, SplitHead, DEMO_HREF } from "./ui";
 import PlatformScorecard from "./PlatformScorecard";
+import CardVideo from "./CardVideo";
 
 const STAGES = [
   {
@@ -102,12 +103,15 @@ function StageView({ i }: { i: number }) {
   if (i === 3)
     return (
       <div className="grid grid-cols-3 gap-2 text-center text-[12px]">
-        {["TikTok", "Reels", "Shorts"].map((p, k) => (
-          <div key={p} className="rounded-xl bg-surface px-2 py-4">
-            <div
-              className="mx-auto aspect-[9/16] w-12 rounded-md"
-              style={{ background: ["linear-gradient(160deg,#4cc9f0,#3a0ca3)", "linear-gradient(160deg,#ffb703,#fb5607)", "linear-gradient(160deg,#ff99c8,#a05195)"][k] }}
-            />
+        {[
+          ["TikTok", "jay"],
+          ["Reels", "mira"],
+          ["Shorts", "sana"],
+        ].map(([p, clip]) => (
+          <div key={p} className="rounded-xl bg-surface px-2 py-3">
+            <div className="relative mx-auto aspect-[9/16] w-full max-w-[96px] overflow-hidden rounded-lg bg-soft">
+              <CardVideo name={clip} />
+            </div>
             <p className="mt-2 font-medium text-ink">{p}</p>
             <p className="text-muted">Scheduled</p>
           </div>
