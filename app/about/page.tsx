@@ -9,10 +9,10 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "About Zimmy",
   description:
-    "Zimmy is built by an operator from Emergent, Bentolabs and Entrepreneur First who automated yearly campaign funnels worth $30M+.",
+    "Zimmy is built by an IIT Madras graduate and operator from Emergent and Entrepreneur First who automated yearly campaign funnels worth $30M+.",
   openGraph: {
     title: "About Zimmy",
-    description: "Viral content, researched first. Built by an operator from Emergent, Bentolabs and Entrepreneur First.",
+    description: "Viral content, researched first. Built by an operator from Emergent and Entrepreneur First.",
     type: "website",
   },
 };
