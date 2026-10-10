@@ -171,16 +171,19 @@ export default function CreatorJoinForm() {
         </p>
         {hitrateUrl ? (
           <div className="mt-8 rounded-[20px] bg-mint p-5 text-left">
-            <p className="text-[13px] font-medium text-accent">Your first perk is ready</p>
+            <p className="text-[13px] font-medium text-accent">Your first perk: a free Hitrate report</p>
             <p className="mt-1.5 text-[15px] leading-relaxed text-ink">
-              Get a free HitRate report: which of your posts hit, why, and your next post written in your voice. Plus a
-              chat to brainstorm ideas.
+              Hitrate is Zimmy&rsquo;s tool for creators. It reads your last 45 days of posts, shows which ones hit and why,
+              and drafts your next post in your voice. You also get the Brainstorm studio to work on ideas.
+            </p>
+            <p className="mt-2 text-[13px] text-muted">
+              Opens on a new site and takes about 2 minutes. Open it now: this link works once, for 30 minutes.
             </p>
             <a
               href={hitrateUrl}
               className="mt-4 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-[15px] font-semibold text-white hover:bg-accent-hover"
             >
-              Open my HitRate report <ArrowRight className="h-4 w-4" />
+              Open my Hitrate report <ArrowRight className="h-4 w-4" />
             </a>
           </div>
         ) : null}
@@ -237,10 +240,10 @@ export default function CreatorJoinForm() {
         return (
           <div className="space-y-2.5">
             {platforms.map((p) => (
-              <label key={p.id} className="flex items-center gap-3 rounded-2xl border border-line bg-surface px-4 py-2 focus-within:border-accent">
-                <span className="w-24 shrink-0 text-[14px] font-medium text-ink">{p.label}</span>
+              <label key={p.id} className="flex min-w-0 items-center gap-3 rounded-2xl border border-line bg-surface px-4 py-2 focus-within:border-accent">
+                <span className="w-20 shrink-0 text-[14px] font-medium text-ink sm:w-24">{p.label}</span>
                 <input inputMode="numeric" value={followers[p.id] ?? ""} placeholder={f.placeholder} onChange={(e) => { setError(""); setFollowers((x) => ({ ...x, [p.id]: e.target.value.replace(/[^0-9]/g, "") })); }} className="min-w-0 flex-1 bg-transparent py-1.5 text-[15px] text-ink outline-none placeholder:text-faint" />
-                <span className="text-[12.5px] text-muted">followers</span>
+                <span className="hidden text-[12.5px] text-muted sm:inline">followers</span>
               </label>
             ))}
             {maxFollowers > 0 ? (

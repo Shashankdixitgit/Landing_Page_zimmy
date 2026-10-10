@@ -2,7 +2,7 @@
 // finishes the sign-up form. HitRate verifies it with the same ZIMMY_HANDOFF_SECRET,
 // signs the creator in, and starts a scan of their main profile.
 
-import { createHmac } from "node:crypto";
+import { createHmac, randomUUID } from "node:crypto";
 import { NextResponse } from "next/server";
 
 const PLATFORMS = ["instagram", "tiktok", "youtube", "x"] as const;
@@ -11,6 +11,8 @@ type P = (typeof PLATFORMS)[number];
 const hits = new Map<string, { n: number; t: number }>();
 function throttled(ip: string): boolean {
   const now = Date.now();
+  // drop stale entries so the map can't grow without bound on a warm instance
+  if (hits.size > 5000) for (const [k, v] of hits) if (now - v.t > 60 * 60 * 1000) hits.delete(k);
   const h = hits.get(ip);
   if (!h || now - h.t > 60 * 60 * 1000) {
     hits.set(ip, { n: 1, t: now });
@@ -45,7 +47,7 @@ export async function POST(req: Request) {
   // Scan the platform with the biggest audience first.
   const primary = (Object.keys(handles) as P[]).sort((a, b) => Number(body.followers?.[b] ?? 0) - Number(body.followers?.[a] ?? 0))[0];
 
-  const payload = Buffer.from(JSON.stringify({ email, handles, primary, exp: Date.now() + 30 * 60 * 1000 })).toString("base64url");
+  const payload = Buffer.from(JSON.stringify({ email, handles, primary, exp: Date.now() + 30 * 60 * 1000, jti: randomUUID() })).toString("base64url");
   const mac = createHmac("sha256", secret).update(payload).digest("base64url");
   return NextResponse.json({ url: `${app.replace(/\/$/, "")}/api/zimmy/welcome?t=${payload}.${mac}` });
 }
