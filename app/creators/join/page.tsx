@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 
 export default function JoinPage() {
   return (
-    <FormBackdrop video="creator-bg">
+    <>
     <main className="min-h-screen px-3 pb-16 pt-5 sm:px-5 sm:pt-8">
-      <div className="mx-auto flex max-w-3xl items-center justify-between px-2">
+      <div className="mx-auto flex max-w-[1320px] items-center justify-between px-2">
         <Link href="/creators" aria-label="Zimmy for creators">
           <Logo />
         </Link>
@@ -22,10 +22,12 @@ export default function JoinPage() {
           Exit
         </Link>
       </div>
-      <div className="mx-auto mt-8 max-w-3xl rounded-[28px] bg-white/85 px-5 py-10 shadow-[0_30px_80px_-40px_rgb(25_41_45/0.4)] backdrop-blur-xl sm:mt-12 sm:px-12 sm:py-14">
-        <CreatorJoinForm />
+      <div className="mt-8 sm:mt-12">
+        <FormBackdrop demo="creator-demo" title="What working with brands looks like." points={["A clear brief and script, in your style", "Every deal stage in one place", "Your own tracking link and results"]}>
+          <CreatorJoinForm />
+        </FormBackdrop>
       </div>
     </main>
-    </FormBackdrop>
+    </>
   );
 }
