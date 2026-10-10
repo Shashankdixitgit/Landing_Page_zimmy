@@ -148,7 +148,7 @@ export default function CreatorJoinForm() {
 
   if (status === "done") {
     return (
-      <div className="pop mx-auto max-w-xl rounded-[28px] border border-line bg-surface p-8 text-center sm:p-12">
+      <div className="pop mx-auto max-w-xl text-center">
         <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-mint text-accent">
           <Check className="h-7 w-7" strokeWidth={2.5} />
         </span>

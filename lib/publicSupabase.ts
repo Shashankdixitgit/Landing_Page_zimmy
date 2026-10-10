@@ -27,3 +27,12 @@ export async function submitApplication(row: Record<string, unknown>): Promise<v
   });
   if (!res.ok) throw new Error(`Submit failed (${res.status})`);
 }
+
+export async function submitBrandApplication(row: Record<string, unknown>): Promise<void> {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/brand_applications`, {
+    method: "POST",
+    headers: { ...headers, "Content-Type": "application/json", Prefer: "return=minimal" },
+    body: JSON.stringify(row),
+  });
+  if (!res.ok) throw new Error(`Submit failed (${res.status})`);
+}

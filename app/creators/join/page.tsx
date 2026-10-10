@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Logo from "@/components/Logo";
 import CreatorJoinForm from "@/components/CreatorJoinForm";
+import FormBackdrop from "@/components/FormBackdrop";
 
 export const metadata: Metadata = {
   title: "Join Zimmy as a creator",
@@ -11,18 +12,20 @@ export const metadata: Metadata = {
 
 export default function JoinPage() {
   return (
-    <main className="min-h-screen px-5 pb-24 pt-6 sm:pt-8">
-      <div className="mx-auto flex max-w-2xl items-center justify-between">
+    <FormBackdrop video="creator-bg">
+    <main className="min-h-screen px-3 pb-16 pt-5 sm:px-5 sm:pt-8">
+      <div className="mx-auto flex max-w-3xl items-center justify-between px-2">
         <Link href="/creators" aria-label="Zimmy for creators">
           <Logo />
         </Link>
-        <Link href="/creators" className="text-[14px] font-medium text-muted hover:text-ink">
+        <Link href="/creators" className="text-[14px] font-medium text-ink/70 hover:text-ink">
           Exit
         </Link>
       </div>
-      <div className="mt-12 sm:mt-16">
+      <div className="mx-auto mt-8 max-w-3xl rounded-[28px] bg-white/85 px-5 py-10 shadow-[0_30px_80px_-40px_rgb(25_41_45/0.4)] backdrop-blur-xl sm:mt-12 sm:px-12 sm:py-14">
         <CreatorJoinForm />
       </div>
     </main>
+    </FormBackdrop>
   );
 }

@@ -3,6 +3,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 export const DEMO_HREF = "https://cal.com/shashank-ectr0u/30min";
 export const CREATOR_HREF = "/creators";
 export const CREATOR_JOIN_HREF = "/creators/join";
+export const BRAND_JOIN_HREF = "/brands/join";
 
 /** Two-line headline on the left, supporting copy on the right. */
 export function SplitHead({
