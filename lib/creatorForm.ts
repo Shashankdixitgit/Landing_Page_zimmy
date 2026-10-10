@@ -33,6 +33,7 @@ export const PLATFORMS = [
   { id: "instagram", label: "Instagram" },
   { id: "tiktok", label: "TikTok" },
   { id: "youtube", label: "YouTube" },
+  { id: "x", label: "X" },
 ] as const;
 
 export const STEPS: Step[] = [
@@ -60,6 +61,7 @@ export const STEPS: Step[] = [
       { id: "handle_instagram", label: "Instagram handle", type: "text", placeholder: "@yourname" },
       { id: "handle_tiktok", label: "TikTok handle", type: "text", placeholder: "@yourname" },
       { id: "handle_youtube", label: "YouTube channel", type: "text", placeholder: "@yourchannel" },
+      { id: "handle_x", label: "X (Twitter) handle", type: "text", placeholder: "@yourname" },
     ],
   },
   {
