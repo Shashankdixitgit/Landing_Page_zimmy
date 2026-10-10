@@ -8,11 +8,13 @@ export default function FormBackdrop({
   demo,
   title,
   points,
+  note = "Real screens from the Zimmy app, using a demo brand.",
   children,
 }: {
   demo: string;
   title: string;
   points: string[];
+  note?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -25,7 +27,7 @@ export default function FormBackdrop({
             <span className="h-2.5 w-2.5 rounded-full bg-[#f2493a]/70" />
             <span className="h-2.5 w-2.5 rounded-full bg-[#f6c453]" />
             <span className="h-2.5 w-2.5 rounded-full bg-[#5ccf98]" />
-            <span className="ml-3 truncate rounded-md bg-surface px-3 py-1 text-[11.5px] text-muted">campaign.zimmy.art</span>
+            <span className="ml-3 truncate rounded-md bg-surface px-3 py-1 text-[11.5px] text-muted">{demo === "creator-demo" ? "zimmy.art/creators" : "campaign.zimmy.art"}</span>
           </div>
           <video
             className="block aspect-[16/10] w-full bg-soft object-cover"
@@ -48,7 +50,7 @@ export default function FormBackdrop({
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-[12px] text-faint">Real screens from the Zimmy app, using a demo brand.</p>
+          {note ? <p className="mt-4 text-[12px] text-faint">{note}</p> : null}
         </div>
       </aside>
     </div>

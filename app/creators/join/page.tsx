@@ -23,7 +23,7 @@ export default function JoinPage() {
         </Link>
       </div>
       <div className="mt-8 sm:mt-12">
-        <FormBackdrop demo="creator-demo" title="What working with brands looks like." points={["A clear brief and script, in your style", "Every deal stage in one place", "Your own tracking link and results"]}>
+        <FormBackdrop demo="creator-demo" note="Illustrative example. Brand names and amounts are made up." title="How Zimmy works for you." points={["Join in 3 minutes, autofilled from your profile", "Get matched with brands that fit your audience", "Get a clear brief in your own voice", "Post, grow and get paid on time"]}>
           <CreatorJoinForm />
         </FormBackdrop>
       </div>
