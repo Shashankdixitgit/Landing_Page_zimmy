@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, ImagePlus, Loader2, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, ImagePlus, Loader2, Sparkles, X } from "lucide-react";
 import { PLATFORMS, STEPS, TIERS, tierFor, type Field, type Tier } from "@/lib/creatorForm";
 import { submitApplication, uploadScreenshot } from "@/lib/publicSupabase";
 
@@ -15,7 +15,9 @@ export default function CreatorJoinForm() {
   const [followers, setFollowers] = useState<Record<string, string>>({});
   const [files, setFiles] = useState<File[]>([]);
   const [error, setError] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
+  const [status, setStatus] = useState<"idle" | "reading" | "sending" | "done">("idle");
+  const [prefilled, setPrefilled] = useState<Set<string>>(new Set());
+  const [lookedUp, setLookedUp] = useState("");
   const fileInput = useRef<HTMLInputElement>(null);
 
   const total = STEPS.length;
@@ -53,6 +55,7 @@ export default function CreatorJoinForm() {
   const next = async () => {
     const e = validate();
     if (e) return setError(e);
+    if (s.id === "handles") await readProfiles();
     if (step < total - 1) {
       setStep(step + 1);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -80,6 +83,58 @@ export default function CreatorJoinForm() {
     } catch {
       setStatus("idle");
       setError("Something went wrong sending your details. Please try again.");
+    }
+  };
+
+  // Read public profiles (Instagram, TikTok, YouTube) and prefill steps 3-5. Only fills empty answers.
+  const readProfiles = async () => {
+    const targets = platforms.filter((p) => p.id !== "x").map((p) => [p.id, String(a[`handle_${p.id}`]).trim()] as const);
+    const sig = targets.map((t) => t.join(":")).join("|");
+    if (!targets.length || sig === lookedUp) return;
+    setLookedUp(sig);
+    setStatus("reading");
+    try {
+      const results = (
+        await Promise.all(
+          targets.map(([platform, handle]) =>
+            fetch(`/api/creator-lookup?platform=${platform}&handle=${encodeURIComponent(handle)}`)
+              .then((r) => (r.ok ? r.json() : null))
+              .catch(() => null)
+          )
+        )
+      ).filter((r) => r && r.ok) as {
+        platform: string;
+        followers: number | null;
+        avg_views: string | null;
+        niches: string[];
+        audience_countries: string[];
+        audience_age: string | null;
+        audience_gender: string | null;
+      }[];
+      if (!results.length) return;
+      const filled = new Set<string>();
+      const nextFollowers = { ...followers };
+      for (const r of results) {
+        if (r.followers && !followers[r.platform]) {
+          nextFollowers[r.platform] = String(r.followers);
+          filled.add("followers");
+        }
+      }
+      setFollowers(nextFollowers);
+      // the biggest account speaks for the audience
+      const main = [...results].sort((x, y) => (y.followers ?? 0) - (x.followers ?? 0))[0];
+      const niches = [...new Set(results.flatMap((r) => r.niches))].slice(0, 3);
+      const fill: Answers = {};
+      if (main.avg_views && !a.avg_views) fill.avg_views = main.avg_views;
+      if (niches.length && !(a.niches as string[] | undefined)?.length) fill.niches = niches;
+      if (main.audience_countries.length && !(a.audience_countries as string[] | undefined)?.length) fill.audience_countries = main.audience_countries;
+      if (main.audience_age && !a.audience_age) fill.audience_age = main.audience_age;
+      if (main.audience_gender && !a.audience_gender) fill.audience_gender = main.audience_gender;
+      Object.keys(fill).forEach((k) => filled.add(k));
+      setA((x) => ({ ...x, ...fill }));
+      setPrefilled((cur) => new Set([...cur, ...filled]));
+    } finally {
+      setStatus("idle");
     }
   };
 
@@ -215,6 +270,12 @@ export default function CreatorJoinForm() {
         <h1 className="display text-[32px] text-ink sm:text-[42px]">{s.title}</h1>
         <p className="mt-2 text-[15px] text-muted">{s.help}</p>
 
+        {visible.some((f) => prefilled.has(f.id)) ? (
+          <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-mint px-3.5 py-1.5 text-[13px] font-medium text-accent">
+            <Sparkles className="h-3.5 w-3.5" /> Filled from your public profile. Check it and edit anything that&rsquo;s off.
+          </p>
+        ) : null}
+
         <div className="mt-8 space-y-7">
           {visible.map((f) => (
             <div key={f.id}>
@@ -240,8 +301,12 @@ export default function CreatorJoinForm() {
           ) : (
             <span />
           )}
-          <button type="button" onClick={next} disabled={status === "sending"} className="inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-accent-hover disabled:opacity-70">
-            {status === "sending" ? (
+          <button type="button" onClick={next} disabled={status === "sending" || status === "reading"} className="inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-accent-hover disabled:opacity-70">
+            {status === "reading" ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" /> Reading your profiles
+              </>
+            ) : status === "sending" ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" /> Sending
               </>

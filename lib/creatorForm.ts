@@ -56,7 +56,7 @@ export const STEPS: Step[] = [
   {
     id: "handles",
     title: "Where do you post?",
-    help: "Add at least one. Leave blank any platform you don't use.",
+    help: "Add at least one. We'll read your public profile and fill in the next steps for you.",
     fields: [
       { id: "handle_instagram", label: "Instagram handle", type: "text", placeholder: "@yourname" },
       { id: "handle_tiktok", label: "TikTok handle", type: "text", placeholder: "@yourname" },
