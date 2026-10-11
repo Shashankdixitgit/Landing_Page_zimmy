@@ -76,11 +76,12 @@ const V: Record<Verdict, { label: string; pill: string; tint: string; stroke: st
   weak: { label: "No", pill: "bg-[#e9ecec] text-muted", tint: "bg-soft", stroke: "#8b9496" },
 };
 
+// `k` is the slot in each platform's `verdicts` (Hook, Clarity, Action, Repeatable) and picks the evidence view.
 const QUESTIONS = [
-  { icon: Eye, tag: "Hook", q: "Did the opening earn attention?" },
-  { icon: Lightbulb, tag: "Clarity", q: "Did people understand the product?" },
-  { icon: MousePointerClick, tag: "Action", q: "Did it lead to action?" },
-  { icon: Repeat, tag: "Repeatable", q: "Is it repeatable enough to fund?" },
+  { k: 2, icon: MousePointerClick, tag: "Action", q: "Did it drive clicks?" },
+  { k: 0, icon: Eye, tag: "Hook", q: "Did the opening earn attention?" },
+  { k: 1, icon: Lightbulb, tag: "Clarity", q: "Did people understand the product?" },
+  { k: 3, icon: Repeat, tag: "Repeatable", q: "Is it repeatable enough to fund?" },
 ];
 
 function HoldCurve({ data, color }: { data: number[]; color: string }) {
@@ -128,7 +129,7 @@ export default function PlatformScorecard() {
       {/* question cards */}
       <div key={p.id} className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {QUESTIONS.map((q, i) => {
-          const v = V[p.verdicts[i]];
+          const v = V[p.verdicts[q.k]];
           const Icon = q.icon;
           return (
             <article
@@ -151,19 +152,19 @@ export default function PlatformScorecard() {
               {/* evidence */}
               <div className="mt-auto pt-5">
                 <div className="rounded-[14px] bg-surface p-3">
-                  {i === 0 ? (
+                  {q.k === 0 ? (
                     <>
                       <HoldCurve data={p.hold} color={v.stroke} />
                       <p className="mt-1 text-[12px] text-muted">{p.holdNote}</p>
                     </>
-                  ) : i === 1 ? (
+                  ) : q.k === 1 ? (
                     <>
                       <p className="rounded-xl rounded-bl-sm bg-soft px-3 py-2 text-[13px] leading-snug text-ink">{p.comment}</p>
                       <p className="mt-2 text-[12px] text-muted">
                         {p.commentGood ? "Comments are about the product" : "Viewers couldn’t tell what it was"}
                       </p>
                     </>
-                  ) : i === 2 ? (
+                  ) : q.k === 2 ? (
                     <>
                       <div className="flex h-16 items-end">
                         <div className="h-3 w-full overflow-hidden rounded-full bg-soft">

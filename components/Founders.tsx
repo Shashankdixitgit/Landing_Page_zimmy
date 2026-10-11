@@ -15,25 +15,25 @@ export default function Founders() {
               <>
                 Built by an operator.
                 <br />
-                Not just a tool-maker.
+                You work with the founder.
               </>
             }
           />
         </Reveal>
 
-        <Reveal stagger={0.1} className="mt-12 grid items-stretch gap-5 md:grid-cols-2">
+        <Reveal className="mt-12">
           <a
             href="https://www.linkedin.com/in/shashankdixitt/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group grid overflow-hidden rounded-[26px] border border-line bg-surface transition-colors hover:border-ink/20 sm:grid-cols-[0.95fr_1fr]"
+            className="group grid overflow-hidden rounded-[26px] border border-line bg-surface transition-colors hover:border-ink/20 sm:grid-cols-[0.8fr_1.2fr] lg:grid-cols-[0.6fr_1fr]"
           >
             <div className="relative aspect-[4/5] sm:aspect-auto sm:min-h-[340px]">
               <Image
                 src="/founder.jpg"
                 alt="Shashank Dixit, founder of Zimmy"
                 fill
-                sizes="(min-width: 768px) 25vw, 100vw"
+                sizes="(min-width: 640px) 40vw, 100vw"
                 className="object-cover object-[center_30%]"
               />
             </div>
@@ -53,21 +53,6 @@ export default function Founders() {
               </ul>
             </div>
           </a>
-
-          <div className="flex flex-col justify-between rounded-[26px] border border-[#2c4a3c] bg-night p-7 text-white sm:p-8">
-            <div className="flex items-center justify-between">
-              <p className="text-[14px] text-white/70">Founder track record</p>
-              <span className="rounded-full bg-accent-bright px-3 py-1 text-[12px] font-medium text-[#05130d]">
-                Before Zimmy
-              </span>
-            </div>
-            <div className="mt-12">
-              <p className="text-[64px] font-semibold leading-none tracking-[-0.04em] sm:text-[80px]">$30M+</p>
-              <p className="mt-4 max-w-xs border-t border-white/10 pt-4 text-[14.5px] text-white/70">
-                in yearly campaign funnels automated end-to-end.
-              </p>
-            </div>
-          </div>
         </Reveal>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ArrowRight, Mail } from "lucide-react";
 import Reveal from "./Reveal";
-import { CREATOR_HREF, DEMO_HREF } from "./ui";
+import { BRAND_JOIN_HREF, CREATOR_HREF, DEMO_HREF } from "./ui";
 
 
 export default function CTA() {
@@ -19,12 +19,12 @@ export default function CTA() {
         <div className="relative px-4 pb-10 pt-16 text-center sm:pb-16 sm:pt-20">
           <div>
             <h2 className="display mx-auto max-w-xl text-[42px] text-white [text-shadow:0_2px_30px_rgb(10_40_70/0.35)] sm:text-[60px]">
-              Find your recipe.
+              Bring your brand.
               <br />
-              Then scale it.
+              See what will sell.
             </h2>
             <p className="mx-auto mt-5 max-w-md text-[16px] leading-relaxed text-white [text-shadow:0_1px_12px_rgb(10_30_50/0.55)]">
-              See what&rsquo;s already working in your niche, and why.
+              On the call we&rsquo;ll show you what&rsquo;s working in your niche right now. You&rsquo;ll leave with a starting point.
             </p>
             <div className="mt-8 flex justify-center">
               <a
@@ -40,25 +40,21 @@ export default function CTA() {
 
         {/* right: white card on top of the image */}
         <div className="relative flex flex-col rounded-[22px] bg-surface p-7 shadow-[0_20px_50px_-20px_rgb(12_38_66/0.45)] sm:rounded-[28px] sm:p-9 lg:self-stretch">
-          <p className="text-[13px] font-medium text-accent">Making videos?</p>
+          <p className="text-[13px] font-medium text-accent">Prefer to start yourself?</p>
           <h3 className="display mt-3 text-[28px] text-ink">
-            Join as
+            Tell us about
             <br />
-            a creator.
+            your brand.
           </h3>
+          <p className="mt-3 text-[14.5px] leading-relaxed text-muted">
+            Eight quick questions. We&rsquo;ll come back with what&rsquo;s working in your niche.
+          </p>
           <div className="mt-6 flex flex-wrap gap-2.5">
             <a
-              href={CREATOR_HREF}
+              href={BRAND_JOIN_HREF}
               className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-3 text-[15px] font-medium text-white transition-transform duration-300 hover:-translate-y-0.5"
             >
-              See Zimmy for creators
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </a>
-            <a
-              href={DEMO_HREF}
-              className="group inline-flex items-center justify-center gap-2.5 rounded-full border border-line px-6 py-3 text-[15px] font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-ink/30"
-            >
-              I&rsquo;m a brand · Book a demo
+              Join as a brand
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </a>
           </div>
@@ -75,6 +71,11 @@ export default function CTA() {
           </div>
         </div>
       </Reveal>
+      <p className="mt-4 text-center text-[13px] text-muted">
+        <a href={CREATOR_HREF} className="underline-offset-4 hover:text-ink hover:underline">
+          Making videos? Zimmy for creators &rarr;
+        </a>
+      </p>
     </section>
   );
 }

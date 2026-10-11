@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Zimmy: a recipe for viral content.";
+export const alt = "Zimmy: creator marketing that sells.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -54,7 +54,7 @@ export default function OpengraphImage() {
               color: MUTED,
             }}
           >
-            Creator content, researched first
+            For D2C and consumer-app brands
           </div>
 
           <div
@@ -68,8 +68,8 @@ export default function OpengraphImage() {
               letterSpacing: -2.6,
             }}
           >
-            <span style={{ width: "100%" }}>A recipe for</span>
-            <span>viral content.</span>
+            <span style={{ width: "100%" }}>Creator content</span>
+            <span>that sells.</span>
           </div>
         </div>
 

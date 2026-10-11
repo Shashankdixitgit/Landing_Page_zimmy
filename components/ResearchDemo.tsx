@@ -175,13 +175,15 @@ export default function ResearchDemo() {
       <div className="mx-auto max-w-[1100px]">
         <Reveal>
           <SplitHead
+            eyebrow="Research"
             title={
               <>
-                Research first.
+                Know what sells
                 <br />
-                Then make videos.
+                before you spend.
               </>
             }
+            sub="Zimmy finds videos in your niche that beat their account’s usual views, and explains why they worked."
           />
         </Reveal>
 

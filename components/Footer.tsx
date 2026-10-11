@@ -1,14 +1,14 @@
 import Logo from "./Logo";
-import { CREATOR_HREF, CREATOR_JOIN_HREF, DEMO_HREF } from "./ui";
+import { BRAND_JOIN_HREF, CREATOR_HREF, DEMO_HREF } from "./ui";
 
 const COLS = [
   {
     title: "Product",
     links: [
-      { label: "For creators", href: "/creators" },
-      { label: "Research", href: "/#research" },
       { label: "How it works", href: "/#how" },
+      { label: "Research", href: "/#research" },
       { label: "FAQ", href: "/#faq" },
+      { label: "For creators", href: CREATOR_HREF },
     ],
   },
   {
@@ -16,7 +16,7 @@ const COLS = [
     links: [
       { label: "About", href: "/about" },
       { label: "Book a demo", href: DEMO_HREF },
-      { label: "Join as a creator", href: CREATOR_JOIN_HREF },
+      { label: "Join as a brand", href: BRAND_JOIN_HREF },
       { label: "Contact", href: "mailto:shashank@zimmy.art" },
     ],
   },
@@ -30,7 +30,7 @@ export default function Footer() {
           <div className="max-w-xs">
             <Logo />
             <p className="mt-4 text-[14px] leading-relaxed text-muted">
-              Research what&rsquo;s winning. Test it with AI UGC. Scale it with creators and ads.
+              Creator marketing that sells. Researched, run and reported by Zimmy.
             </p>
           </div>
           {COLS.map((c) => (

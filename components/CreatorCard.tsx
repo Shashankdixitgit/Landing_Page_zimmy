@@ -88,10 +88,13 @@ export default function CreatorCard({
   c,
   className = "",
   compact = false,
+  hideFollowers = false,
 }: {
   c: Creator;
   className?: string;
   compact?: boolean;
+  /** show only the niche under the handle (brand-facing hero) */
+  hideFollowers?: boolean;
 }) {
   const [a, b, d] = c.scene;
   return (
@@ -120,7 +123,7 @@ export default function CreatorCard({
           <p className="truncate text-[11px] font-semibold text-white">{c.handle}</p>
           {!compact ? (
             <p className="text-[9.5px] text-white/70">
-              {c.niche} · {c.followers}
+              {hideFollowers ? c.niche : `${c.niche} · ${c.followers}`}
             </p>
           ) : null}
         </div>

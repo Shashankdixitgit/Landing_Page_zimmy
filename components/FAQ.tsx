@@ -7,20 +7,40 @@ import { TextLink } from "./ui";
 
 const FAQS = [
   {
-    q: "Can Zimmy guarantee a viral video?",
-    a: "No one honestly can. Zimmy starts from videos already beating their usual views, so results get far more predictable.",
+    q: "What does Zimmy actually do?",
+    a: "We run your creator marketing. We research what is working in your niche, write briefs from proven hooks, find and brief creators, and report results each week. You approve every step.",
   },
   {
-    q: "Why not just ask ChatGPT for ideas?",
-    a: "It doesn’t know what’s winning in your niche this month. Zimmy starts from real, recent videos in your market, and a person checks the reasoning.",
+    q: "Is it software or a service?",
+    a: "Both. The AI does the research and the heavy lifting. Our team runs the campaign with you.",
+  },
+  {
+    q: "What does it cost?",
+    a: "It depends on your markets and how much content you need. We’ll walk you through pricing on the call.",
+  },
+  {
+    q: "How do you pick creators?",
+    a: "We look for creators whose audience matches yours, in the markets you sell to. You approve every creator before anything goes out.",
+  },
+  {
+    q: "How do you measure results?",
+    a: "We report views per platform and clicks per creator link, every week. Sales tracking is coming soon.",
+  },
+  {
+    q: "Which markets and categories?",
+    a: "Consumer apps and D2C brands: beauty, fashion, food, fitness, fintech and more. Research filters by country. We’ll confirm coverage for your markets on the call.",
+  },
+  {
+    q: "Can you guarantee results?",
+    a: "No one honestly can. We make it more predictable by starting from what already works and testing before you scale.",
   },
   {
     q: "Do I stay in control?",
-    a: "Always. You pick the tests, approve every creator and script, and decide what gets ad spend. We use your real product footage, never a made-up screen.",
+    a: "Always. You pick the tests, approve every creator and script, and decide what gets ad spend. Your real product, never an invented one.",
   },
   {
     q: "What’s live today?",
-    a: "Outlier research per market, why-it-worked breakdowns, shoot-ready briefs, and finding and briefing creators. AI UGC test videos are coming soon.",
+    a: "Research per market, why-it-worked breakdowns, briefs, and finding and briefing creators. AI UGC test videos are coming soon.",
   },
 ];
 
