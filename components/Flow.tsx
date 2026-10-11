@@ -10,37 +10,37 @@ import CardVideo from "./CardVideo";
 const STAGES = [
   {
     n: "01",
-    title: "Brief",
+    title: "Define",
     time: "Day 1",
-    body: "Your product, audience, market and budget.",
+    body: "Your product, your audience, and the moment someone watching “gets it”. Then the niche and market to study.",
     icon: Target,
   },
   {
     n: "02",
     title: "Research",
     time: "Days 1–3",
-    body: "What’s already working in your niche, market by market.",
+    body: "Zimmy finds outlier videos in that niche, market by market.",
     icon: Search,
   },
   {
     n: "03",
-    title: "Plan",
+    title: "Decode and plan",
     time: "Days 2–4",
-    body: "Why each video worked, then a ranked list of what to test.",
+    body: "Why each video worked, checked by a strategist. Then a ranked board of what to test.",
     icon: ScanSearch,
   },
   {
     n: "04",
-    title: "Launch",
+    title: "Test",
     time: "Week 2",
-    body: "Vetted creators briefed and posting on TikTok, Reels and Shorts.",
+    body: "AI videos and creator videos go out on TikTok, Reels and Shorts.",
     icon: Send,
   },
   {
     n: "05",
-    title: "Report",
+    title: "Read and decide",
     time: "Every week",
-    body: "Results per platform. Double down, remake or drop it, within your budget.",
+    body: "Results per platform. Double down, remake with real creators, or drop it, within your budget.",
     icon: BarChart3,
   },
 ];
@@ -137,12 +137,7 @@ function StageView({ i }: { i: number }) {
   );
 }
 
-const ZIMMY = [
-  "Research on what’s selling in your niche and market",
-  "Briefs and scripts built on proven hooks",
-  "Creators found, vetted for audience fit, and briefed",
-  "Weekly results per platform and per creator link",
-];
+const ZIMMY = ["Outlier research in your niche and market", "Why-it-worked breakdowns", "Shoot-ready briefs and hooks", "Creators found and briefed"];
 const YOU = ["Set the product, market and budget", "Pick which tests to run", "Approve every creator and script", "Decide what gets ad spend"];
 
 export default function Flow() {
@@ -153,15 +148,14 @@ export default function Flow() {
       <div className="mx-auto max-w-[1100px]">
         <Reveal>
           <SplitHead
-            eyebrow="How it works"
             title={
               <>
-                We run it.
+                A loop,
                 <br />
-                You approve it.
+                not a lucky guess.
               </>
             }
-            sub="One loop, from research to results. Every round makes the next one sharper."
+            sub="Every round teaches the next one."
           />
         </Reveal>
 
@@ -221,7 +215,7 @@ export default function Flow() {
         </Reveal>
 
         <Reveal className="mt-16">
-          <h3 className="display mb-6 text-[28px] text-ink sm:text-[34px]">Every platform, judged on results.</h3>
+          <h3 className="display mb-6 text-[28px] text-ink sm:text-[34px]">Every platform, read on its own.</h3>
           <PlatformScorecard />
         </Reveal>
 

@@ -3,9 +3,9 @@ import Reveal from "./Reveal";
 import { Chip, SplitHead } from "./ui";
 
 const RUNGS = [
-  { n: "01", title: "Cheap AI UGC tests find the hook.", status: "Coming soon", box: "bg-sky", h: "lg:min-h-[220px]" },
-  { n: "02", title: "Vetted creators make it trusted.", status: "Live", box: "bg-mint", h: "lg:min-h-[260px]" },
-  { n: "03", title: "Ads scale it while cost per result holds.", status: "Done by our team", box: "bg-night text-white", h: "lg:min-h-[300px]" },
+  { n: "01", title: "AI UGC finds the winner.", status: "Coming soon", box: "bg-sky", h: "lg:min-h-[220px]" },
+  { n: "02", title: "Real creators make it trusted.", status: "Live", box: "bg-mint", h: "lg:min-h-[260px]" },
+  { n: "03", title: "Ads scale what’s proven.", status: "Done by our team", box: "bg-night text-white", h: "lg:min-h-[300px]" },
 ];
 
 export default function Ladder() {
@@ -16,12 +16,12 @@ export default function Ladder() {
           <SplitHead
             title={
               <>
-                Spend on proof,
+                Test with AI UGC.
                 <br />
-                not on hope.
+                Scale with creators.
               </>
             }
-            sub="Test cheaply, keep what works, then scale it."
+            sub="Find the winner cheaply first. Then scale it."
           />
         </Reveal>
 

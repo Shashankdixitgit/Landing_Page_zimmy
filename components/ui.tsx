@@ -9,20 +9,15 @@ export const BRAND_JOIN_HREF = "/brands/join";
 export function SplitHead({
   title,
   sub,
-  eyebrow,
   wide = false,
 }: {
   title: React.ReactNode;
   sub?: React.ReactNode;
-  eyebrow?: React.ReactNode;
   wide?: boolean;
 }) {
   return (
     <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
-      <div className={wide ? "max-w-3xl" : "max-w-2xl"}>
-        {eyebrow ? <p className="mb-4 text-[13px] font-medium text-accent">{eyebrow}</p> : null}
-        <h2 className="display text-[38px] text-ink sm:text-[52px]">{title}</h2>
-      </div>
+      <h2 className={`display text-[38px] text-ink sm:text-[52px] ${wide ? "max-w-3xl" : "max-w-2xl"}`}>{title}</h2>
       {sub ? (
         <p className="max-w-[23rem] text-[15.5px] leading-relaxed text-muted lg:pb-2">{sub}</p>
       ) : null}

@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ResearchDemo from "@/components/ResearchDemo";
+import CreatorMap from "@/components/CreatorMap";
 import Ladder from "@/components/Ladder";
 import Flow from "@/components/Flow";
 import Founders from "@/components/Founders";
@@ -15,6 +16,7 @@ export default function Home() {
       <main>
         <Hero />
         <ResearchDemo />
+        <CreatorMap />
         <Ladder />
         <Flow />
         <Founders />

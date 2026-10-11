@@ -4,17 +4,16 @@ import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ArrowRight } from "lucide-react";
-import CreatorCard, { CREATORS, type Creator } from "./CreatorCard";
-import { BRAND_JOIN_HREF, DEMO_HREF } from "./ui";
+import CreatorCard, { CREATORS } from "./CreatorCard";
+import { CREATOR_HREF, DEMO_HREF } from "./ui";
 
-// Fan of video cards across the bottom of the frame. x is px at desktop, scaled by --k.
-// Read left to right, the status pills walk through one illustrative brand campaign.
-const FAN: { i: number; x: number; y: number; r: number; z: number; outer?: boolean; status: string; tone: Creator["tone"] }[] = [
-  { i: 2, x: 0, y: 0, r: 0, z: 50, status: "Briefed to a vetted creator", tone: "done" },
-  { i: 1, x: -215, y: 40, r: -6, z: 40, status: "Outlier · 6.2× usual", tone: "work" },
-  { i: 3, x: 215, y: 40, r: 6, z: 40, status: "Live on Reels", tone: "live" },
-  { i: 0, x: -420, y: 110, r: -11, z: 30, outer: true, status: "Hook decoded", tone: "done" },
-  { i: 4, x: 420, y: 110, r: 11, z: 30, outer: true, status: "Scaling as an ad", tone: "live" },
+// Fan of creator cards across the bottom of the frame. x is px at desktop, scaled by --k.
+const FAN = [
+  { i: 2, x: 0, y: 0, r: 0, z: 50 },
+  { i: 1, x: -215, y: 40, r: -6, z: 40 },
+  { i: 3, x: 215, y: 40, r: 6, z: 40 },
+  { i: 0, x: -420, y: 110, r: -11, z: 30, outer: true },
+  { i: 4, x: 420, y: 110, r: 11, z: 30, outer: true },
 ];
 
 
@@ -70,17 +69,15 @@ export default function Hero() {
         <div className="relative mx-auto max-w-4xl px-5 pt-36 text-center sm:pt-44">
           <h1
             data-h
-            className="display mx-auto max-w-[18ch] text-[44px] text-white [text-shadow:0_2px_30px_rgb(10_40_70/0.35)] sm:text-[66px] md:text-[78px]"
+            className="display mx-auto max-w-[14ch] text-[50px] text-white [text-shadow:0_2px_30px_rgb(10_40_70/0.35)] sm:text-[76px] md:text-[88px]"
           >
-            Creator content that sells.
-            <br />
-            <span className="text-white/80">Planned, not guessed.</span>
+            A recipe for viral content.
           </h1>
           <p
             data-h
             className="mx-auto mt-6 max-w-2xl text-[16px] leading-relaxed text-white [text-shadow:0_1px_12px_rgb(10_30_50/0.6)] sm:text-[17px]"
           >
-            Zimmy finds the hooks already selling in your niche, briefs vetted creators to remake them, runs the campaign and reports what worked.
+            Find the hooks already winning in your niche, test them cheaply with AI UGC, and scale the winners into creator content and ads.
           </p>
           <div data-h className="mt-8 flex flex-col items-center gap-4">
             <a
@@ -91,10 +88,10 @@ export default function Hero() {
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </a>
             <a
-              href={BRAND_JOIN_HREF}
+              href={CREATOR_HREF}
               className="text-[13.5px] font-medium text-white underline-offset-4 [text-shadow:0_1px_10px_rgb(10_30_50/0.6)] hover:underline"
             >
-              Or tell us about your brand &rarr;
+              Are you a creator? Start here &rarr;
             </a>
           </div>
         </div>
@@ -115,11 +112,7 @@ export default function Hero() {
             >
               <div data-fan>
                 <div className="floaty" style={{ animationDelay: `${f.i * 0.6}s` }}>
-                  <CreatorCard
-                    c={{ ...CREATORS[f.i], status: f.status, tone: f.tone }}
-                    className="w-[180px] sm:w-[210px]"
-                    hideFollowers
-                  />
+                  <CreatorCard c={CREATORS[f.i]} className="w-[180px] sm:w-[210px]" />
                 </div>
               </div>
             </div>
@@ -131,7 +124,7 @@ export default function Hero() {
           data-pill
           className="absolute bottom-5 left-5 z-[60] hidden rounded-full bg-ink/55 px-3.5 py-1.5 text-[12.5px] font-medium text-white backdrop-blur-md sm:inline-flex"
         >
-          Illustrative campaign
+          Example videos
         </span>
       </div>
 

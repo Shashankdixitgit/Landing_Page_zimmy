@@ -3,18 +3,17 @@
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
-import { BRAND_JOIN_HREF, CREATOR_HREF, CREATOR_JOIN_HREF, DEMO_HREF } from "./ui";
+import { BRAND_JOIN_HREF, CREATOR_HREF, CREATOR_JOIN_HREF } from "./ui";
 
 const LINKS = [
-  { label: "How it works", href: "/#how" },
   { label: "Research", href: "/#research" },
+  { label: "How it works", href: "/#how" },
   { label: "FAQ", href: "/#faq" },
   { label: "About", href: "/about" },
 ];
 
 /** `overHero` renders white text until the page scrolls past the hero frame. */
-/** `onCreators` keeps the creators-page buttons ("Join as a creator" + "Join as a brand").
- *  Everywhere else the only button is "Book a demo"; "For creators" is a small text link. */
+/** `onCreators` swaps the creator button from "For creators" (a link to /creators) to "Join as a creator". */
 export default function Navbar({ overHero = true, onCreators = false }: { overHero?: boolean; onCreators?: boolean }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -73,34 +72,23 @@ export default function Navbar({ overHero = true, onCreators = false }: { overHe
         </ul>
 
         <div className="ml-auto mr-2 hidden items-center gap-2 md:flex lg:ml-0 lg:mr-0">
-          {onCreators ? (
-            <a
-              href={creatorHref}
-              className={`whitespace-nowrap rounded-full border px-4 py-2 text-[13.5px] font-medium transition-colors ${
-                light
-                  ? "border-white/60 text-white hover:bg-white/15"
-                  : "border-line text-ink hover:border-ink/30"
-              }`}
-            >
-              {creatorLabel}
-            </a>
-          ) : (
-            <a
-              href={creatorHref}
-              className={`mr-2 whitespace-nowrap text-[13px] transition-opacity hover:opacity-70 ${
-                light ? "text-white/80" : "text-muted"
-              }`}
-            >
-              {creatorLabel}
-            </a>
-          )}
           <a
-            href={onCreators ? BRAND_JOIN_HREF : DEMO_HREF}
+            href={creatorHref}
+            className={`whitespace-nowrap rounded-full border px-4 py-2 text-[13.5px] font-medium transition-colors ${
+              light
+                ? "border-white/60 text-white hover:bg-white/15"
+                : "border-line text-ink hover:border-ink/30"
+            }`}
+          >
+            {creatorLabel}
+          </a>
+          <a
+            href={BRAND_JOIN_HREF}
             className={`whitespace-nowrap rounded-full px-4 py-2 text-[13.5px] font-medium transition-colors ${
               light ? "bg-white text-accent hover:bg-white/90" : "bg-accent text-white hover:bg-accent-hover"
             }`}
           >
-            {onCreators ? "Join as a brand" : "Book a demo"}
+            Join as a brand
           </a>
         </div>
 
@@ -132,48 +120,20 @@ export default function Navbar({ overHero = true, onCreators = false }: { overHe
               </li>
             ))}
           </ul>
-          {onCreators ? (
-            <>
-              <a
-                href={BRAND_JOIN_HREF}
-                onClick={() => setOpen(false)}
-                className="mt-2 block rounded-full bg-accent px-4 py-3 text-center text-[15px] font-medium text-white"
-              >
-                Join as a brand
-              </a>
-              <a
-                href={creatorHref}
-                onClick={() => setOpen(false)}
-                className="mt-2 block rounded-full border border-line px-4 py-3 text-center text-[15px] font-medium text-ink"
-              >
-                {creatorLabel}
-              </a>
-            </>
-          ) : (
-            <>
-              <a
-                href={DEMO_HREF}
-                onClick={() => setOpen(false)}
-                className="mt-2 block rounded-full bg-accent px-4 py-3 text-center text-[15px] font-medium text-white"
-              >
-                Book a demo
-              </a>
-              <a
-                href={BRAND_JOIN_HREF}
-                onClick={() => setOpen(false)}
-                className="mt-1 block px-4 py-3 text-center text-[15px] font-medium text-ink"
-              >
-                Join as a brand
-              </a>
-              <a
-                href={creatorHref}
-                onClick={() => setOpen(false)}
-                className="block px-4 py-2.5 text-center text-[13.5px] text-muted"
-              >
-                {creatorLabel}
-              </a>
-            </>
-          )}
+          <a
+            href={BRAND_JOIN_HREF}
+            onClick={() => setOpen(false)}
+            className="mt-2 block rounded-full bg-accent px-4 py-3 text-center text-[15px] font-medium text-white"
+          >
+            Join as a brand
+          </a>
+          <a
+            href={creatorHref}
+            onClick={() => setOpen(false)}
+            className="mt-2 block rounded-full border border-line px-4 py-3 text-center text-[15px] font-medium text-ink"
+          >
+            {creatorLabel}
+          </a>
         </div>
       )}
     </header>
