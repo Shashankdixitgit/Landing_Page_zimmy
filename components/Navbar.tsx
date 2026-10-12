@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
-import { BRAND_JOIN_HREF, CREATOR_HREF, CREATOR_JOIN_HREF } from "./ui";
+import { CREATOR_HREF, CREATOR_JOIN_HREF, START_HREF } from "./ui";
 
 const LINKS = [
-  { label: "Research", href: "/#research" },
   { label: "How it works", href: "/#how" },
+  { label: "Pricing", href: "/#pricing" },
   { label: "FAQ", href: "/#faq" },
   { label: "About", href: "/about" },
 ];
@@ -83,12 +83,12 @@ export default function Navbar({ overHero = true, onCreators = false }: { overHe
             {creatorLabel}
           </a>
           <a
-            href={BRAND_JOIN_HREF}
+            href={START_HREF}
             className={`whitespace-nowrap rounded-full px-4 py-2 text-[13.5px] font-medium transition-colors ${
               light ? "bg-white text-accent hover:bg-white/90" : "bg-accent text-white hover:bg-accent-hover"
             }`}
           >
-            Join as a brand
+            Try it free
           </a>
         </div>
 
@@ -121,11 +121,11 @@ export default function Navbar({ overHero = true, onCreators = false }: { overHe
             ))}
           </ul>
           <a
-            href={BRAND_JOIN_HREF}
+            href={START_HREF}
             onClick={() => setOpen(false)}
             className="mt-2 block rounded-full bg-accent px-4 py-3 text-center text-[15px] font-medium text-white"
           >
-            Join as a brand
+            Try it free
           </a>
           <a
             href={creatorHref}

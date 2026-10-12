@@ -1,12 +1,13 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ResearchDemo from "@/components/ResearchDemo";
-import CreatorMap from "@/components/CreatorMap";
-import Ladder from "@/components/Ladder";
-import Flow from "@/components/Flow";
-import Founders from "@/components/Founders";
+import Problem from "@/components/Problem";
+import Philosophy from "@/components/Philosophy";
+import BeforeAfter from "@/components/BeforeAfter";
+import Journey from "@/components/Journey";
+import WhyNow from "@/components/WhyNow";
+import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
-import CTA from "@/components/CTA";
+import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -15,13 +16,14 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <ResearchDemo />
-        <CreatorMap />
-        <Ladder />
-        <Flow />
-        <Founders />
+        <Problem />
+        <Philosophy />
+        <BeforeAfter />
+        <Journey />
+        <WhyNow />
+        <Pricing />
         <FAQ />
-        <CTA />
+        <FinalCTA />
       </main>
       <Footer />
     </>

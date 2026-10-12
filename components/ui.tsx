@@ -4,6 +4,8 @@ export const DEMO_HREF = "https://cal.com/shashank-ectr0u/30min";
 export const CREATOR_HREF = "/creators";
 export const CREATOR_JOIN_HREF = "/creators/join";
 export const BRAND_JOIN_HREF = "/brands/join";
+/** The product's first step: paste a link, see competitors' winning videos. No sign-up. */
+export const START_HREF = "https://campaign.zimmy.art/start";
 
 /** Two-line headline on the left, supporting copy on the right. */
 export function SplitHead({

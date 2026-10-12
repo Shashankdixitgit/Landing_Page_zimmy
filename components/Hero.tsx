@@ -3,9 +3,9 @@
 import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
-import { ArrowRight } from "lucide-react";
 import CreatorCard, { CREATORS } from "./CreatorCard";
-import { CREATOR_HREF, DEMO_HREF } from "./ui";
+import PasteLink from "./PasteLink";
+import { CREATOR_HREF } from "./ui";
 
 // Fan of creator cards across the bottom of the frame. x is px at desktop, scaled by --k.
 const FAN = [
@@ -66,27 +66,22 @@ export default function Hero() {
           aria-hidden
         />
 
-        <div className="relative mx-auto max-w-4xl px-5 pt-36 text-center sm:pt-44">
+        <div className="relative mx-auto max-w-4xl px-4 pt-32 text-center sm:px-5 sm:pt-44">
           <h1
             data-h
-            className="display mx-auto max-w-[14ch] text-[50px] text-white [text-shadow:0_2px_30px_rgb(10_40_70/0.35)] sm:text-[76px] md:text-[88px]"
+            className="display mx-auto max-w-[16ch] text-[42px] text-white [text-shadow:0_2px_30px_rgb(10_40_70/0.35)] sm:text-[64px] md:text-[76px]"
           >
-            A recipe for viral content.
+            Find your winning video before you pay for it.
           </h1>
           <p
             data-h
             className="mx-auto mt-6 max-w-2xl text-[16px] leading-relaxed text-white [text-shadow:0_1px_12px_rgb(10_30_50/0.6)] sm:text-[17px]"
           >
-            Find the hooks already winning in your niche, test them cheaply with AI UGC, and scale the winners into creator content and ads.
+            Zimmy finds the video formats already winning for your competitors and tests your own versions cheaply with AI. It
+            shows which ones bring in real customers, so your big creator and ad budgets go only behind what&rsquo;s proven.
           </p>
-          <div data-h className="mt-8 flex flex-col items-center gap-4">
-            <a
-              href={DEMO_HREF}
-              className="group inline-flex items-center gap-3 rounded-full bg-white px-7 py-3.5 text-[15.5px] font-medium text-[#1d5f8f] transition-transform duration-300 hover:-translate-y-0.5"
-            >
-              Book a demo
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </a>
+          <div data-h className="mt-8 flex flex-col items-center gap-5">
+            <PasteLink id="hero-link" />
             <a
               href={CREATOR_HREF}
               className="text-[13.5px] font-medium text-white underline-offset-4 [text-shadow:0_1px_10px_rgb(10_30_50/0.6)] hover:underline"
@@ -124,7 +119,7 @@ export default function Hero() {
           data-pill
           className="absolute bottom-5 left-5 z-[60] hidden rounded-full bg-ink/55 px-3.5 py-1.5 text-[12.5px] font-medium text-white backdrop-blur-md sm:inline-flex"
         >
-          Example videos
+          Example videos · illustrative
         </span>
       </div>
 

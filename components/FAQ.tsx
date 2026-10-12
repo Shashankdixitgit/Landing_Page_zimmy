@@ -5,26 +5,44 @@ import { Plus } from "lucide-react";
 import Reveal from "./Reveal";
 import { TextLink } from "./ui";
 
-const FAQS = [
+const FAQS: { q: string; a: React.ReactNode }[] = [
   {
-    q: "Can Zimmy guarantee a viral video?",
-    a: "No one honestly can. Zimmy starts from videos already beating their usual views, so results get far more predictable.",
+    q: "Is AI video believable?",
+    a: "Today’s top video models make natural-looking, creator-style videos. Every video is checked before you see it: lips match the words, hands look normal, the face stays the same. If one fails, Zimmy quietly makes another. Videos always show your real app, never a screen invented by AI.",
   },
   {
-    q: "Why not just ask ChatGPT for ideas?",
-    a: "It doesn’t know what’s winning in your niche this month. Zimmy starts from real, recent videos in your market, and a person checks the reasoning.",
+    q: "Do you post for me?",
+    a: "Yes, on a paid plan. Zimmy sets up new TikTok, Instagram, YouTube Shorts and Facebook accounts, warms them up like a normal person would, and posts your calendar on schedule. Want to check every video first? Switch on “Review each video before it posts.”",
   },
   {
-    q: "Do I stay in control?",
-    a: "Always. You pick the tests, approve every creator and script, and decide what gets ad spend. We use your real product footage, never a made-up screen.",
+    q: "What about platform rules and AI labels?",
+    a: "Captions, hashtags and each platform’s “made with AI” label are added automatically. We follow each platform’s rules for AI-made videos and for brands that run several accounts, and posting is built around them.",
   },
   {
-    q: "What’s live today?",
-    a: "Outlier research per market, why-it-worked breakdowns, shoot-ready briefs, and finding and briefing creators. AI UGC test videos are coming soon.",
+    q: "When do you ask for my sales data?",
+    a: "Never at sign-up. Only after your first videos get views do we ask: “Want to see which ones brought downloads?” It’s optional, and connects to tools teams already use, such as AppsFlyer, Adjust, RevenueCat, App Store Connect or Google Analytics.",
+  },
+  {
+    q: "What happens with real creators?",
+    a: (
+      <>
+        AI videos find the winning idea; real creators make it more trusted. Once a format is proven, Zimmy writes the creator brief
+        (opening, script, shots and the proof it works) and suggests creators who already make this kind of video. Making videos
+        yourself?{" "}
+        <a href="/creators" className="font-medium text-accent hover:underline">
+          Zimmy for creators
+        </a>
+        .
+      </>
+    ),
+  },
+  {
+    q: "Is it only for apps?",
+    a: "It’s built first for app growth teams: paste an App Store or Google Play link. A website link works too, so online brands that sell direct can use it.",
   },
 ];
 
-function Item({ q, a }: { q: string; a: string }) {
+function Item({ q, a }: { q: string; a: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="border-b border-line">
@@ -53,7 +71,7 @@ function Item({ q, a }: { q: string; a: string }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="px-5 py-24 sm:py-32">
+    <section id="faq" className="px-4 py-20 sm:px-5 sm:py-24">
       <div className="mx-auto grid max-w-[1100px] gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
         <Reveal>
           <h2 className="display text-[38px] text-ink sm:text-[52px]">
