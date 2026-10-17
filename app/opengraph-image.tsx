@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Zimmy: find your winning video before you pay for it.";
+export const alt = "Zimmy: a recipe for viral content.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -13,8 +13,8 @@ const SKY = "linear-gradient(180deg, #2e78b8 0%, #4f97cf 40%, #8cc0e4 75%, #cfe6
 // Illustrative creator cards, same look as the hero.
 const CARDS = [
   { a: "#4cc9f0", b: "#3a0ca3", d: "#0b0a24", status: "Outlier · 6.2× usual", left: 40, top: 120, rotate: "-9deg", z: 1 },
-  { a: "#ffb703", b: "#fb5607", d: "#2a0d05", status: "Live on TikTok", left: 200, top: 70, rotate: "0deg", z: 3 },
-  { a: "#ff99c8", b: "#a05195", d: "#1e0c1f", status: "Winner · scale it", left: 360, top: 120, rotate: "9deg", z: 2 },
+  { a: "#ffb703", b: "#fb5607", d: "#2a0d05", status: "Live on Reels", left: 200, top: 70, rotate: "0deg", z: 3 },
+  { a: "#ff99c8", b: "#a05195", d: "#1e0c1f", status: "Remade by a creator", left: 360, top: 120, rotate: "9deg", z: 2 },
 ];
 
 export default function OpengraphImage() {
@@ -54,7 +54,7 @@ export default function OpengraphImage() {
               color: MUTED,
             }}
           >
-            Test cheap. Scale what’s proven.
+            Creator content, researched first
           </div>
 
           <div
@@ -68,9 +68,8 @@ export default function OpengraphImage() {
               letterSpacing: -2.6,
             }}
           >
-            <span style={{ width: "100%" }}>Find your winning</span>
-            <span style={{ width: "100%" }}>video before you</span>
-            <span>pay for it.</span>
+            <span style={{ width: "100%" }}>A recipe for</span>
+            <span>viral content.</span>
           </div>
         </div>
 

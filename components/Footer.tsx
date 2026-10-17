@@ -1,14 +1,13 @@
 import Logo from "./Logo";
-import { CREATOR_HREF, CREATOR_JOIN_HREF, DEMO_HREF, START_HREF } from "./ui";
+import { CREATOR_HREF, CREATOR_JOIN_HREF, DEMO_HREF } from "./ui";
 
 const COLS = [
   {
     title: "Product",
     links: [
-      { label: "Try it free", href: START_HREF },
+      { label: "For creators", href: "/creators" },
+      { label: "Research", href: "/#research" },
       { label: "How it works", href: "/#how" },
-      { label: "Pricing", href: "/#pricing" },
-      { label: "For creators", href: CREATOR_HREF },
       { label: "FAQ", href: "/#faq" },
     ],
   },
@@ -31,7 +30,7 @@ export default function Footer() {
           <div className="max-w-xs">
             <Logo />
             <p className="mt-4 text-[14px] leading-relaxed text-muted">
-              Find what&rsquo;s already winning, test your own versions cheaply with AI, then scale only what&rsquo;s proven.
+              Research what&rsquo;s winning. Test it with AI UGC. Scale it with creators and ads.
             </p>
           </div>
           {COLS.map((c) => (

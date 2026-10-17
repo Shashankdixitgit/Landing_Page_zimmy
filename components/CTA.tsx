@@ -19,12 +19,12 @@ export default function CTA() {
         <div className="relative px-4 pb-10 pt-16 text-center sm:pb-16 sm:pt-20">
           <div>
             <h2 className="display mx-auto max-w-xl text-[42px] text-white [text-shadow:0_2px_30px_rgb(10_40_70/0.35)] sm:text-[60px]">
-              Find your winning video.
+              Find your recipe.
               <br />
               Then scale it.
             </h2>
             <p className="mx-auto mt-5 max-w-md text-[16px] leading-relaxed text-white [text-shadow:0_1px_12px_rgb(10_30_50/0.55)]">
-              See what&rsquo;s already working for your competitors, and why.
+              See what&rsquo;s already working in your niche, and why.
             </p>
             <div className="mt-8 flex justify-center">
               <a
