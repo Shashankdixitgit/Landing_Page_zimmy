@@ -18,7 +18,6 @@ export default function CreatorJoinForm() {
   const [status, setStatus] = useState<"idle" | "reading" | "sending" | "done">("idle");
   const [prefilled, setPrefilled] = useState<Set<string>>(new Set());
   const [lookedUp, setLookedUp] = useState("");
-  const [hitrateUrl, setHitrateUrl] = useState<string | null>(null);
   const fileInput = useRef<HTMLInputElement>(null);
 
   const total = STEPS.length;
@@ -80,17 +79,6 @@ export default function CreatorJoinForm() {
         answers: { ...answers, followers: Object.fromEntries(platforms.map((p) => [p.id, Number(followers[p.id] || 0)])) },
         screenshots: paths,
       });
-      // Hand off to HitRate: their free report and Brainstorm chat.
-      const followerCounts = Object.fromEntries(platforms.map((p) => [p.id, Number(followers[p.id] || 0)]));
-      const handles = Object.fromEntries(platforms.map((p) => [p.id, String(a[`handle_${p.id}`]).trim()]));
-      const h = await fetch("/api/creator-handoff", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: String(a.email).trim(), handles, followers: followerCounts }),
-      })
-        .then((r) => (r.ok ? r.json() : null))
-        .catch(() => null);
-      setHitrateUrl(h?.url ?? null);
       setStatus("done");
     } catch {
       setStatus("idle");
@@ -169,24 +157,6 @@ export default function CreatorJoinForm() {
           We&rsquo;ve got your details as a <span className="font-medium text-ink">{tierInfo.label} creator</span>. We&rsquo;ll
           email you at <span className="font-medium text-ink">{String(a.email)}</span> when a brand deal fits your audience.
         </p>
-        {hitrateUrl ? (
-          <div className="mt-8 rounded-[20px] bg-mint p-5 text-left">
-            <p className="text-[13px] font-medium text-accent">Your first perk: a free Hitrate report</p>
-            <p className="mt-1.5 text-[15px] leading-relaxed text-ink">
-              Hitrate is Zimmy&rsquo;s tool for creators. It reads your last 45 days of posts, shows which ones hit and why,
-              and drafts your next post in your voice. You also get the Brainstorm studio to work on ideas.
-            </p>
-            <p className="mt-2 text-[13px] text-muted">
-              Opens on a new site and takes about 2 minutes. Open it now: this link works once, for 30 minutes.
-            </p>
-            <a
-              href={hitrateUrl}
-              className="mt-4 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-[15px] font-semibold text-white hover:bg-accent-hover"
-            >
-              Open my Hitrate report <ArrowRight className="h-4 w-4" />
-            </a>
-          </div>
-        ) : null}
         <a href="/creators" className="mt-6 inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-[15px] font-medium text-ink hover:border-ink/30">
           Back to Zimmy for creators
         </a>
