@@ -104,7 +104,7 @@ const ITEMS: Item[] = [
     status: "Live",
     view: (
       <div className="space-y-1.5 text-[11.5px]">
-        {[["zimmy.link/noor", "412 clicks"], ["zimmy.link/jay", "268 clicks"], ["zimmy.link/mira", "190 clicks"]].map(([l, c]) => (
+        {[["hitrate.link/noor", "412 clicks"], ["hitrate.link/jay", "268 clicks"], ["hitrate.link/mira", "190 clicks"]].map(([l, c]) => (
           <div key={l} className="flex justify-between rounded-md bg-white/[0.06] px-2.5 py-1.5">
             <span className="text-white/70">{l}</span>
             <span className="text-white">{c}</span>
@@ -131,7 +131,7 @@ export default function Technology() {
             </h2>
             <div className="max-w-[23rem] lg:pb-2">
               <p className="text-[15.5px] leading-relaxed text-white/65">
-                Zimmy is software and a service. Agents handle the repetitive work. A strategist
+                HitRate is software and a service. Agents handle the repetitive work. A strategist
                 reviews every judgement call, and you approve what goes out.
               </p>
               <div className="mt-5 flex gap-2">

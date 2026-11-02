@@ -121,7 +121,7 @@ export default function ResearchDemo() {
   const panel = useRef<HTMLDivElement>(null);
   const market = MARKETS.find((m) => m.id === marketId) ?? MARKETS[0];
 
-  // What Zimmy is doing, shown as pointers that appear one by one.
+  // What HitRate is doing, shown as pointers that appear one by one.
   const POINTERS = [
     "Category: habit and productivity apps",
     `Market: ${market.label} · ${market.language}`,

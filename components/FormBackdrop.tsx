@@ -2,7 +2,7 @@ import { Check } from "lucide-react";
 
 /**
  * Sign-up page layout: the form on the left, and on large screens a real product
- * walkthrough (recorded from the Zimmy app) in a browser frame on the right.
+ * walkthrough (recorded from the HitRate app) in a browser frame on the right.
  */
 export default function FormBackdrop({
   demo,

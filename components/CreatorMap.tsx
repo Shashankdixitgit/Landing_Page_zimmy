@@ -11,7 +11,7 @@ const y = (lat: number) => ((78 - lat) / H) * 100;
 
 type Pin = { lon: number; lat: number; img?: string; icon?: typeof Video };
 
-// Major creator markets. Illustrative: who and where Zimmy researches, not a member count.
+// Major creator markets. Illustrative: who and where HitRate researches, not a member count.
 const PINS: Pin[] = [
   { lon: -118.2, lat: 34.0, img: "jay" },
   { lon: -74.0, lat: 40.7, icon: Video },

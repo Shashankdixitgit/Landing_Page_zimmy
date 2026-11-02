@@ -141,7 +141,7 @@ export default function CreatorCard({
         {c.caption}
       </p>
 
-      {/* Zimmy pipeline status */}
+      {/* HitRate pipeline status */}
       <div className="absolute inset-x-3 bottom-3 flex items-center justify-center">
         <span
           className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10.5px] font-semibold ${TONE[c.tone]}`}

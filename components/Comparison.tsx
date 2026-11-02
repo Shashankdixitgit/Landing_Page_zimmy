@@ -4,7 +4,7 @@ import { SplitHead } from "./ui";
 
 type Cell = "yes" | "part" | "no";
 
-const COLS = ["Research tools", "Zimmy", "UGC agencies"] as const;
+const COLS = ["Research tools", "HitRate", "UGC agencies"] as const;
 
 const ROWS: { label: string; cells: [Cell, Cell, Cell] }[] = [
   { label: "Finds outlier videos, not just big view counts", cells: ["yes", "yes", "no"] },
@@ -38,7 +38,7 @@ export default function Comparison() {
               </>
             }
             wide
-            sub="Research tools show you what went viral and leave the rest to you. Agencies make videos, but rarely start from data. Zimmy does both, and shows you its reasoning."
+            sub="Research tools show you what went viral and leave the rest to you. Agencies make videos, but rarely start from data. HitRate does both, and shows you its reasoning."
           />
         </Reveal>
 
@@ -50,7 +50,7 @@ export default function Comparison() {
                 {COLS.map((c) => (
                   <div
                     key={c}
-                    className={`px-4 py-4 text-center ${c === "Zimmy" ? "bg-mint text-accent" : "text-ink"}`}
+                    className={`px-4 py-4 text-center ${c === "HitRate" ? "bg-mint text-accent" : "text-ink"}`}
                   >
                     {c}
                   </div>

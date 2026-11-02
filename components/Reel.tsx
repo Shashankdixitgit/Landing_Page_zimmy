@@ -20,7 +20,7 @@ export default function Reel() {
               read on its own.
             </>
           }
-          sub="A weak TikTok doesn't cancel a strong Reel. Zimmy reads each platform separately and asks the same four questions."
+          sub="A weak TikTok doesn't cancel a strong Reel. HitRate reads each platform separately and asks the same four questions."
         />
       </Reveal>
 

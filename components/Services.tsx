@@ -60,14 +60,14 @@ export default function Services() {
                 the recipe.
               </>
             }
-            sub="A view count tells you that a video worked. Zimmy works out why, then turns the answer into something you can shoot and test."
+            sub="A view count tells you that a video worked. HitRate works out why, then turns the answer into something you can shoot and test."
           />
         </Reveal>
 
         <Reveal delay={0.1} className="mt-12">
           <div className="rounded-[28px] border border-line bg-[#f4f8f9] p-4 sm:p-8">
             <div className="flex items-center justify-between px-1 pb-6 sm:px-0">
-              <span className="text-[15px] font-medium text-ink">What Zimmy makes for you</span>
+              <span className="text-[15px] font-medium text-ink">What HitRate makes for you</span>
               <span className="hidden text-[13px] text-muted sm:inline">From research to a shoot-ready brief</span>
             </div>
 
@@ -76,7 +76,7 @@ export default function Services() {
                 <CardLabel icon={Search} status="Live">Outlier research</CardLabel>
                 <h3 className="display mt-3 text-[22px] text-ink">Videos that beat their own average.</h3>
                 <p className="mt-2 text-[14.5px] leading-relaxed text-muted">
-                  Zimmy ranks videos by how far they beat the account&rsquo;s usual views, not by raw
+                  HitRate ranks videos by how far they beat the account&rsquo;s usual views, not by raw
                   view counts. A small account with a breakout tells you more than a big
                   account&rsquo;s normal day.
                 </p>
