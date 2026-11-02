@@ -64,7 +64,7 @@ export default function Founders() {
             <div className="mt-12">
               <p className="text-[64px] font-semibold leading-none tracking-[-0.04em] sm:text-[80px]">$90M+</p>
               <p className="mt-4 max-w-xs border-t border-white/10 pt-4 text-[14.5px] text-white/70">
-                a year in marketing spend, automated and measured end-to-end.
+                a year in marketing spend, with the creator pipeline and analytics built by us.
               </p>
             </div>
           </div>

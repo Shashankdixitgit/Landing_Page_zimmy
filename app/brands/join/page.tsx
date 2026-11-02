@@ -6,7 +6,7 @@ import FormBackdrop from "@/components/FormBackdrop";
 
 export const metadata: Metadata = {
   title: "Join Zimmy as a brand",
-  description: "Eight quick questions so we can show you what's already working in your niche.",
+  description: "Eight quick questions so we can show you what's already working in your category.",
   robots: { index: false },
 };
 

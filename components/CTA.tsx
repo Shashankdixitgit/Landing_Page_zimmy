@@ -21,7 +21,7 @@ export default function CTA() {
             <h2 className="display mx-auto max-w-xl text-[42px] text-white [text-shadow:0_2px_30px_rgb(10_40_70/0.35)] sm:text-[60px]">
               Find what wins.
               <br />
-              Pay who sells.
+              Pay the ones who sell.
             </h2>
             <p className="mx-auto mt-5 max-w-md text-[16px] leading-relaxed text-white [text-shadow:0_1px_12px_rgb(10_30_50/0.55)]">
               See what&rsquo;s already winning in your category, and why.

@@ -50,7 +50,7 @@ const PLATFORMS: Platform[] = [
     clickNote: "Strong link clicks",
     runs: ["strong", "strong", "strong"],
     verdicts: ["strong", "strong", "strong", "strong"],
-    decision: "Remake this one with a real creator, then test it as an ad.",
+    decision: "Brief more creators on this one.",
     decisionTone: "strong",
   },
   {

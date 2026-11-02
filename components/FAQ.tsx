@@ -7,8 +7,8 @@ import { TextLink } from "./ui";
 
 const FAQS = [
   {
-    q: "Can Zimmy guarantee a viral video?",
-    a: "No one honestly can. Zimmy starts from videos already beating their usual views, so results get far more predictable.",
+    q: "Can Zimmy guarantee results?",
+    a: "No one honestly can. Zimmy starts from videos already winning in your category, so you are not starting from a guess.",
   },
   {
     q: "Why not just ask ChatGPT for ideas?",

@@ -210,7 +210,7 @@ export default function Flow() {
             </div>
           </div>
           <p className="mt-3 text-center text-[12.5px] text-muted">
-            Timings are typical for a first round.
+            Timings are what we aim for in a first campaign.
           </p>
         </Reveal>
 
