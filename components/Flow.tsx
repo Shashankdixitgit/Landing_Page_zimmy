@@ -12,35 +12,35 @@ const STAGES = [
     n: "01",
     title: "Define",
     time: "Day 1",
-    body: "Your product, your audience, and the moment someone watching “gets it”. Then the niche and market to study.",
+    body: "Your product, your customer and your budget. Then the category, competitors and markets to study.",
     icon: Target,
   },
   {
     n: "02",
     title: "Research",
     time: "Days 1–3",
-    body: "Zimmy finds outlier videos in that niche, market by market.",
+    body: "Zimmy finds the videos winning in your category and for your competitors, market by market.",
     icon: Search,
   },
   {
     n: "03",
-    title: "Decode and plan",
+    title: "Decode and brief",
     time: "Days 2–4",
-    body: "Why each video worked, checked by a strategist. Then a ranked board of what to test.",
+    body: "Why each video worked, checked by a strategist. Then a brief creators can shoot.",
     icon: ScanSearch,
   },
   {
     n: "04",
-    title: "Test",
+    title: "Creators make it",
     time: "Week 2",
-    body: "AI videos and creator videos go out on TikTok, Reels and Shorts.",
+    body: "Zimmy finds creators who fit, reaches out, agrees a price within your budget and sends the brief. You approve every video before it goes live.",
     icon: Send,
   },
   {
     n: "05",
-    title: "Read and decide",
+    title: "Who made you money",
     time: "Every week",
-    body: "Results per platform. Double down, remake with real creators, or drop it, within your budget.",
+    body: "Every post tracked. Signups and sales tied back to each creator, so next month’s budget goes to the ones who sell.",
     icon: BarChart3,
   },
 ];
@@ -86,9 +86,9 @@ function StageView({ i }: { i: number }) {
   if (i === 2)
     return (
       <div className="rounded-xl bg-surface p-4 text-[13px]">
-        <p className="text-[12px] text-muted">Test board</p>
+        <p className="text-[12px] text-muted">Creator brief</p>
         <ol className="mt-3 space-y-2">
-          {["New hook, same video", "Same hook, outdoor setting", "Shorter cut, 12 seconds"].map((t, k) => (
+          {["Open on the 30-day streak", "Show the app in the first second", "15 seconds, captions on"].map((t, k) => (
             <li key={t} className="flex items-center gap-3">
               <span className="grid h-5 w-5 place-items-center rounded-full bg-sky text-[11px] font-semibold text-[#235a80]">{k + 1}</span>
               <span className="text-ink">{t}</span>
@@ -113,7 +113,7 @@ function StageView({ i }: { i: number }) {
               <CardVideo name={clip} />
             </div>
             <p className="mt-2 font-medium text-ink">{p}</p>
-            <p className="text-muted">Scheduled</p>
+            <p className="text-muted">Approved</p>
           </div>
         ))}
       </div>
@@ -121,9 +121,9 @@ function StageView({ i }: { i: number }) {
   return (
     <div className="space-y-2 text-[13px]">
       {[
-        ["TikTok", "Weak opening", "Drop", "bg-soft text-muted"],
-        ["Reels", "Strong watch-through", "Remake with a creator", "bg-mint text-accent"],
-        ["Shorts", "Too early to tell", "Keep testing", "bg-sky text-[#235a80]"],
+        ["@jordanresets", "212 signups · $1.40 each", "Book again", "bg-mint text-accent"],
+        ["@tinywins.uk", "38 signups · $6.10 each", "Keep testing", "bg-sky text-[#235a80]"],
+        ["@habitlab.sam", "4 signups", "Drop", "bg-soft text-muted"],
       ].map(([p, r, d, c]) => (
         <div key={p} className="flex items-center justify-between gap-3 rounded-xl bg-surface px-4 py-3">
           <div>
@@ -137,8 +137,8 @@ function StageView({ i }: { i: number }) {
   );
 }
 
-const ZIMMY = ["Outlier research in your niche and market", "Why-it-worked breakdowns", "Shoot-ready briefs and hooks", "Creators found and briefed"];
-const YOU = ["Set the product, market and budget", "Pick which tests to run", "Approve every creator and script", "Decide what gets ad spend"];
+const ZIMMY = ["Winning-video research for your category", "Briefs built from what already works", "Creators found, contacted and priced", "Every post tracked to signups and sales"];
+const YOU = ["Set the product, market and budget", "Approve every creator and price", "Approve every video before it goes live", "Decide where next month’s budget goes"];
 
 export default function Flow() {
   const [active, setActive] = useState(0);
@@ -155,7 +155,7 @@ export default function Flow() {
                 not a lucky guess.
               </>
             }
-            sub="Every round teaches the next one."
+            sub="Every campaign teaches the next one."
           />
         </Reveal>
 

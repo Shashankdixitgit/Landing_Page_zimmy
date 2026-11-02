@@ -30,7 +30,7 @@ export default function Footer() {
           <div className="max-w-xs">
             <Logo />
             <p className="mt-4 text-[14px] leading-relaxed text-muted">
-              Research what&rsquo;s winning. Test it with AI UGC. Scale it with creators and ads.
+              See what&rsquo;s winning. Get creators to make it. Know who made you money.
             </p>
           </div>
           {COLS.map((c) => (

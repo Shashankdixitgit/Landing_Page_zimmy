@@ -123,11 +123,11 @@ export default function ResearchDemo() {
 
   // What Zimmy is doing, shown as pointers that appear one by one.
   const POINTERS = [
-    "Niche: self-improvement and productivity",
+    "Category: habit and productivity apps",
     `Market: ${market.label} · ${market.language}`,
-    "Scanning videos from the last 30 days",
+    "Scanning your competitors’ videos from the last 30 days",
     "Comparing each one to its account’s usual views",
-    "Picking the outliers and why they worked",
+    "Picking the winners and why they worked",
   ];
   const [found, setFound] = useState(false); // board stays filled once the first run finishes
 
@@ -177,9 +177,9 @@ export default function ResearchDemo() {
           <SplitHead
             title={
               <>
-                Research first.
+                See what’s winning.
                 <br />
-                Then make videos.
+                Before you spend.
               </>
             }
           />
@@ -224,7 +224,7 @@ export default function ResearchDemo() {
                     for people building habits.
                   </h3>
                   <p className="mt-5 text-[14.5px] leading-[1.8] text-ink/80">
-                    <mark className="rounded bg-highlight px-1 text-ink">Show me outliers from the last 30 days.</mark>
+                    <mark className="rounded bg-highlight px-1 text-ink">Show me what’s winning for my competitors.</mark>
                   </p>
                   <ul className="mt-5 space-y-2" aria-live="polite">
                     {POINTERS.map((t, i) =>

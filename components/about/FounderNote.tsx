@@ -4,8 +4,8 @@ import Reveal from "../Reveal";
 const PARAS = [
   "Dear founders and marketers,",
   "Most teams still guess what to post. They brief creators, pay for videos and hope something lands.",
-  "After an IIT Madras BS degree, I spent years in growth and product at Emergent, and before that at Entrepreneur First, automating yearly campaign funnels worth $30M+. The pattern was always the same: the winners were already out there, in other accounts, in other markets. Nobody had time to study them.",
-  "So I built Zimmy. It finds the videos already beating their usual views in your niche, works out why, and turns that into tests you can run, first with AI UGC, then with real creators and ads.",
+  "After an IIT Madras BS degree, I spent years in growth and product at Emergent, and before that at Entrepreneur First, automating the creator pipeline and measuring $90M+ a year in marketing spend. The pattern was always the same: money went to videos and creators nobody could predict, and only custom analytics showed which creator actually brought customers.",
+  "So I built Zimmy. It shows you what’s winning in your category, gets creators to make it, and tells you which creator made you money.",
   "We’re just getting started.",
 ];
 

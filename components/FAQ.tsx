@@ -16,11 +16,15 @@ const FAQS = [
   },
   {
     q: "Do I stay in control?",
-    a: "Always. You pick the tests, approve every creator and script, and decide what gets ad spend. We use your real product footage, never a made-up screen.",
+    a: "Always. You approve every creator, every price and every video before it goes live, and you decide where the budget goes.",
+  },
+  {
+    q: "How do I know which creator made me money?",
+    a: "Each creator gets their own tracked link or code. Zimmy ties signups and sales back to them, so you see the cost per customer for every creator.",
   },
   {
     q: "What’s live today?",
-    a: "Outlier research per market, why-it-worked breakdowns, shoot-ready briefs, and finding and briefing creators. AI UGC test videos are coming soon.",
+    a: "Winning-video research for your category and competitors, and creator search. Outreach, pricing, approvals and sales tracking are in early access.",
   },
 ];
 

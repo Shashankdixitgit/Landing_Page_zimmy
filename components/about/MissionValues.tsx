@@ -6,7 +6,7 @@ const VALUES = [
   {
     icon: Crosshair,
     head: "Control over chaos",
-    body: "You approve every test, creator and script. Nothing goes out in your name without it.",
+    body: "You approve every creator, price and video. Nothing goes out in your name without it.",
   },
   {
     icon: BarChart3,
@@ -27,11 +27,11 @@ export default function MissionValues() {
         <Reveal>
           <p className="text-[13px] font-medium text-accent">Our mission</p>
           <h2 className="display mt-4 text-[36px] text-ink sm:text-[46px]">
-            Make viral content predictable, not lucky.
+            Run marketing like the best brands do.
           </h2>
           <p className="mt-6 max-w-md text-[15.5px] leading-relaxed text-muted">
-            Find what already works in your niche, test it cheaply with AI UGC, and
-            scale the winners with real creators and ads.
+            Big brands have teams and custom analytics for creator marketing. Zimmy gives
+            every business the same: what to make, who to pay, and who made you money.
           </p>
           <OutlineButton href="/#research" className="mt-8">
             Explore the product
