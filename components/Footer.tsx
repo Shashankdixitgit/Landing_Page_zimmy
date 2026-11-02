@@ -49,7 +49,7 @@ export default function Footer() {
           ))}
         </div>
         <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-[13px] text-faint sm:flex-row">
-          <p>© 2026 Zimmy. All rights reserved.</p>
+          <p>© 2026 HitRate. All rights reserved.</p>
           <a href="mailto:shashank@zimmy.art" className="inline-block py-2 hover:text-ink">
             shashank@zimmy.art
           </a>

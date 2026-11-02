@@ -7,12 +7,12 @@ import { TextLink } from "./ui";
 
 const FAQS = [
   {
-    q: "Can Zimmy guarantee results?",
-    a: "No one honestly can. Zimmy starts from videos already winning in your category, so you are not starting from a guess.",
+    q: "Can HitRate guarantee results?",
+    a: "No one honestly can. HitRate starts from videos already winning in your category, so you are not starting from a guess.",
   },
   {
     q: "Why not just ask ChatGPT for ideas?",
-    a: "It doesn’t know what’s winning in your niche this month. Zimmy starts from real, recent videos in your market, and a person checks the reasoning.",
+    a: "It doesn’t know what’s winning in your niche this month. HitRate starts from real, recent videos in your market, and a person checks the reasoning.",
   },
   {
     q: "Do I stay in control?",
@@ -20,7 +20,7 @@ const FAQS = [
   },
   {
     q: "How do I know which creator made me money?",
-    a: "Each creator gets their own tracked link or code. Zimmy ties signups and sales back to them, so you see the cost per customer for every creator.",
+    a: "Each creator gets their own tracked link or code. HitRate ties signups and sales back to them, so you see the cost per customer for every creator.",
   },
   {
     q: "What’s live today?",
@@ -65,7 +65,7 @@ export default function FAQ() {
             <br />
             answered.
           </h2>
-          <p className="mt-5 text-[15px] text-muted">Anything else? Ask the founder directly.</p>
+          <p className="mt-5 text-[15px] text-muted">Anything else? Ask the founders directly.</p>
           <div className="mt-6">
             <TextLink href="mailto:shashank@zimmy.art">shashank@zimmy.art</TextLink>
           </div>

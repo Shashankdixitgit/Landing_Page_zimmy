@@ -7,7 +7,7 @@ import Reveal from "./Reveal";
 const FAQS = [
   {
     q: "What can I use today?",
-    a: "Paid brand deals: brands on Zimmy find creators whose audience fits, and send a clear brief, agreed terms and your own tracking link. The weekly content plan is coming soon.",
+    a: "Paid brand deals: brands on HitRate find creators whose audience fits, and send a clear brief, agreed terms and your own tracking link. The weekly content plan is coming soon.",
   },
   {
     q: "How do I join?",

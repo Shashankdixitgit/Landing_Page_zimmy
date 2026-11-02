@@ -8,7 +8,7 @@ export default function FormBackdrop({
   demo,
   title,
   points,
-  note = "Real screens from the Zimmy app, using a demo brand.",
+  note = "Real screens from the HitRate app, using a demo brand.",
   children,
 }: {
   demo: string;
@@ -27,7 +27,7 @@ export default function FormBackdrop({
             <span className="h-2.5 w-2.5 rounded-full bg-[#f2493a]/70" />
             <span className="h-2.5 w-2.5 rounded-full bg-[#f6c453]" />
             <span className="h-2.5 w-2.5 rounded-full bg-[#5ccf98]" />
-            <span className="ml-3 truncate rounded-md bg-surface px-3 py-1 text-[11.5px] text-muted">{demo === "creator-demo" ? "zimmy.art/creators" : "campaign.zimmy.art"}</span>
+            <span className="ml-3 truncate rounded-md bg-surface px-3 py-1 text-[11.5px] text-muted">{demo === "creator-demo" ? "hitrate.sh/creators" : "app.hitrate.sh"}</span>
           </div>
           <video
             className="block aspect-[16/10] w-full bg-soft object-cover"
@@ -41,7 +41,7 @@ export default function FormBackdrop({
           />
         </div>
         <div className="mt-6 px-1">
-          <p className="text-[13px] font-medium text-accent">Inside Zimmy</p>
+          <p className="text-[13px] font-medium text-accent">Inside HitRate</p>
           <h2 className="display mt-1.5 text-[26px] text-ink">{title}</h2>
           <ul className="mt-4 space-y-2.5">
             {points.map((p) => (

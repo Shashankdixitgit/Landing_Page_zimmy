@@ -30,7 +30,7 @@ export default function MissionValues() {
             Run marketing like the best brands do.
           </h2>
           <p className="mt-6 max-w-md text-[15.5px] leading-relaxed text-muted">
-            Big brands have teams and custom analytics for creator marketing. Zimmy gives
+            Big brands have teams and custom analytics for creator marketing. HitRate gives
             every business the same: what to make, who to pay, and who made you money.
           </p>
           <OutlineButton href="/#research" className="mt-8">

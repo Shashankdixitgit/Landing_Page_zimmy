@@ -45,7 +45,7 @@ export default function CreatorMap() {
           you sell to.
         </h2>
         <p className="mx-auto mt-5 max-w-lg text-[16px] leading-relaxed text-muted">
-          From India and the Gulf to Europe and the US, Zimmy finds creators whose audience is already
+          From India and the Gulf to Europe and the US, HitRate finds creators whose audience is already
           there, reaches out and agrees a price within your budget.
         </p>
       </Reveal>

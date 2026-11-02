@@ -38,7 +38,7 @@ export default function Logo({
       <span
         className={`text-[21px] font-semibold tracking-[-0.03em] ${light ? "text-white" : "text-ink"}`}
       >
-        zimmy
+        hitrate
       </span>
     </span>
   );

@@ -158,7 +158,7 @@ export default function CreatorJoinForm() {
           email you at <span className="font-medium text-ink">{String(a.email)}</span> when a brand deal fits your audience.
         </p>
         <a href="/creators" className="mt-6 inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-[15px] font-medium text-ink hover:border-ink/30">
-          Back to Zimmy for creators
+          Back to HitRate for creators
         </a>
       </div>
     );
@@ -247,7 +247,7 @@ export default function CreatorJoinForm() {
                 ))}
               </div>
             ) : null}
-            <p className="mt-3 text-[12.5px] text-muted">Only the Zimmy team can see these. You can skip this step, but verified numbers get better offers.</p>
+            <p className="mt-3 text-[12.5px] text-muted">Only the HitRate team can see these. You can skip this step, but verified numbers get better offers.</p>
           </div>
         );
     }

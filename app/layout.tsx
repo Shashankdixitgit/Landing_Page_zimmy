@@ -11,12 +11,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Zimmy: Creator marketing anyone can run",
+  title: "HitRate: Creator marketing anyone can run",
   description:
-    "Zimmy shows you the videos winning in your category, gets creators to make yours, and tells you which creator made you money.",
-  metadataBase: new URL("https://www.zimmy.art"),
+    "HitRate shows you the videos winning in your category, gets creators to make yours, and tells you which creator made you money.",
+  metadataBase: new URL("https://hitrate.sh"),
   openGraph: {
-    title: "Zimmy: Creator marketing anyone can run",
+    title: "HitRate: Creator marketing anyone can run",
     description:
       "See what's winning. Get creators to make it. Know who made you money.",
     type: "website",

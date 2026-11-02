@@ -19,7 +19,7 @@ const STAGES = [
     n: "02",
     title: "Research",
     time: "Days 1–3",
-    body: "Zimmy finds the videos winning in your category and for your competitors, market by market.",
+    body: "HitRate finds the videos winning in your category and for your competitors, market by market.",
     icon: Search,
   },
   {
@@ -33,7 +33,7 @@ const STAGES = [
     n: "04",
     title: "Creators make it",
     time: "Week 2",
-    body: "Zimmy finds creators who fit, reaches out, agrees a price within your budget and sends the brief. You approve every video before it goes live.",
+    body: "HitRate finds creators who fit, reaches out, agrees a price within your budget and sends the brief. You approve every video before it goes live.",
     icon: Send,
   },
   {
@@ -235,7 +235,7 @@ export default function Flow() {
             </p>
           </div>
           <div className="flex flex-col rounded-[22px] border border-[#d5ecd0] bg-[#f5fbf3] p-7 sm:p-8">
-            <p className="text-[12.5px] text-accent">Zimmy&rsquo;s part</p>
+            <p className="text-[12.5px] text-accent">HitRate&rsquo;s part</p>
             <h3 className="display mt-3 text-[30px] text-ink">Everything in between.</h3>
             <ul className="mt-6 space-y-3">
               {ZIMMY.map((t) => (

@@ -5,7 +5,7 @@ import BrandJoinForm from "@/components/BrandJoinForm";
 import FormBackdrop from "@/components/FormBackdrop";
 
 export const metadata: Metadata = {
-  title: "Join Zimmy as a brand",
+  title: "Join HitRate as a brand",
   description: "Eight quick questions so we can show you what's already working in your category.",
   robots: { index: false },
 };
@@ -15,7 +15,7 @@ export default function BrandJoinPage() {
     <>
       <main className="min-h-screen px-3 pb-16 pt-5 sm:px-5 sm:pt-8">
         <div className="mx-auto flex max-w-[1320px] items-center justify-between px-2">
-          <Link href="/" aria-label="Zimmy home">
+          <Link href="/" aria-label="HitRate home">
             <Logo />
           </Link>
           <Link href="/" className="text-[14px] font-medium text-ink/70 hover:text-ink">

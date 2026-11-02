@@ -13,7 +13,7 @@ export default function AboutHero() {
     <section className="px-2 pt-2 sm:px-3 sm:pt-3">
       <div className="sky-frame relative overflow-hidden rounded-[28px] px-5 pb-16 pt-36 text-center sm:rounded-[36px] sm:pt-44">
         <Reveal>
-          <p className="text-[13px] font-medium text-white/85">About Zimmy</p>
+          <p className="text-[13px] font-medium text-white/85">About HitRate</p>
           <h1 className="display mx-auto mt-5 max-w-3xl text-[44px] text-white [text-shadow:0_2px_30px_rgb(20_60_100/0.25)] sm:text-[64px] md:text-[72px]">
             Creator marketing,
             <br />

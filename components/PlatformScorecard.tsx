@@ -202,7 +202,7 @@ export default function PlatformScorecard() {
         <p className="flex items-center gap-3 text-[15px] font-medium">
           <ArrowRight className={`h-4 w-4 shrink-0 ${p.decisionTone === "strong" ? "text-accent-bright" : "text-accent"}`} />
           <span>
-            <span className={p.decisionTone === "strong" ? "text-white/60" : "text-muted"}>Zimmy&rsquo;s call on {p.label}: </span>
+            <span className={p.decisionTone === "strong" ? "text-white/60" : "text-muted"}>HitRate&rsquo;s call on {p.label}: </span>
             {p.decision}
           </span>
         </p>

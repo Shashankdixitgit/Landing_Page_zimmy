@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Zimmy: creator marketing anyone can run.";
+export const alt = "HitRate: creator marketing anyone can run.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -40,7 +40,7 @@ export default function OpengraphImage() {
               <path d="M6 40 V33 A5 5 0 0 1 16 33 V40 M16 40 V26 A6 6 0 0 1 28 26 V40" fill="none" stroke="#ffffff" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M28 40 V17 A7 7 0 0 1 42 17 V40" fill="none" stroke="#7fe0b0" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <div style={{ fontSize: 34, fontWeight: 800 }}>zimmy</div>
+            <div style={{ fontSize: 34, fontWeight: 800 }}>hitrate</div>
           </div>
 
           <div

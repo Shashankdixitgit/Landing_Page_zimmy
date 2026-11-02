@@ -42,7 +42,7 @@ export default function Solutions() {
                 that need content to work.
               </>
             }
-            sub="If you post often and can't say why some videos work, Zimmy is for you."
+            sub="If you post often and can't say why some videos work, HitRate is for you."
           />
         </Reveal>
 

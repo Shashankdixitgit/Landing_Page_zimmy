@@ -7,12 +7,12 @@ import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "About Zimmy",
+  title: "About HitRate",
   description:
-    "Zimmy is built by an IIT Madras graduate and operator from Emergent and Entrepreneur First who automated the creator pipeline and built analytics across $90M+ a year in marketing spend.",
+    "HitRate is built by Abhisha Shrivastava and Shashank Dixit, who ran and automated creator marketing at Emergent across $90M+ a year in marketing spend.",
   openGraph: {
-    title: "About Zimmy",
-    description: "Creator marketing anyone can run. Built by an operator from Emergent and Entrepreneur First.",
+    title: "About HitRate",
+    description: "Creator marketing anyone can run. Built by two operators from Emergent.",
     type: "website",
   },
 };

@@ -8,16 +8,16 @@ import CreatorJoin from "@/components/CreatorJoin";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Zimmy for creators: your next post, already proven",
+  title: "HitRate for creators: your next post, already proven",
   description: "Get paid brand deals that fit your audience, and learn why your best posts hit.",
   openGraph: {
-    title: "Zimmy for creators: your next post, already proven",
+    title: "HitRate for creators: your next post, already proven",
     description: "Get paid brand deals that fit your audience, and learn why your best posts hit.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zimmy for creators",
+    title: "HitRate for creators",
     description: "Get paid brand deals that fit your audience, and learn why your best posts hit.",
   },
 };

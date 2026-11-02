@@ -51,7 +51,7 @@ export default function CTA() {
               href={CREATOR_HREF}
               className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-3 text-[15px] font-medium text-white transition-transform duration-300 hover:-translate-y-0.5"
             >
-              See Zimmy for creators
+              See HitRate for creators
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </a>
             <a
@@ -66,7 +66,7 @@ export default function CTA() {
             <div className="flex items-center gap-3 rounded-2xl bg-soft p-4">
               <Image src="/founder-avatar.jpg" alt="" width={40} height={40} className="h-10 w-10 shrink-0 rounded-xl object-cover" />
               <div className="min-w-0">
-                <p className="text-[13.5px] font-medium text-ink">Or write to the founder</p>
+                <p className="text-[13.5px] font-medium text-ink">Or write to the founders</p>
                 <a href="mailto:shashank@zimmy.art" className="inline-flex items-center gap-1.5 text-[13.5px] text-accent hover:underline">
                   <Mail className="h-3.5 w-3.5" /> shashank@zimmy.art
                 </a>

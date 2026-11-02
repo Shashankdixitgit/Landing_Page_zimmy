@@ -25,7 +25,7 @@ export default function TalkChip() {
       <span className="grid h-6 w-6 place-items-center rounded-full bg-accent">
         <MessageCircle className="h-3.5 w-3.5" />
       </span>
-      Talk to the founder
+      Talk to the founders
     </a>
   );
 }

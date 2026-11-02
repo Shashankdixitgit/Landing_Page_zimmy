@@ -52,7 +52,7 @@ export default function Navbar({ overHero = true, onCreators = false }: { overHe
           light ? "bg-transparent" : "border border-line bg-surface/85 backdrop-blur-xl lift"
         }`}
       >
-        <a href="/" aria-label="Zimmy home">
+        <a href="/" aria-label="HitRate home">
           <Logo light={light} />
         </a>
 
