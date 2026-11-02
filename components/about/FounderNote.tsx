@@ -4,7 +4,7 @@ import Reveal from "../Reveal";
 const PARAS = [
   "Dear founders and marketers,",
   "Most teams still guess what to post. They brief creators, pay for videos and hope something lands.",
-  "We met at Emergent. Abhisha led global GTM and ran creator marketing at about $2M a month across about 1,000 creators. Shashank automated that creator pipeline and built the analytics across $90M+ a year in marketing spend. The pattern was always the same: money went to videos and creators nobody could predict, and only custom analytics showed which creator actually brought customers.",
+  "We met at Emergent. Abhisha led global go-to-market and ran creator marketing at about $2M a month across about 1,000 creators. Shashank automated that creator pipeline and built the analytics across $90M+ a year in marketing spend. The pattern was always the same: money went to videos and creators nobody could predict, and only custom analytics showed which creator actually brought customers.",
   "Big companies can afford a team for that. Most businesses can't. So we built HitRate. It shows you what’s winning in your category, gets creators to make it, and tells you which creator made you money.",
   "We’re just getting started.",
 ];

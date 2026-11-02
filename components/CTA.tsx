@@ -66,7 +66,7 @@ export default function CTA() {
             <div className="flex items-center gap-3 rounded-2xl bg-soft p-4">
               <Image src="/founder-avatar.jpg" alt="" width={40} height={40} className="h-10 w-10 shrink-0 rounded-xl object-cover" />
               <div className="min-w-0">
-                <p className="text-[13.5px] font-medium text-ink">Or write to the founders</p>
+                <p className="text-[13.5px] font-medium text-ink">Or write to us</p>
                 <a href="mailto:shashank@zimmy.art" className="inline-flex items-center gap-1.5 text-[13.5px] text-accent hover:underline">
                   <Mail className="h-3.5 w-3.5" /> shashank@zimmy.art
                 </a>

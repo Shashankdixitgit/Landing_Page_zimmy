@@ -9,7 +9,7 @@ const FOUNDERS = [
     role: "Co-founder",
     photo: "/abhisha.jpg",
     linkedin: "https://www.linkedin.com/in/abhisha-shrivastava-2b210132/",
-    creds: ["Led global GTM at Emergent", "Ran ~$2M a month in creator marketing", "IIT Bombay, B.Tech and M.Tech"],
+    creds: ["Led global go-to-market at Emergent", "Ran about $2M a month in creator marketing", "IIT Bombay, B.Tech and M.Tech"],
   },
   {
     name: "Shashank Dixit",
@@ -21,8 +21,8 @@ const FOUNDERS = [
 ];
 
 const STATS = [
-  { n: "$90M+", t: "a year in marketing spend, with the creator pipeline and analytics built by us." },
-  { n: "~1,000", t: "creators run at once, at about $2M a month in creator spend." },
+  { n: "$90M+", t: "a year in marketing spend, with the creator pipeline and analytics built by Shashank." },
+  { n: "$2M", t: "a month in creator spend, across about 1,000 creators." },
 ];
 
 export default function Founders() {

@@ -87,7 +87,7 @@ export const BRAND_STEPS: BrandStep[] = [
     help: "Competitors you're watching, past campaigns, what worked or didn't.",
     fields: [
       { id: "notes", label: "Notes", type: "textarea", placeholder: "e.g. competitors whose videos keep going viral" },
-      { id: "heard_from", label: "How did you hear about Zimmy?", type: "select", options: ["LinkedIn", "X", "A friend or colleague", "Google", "Other"] },
+      { id: "heard_from", label: "How did you hear about HitRate?", type: "select", options: ["LinkedIn", "X", "A friend or colleague", "Google", "Other"] },
     ],
   },
 ];

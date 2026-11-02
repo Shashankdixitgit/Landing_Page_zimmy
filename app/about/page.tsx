@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "About HitRate",
   description:
-    "HitRate is built by Abhisha Shrivastava and Shashank Dixit, who ran and automated creator marketing at Emergent across $90M+ a year in marketing spend.",
+    "HitRate is built by Abhisha Shrivastava and Shashank Dixit, who ran and automated creator marketing at Emergent, inside $90M+ a year of total marketing spend.",
   openGraph: {
     title: "About HitRate",
     description: "Creator marketing anyone can run. Built by two operators from Emergent.",
