@@ -9,7 +9,13 @@ const FOUNDERS = [
     role: "Co-founder",
     photo: "/abhisha.jpg",
     linkedin: "https://www.linkedin.com/in/abhisha-shrivastava-2b210132/",
-    creds: ["Led global go-to-market at Emergent", "Ran about $2M a month in creator marketing", "IIT Bombay, B.Tech and M.Tech"],
+    creds: [
+      "Led global go-to-market at Emergent",
+      "Ran about $2M a month in creator marketing",
+      "ex-Senior Director of Growth, Trell",
+      "ex-Director of Growth, Jupiter",
+      "IIT Bombay, B.Tech and M.Tech",
+    ],
   },
   {
     name: "Shashank Dixit",
