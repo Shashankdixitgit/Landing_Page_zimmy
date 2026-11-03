@@ -14,7 +14,7 @@ const FOUNDERS = [
       "Ran about $2M a month in creator marketing",
       "ex-Senior Director of Growth, Trell",
       "ex-Director of Growth, Jupiter",
-      "IIT Bombay, B.Tech",
+      "IIT Bombay, B.Tech and M.Tech",
     ],
   },
   {
