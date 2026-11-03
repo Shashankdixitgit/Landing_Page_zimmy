@@ -23,7 +23,7 @@ export default function BrandJoinPage() {
           </Link>
         </div>
         <div className="mt-8 sm:mt-12">
-          <FormBackdrop demo="brand-demo" title="From brief to results in one place." points={["Find creators whose audience fits", "Approve, reach out and track every deal", "Scripts written from what already works", "See clicks, conversions and revenue"]}>
+          <FormBackdrop title="From brief to results in one place." points={["Find creators whose audience fits", "Approve, reach out and track every deal", "Scripts written from what already works", "See clicks, conversions and revenue"]}>
             <BrandJoinForm />
           </FormBackdrop>
         </div>

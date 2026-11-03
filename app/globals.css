@@ -20,7 +20,7 @@
   --color-accent-hover: #0b6343;
   --color-accent-bright: #5ccf98;/* accent on dark */
   --color-highlight: #d6f5c9;    /* text highlight */
-  --color-zimmy: #f2493a;        /* logo mark only */
+  --color-logo: #f2493a;        /* logo mark only */
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 

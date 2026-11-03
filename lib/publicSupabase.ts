@@ -1,4 +1,4 @@
-// Public (anon) access to the zimmy Supabase project. Row-level security only allows
+// Public (anon) access to the HitRate Supabase project. Row-level security only allows
 // inserting creator applications and uploading into creator-analytics/applications/;
 // this key cannot read anything back.
 export const SUPABASE_URL = "https://ngtsykzhkhfrbttakexd.supabase.co";

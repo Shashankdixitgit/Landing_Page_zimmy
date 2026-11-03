@@ -27,7 +27,7 @@ export default function AboutHero() {
           </div>
           <div className="w-[290px] rounded-[20px] bg-surface p-5 text-left lift sm:w-[320px]">
             <p className="flex items-center gap-2 text-[13px] font-medium text-ink">
-              <span className="grid h-6 w-6 place-items-center rounded-md bg-zimmy text-white">
+              <span className="grid h-6 w-6 place-items-center rounded-md bg-logo text-white">
                 <Sparkle className="h-3 w-3" fill="currentColor" />
               </span>
               Campaign engine

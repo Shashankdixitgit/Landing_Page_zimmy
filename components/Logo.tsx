@@ -1,5 +1,5 @@
 /**
- * HitRate "growing m" mark: the mm in zimmy as three arches that keep getting
+ * HitRate "growing m" mark: three arches that keep getting
  * taller, the last one green. Momentum built into the name.
  */
 export function LogoMark({ light = false, className = "h-7 w-7" }: { light?: boolean; className?: string }) {

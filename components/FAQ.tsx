@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import Reveal from "./Reveal";
-import { TextLink } from "./ui";
+import { DEMO_HREF, TextLink } from "./ui";
 
 const FAQS = [
   {
@@ -67,7 +67,7 @@ export default function FAQ() {
           </h2>
           <p className="mt-5 text-[15px] text-muted">Anything else? Ask the founders directly.</p>
           <div className="mt-6">
-            <TextLink href="mailto:shashank@zimmy.art">shashank@zimmy.art</TextLink>
+            <TextLink href={DEMO_HREF}>Book a 30-minute call</TextLink>
           </div>
         </Reveal>
         <Reveal stagger={0.06}>

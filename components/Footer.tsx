@@ -17,7 +17,6 @@ const COLS = [
       { label: "About", href: "/about" },
       { label: "Book a demo", href: DEMO_HREF },
       { label: "Join as a creator", href: CREATOR_JOIN_HREF },
-      { label: "Contact", href: "mailto:shashank@zimmy.art" },
     ],
   },
 ];
@@ -50,8 +49,8 @@ export default function Footer() {
         </div>
         <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-[13px] text-faint sm:flex-row">
           <p>© 2026 HitRate. All rights reserved.</p>
-          <a href="mailto:shashank@zimmy.art" className="inline-block py-2 hover:text-ink">
-            shashank@zimmy.art
+          <a href={DEMO_HREF} className="inline-block py-2 hover:text-ink">
+            Talk to the founders
           </a>
         </div>
       </div>

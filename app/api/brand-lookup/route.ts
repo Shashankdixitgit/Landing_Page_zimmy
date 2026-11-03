@@ -72,7 +72,7 @@ export async function GET(req: Request) {
   let finalHost = target.hostname;
   try {
     const res = await fetch(target.toString(), {
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; ZimmyBot/1.0; +https://www.zimmy.art)", Accept: "text/html" },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; HitRateBot/1.0; +https://hitrate.sh)", Accept: "text/html" },
       redirect: "follow",
       signal: AbortSignal.timeout(8000),
       next: { revalidate: 60 * 60 * 24 },

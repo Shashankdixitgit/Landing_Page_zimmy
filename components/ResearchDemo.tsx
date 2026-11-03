@@ -272,7 +272,7 @@ export default function ResearchDemo() {
               <div className="flex flex-col rounded-[20px] border border-white bg-surface/80 p-4 sm:p-5">
                 <div className="flex items-center justify-between">
                   <span className="flex items-center gap-2 text-[13.5px] font-medium text-ink">
-                    <span className="grid h-6 w-6 place-items-center rounded-md bg-zimmy text-white">
+                    <span className="grid h-6 w-6 place-items-center rounded-md bg-logo text-white">
                       <Sparkle className="h-3 w-3" fill="currentColor" />
                     </span>
                     Outlier board · {market.flag} {market.label}

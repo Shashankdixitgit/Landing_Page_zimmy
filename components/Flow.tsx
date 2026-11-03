@@ -137,7 +137,7 @@ function StageView({ i }: { i: number }) {
   );
 }
 
-const ZIMMY = ["Winning-video research for your category", "Briefs built from what already works", "Creators found, contacted and priced", "Every post tracked to signups and sales"];
+const HITRATE = ["Winning-video research for your category", "Briefs built from what already works", "Creators found, contacted and priced", "Every post tracked to signups and sales"];
 const YOU = ["Set the product, market and budget", "Approve every creator and price", "Approve every video before it goes live", "Decide where next month’s budget goes"];
 
 export default function Flow() {
@@ -238,7 +238,7 @@ export default function Flow() {
             <p className="text-[12.5px] text-accent">HitRate&rsquo;s part</p>
             <h3 className="display mt-3 text-[30px] text-ink">Everything in between.</h3>
             <ul className="mt-6 space-y-3">
-              {ZIMMY.map((t) => (
+              {HITRATE.map((t) => (
                 <li key={t} className="flex items-center gap-3 text-[14px] text-ink/85">
                   <Check className="h-4 w-4 text-accent" strokeWidth={2} /> {t}
                 </li>
