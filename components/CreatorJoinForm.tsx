@@ -121,6 +121,8 @@ export default function CreatorJoinForm({ initialLink = "" }: { initialLink?: st
     setLookedUp(sig);
     setStatus("reading");
     try {
+      // Any request to the app refreshes an expiring sign-in, so the lookups below don't 401.
+      await fetch("/creators/app/api/auth/me", { cache: "no-store" }).catch(() => null);
       const results = (
         await Promise.all(
           targets.map(([platform, handle]) =>
