@@ -10,10 +10,10 @@ import { CREATOR_HREF, DEMO_HREF } from "./ui";
 // Fan of creator cards across the bottom of the frame. x is px at desktop, scaled by --k.
 const FAN = [
   { i: 2, x: 0, y: 0, r: 0, z: 50 },
-  { i: 1, x: -215, y: 40, r: -6, z: 40 },
-  { i: 3, x: 215, y: 40, r: 6, z: 40 },
-  { i: 0, x: -420, y: 110, r: -11, z: 30, outer: true },
-  { i: 4, x: 420, y: 110, r: 11, z: 30, outer: true },
+  { i: 1, x: -192, y: 36, r: -6, z: 40 },
+  { i: 3, x: 192, y: 36, r: 6, z: 40 },
+  { i: 0, x: -372, y: 100, r: -11, z: 30, outer: true },
+  { i: 4, x: 372, y: 100, r: 11, z: 30, outer: true },
 ];
 
 
