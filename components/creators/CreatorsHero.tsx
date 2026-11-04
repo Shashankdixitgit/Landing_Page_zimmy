@@ -19,12 +19,12 @@ export default function CreatorsHero() {
     <header className="px-5 pb-10 pt-32 text-center sm:pb-16 sm:pt-44" id="start">
       <Reveal className="mx-auto max-w-[860px]">
         <span className="inline-flex rounded-full bg-mint px-3.5 py-1.5 text-[12.5px] font-medium text-accent">For creators</span>
-        <h1 className="display mt-6 text-[42px] text-ink sm:text-[68px]">
+        <h1 className="display mt-6 text-balance text-[34px] text-ink sm:text-[48px] md:text-[56px]">
           Know why your posts work.
           <br />
           <span className="text-accent">Plan what to make next.</span>
         </h1>
-        <p className="mx-auto mt-6 max-w-[560px] text-[17px] leading-relaxed text-muted sm:text-[18.5px]">
+        <p className="mx-auto mt-5 max-w-[640px] text-balance text-[16px] leading-relaxed text-muted sm:text-[17px]">
           Your last 60 days, read against your own median. Your first 7 days, written.
         </p>
         <div className="mt-9">
