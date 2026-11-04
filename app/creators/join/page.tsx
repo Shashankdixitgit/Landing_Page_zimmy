@@ -23,7 +23,7 @@ export default function JoinPage() {
         </Link>
       </div>
       <div className="mt-8 sm:mt-12">
-        <FormBackdrop title="How HitRate works for you." points={["Join in 3 minutes", "Be first in line for brand deals that fit your audience (coming soon)", "Get a clear brief in your own voice", "Paid brand deals are coming soon"]}>
+        <FormBackdrop title="How HitRate works for you." points={["Join in 3 minutes", "Be first in line for brand deals that fit your audience (coming soon)", "Get a clear brief in your own voice (coming soon)", "Paid brand deals are coming soon"]}>
           <CreatorJoinForm />
         </FormBackdrop>
       </div>

@@ -143,7 +143,7 @@ export const STEPS: Step[] = [
   {
     id: "analytics",
     title: "Upload your analytics screenshots",
-    help: "So we can match you well when brand deals open. Verified numbers get better offers.",
+    help: "Verified numbers will help you get better offers when brand deals open.",
     fields: [
       { id: "analytics_screenshots", label: "Instagram Insights, TikTok analytics or YouTube Studio (up to 5 images)", type: "files", max: 5 },
     ],

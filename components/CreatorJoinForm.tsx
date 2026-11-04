@@ -247,7 +247,7 @@ export default function CreatorJoinForm() {
                 ))}
               </div>
             ) : null}
-            <p className="mt-3 text-[12.5px] text-muted">Only the HitRate team can see these. You can skip this step, but verified numbers get better offers.</p>
+            <p className="mt-3 text-[12.5px] text-muted">Only the HitRate team can see these. You can skip this step. Verified numbers will help you get better offers when brand deals open.</p>
           </div>
         );
     }

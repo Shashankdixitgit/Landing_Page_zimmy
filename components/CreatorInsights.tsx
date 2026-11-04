@@ -180,11 +180,11 @@ function DealScore() {
             <div className="flex flex-col gap-4 rounded-[20px] bg-mint p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
               <div>
                 <div className="flex items-center gap-2">
-                  <p className="text-[15px] font-medium text-ink">App-builder brand deal</p>
+                  <p className="text-[15px] font-medium text-ink">Habit-app brand deal</p>
                   <span className="rounded-full bg-accent px-2.5 py-0.5 text-[11.5px] font-semibold text-white">Worked for them</span>
                 </div>
                 <p className="mt-2 max-w-lg text-[14px] leading-relaxed text-ink/75">
-                  Viewers left thinking of the product as a fast way to build something useful, which is exactly the brief.
+                  Viewers left thinking of the product as an easy way to stick to a habit, which is exactly the brief.
                 </p>
               </div>
               <div className="shrink-0 text-right">

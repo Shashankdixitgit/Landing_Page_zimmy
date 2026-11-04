@@ -220,7 +220,10 @@ export default function Flow() {
         </Reveal>
 
         <Reveal className="mt-16">
-          <h3 className="display mb-6 text-[28px] text-ink sm:text-[34px]">Every platform, read on its own.</h3>
+          <div className="mb-6 flex flex-wrap items-center gap-3">
+            <h3 className="display text-[28px] text-ink sm:text-[34px]">Every platform, read on its own.</h3>
+            <Chip>Early access</Chip>
+          </div>
           <PlatformScorecard />
         </Reveal>
 
