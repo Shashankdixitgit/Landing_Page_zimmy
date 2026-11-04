@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, CalendarDays, Check, ImagePlus, Loader2, Sparkles, X } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, CalendarDays, Check, ImagePlus, Loader2, LogIn, Sparkles, X } from "lucide-react";
 import { PLATFORMS, STEPS, TIERS, tierFor, type Field, type Tier } from "@/lib/creatorForm";
 import { submitApplication, uploadScreenshot } from "@/lib/publicSupabase";
 import ProfileLookup from "./ProfileLookup";
+import { fetchMe, signinHref } from "@/lib/creatorAuth";
 import { ageGroupFor, audienceCountries, frequencyFor, genderFor, planHref, viewsBucket, type LookupPlatform, type ProfilePreview } from "@/lib/profilePreview";
 
 type Answers = Record<string, string | string[]>;
@@ -12,6 +13,8 @@ type Answers = Record<string, string | string[]>;
 const MAX_MB = 8;
 
 export default function CreatorJoinForm({ initialLink = "" }: { initialLink?: string }) {
+  // Reading a profile costs money, so it needs a signed-in creator. Checked once, on arrival.
+  const [auth, setAuth] = useState<"checking" | "in" | "out">("checking");
   // The profile lookup comes first; the eight form steps follow it.
   const [lookingUp, setLookingUp] = useState(true);
   // A link carried from /creators is read once, on arrival; coming back here does not re-read it.
@@ -26,6 +29,23 @@ export default function CreatorJoinForm({ initialLink = "" }: { initialLink?: st
   const [prefilled, setPrefilled] = useState<Set<string>>(new Set());
   const [lookedUp, setLookedUp] = useState("");
   const fileInput = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    let live = true;
+    fetchMe().then((me) => {
+      if (!live) return;
+      if (me.signedIn && me.email) {
+        // The account's email is the one we reply to; the creator can still change it.
+        const email = me.email;
+        setA((x) => (x.email ? x : { ...x, email }));
+        setPrefilled((cur) => new Set([...cur, "email"]));
+      }
+      setAuth(me.signedIn ? "in" : "out");
+    });
+    return () => {
+      live = false;
+    };
+  }, []);
 
   const total = STEPS.length;
   const s = STEPS[step];
@@ -195,6 +215,34 @@ export default function CreatorJoinForm({ initialLink = "" }: { initialLink?: st
     if (big) setError(`${big.name} is over ${MAX_MB} MB.`);
     setFiles((cur) => [...cur, ...imgs.filter((f) => f.size <= MAX_MB * 1024 * 1024)].slice(0, 5));
   };
+
+  if (auth === "checking") {
+    return (
+      <div className="mx-auto max-w-2xl py-10 text-center" role="status" aria-live="polite">
+        <Loader2 className="mx-auto h-6 w-6 animate-spin text-accent" />
+      </div>
+    );
+  }
+
+  if (auth === "out") {
+    const back = `/creators/join${initialLink ? `?u=${encodeURIComponent(initialLink)}` : ""}`;
+    return (
+      <div className="pop mx-auto max-w-xl text-center">
+        <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-mint text-accent">
+          <LogIn className="h-7 w-7" strokeWidth={2} />
+        </span>
+        <h1 className="display mt-6 text-[32px] text-ink sm:text-[40px]">Sign in to read your profile.</h1>
+        <p className="mx-auto mt-4 max-w-md text-[15.5px] leading-relaxed text-muted">
+          We read your public posts, your numbers and who comments. Sign in first, with Google or a code sent to your email, and we&rsquo;ll bring you straight back here.
+        </p>
+        <a href={signinHref(back)} className="group mt-8 inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-3.5 text-[15.5px] font-semibold text-white transition-colors hover:bg-accent-hover">
+          Sign in to continue
+          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+        </a>
+        <p className="mt-5 text-[13.5px] text-muted">No password. Free.</p>
+      </div>
+    );
+  }
 
   if (lookingUp) {
     return (

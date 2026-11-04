@@ -4,6 +4,7 @@
 // Each handle's report is cached for 7 days, so repeat lookups don't spend credits.
 
 import { NextResponse } from "next/server";
+import { signedInUserId } from "@/lib/serverAuth";
 
 const PLATFORMS = new Set(["instagram", "tiktok", "youtube"]);
 const HANDLE = /^[A-Za-z0-9._-]{1,60}$/;
@@ -101,6 +102,10 @@ function genderSplit(genders: { code?: string; weight?: number }[]): string | nu
 }
 
 export async function GET(req: Request) {
+  // Each read spends Modash credits, so only signed-in creators get one.
+  const userId = await signedInUserId(req);
+  if (!userId) return NextResponse.json({ ok: false, reason: "signed_out" }, { status: 401 });
+
   const key = process.env.MODASH_API_KEY;
   if (!key) return NextResponse.json({ ok: false, reason: "unavailable" }, { status: 503 });
 
@@ -112,7 +117,7 @@ export async function GET(req: Request) {
   }
 
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
-  if (throttled(ip)) return NextResponse.json({ ok: false, reason: "rate_limited" }, { status: 429 });
+  if (throttled(`user:${userId}`) || throttled(ip)) return NextResponse.json({ ok: false, reason: "rate_limited" }, { status: 429 });
 
   let res: Response;
   try {
