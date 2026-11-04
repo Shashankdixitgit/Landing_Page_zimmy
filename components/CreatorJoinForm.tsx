@@ -1,15 +1,22 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, ImagePlus, Loader2, Sparkles, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, CalendarDays, Check, ImagePlus, Loader2, Sparkles, X } from "lucide-react";
 import { PLATFORMS, STEPS, TIERS, tierFor, type Field, type Tier } from "@/lib/creatorForm";
 import { submitApplication, uploadScreenshot } from "@/lib/publicSupabase";
+import ProfileLookup from "./ProfileLookup";
+import { audienceCountries, frequencyFor, planHref, viewsBucket, type LookupPlatform, type ProfilePreview } from "@/lib/profilePreview";
 
 type Answers = Record<string, string | string[]>;
 
 const MAX_MB = 8;
 
-export default function CreatorJoinForm() {
+export default function CreatorJoinForm({ initialLink = "" }: { initialLink?: string }) {
+  // The profile lookup comes first; the eight form steps follow it.
+  const [lookingUp, setLookingUp] = useState(true);
+  // A link carried from /creators is read once, on arrival; coming back here does not re-read it.
+  const [autoLookup, setAutoLookup] = useState(Boolean(initialLink));
+  const [previewed, setPreviewed] = useState<ProfilePreview | null>(null);
   const [step, setStep] = useState(0);
   const [a, setA] = useState<Answers>({});
   const [followers, setFollowers] = useState<Record<string, string>>({});
@@ -88,7 +95,7 @@ export default function CreatorJoinForm() {
 
   // Read public profiles (Instagram, TikTok, YouTube) and prefill steps 3-5. Only fills empty answers.
   const readProfiles = async () => {
-    const targets = platforms.filter((p) => p.id !== "x").map((p) => [p.id, String(a[`handle_${p.id}`]).trim()] as const);
+    const targets = platforms.filter((p) => p.id !== "x" && p.id !== previewed?.platform).map((p) => [p.id, String(a[`handle_${p.id}`]).trim()] as const);
     const sig = targets.map((t) => t.join(":")).join("|");
     if (!targets.length || sig === lookedUp) return;
     setLookedUp(sig);
@@ -138,6 +145,44 @@ export default function CreatorJoinForm() {
     }
   };
 
+  // Fill the form from the profile lookup. The creator can still change all of it.
+  const applyPreview = (pv: ProfilePreview) => {
+    setAutoLookup(false);
+    setPreviewed(pv);
+    const id = pv.platform as LookupPlatform;
+    const fill: Answers = { [`handle_${id}`]: `@${pv.handle}` };
+    const filled = new Set<string>([`handle_${id}`]);
+    if (pv.followers > 0) {
+      setFollowers((x) => ({ ...x, [id]: String(pv.followers) }));
+      filled.add("followers");
+    }
+    const views = viewsBucket(pv.medianViews ?? pv.avgViews);
+    if (views) fill.avg_views = views;
+    if (pv.niches.length) fill.niches = pv.niches.slice(0, 3);
+    const countries = pv.audience ? audienceCountries(pv.audience.countries) : [];
+    if (countries.length) fill.audience_countries = countries;
+    const freq = frequencyFor(pv.postsPerWeek);
+    if (freq) fill.posting_frequency = freq;
+    Object.keys(fill).forEach((k) => filled.add(k));
+    setA((x) => ({ ...x, ...fill }));
+    setPrefilled((cur) => new Set([...cur, ...filled]));
+    setLookingUp(false);
+  };
+
+  const manual = (picked: { platform: LookupPlatform; handle: string } | null) => {
+    setAutoLookup(false);
+    if (picked) setA((x) => ({ ...x, [`handle_${picked.platform}`]: `@${picked.handle}` }));
+    setLookingUp(false);
+  };
+
+  // The profile the 60-day plan starts from: the one we read, else the biggest one entered.
+  const planFor = (): string | null => {
+    if (previewed && previewed.platform !== "linkedin") return planHref(previewed.platform, previewed.handle);
+    const main = [...platforms].sort((x, y) => Number(followers[y.id] || 0) - Number(followers[x.id] || 0))[0];
+    const handle = main ? String(a[`handle_${main.id}`] ?? "").trim().replace(/^@/, "") : "";
+    return main && handle ? planHref(main.id, handle) : null;
+  };
+
   const addFiles = (list: FileList | null) => {
     if (!list) return;
     const imgs = Array.from(list).filter((f) => f.type.startsWith("image/"));
@@ -146,18 +191,36 @@ export default function CreatorJoinForm() {
     setFiles((cur) => [...cur, ...imgs.filter((f) => f.size <= MAX_MB * 1024 * 1024)].slice(0, 5));
   };
 
+  if (lookingUp) {
+    return (
+      <div className="mx-auto max-w-2xl">
+        <ProfileLookup initial={previewed ? `@${previewed.handle}` : initialLink} auto={autoLookup} onContinue={applyPreview} onManual={manual} />
+      </div>
+    );
+  }
+
   if (status === "done") {
+    const plan = planFor();
     return (
       <div className="pop mx-auto max-w-xl text-center">
         <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-mint text-accent">
-          <Check className="h-7 w-7" strokeWidth={2.5} />
+          <CalendarDays className="h-7 w-7" strokeWidth={2} />
         </span>
-        <h2 className="display mt-6 text-[32px] text-ink">You&rsquo;re in.</h2>
+        <h2 className="display mt-6 text-[32px] text-ink sm:text-[40px]">Let&rsquo;s schedule your next 60 days of content.</h2>
         <p className="mt-3 text-[15.5px] leading-relaxed text-muted">
-          We&rsquo;ve got your details as a <span className="font-medium text-ink">{tierInfo.label} creator</span>. We&rsquo;ll
-          email you at <span className="font-medium text-ink">{String(a.email)}</span> once brand deals open and one fits your audience.
+          You&rsquo;re in as a <span className="font-medium text-ink">{tierInfo.label} creator</span>. Next, HitRate reads your last 60 days
+          against your own median and writes your first 7 days of posts, free.
         </p>
-        <a href="/creators" className="mt-6 inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-[15px] font-medium text-ink hover:border-ink/30">
+        {plan ? (
+          <a href={plan} className="group mt-8 inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-3.5 text-[15.5px] font-semibold text-white transition-colors hover:bg-accent-hover">
+            Plan my next 60 days
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </a>
+        ) : null}
+        <p className="mt-6 text-[13.5px] text-muted">
+          We&rsquo;ll also email you at <span className="font-medium text-ink">{String(a.email)}</span> once brand deals open and one fits your audience.
+        </p>
+        <a href="/creators" className="mt-4 inline-block py-2 text-[14px] font-medium text-muted hover:text-ink">
           Back to HitRate for creators
         </a>
       </div>
@@ -299,7 +362,9 @@ export default function CreatorJoinForm() {
               <ArrowLeft className="h-4 w-4" /> Back
             </button>
           ) : (
-            <span />
+            <button type="button" onClick={() => { setError(""); setLookingUp(true); }} className="inline-flex items-center gap-2 rounded-full px-4 py-3 text-[15px] font-medium text-muted hover:text-ink">
+              <ArrowLeft className="h-4 w-4" /> Profile
+            </button>
           )}
           <button type="button" onClick={next} disabled={status === "sending" || status === "reading"} className="inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-accent-hover disabled:opacity-70">
             {status === "reading" ? (

@@ -6,11 +6,13 @@ import FormBackdrop from "@/components/FormBackdrop";
 
 export const metadata: Metadata = {
   title: "Join HitRate as a creator",
-  description: "Eight quick questions so we can match you with brand deals that fit your audience when they open.",
+  description: "Enter your username to see your numbers, your top posts and who comments, then plan your next 60 days of content.",
   robots: { index: false },
 };
 
-export default function JoinPage() {
+export default async function JoinPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+  const { u } = await searchParams;
+  const link = typeof u === "string" ? u.slice(0, 200) : "";
   return (
     <>
     <main className="min-h-screen px-3 pb-16 pt-5 sm:px-5 sm:pt-8">
@@ -23,8 +25,16 @@ export default function JoinPage() {
         </Link>
       </div>
       <div className="mt-8 sm:mt-12">
-        <FormBackdrop title="How HitRate works for you." points={["Join in 3 minutes", "Be first in line for brand deals that fit your audience (coming soon)", "Get a clear brief in your own voice (coming soon)", "Paid brand deals are coming soon"]}>
-          <CreatorJoinForm />
+        <FormBackdrop
+          title="How HitRate works for you."
+          points={[
+            "See your followers, views, engagement and an estimated price per post",
+            "See who comments and what they ask for",
+            "Plan your next 60 days of content, first 7 days free",
+            "Be first in line for brand deals that fit your audience (coming soon)",
+          ]}
+        >
+          <CreatorJoinForm initialLink={link} />
         </FormBackdrop>
       </div>
     </main>

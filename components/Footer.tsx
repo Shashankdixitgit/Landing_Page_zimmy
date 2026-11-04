@@ -1,5 +1,5 @@
 import Logo from "./Logo";
-import { CREATOR_HREF, CREATOR_JOIN_HREF, DEMO_HREF } from "./ui";
+import { CREATOR_HREF, DEMO_HREF } from "./ui";
 
 const COLS = [
   {
@@ -16,7 +16,7 @@ const COLS = [
     links: [
       { label: "About", href: "/about" },
       { label: "Book a demo", href: DEMO_HREF },
-      { label: "Join as a creator", href: CREATOR_JOIN_HREF },
+      { label: "Join as a creator", href: CREATOR_HREF },
     ],
   },
 ];
