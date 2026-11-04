@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight, CalendarDays, Check, ImagePlus, Loader2, Sparkle
 import { PLATFORMS, STEPS, TIERS, tierFor, type Field, type Tier } from "@/lib/creatorForm";
 import { submitApplication, uploadScreenshot } from "@/lib/publicSupabase";
 import ProfileLookup from "./ProfileLookup";
-import { audienceCountries, frequencyFor, planHref, viewsBucket, type LookupPlatform, type ProfilePreview } from "@/lib/profilePreview";
+import { ageGroupFor, audienceCountries, frequencyFor, genderFor, planHref, viewsBucket, type LookupPlatform, type ProfilePreview } from "@/lib/profilePreview";
 
 type Answers = Record<string, string | string[]>;
 
@@ -159,8 +159,13 @@ export default function CreatorJoinForm({ initialLink = "" }: { initialLink?: st
     const views = viewsBucket(pv.medianViews ?? pv.avgViews);
     if (views) fill.avg_views = views;
     if (pv.niches.length) fill.niches = pv.niches.slice(0, 3);
-    const countries = pv.audience ? audienceCountries(pv.audience.countries) : [];
+    const demo = pv.audience?.demographics;
+    const countries = pv.audience ? audienceCountries(demo?.countries.length ? demo.countries.map((c) => c.label) : pv.audience.countries) : [];
     if (countries.length) fill.audience_countries = countries;
+    const age = ageGroupFor(demo?.age);
+    if (age) fill.audience_age = age;
+    const gender = genderFor(demo?.gender);
+    if (gender) fill.audience_gender = gender;
     const freq = frequencyFor(pv.postsPerWeek);
     if (freq) fill.posting_frequency = freq;
     Object.keys(fill).forEach((k) => filled.add(k));
@@ -207,6 +212,7 @@ export default function CreatorJoinForm({ initialLink = "" }: { initialLink?: st
           <CalendarDays className="h-7 w-7" strokeWidth={2} />
         </span>
         <h2 className="display mt-6 text-[32px] text-ink sm:text-[40px]">Let&rsquo;s schedule your next 60 days of content.</h2>
+        <p className="mx-auto mt-4 inline-flex rounded-full bg-mint px-4 py-1.5 text-[14px] font-medium text-accent">We&rsquo;ll reach out within 48 hours.</p>
         <p className="mt-3 text-[15.5px] leading-relaxed text-muted">
           You&rsquo;re in as a <span className="font-medium text-ink">{tierInfo.label} creator</span>. Next, HitRate reads your last 60 days
           against your own median and writes your first 7 days of posts, free.

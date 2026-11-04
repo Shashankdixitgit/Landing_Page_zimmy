@@ -259,17 +259,22 @@ function ResultCard({ p, onContinue, onBack }: { p: ProfilePreview; onContinue: 
         </h2>
         {p.audience ? (
           <>
-            <p className="mt-2 text-[14.5px] leading-relaxed text-ink">{p.audience.who}</p>
-            {p.audience.languages.length || p.audience.countries.length ? (
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {p.audience.languages.map((l) => (
-                  <Chip key={l} tone="sky">{l}</Chip>
+            {p.audience.demographics ? (
+              <dl className="mt-3 space-y-2.5">
+                {[
+                  ["Country", p.audience.demographics.countries.map((c) => `${c.label} ${c.pct}%`).join(" · ")],
+                  ["Age group", p.audience.demographics.age.map((c) => `${c.label} ${c.pct}%`).join(" · ")],
+                  ["Gender", p.audience.demographics.gender ? `${p.audience.demographics.gender.women}% women · ${p.audience.demographics.gender.men}% men` : ""],
+                ].map(([k, v]) => (
+                  <div key={k} className="flex items-baseline justify-between gap-4 border-b border-line pb-2.5 last:border-0 last:pb-0">
+                    <dt className="text-[13px] text-muted">{k}</dt>
+                    <dd className="text-right text-[14.5px] font-medium text-ink">{v || "Not clear from comments"}</dd>
+                  </div>
                 ))}
-                {p.audience.countries.map((c) => (
-                  <Chip key={c} tone="mint">{c}</Chip>
-                ))}
-              </div>
-            ) : null}
+              </dl>
+            ) : (
+              <p className="mt-2 text-[14.5px] leading-relaxed text-ink">{p.audience.who}</p>
+            )}
             {p.audience.asks.length ? (
               <>
                 <p className="mt-3.5 text-[12.5px] font-medium text-muted">What they ask for</p>
@@ -280,7 +285,10 @@ function ResultCard({ p, onContinue, onBack }: { p: ProfilePreview; onContinue: 
                 </ul>
               </>
             ) : null}
-            <p className="mt-3 text-[12px] text-faint">Read from {p.audience.commentsRead} recent comments.</p>
+            <p className="mt-3 text-[12px] text-faint">
+              Estimated from {p.audience.commentsRead} recent comments: names, language and what people wrote
+              {p.audience.demographics ? `. Confidence: ${p.audience.demographics.confidence}.` : "."} Your platform analytics are more exact.
+            </p>
           </>
         ) : (
           <p className="mt-2 text-[14px] text-muted">We couldn&rsquo;t read comments for this account, so you can tell us about your audience in the form.</p>

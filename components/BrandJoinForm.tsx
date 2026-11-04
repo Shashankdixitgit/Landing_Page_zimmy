@@ -95,7 +95,7 @@ export default function BrandJoinForm() {
         <h2 className="display mt-6 text-[32px] text-ink">Thanks, {String(a.name ?? "").split(" ")[0] || "you're in"}.</h2>
         <p className="mt-3 text-[15.5px] leading-relaxed text-muted">
           We&rsquo;ll look at what&rsquo;s already working in your category and reply to{" "}
-          <span className="font-medium text-ink">{String(a.email)}</span> within one working day.
+          <span className="font-medium text-ink">{String(a.email)}</span> within 48 hours.
         </p>
         <a href={DEMO_HREF} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3 text-[15px] font-semibold text-white hover:bg-accent-hover">
           <CalendarDays className="h-4 w-4" /> Skip the wait, book a 30-min call

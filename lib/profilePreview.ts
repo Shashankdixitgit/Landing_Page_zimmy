@@ -24,7 +24,19 @@ export type ProfilePreview = {
   engagementBasis: "views" | "followers";
   estimate: { currency: "USD"; cpmLow: number; cpmHigh: number; priceLow: number; priceHigh: number; note: string } | null;
   topPosts: { text: string; url: string; date: string; views: number; likes: number; comments: number }[];
-  audience: { commentsRead: number; who: string; languages: string[]; countries: string[]; asks: string[] } | null;
+  audience: {
+    commentsRead: number;
+    who: string;
+    languages: string[];
+    countries: string[];
+    asks: string[];
+    demographics?: {
+      countries: Share[];
+      age: Share[];
+      gender: { women: number; men: number } | null;
+      confidence: "low" | "medium" | "high";
+    } | null;
+  } | null;
   niches: string[];
 };
 
@@ -78,6 +90,8 @@ export function planHref(platform: LookupPlatform, handle: string): string {
   return `${HITRATE_APP_URL}/start?u=${encodeURIComponent(profileUrl(platform, handle))}`;
 }
 
+export type Share = { label: string; pct: number };
+
 /* ── mapping the preview onto the sign-up form's options ── */
 
 export function viewsBucket(v: number | null): string | null {
@@ -117,4 +131,17 @@ export function audienceCountries(names: string[]): string[] {
     if (out.length === 3) break;
   }
   return out;
+}
+
+/** Top estimated age band -> the form's "Main age group" option. */
+export function ageGroupFor(age: Share[] | undefined): string | null {
+  return age?.[0]?.label ?? null;
+}
+
+/** Estimated women share -> the form's "Gender split" option. */
+export function genderFor(g: { women: number; men: number } | null | undefined): string | null {
+  if (!g) return null;
+  if (g.women >= 60) return "Mostly women (60%+)";
+  if (g.men >= 60) return "Mostly men (60%+)";
+  return "Roughly even";
 }
