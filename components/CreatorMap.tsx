@@ -1,5 +1,3 @@
-import { Camera, Mic, PenLine, Video } from "lucide-react";
-import Image from "next/image";
 import Reveal from "./Reveal";
 import DOTS from "@/lib/worldDots.json";
 
@@ -9,30 +7,17 @@ const H = 134;
 const x = (lon: number) => ((lon + 170) / W) * 100;
 const y = (lat: number) => ((78 - lat) / H) * 100;
 
-type Pin = { lon: number; lat: number; img?: string; icon?: typeof Video };
+type Pin = { lon: number; lat: number; market: string; wins: string; mobile?: boolean };
 
-// Major video markets. Illustrative: where HitRate researches, not a user count.
+// One winning hook per market, named after the hook types HitRate tags. Illustrative, not real data.
 const PINS: Pin[] = [
-  { lon: -118.2, lat: 34.0, icon: Camera },
-  { lon: -74.0, lat: 40.7, icon: Video },
-  { lon: -79.4, lat: 43.7, icon: PenLine },
-  { lon: -99.1, lat: 19.4, icon: PenLine },
-  { lon: -46.6, lat: -23.5, icon: Mic },
-  { lon: -58.4, lat: -34.6, icon: Camera },
-  { lon: -0.1, lat: 51.5, icon: Video },
-  { lon: 13.4, lat: 52.5, icon: Mic },
-  { lon: -3.7, lat: 40.4, icon: Camera },
-  { lon: 3.4, lat: 6.5, icon: Video },
-  { lon: 36.8, lat: -1.3, icon: PenLine },
-  { lon: 55.3, lat: 25.2, icon: Camera },
-  { lon: 72.8, lat: 19.1, icon: Mic },
-  { lon: 77.2, lat: 28.6, icon: PenLine },
-  { lon: 77.6, lat: 13.0, icon: Video },
-  { lon: 103.8, lat: 1.35, icon: Camera },
-  { lon: 106.8, lat: -6.2, icon: Mic },
-  { lon: 126.9, lat: 37.6, icon: PenLine },
-  { lon: 139.7, lat: 35.7, icon: Video },
-  { lon: 151.2, lat: -33.9, icon: Mic },
+  { lon: -74.0, lat: 40.7, market: "US", wins: "Bold claim", mobile: true },
+  { lon: -46.6, lat: -23.5, market: "Brazil", wins: "Result first", mobile: true },
+  { lon: -0.1, lat: 51.5, market: "UK", wins: "Contrarian take", mobile: true },
+  { lon: 3.4, lat: 6.5, market: "Nigeria", wins: "Question hook" },
+  { lon: 72.8, lat: 19.1, market: "India", wins: "Personal story", mobile: true },
+  { lon: 139.7, lat: 35.7, market: "Japan", wins: "Pattern interrupt" },
+  { lon: 151.2, lat: -33.9, market: "Australia", wins: "Outcome promise" },
 ];
 
 export default function CreatorMap() {
@@ -61,22 +46,18 @@ export default function CreatorMap() {
 
           <Reveal stagger={0.05} className="absolute inset-0" aria-hidden>
             {PINS.map((p, i) => {
-              const Icon = p.icon;
               return (
                 <div
-                  key={i}
-                  className={`absolute ${i % 2 ? "hidden sm:block" : ""}`}
+                  key={p.market}
+                  className={`absolute ${p.mobile ? "" : "hidden sm:block"}`}
                   style={{ left: `${x(p.lon)}%`, top: `${y(p.lat)}%` }}
                 >
                   {/* stand the pin up against the tilt, anchored at its base */}
                   <div className="floaty -translate-x-1/2 -translate-y-full [transform-origin:bottom] [transform:rotateX(-22deg)]" style={{ animationDelay: `${(i % 7) * 0.5}s` }}>
                     <div className="flex flex-col items-center">
-                      <span className="grid h-9 w-9 place-items-center overflow-hidden rounded-full border-2 border-white bg-mint text-accent shadow-[0_8px_20px_-6px_rgb(25_41_45/0.45)] sm:h-12 sm:w-12">
-                        {p.img ? (
-                          <Image src={`/creators/${p.img}.jpg`} alt="" width={48} height={48} className="h-full w-full object-cover" />
-                        ) : Icon ? (
-                          <Icon className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.9} />
-                        ) : null}
+                      <span className="flex items-center gap-1.5 whitespace-nowrap rounded-full border-2 border-white bg-mint px-3 py-1.5 text-[11.5px] shadow-[0_8px_20px_-6px_rgb(25_41_45/0.45)] sm:px-3.5 sm:py-2 sm:text-[13px]">
+                        <span className="font-semibold text-accent">{p.market}</span>
+                        <span className="text-ink/70">{p.wins}</span>
                       </span>
                       <span className="h-5 w-[2px] rounded-full bg-gradient-to-b from-white to-[#b9c6c9] sm:h-8" />
                       <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_0_4px_rgb(15_122_82/0.15)]" />
