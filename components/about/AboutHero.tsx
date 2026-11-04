@@ -4,8 +4,8 @@ import CreatorCard, { CREATORS } from "../CreatorCard";
 
 const STEPS = [
   { i: Search, t: "Finding what’s winning" },
-  { i: PenLine, t: "Briefing the right creators" },
-  { i: LineChart, t: "Tracking who made you money" },
+  { i: PenLine, t: "Testing it with AI UGC" },
+  { i: LineChart, t: "Scaling the winner" },
 ];
 
 export default function AboutHero() {
@@ -15,9 +15,9 @@ export default function AboutHero() {
         <Reveal>
           <p className="text-[13px] font-medium text-white/85">About HitRate</p>
           <h1 className="display mx-auto mt-5 max-w-3xl text-[44px] text-white [text-shadow:0_2px_30px_rgb(20_60_100/0.25)] sm:text-[64px] md:text-[72px]">
-            Creator marketing,
+            Know which video
             <br />
-            for everyone.
+            to pay for.
           </h1>
         </Reveal>
 
@@ -30,7 +30,7 @@ export default function AboutHero() {
               <span className="grid h-6 w-6 place-items-center rounded-md bg-logo text-white">
                 <Sparkle className="h-3 w-3" fill="currentColor" />
               </span>
-              Campaign engine
+              Find · Test · Scale
               <span className="live-dot ml-auto h-2 w-2 rounded-full bg-accent" />
             </p>
             <div className="mt-4 space-y-2">

@@ -7,24 +7,32 @@ import { DEMO_HREF, TextLink } from "./ui";
 
 const FAQS = [
   {
-    q: "Can HitRate guarantee results?",
-    a: "No one honestly can. HitRate starts from videos already winning in your category, so you are not starting from a guess.",
+    q: "Who is HitRate for?",
+    a: "Consumer app teams. We’re starting with AI and consumer app startups.",
   },
   {
-    q: "Why not just ask ChatGPT for ideas?",
-    a: "It doesn’t know what’s winning in your niche this month. HitRate starts from real, recent videos in your market, and a person checks the reasoning.",
+    q: "Why test with AI UGC first?",
+    a: "Most marketing spend goes on formats nobody knew would work until the money is already gone. AI UGC is a cheap way to find the winning format first. UGC, real creators and paid ads are how you scale it.",
+  },
+  {
+    q: "Why not just make more videos with an AI tool?",
+    a: "You don’t need more videos. You need to know which video to pay for. HitRate starts from what’s already winning, tests it cheaply with AI, and only then sends the winner to real creators and ads.",
+  },
+  {
+    q: "Whose accounts do the tests post from?",
+    a: "Your brand’s accounts, or warmed-up AI UGC accounts from our inventory if you’d rather not test on your own.",
   },
   {
     q: "Do I stay in control?",
-    a: "Always. You approve every creator, every price and every video before it goes live, and you decide where the budget goes.",
+    a: "Always. You approve every script, video and post before it goes out, and you decide which winner to scale.",
   },
   {
-    q: "How do I know which creator made me money?",
-    a: "Each creator gets their own tracked link or code. HitRate ties signups and sales back to them, so you see the cost per customer for every creator.",
+    q: "Can HitRate guarantee results?",
+    a: "No one honestly can. HitRate starts from videos already winning for your competitors and tests before you spend, so you are not starting from a guess.",
   },
   {
     q: "What’s live today?",
-    a: "Winning-video research for your category and competitors, and creator search. Outreach, pricing, approvals and sales tracking are in early access.",
+    a: "Paste your app link and see your competitors’ winning videos and ads, a summary of your product from its store reviews, AI-written scripts and a content calendar. Built but not yet switched on: AI video generation, auto-posting to social accounts, and the UGC and creator pipeline.",
   },
 ];
 

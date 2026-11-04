@@ -88,7 +88,7 @@ export default function Navbar({ overHero = true, onCreators = false }: { overHe
               light ? "bg-white text-accent hover:bg-white/90" : "bg-accent text-white hover:bg-accent-hover"
             }`}
           >
-            Join as a brand
+            Join as an app team
           </a>
         </div>
 
@@ -125,7 +125,7 @@ export default function Navbar({ overHero = true, onCreators = false }: { overHe
             onClick={() => setOpen(false)}
             className="mt-2 block rounded-full bg-accent px-4 py-3 text-center text-[15px] font-medium text-white"
           >
-            Join as a brand
+            Join as an app team
           </a>
           <a
             href={creatorHref}

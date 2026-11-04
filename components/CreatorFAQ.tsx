@@ -7,7 +7,7 @@ import Reveal from "./Reveal";
 const FAQS = [
   {
     q: "What can I use today?",
-    a: "Paid brand deals: brands on HitRate find creators whose audience fits, and send a clear brief, agreed terms and your own tracking link. The weekly content plan is coming soon.",
+    a: "Sign-up. Paid brand deals are in early access: when a brand’s tested format is ready to scale, HitRate matches it with creators whose audience fits and sends a clear brief and agreed terms. The weekly content plan is coming soon.",
   },
   {
     q: "How do I join?",

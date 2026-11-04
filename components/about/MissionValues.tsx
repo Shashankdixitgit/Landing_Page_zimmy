@@ -5,18 +5,18 @@ import { OutlineButton } from "../ui";
 const VALUES = [
   {
     icon: Crosshair,
-    head: "Control over chaos",
-    body: "You approve every creator, price and video. Nothing goes out in your name without it.",
+    head: "You approve everything",
+    body: "Every script, video and post. Nothing goes out in your name without your sign-off.",
   },
   {
     icon: BarChart3,
-    head: "Data over guesswork",
-    body: "Start from videos already beating their usual views in your market, not from hunches.",
+    head: "Start from what’s winning",
+    body: "Begin with the videos and ads already beating their usual views for your competitors, not with hunches.",
   },
   {
     icon: Rocket,
-    head: "Done for you, not DIY",
-    body: "We carry the operational heavy lifting, so you can spend your time on strategy and the brand.",
+    head: "Test before you spend",
+    body: "Try a format cheaply with AI UGC first. Pay creators and ads only once it brings users.",
   },
 ];
 
@@ -27,11 +27,12 @@ export default function MissionValues() {
         <Reveal>
           <p className="text-[13px] font-medium text-accent">Our mission</p>
           <h2 className="display mt-4 text-[36px] text-ink sm:text-[46px]">
-            Run marketing like the best brands do.
+            Stop paying for formats nobody tested.
           </h2>
           <p className="mt-6 max-w-md text-[15.5px] leading-relaxed text-muted">
-            Big brands have teams and custom analytics for creator marketing. HitRate gives
-            every business the same: what to make, who to pay, and who made you money.
+            Most app marketing spend goes on formats nobody knew would work until the money was
+            already gone. HitRate helps consumer app teams find what&rsquo;s winning, test their own
+            version cheaply with AI UGC, and only then pay real creators and ads to scale it.
           </p>
           <OutlineButton href="/#research" className="mt-8">
             Explore the product

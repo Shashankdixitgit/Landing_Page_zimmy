@@ -21,7 +21,7 @@ type Platform = {
   decisionTone: Verdict;
 };
 
-// Illustrative results for one video across three platforms.
+// Illustrative results for one AI UGC test video across three platforms.
 const PLATFORMS: Platform[] = [
   {
     id: "tiktok",
@@ -50,7 +50,7 @@ const PLATFORMS: Platform[] = [
     clickNote: "Strong link clicks",
     runs: ["strong", "strong", "strong"],
     verdicts: ["strong", "strong", "strong", "strong"],
-    decision: "Brief more creators on this one.",
+    decision: "This format brings users. Take it to creators and ads.",
     decisionTone: "strong",
   },
   {
@@ -105,7 +105,7 @@ export default function PlatformScorecard() {
       {/* platform tabs */}
       <div className="flex flex-col items-start justify-between gap-3 px-2 pb-4 pt-1 sm:flex-row sm:items-center">
         <p className="text-[14px] font-medium text-ink">
-          One video, three platforms. <span className="text-muted">Pick one:</span>
+          One test video, three platforms. <span className="text-muted">Pick one:</span>
         </p>
         <div className="flex rounded-full bg-soft p-1" role="tablist" aria-label="Platform">
           {PLATFORMS.map((x) => (

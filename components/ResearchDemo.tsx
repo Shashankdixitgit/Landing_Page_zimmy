@@ -123,10 +123,10 @@ export default function ResearchDemo() {
 
   // What HitRate is doing, shown as pointers that appear one by one.
   const POINTERS = [
-    "Category: habit and productivity apps",
+    "Read your app: a habit tracker for students",
+    "Summed up your store reviews: people love the streaks",
     `Market: ${market.label} · ${market.language}`,
-    "Scanning your competitors’ videos from the last 30 days",
-    "Comparing each one to its account’s usual views",
+    "Scanning your competitors’ videos and ads from the last 30 days",
     "Picking the winners and why they worked",
   ];
   const [found, setFound] = useState(false); // board stays filled once the first run finishes
@@ -177,11 +177,12 @@ export default function ResearchDemo() {
           <SplitHead
             title={
               <>
-                See what’s winning.
+                Paste your app link.
                 <br />
-                Before you spend.
+                See what’s winning.
               </>
             }
+            sub="Your competitors’ winning videos and ads, a summary of your store reviews, then AI-written scripts and a content calendar. Live today."
           />
         </Reveal>
 
@@ -213,18 +214,18 @@ export default function ResearchDemo() {
                     <span className="h-2 w-2 rounded-full bg-[#d4dfe6]" />
                     <span className="h-2 w-2 rounded-full bg-[#d4dfe6]" />
                   </span>
-                  <span className="text-[12px] text-muted">Brief</span>
+                  <span className="text-[12px] text-muted">Your app</span>
                   <span className="w-8" />
                 </div>
                 <div className="flex flex-1 flex-col p-6 sm:p-8">
-                  <p className="text-[12.5px] text-muted">Habit-tracking app, launching in {market.label}</p>
+                  <p className="text-[12.5px] text-muted">Habit-tracking app, growing in {market.label}</p>
                   <h3 className="display mt-3 text-[26px] text-ink sm:text-[30px]">
                     Find what&rsquo;s working
                     <br />
                     for people building habits.
                   </h3>
                   <p className="mt-5 text-[14.5px] leading-[1.8] text-ink/80">
-                    <mark className="rounded bg-highlight px-1 text-ink">Show me what’s winning for my competitors.</mark>
+                    <mark className="rounded bg-highlight px-1 text-ink">apps.apple.com/app/streakly-habits</mark>
                   </p>
                   <ul className="mt-5 space-y-2" aria-live="polite">
                     {POINTERS.map((t, i) =>

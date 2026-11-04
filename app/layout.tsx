@@ -11,14 +11,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "HitRate: Creator marketing anyone can run",
+  title: "HitRate: Test video ads with AI before paying creators",
   description:
-    "HitRate shows you the videos winning in your category, gets creators to make yours, and tells you which creator made you money.",
+    "HitRate helps consumer app teams find which short video will bring users before they spend on it. Paste your app link to see the videos and ads winning for your competitors.",
   metadataBase: new URL("https://hitrate.sh"),
   openGraph: {
-    title: "HitRate: Creator marketing anyone can run",
+    title: "HitRate: Test video ads with AI before paying creators",
     description:
-      "See what's winning. Get creators to make it. Know who made you money.",
+      "Find what's winning for your competitors. Test your version with AI UGC. Scale the one that brings users.",
     type: "website",
   },
 };

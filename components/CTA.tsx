@@ -21,10 +21,10 @@ export default function CTA() {
             <h2 className="display mx-auto max-w-xl text-[42px] text-white [text-shadow:0_2px_30px_rgb(10_40_70/0.35)] sm:text-[60px]">
               Find what wins.
               <br />
-              Pay the ones who sell.
+              Then pay for it.
             </h2>
             <p className="mx-auto mt-5 max-w-md text-[16px] leading-relaxed text-white [text-shadow:0_1px_12px_rgb(10_30_50/0.55)]">
-              See what&rsquo;s already winning in your category, and why.
+              Paste your app link and see what&rsquo;s winning for your competitors, and why.
             </p>
             <div className="mt-8 flex justify-center">
               <a
@@ -58,7 +58,7 @@ export default function CTA() {
               href={DEMO_HREF}
               className="group inline-flex items-center justify-center gap-2.5 rounded-full border border-line px-6 py-3 text-[15px] font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-ink/30"
             >
-              I&rsquo;m a brand · Book a demo
+              I&rsquo;m an app team · Book a demo
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </a>
           </div>

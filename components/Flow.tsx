@@ -10,37 +10,37 @@ import CardVideo from "./CardVideo";
 const STAGES = [
   {
     n: "01",
-    title: "Define",
-    time: "Day 1",
-    body: "Your product, your customer and your budget. Then the category, competitors and markets to study.",
+    title: "Paste your app link",
+    time: "Live",
+    body: "HitRate reads your app, finds your competitors and sums up what your store reviews say.",
     icon: Target,
   },
   {
     n: "02",
-    title: "Research",
-    time: "Days 1–3",
-    body: "HitRate finds the videos winning in your category and for your competitors, market by market.",
+    title: "Find what’s winning",
+    time: "Live",
+    body: "The videos and ads winning for your competitors, or for any app or category your users watch, market by market.",
     icon: Search,
   },
   {
     n: "03",
-    title: "Decode and brief",
-    time: "Days 2–4",
-    body: "Why each video worked, checked by a strategist. Then a brief creators can shoot.",
+    title: "Scripts and a calendar",
+    time: "Live",
+    body: "AI-written scripts built from the winners, laid out in a content calendar.",
     icon: ScanSearch,
   },
   {
     n: "04",
-    title: "Creators make it",
-    time: "Week 2",
-    body: "HitRate finds creators who fit, reaches out, agrees a price within your budget and sends the brief. You approve every video before it goes live.",
+    title: "Test with AI UGC",
+    time: "Early access",
+    body: "HitRate makes your versions as AI UGC videos and posts them on your brand’s accounts or warmed-up AI UGC accounts, to see which format brings users. You approve every video before it goes out.",
     icon: Send,
   },
   {
     n: "05",
-    title: "Who made you money",
-    time: "Every week",
-    body: "Every post tracked. Signups and sales tied back to each creator, so next month’s budget goes to the ones who sell.",
+    title: "Scale the winner",
+    time: "Coming soon",
+    body: "Once a format proves it brings users, take it to UGC, real creators and paid ads. Then test the next one.",
     icon: BarChart3,
   },
 ];
@@ -51,9 +51,9 @@ function StageView({ i }: { i: number }) {
     return (
       <div className="space-y-2.5 text-[13px]">
         {[
-          ["Product", "Habit-tracking app"],
-          ["Audience", "Students and young professionals"],
-          ["Aha moment", "Seeing a 30-day streak fill up"],
+          ["App link", "apps.apple.com/app/streakly"],
+          ["Category", "Habit and productivity"],
+          ["Reviews say", "People love the 30-day streak"],
           ["Market", "🇮🇳 India · English and Hindi"],
         ].map(([k, v]) => (
           <div key={k} className="flex justify-between gap-4 rounded-xl bg-surface px-4 py-3">
@@ -74,7 +74,7 @@ function StageView({ i }: { i: number }) {
           <div key={m as string} className="rounded-xl bg-surface px-4 py-3">
             <div className="flex justify-between text-[13px]">
               <span className="font-medium text-ink">{m}</span>
-              <span className="text-muted">{n} outliers found</span>
+              <span className="text-muted">{n} winning videos and ads</span>
             </div>
             <div className="mt-2 h-1.5 rounded-full bg-soft">
               <div className="h-full rounded-full bg-accent" style={{ width: w as string }} />
@@ -86,7 +86,7 @@ function StageView({ i }: { i: number }) {
   if (i === 2)
     return (
       <div className="rounded-xl bg-surface p-4 text-[13px]">
-        <p className="text-[12px] text-muted">Creator brief</p>
+        <p className="text-[12px] text-muted">AI script · Tuesday in your calendar</p>
         <ol className="mt-3 space-y-2">
           {["Open on the 30-day streak", "Show the app in the first second", "15 seconds, captions on"].map((t, k) => (
             <li key={t} className="flex items-center gap-3">
@@ -96,7 +96,7 @@ function StageView({ i }: { i: number }) {
           ))}
         </ol>
         <p className="mt-4 flex items-center gap-2 border-t border-line pt-3 text-[12px] text-accent">
-          <Check className="h-3.5 w-3.5" /> Reasoning checked by a strategist
+          <Check className="h-3.5 w-3.5" /> Built from 3 winning competitor videos
         </p>
       </div>
     );
@@ -104,16 +104,16 @@ function StageView({ i }: { i: number }) {
     return (
       <div className="grid grid-cols-3 gap-2 text-center text-[12px]">
         {[
-          ["TikTok", "jay"],
-          ["Reels", "mira"],
-          ["Shorts", "sana"],
-        ].map(([p, clip]) => (
+          ["TikTok", "jay", "Your account"],
+          ["Reels", "mira", "Warmed-up account"],
+          ["Shorts", "sana", "Warmed-up account"],
+        ].map(([p, clip, acct]) => (
           <div key={p} className="rounded-xl bg-surface px-2 py-3">
             <div className="relative mx-auto aspect-[9/16] w-full max-w-[96px] overflow-hidden rounded-lg bg-soft">
               <CardVideo name={clip} />
             </div>
             <p className="mt-2 font-medium text-ink">{p}</p>
-            <p className="text-muted">Approved</p>
+            <p className="text-muted">{acct}</p>
           </div>
         ))}
       </div>
@@ -121,9 +121,9 @@ function StageView({ i }: { i: number }) {
   return (
     <div className="space-y-2 text-[13px]">
       {[
-        ["@jordanresets", "212 signups · $1.40 each", "Book again", "bg-mint text-accent"],
-        ["@tinywins.uk", "38 signups · $6.10 each", "Keep testing", "bg-sky text-[#235a80]"],
-        ["@habitlab.sam", "4 signups", "Drop", "bg-soft text-muted"],
+        ["Hook: before/after", "212 installs · $1.40 each", "Scale it", "bg-mint text-accent"],
+        ["Format: green screen", "38 installs · $6.10 each", "Keep testing", "bg-sky text-[#235a80]"],
+        ["Format: ranking", "4 installs", "Drop", "bg-soft text-muted"],
       ].map(([p, r, d, c]) => (
         <div key={p} className="flex items-center justify-between gap-3 rounded-xl bg-surface px-4 py-3">
           <div>
@@ -137,8 +137,8 @@ function StageView({ i }: { i: number }) {
   );
 }
 
-const HITRATE = ["Winning-video research for your category", "Briefs built from what already works", "Creators found, contacted and priced", "Every post tracked to signups and sales"];
-const YOU = ["Set the product, market and budget", "Approve every creator and price", "Approve every video before it goes live", "Decide where next month’s budget goes"];
+const HITRATE = ["Your competitors’ winning videos and ads", "Scripts and a calendar built from them", "AI UGC versions made and posted to test", "The winning format taken to creators and ads"];
+const YOU = ["Paste your app link", "Approve every script and video", "Approve every post before it goes out", "Decide which winner to scale"];
 
 export default function Flow() {
   const [active, setActive] = useState(0);
@@ -150,12 +150,12 @@ export default function Flow() {
           <SplitHead
             title={
               <>
-                A loop,
+                Pay for the winner,
                 <br />
-                not a lucky guess.
+                not the guess.
               </>
             }
-            sub="Every campaign teaches the next one."
+            sub="Brands don’t need more videos. They need to know which video to pay for."
           />
         </Reveal>
 
@@ -189,7 +189,7 @@ export default function Flow() {
                           </div>
                           {i === STAGES.length - 1 ? (
                             <p className="mt-3 inline-flex items-center gap-1.5 rounded-md bg-mint px-2 py-1 text-[12px] font-medium text-accent">
-                              <RotateCcw className="h-3.5 w-3.5" /> Back to 03
+                              <RotateCcw className="h-3.5 w-3.5" /> Back to 02
                             </p>
                           ) : null}
                         </div>
@@ -210,7 +210,7 @@ export default function Flow() {
             </div>
           </div>
           <p className="mt-3 text-center text-[12.5px] text-muted">
-            Timings are what we aim for in a first campaign.
+            Steps 01 to 03 are live today. Testing is in early access. Scaling is coming soon.
           </p>
         </Reveal>
 

@@ -6,7 +6,7 @@ import { CREATOR_JOIN_HREF } from "./ui";
 const PERKS = [
   { icon: TrendingUp, title: "See what’s taking off in your niche", status: "Coming soon" },
   { icon: CalendarDays, title: "Get a weekly posting plan built from it", status: "Coming soon" },
-  { icon: BadgeDollarSign, title: "Get paid by brands that fit your audience", status: "Live" },
+  { icon: BadgeDollarSign, title: "Get paid by brands that fit your audience", status: "Early access" },
 ];
 
 // Notifications that pop in around the phone. Illustrative.

@@ -8,10 +8,10 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "About HitRate",
   description:
-    "HitRate makes creator marketing anyone can run.",
+    "HitRate helps consumer app teams find which short video will bring users before they spend on it.",
   openGraph: {
     title: "About HitRate",
-    description: "Creator marketing anyone can run.",
+    description: "Test video ads with AI before paying creators.",
     type: "website",
   },
 };

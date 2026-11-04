@@ -11,7 +11,7 @@ const y = (lat: number) => ((78 - lat) / H) * 100;
 
 type Pin = { lon: number; lat: number; img?: string; icon?: typeof Video };
 
-// Major creator markets. Illustrative: who and where HitRate researches, not a member count.
+// Major video markets. Illustrative: where HitRate researches, not a user count.
 const PINS: Pin[] = [
   { lon: -118.2, lat: 34.0, img: "jay" },
   { lon: -74.0, lat: 40.7, icon: Video },
@@ -40,13 +40,13 @@ export default function CreatorMap() {
     <section id="markets" className="overflow-hidden px-5 py-24 sm:py-32">
       <Reveal className="mx-auto max-w-2xl text-center">
         <h2 className="display text-[36px] text-ink sm:text-[50px]">
-          Creators in every market
+          What wins in every market
           <br />
-          you sell to.
+          your users are in.
         </h2>
         <p className="mx-auto mt-5 max-w-lg text-[16px] leading-relaxed text-muted">
-          From India and the Gulf to Europe and the US, HitRate finds creators whose audience is already
-          there, reaches out and agrees a price within your budget.
+          From India and the Gulf to Europe and the US, HitRate reads what&rsquo;s winning in each market
+          and language, so your tests start from formats that already work there.
         </p>
       </Reveal>
 

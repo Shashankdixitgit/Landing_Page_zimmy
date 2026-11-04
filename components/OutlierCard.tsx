@@ -45,7 +45,7 @@ export default function OutlierCard({ o, delay = 0 }: { o: Outlier; delay?: numb
         </div>
         <div className="mt-2.5 flex items-center justify-between gap-2">
           <span className="flex min-w-0 items-center gap-1.5 truncate whitespace-nowrap text-[11.5px] text-muted">
-            <UserCheck className="h-3.5 w-3.5 text-accent" /> Strategist-checked
+            <UserCheck className="h-3.5 w-3.5 text-accent" /> Competitor video
           </span>
           {added ? (
             <span className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-mint px-2.5 py-1 text-[11.5px] font-medium text-accent">

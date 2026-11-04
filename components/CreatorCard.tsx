@@ -41,7 +41,7 @@ export const CREATORS: Creator[] = [
     niche: "Fitness",
     followers: "1.2M",
     caption: "day 14 and I’m genuinely shocked",
-    status: "Creator post · live on Reels",
+    status: "AI UGC test · live on Reels",
     tone: "live",
     scene: ["#ffb703", "#fb5607", "#2a0d05"],
     media: "mira", // Pexels #6548012
@@ -51,7 +51,7 @@ export const CREATORS: Creator[] = [
     niche: "Beauty",
     followers: "560K",
     caption: "honest review, no filter",
-    status: "Remade by a creator",
+    status: "Winner · sent to creators",
     tone: "done",
     scene: ["#ff99c8", "#a05195", "#1e0c1f"],
     media: "sana", // Pexels #5927936
