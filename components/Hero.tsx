@@ -92,7 +92,7 @@ export default function Hero() {
 
         {/* creator fan */}
         <div
-          className="relative mx-auto mt-14 h-[330px] max-w-6xl [--k:0.5] sm:mt-16 sm:h-[400px] sm:[--k:0.78] lg:[--k:1]"
+          className="relative mx-auto mt-14 h-[318px] max-w-6xl [--k:0.5] sm:mt-16 sm:h-[372px] sm:[--k:0.78] lg:[--k:1]"
           aria-hidden
         >
           {FAN.map((f) => (
