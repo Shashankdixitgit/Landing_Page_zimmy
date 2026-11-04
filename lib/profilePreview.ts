@@ -4,6 +4,11 @@
 
 import { HITRATE_APP_PATH } from "@/components/ui";
 
+// The lookup calls the creator app directly rather than through the hitrate.sh proxy, so its
+// per-visitor rate limit sees the visitor's own IP and a slow lookup isn't cut off by the proxy.
+// It's a data request only; visitors never see this address.
+const LOOKUP_ORIGIN = (process.env.NEXT_PUBLIC_LOOKUP_ORIGIN || "https://hitrate-rosy.vercel.app").replace(/\/+$/, "");
+
 export type LookupPlatform = "instagram" | "tiktok" | "youtube" | "x";
 
 /** The shape returned by GET /creators/app/api/public/profile-preview (hitrate repo, lib/preview.ts). */
@@ -46,7 +51,7 @@ const DOWN = "We couldn't read that profile just now. You can fill in your detai
 export async function lookupProfile(platform: LookupPlatform, handle: string): Promise<LookupResult> {
   try {
     const res = await fetch(
-      `${HITRATE_APP_PATH}/api/public/profile-preview?platform=${platform}&handle=${encodeURIComponent(handle)}`,
+      `${LOOKUP_ORIGIN}${HITRATE_APP_PATH}/api/public/profile-preview?platform=${platform}&handle=${encodeURIComponent(handle)}`,
       { signal: AbortSignal.timeout(170_000) }
     );
     const data = (await res.json().catch(() => null)) as { ok?: boolean; preview?: ProfilePreview; message?: string } | null;
