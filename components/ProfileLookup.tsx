@@ -240,7 +240,7 @@ function ResultCard({ p, onContinue, onBack }: { p: ProfilePreview; onContinue: 
           <ul className="mt-2.5 space-y-2">
             {p.topPosts.map((t) => (
               <li key={t.url || t.text}>
-                <a href={t.url} target="_blank" rel="noreferrer" className="block rounded-2xl border border-line px-4 py-3 transition-colors hover:border-ink/25">
+                <a href={t.url?.startsWith("https://") ? t.url : undefined} target="_blank" rel="noreferrer" className="block rounded-2xl border border-line px-4 py-3 transition-colors hover:border-ink/25">
                   <p className="line-clamp-2 text-[14px] leading-snug text-ink">{t.text || "Untitled post"}</p>
                   <p className="mt-1 text-[12.5px] text-muted">
                     {p.hasViews ? `${fmt(t.views)} views · ` : ""}
