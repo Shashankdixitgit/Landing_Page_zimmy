@@ -69,16 +69,10 @@ export default function Hero() {
         <div className="relative mx-auto max-w-4xl px-5 pt-36 text-center sm:pt-44">
           <h1
             data-h
-            className="display mx-auto max-w-[14ch] text-[50px] text-white [text-shadow:0_2px_30px_rgb(10_40_70/0.35)] sm:text-[76px] md:text-[88px]"
+            className="display mx-auto max-w-[20ch] text-balance text-[38px] text-white [text-shadow:0_2px_30px_rgb(10_40_70/0.35)] sm:text-[54px] md:text-[64px]"
           >
             Test video ads with AI before paying creators.
           </h1>
-          <p
-            data-h
-            className="mx-auto mt-6 max-w-2xl text-[16px] leading-relaxed text-white [text-shadow:0_1px_12px_rgb(10_30_50/0.6)] sm:text-[17px]"
-          >
-            For consumer app teams. See the videos and ads winning for your competitors, or from any app or category your users watch. Test your own versions as AI UGC, and pay to scale only the one that brings users.
-          </p>
           <div data-h className="mt-8 flex flex-col items-center gap-4">
             <a
               href={DEMO_HREF}
