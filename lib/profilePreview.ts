@@ -1,13 +1,12 @@
 // The profile lookup on /creators/join. It calls the HitRate creator app's public
-// endpoint straight from the browser (the endpoint's CORS allows hitrate.sh and
-// this project's Vercel previews), so the app's per-visitor rate limit counts
-// the real visitor and not this site's server.
+// endpoint straight from the browser, same-origin through the /creators/app proxy
+// (next.config.ts), so no vercel.app address ever reaches the page.
 
-import { HITRATE_APP_URL } from "@/components/ui";
+import { HITRATE_APP_PATH } from "@/components/ui";
 
 export type LookupPlatform = "instagram" | "tiktok" | "youtube" | "x";
 
-/** The shape returned by GET /api/public/profile-preview (hitrate repo, lib/preview.ts). */
+/** The shape returned by GET /creators/app/api/public/profile-preview (hitrate repo, lib/preview.ts). */
 export type ProfilePreview = {
   platform: LookupPlatform | "linkedin";
   handle: string;
@@ -47,7 +46,7 @@ const DOWN = "We couldn't read that profile just now. You can fill in your detai
 export async function lookupProfile(platform: LookupPlatform, handle: string): Promise<LookupResult> {
   try {
     const res = await fetch(
-      `${HITRATE_APP_URL}/api/public/profile-preview?platform=${platform}&handle=${encodeURIComponent(handle)}`,
+      `${HITRATE_APP_PATH}/api/public/profile-preview?platform=${platform}&handle=${encodeURIComponent(handle)}`,
       { signal: AbortSignal.timeout(170_000) }
     );
     const data = (await res.json().catch(() => null)) as { ok?: boolean; preview?: ProfilePreview; message?: string } | null;
@@ -87,7 +86,7 @@ export function profileUrl(platform: LookupPlatform, handle: string): string {
 
 /** The creator app's onboarding, with the profile already in the box. */
 export function planHref(platform: LookupPlatform, handle: string): string {
-  return `${HITRATE_APP_URL}/start?u=${encodeURIComponent(profileUrl(platform, handle))}`;
+  return `${HITRATE_APP_PATH}/start?u=${encodeURIComponent(profileUrl(platform, handle))}`;
 }
 
 export type Share = { label: string; pct: number };

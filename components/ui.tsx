@@ -4,10 +4,10 @@ export const DEMO_HREF = "https://cal.com/shashank-ectr0u/30min";
 export const CREATOR_HREF = "/creators";
 export const CREATOR_JOIN_HREF = "/creators/join";
 export const BRAND_JOIN_HREF = "/brands/join";
-/** The HitRate creator app: the profile lookup and the 60-day plan live there. */
-export const HITRATE_APP_URL = (process.env.NEXT_PUBLIC_HITRATE_APP_URL || "https://hitrate-rosy.vercel.app").replace(/\/$/, "");
+/** The HitRate creator app, served on this domain through the /creators/app proxy (see next.config.ts). Use plain <a>, not <Link>: it is a different app. */
+export const HITRATE_APP_PATH = "/creators/app";
 /** The creator app's finished sample report. */
-export const SAMPLE_REPORT_HREF = `${HITRATE_APP_URL}/s/demo-shashankdixit_x`;
+export const SAMPLE_REPORT_HREF = `${HITRATE_APP_PATH}/s/demo-shashankdixit_x`;
 
 /** Two-line headline on the left, supporting copy on the right. */
 export function SplitHead({
