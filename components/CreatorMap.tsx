@@ -45,8 +45,8 @@ export default function CreatorMap() {
           your users are in.
         </h2>
         <p className="mx-auto mt-5 max-w-lg text-[16px] leading-relaxed text-muted">
-          From the US and Europe to India and the Gulf, HitRate reads what&rsquo;s winning in each market
-          and language, so your tests start from formats that already work there.
+          Pick the markets your users are in, and HitRate shows the videos and ads winning there,
+          so you start from formats that already work.
         </p>
       </Reveal>
 

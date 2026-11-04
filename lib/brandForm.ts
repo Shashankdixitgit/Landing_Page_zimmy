@@ -13,7 +13,7 @@ export type BrandField = {
 
 export type BrandStep = { id: string; title: string; help: string; fields: BrandField[] };
 
-export const CATEGORIES = ["AI app", "Consumer app", "Health & fitness", "Fintech", "Education", "Gaming", "Travel", "Food & beverage", "Beauty & personal care", "Fashion", "Home & living", "SaaS / B2B", "D2C / e-commerce", "Other"];
+export const CATEGORIES = ["AI app", "Consumer app", "Health & fitness", "Fintech", "Education", "Gaming", "Travel", "Food & delivery", "Beauty & wellness", "Shopping", "Social & dating", "Other"];
 
 export const BRAND_STEPS: BrandStep[] = [
   {
@@ -58,7 +58,7 @@ export const BRAND_STEPS: BrandStep[] = [
     title: "What should your videos do for you?",
     help: "Pick the one that matters most right now.",
     fields: [
-      { id: "goal", label: "Main goal", type: "select", required: true, options: ["App installs / sign-ups", "Paid conversions", "Find winning formats", "Launch in a new market", "Brand awareness"] },
+      { id: "goal", label: "Main goal", type: "select", required: true, options: ["App installs / sign-ups", "Paid conversions", "Find winning formats", "Launch in a new market"] },
       { id: "platforms", label: "Platforms", type: "chips", required: true, options: ["Instagram Reels", "TikTok", "YouTube Shorts", "X", "Not sure yet"] },
       { id: "markets", label: "Markets you want to win (up to 3)", type: "chips", required: true, max: 3, options: ["United States", "United Kingdom", "Europe", "India", "UAE & Gulf", "Southeast Asia", "Global"] },
     ],
@@ -69,7 +69,7 @@ export const BRAND_STEPS: BrandStep[] = [
     help: "No wrong answers. This sets the starting point.",
     fields: [
       { id: "ugc_today", label: "Short video ads or UGC today", type: "select", required: true, options: ["Not started", "A few tests", "Running it regularly", "Through an agency"] },
-      { id: "videos_per_month", label: "Videos you'd like per month", type: "select", required: true, options: ["1–5", "5–20", "20–50", "50+", "Not sure"] },
+      { id: "videos_per_month", label: "Video formats you'd like to test per month", type: "select", required: true, options: ["1–5", "5–20", "20–50", "50+", "Not sure"] },
     ],
   },
   {

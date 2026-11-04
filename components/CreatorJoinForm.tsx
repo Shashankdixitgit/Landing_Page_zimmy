@@ -155,7 +155,7 @@ export default function CreatorJoinForm() {
         <h2 className="display mt-6 text-[32px] text-ink">You&rsquo;re in.</h2>
         <p className="mt-3 text-[15.5px] leading-relaxed text-muted">
           We&rsquo;ve got your details as a <span className="font-medium text-ink">{tierInfo.label} creator</span>. We&rsquo;ll
-          email you at <span className="font-medium text-ink">{String(a.email)}</span> when a brand deal fits your audience.
+          email you at <span className="font-medium text-ink">{String(a.email)}</span> once brand deals open and one fits your audience.
         </p>
         <a href="/creators" className="mt-6 inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-[15px] font-medium text-ink hover:border-ink/30">
           Back to HitRate for creators

@@ -82,7 +82,7 @@ export const STEPS: Step[] = [
   {
     id: "niche",
     title: "What do you post about?",
-    help: "Pick up to 3. Brands will search by niche first.",
+    help: "Pick up to 3. When brand deals open, brands will search by niche first.",
     fields: [
       {
         id: "niches",
