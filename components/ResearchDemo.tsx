@@ -17,6 +17,38 @@ type Market = {
 // Illustrative boards per market. Handles, multiples and reasons are made up.
 const MARKETS: Market[] = [
   {
+    id: "us",
+    flag: "🇺🇸",
+    label: "US & UK",
+    language: "English",
+    board: [
+      {
+        handle: "@jordanresets",
+        multiple: "9.1× usual",
+        why: "Says the uncomfortable number out loud, then shows how the app made it smaller.",
+        chips: ["Hook: confession", "Talking head"],
+        scene: ["#4cc9f0", "#3a0ca3"],
+        media: "ben",
+      },
+      {
+        handle: "@tinywins.uk",
+        multiple: "5.6× usual",
+        why: "Green-screen over the app’s progress chart. The proof is the background.",
+        chips: ["Format: green screen", "UK"],
+        scene: ["#ffb703", "#7b2cbf"],
+        media: "jay",
+      },
+      {
+        handle: "@habitlab.sam",
+        multiple: "3.9× usual",
+        why: "Ranks five habit apps fast. Ends on the one he still uses.",
+        chips: ["Format: ranking", "Comparison"],
+        scene: ["#ff99c8", "#fb5607"],
+        media: "mira",
+      },
+    ],
+  },
+  {
     id: "in",
     flag: "🇮🇳",
     label: "India",
@@ -80,42 +112,10 @@ const MARKETS: Market[] = [
       },
     ],
   },
-  {
-    id: "us",
-    flag: "🇺🇸",
-    label: "US & UK",
-    language: "English",
-    board: [
-      {
-        handle: "@jordanresets",
-        multiple: "9.1× usual",
-        why: "Says the uncomfortable number out loud, then shows how the app made it smaller.",
-        chips: ["Hook: confession", "Talking head"],
-        scene: ["#4cc9f0", "#3a0ca3"],
-        media: "ben",
-      },
-      {
-        handle: "@tinywins.uk",
-        multiple: "5.6× usual",
-        why: "Green-screen over the app’s progress chart. The proof is the background.",
-        chips: ["Format: green screen", "UK"],
-        scene: ["#ffb703", "#7b2cbf"],
-        media: "jay",
-      },
-      {
-        handle: "@habitlab.sam",
-        multiple: "3.9× usual",
-        why: "Ranks five habit apps fast. Ends on the one he still uses.",
-        chips: ["Format: ranking", "Comparison"],
-        scene: ["#ff99c8", "#fb5607"],
-        media: "mira",
-      },
-    ],
-  },
 ];
 
 export default function ResearchDemo() {
-  const [marketId, setMarketId] = useState("in");
+  const [marketId, setMarketId] = useState("us");
   const [running, setRunning] = useState(false);
   const [step, setStep] = useState(0); // how many pointers have finished
   const panel = useRef<HTMLDivElement>(null);
@@ -123,7 +123,7 @@ export default function ResearchDemo() {
 
   // What HitRate is doing, shown as pointers that appear one by one.
   const POINTERS = [
-    "Read your app: a habit tracker for students",
+    "Read your app: an AI habit coach",
     "Summed up your store reviews: people love the streaks",
     `Market: ${market.label} · ${market.language}`,
     "Scanning your competitors’ videos and ads from the last 30 days",
@@ -218,7 +218,7 @@ export default function ResearchDemo() {
                   <span className="w-8" />
                 </div>
                 <div className="flex flex-1 flex-col p-6 sm:p-8">
-                  <p className="text-[12.5px] text-muted">Habit-tracking app, growing in {market.label}</p>
+                  <p className="text-[12.5px] text-muted">AI habit app, growing in {market.label}</p>
                   <h3 className="display mt-3 text-[26px] text-ink sm:text-[30px]">
                     Find what&rsquo;s working
                     <br />

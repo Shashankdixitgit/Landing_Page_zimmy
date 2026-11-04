@@ -6,13 +6,13 @@ import { CREATOR_JOIN_HREF } from "./ui";
 const PERKS = [
   { icon: TrendingUp, title: "See what’s taking off in your niche", status: "Coming soon" },
   { icon: CalendarDays, title: "Get a weekly posting plan built from it", status: "Coming soon" },
-  { icon: BadgeDollarSign, title: "Get paid by brands that fit your audience", status: "Early access" },
+  { icon: BadgeDollarSign, title: "Get paid by brands that fit your audience", status: "Coming soon" },
 ];
 
 // Notifications that pop in around the phone. Illustrative.
 const PINGS = [
   { icon: Flame, text: "Before/after hooks are up 6× in Fitness", cls: "left-0 top-10 -rotate-2 sm:-left-8" },
-  { icon: BadgeDollarSign, text: "Brand deal approved · $400", cls: "right-0 top-[44%] rotate-2 sm:-right-10" },
+  { icon: BadgeDollarSign, text: "Brand deals · coming soon", cls: "right-0 top-[44%] rotate-2 sm:-right-10" },
   { icon: UserPlus, text: "+2.1K followers this week", cls: "top-[62%] left-0 -rotate-1 sm:-left-10" },
 ];
 
@@ -32,8 +32,8 @@ export default function Creators({ asHero = false }: { asHero?: boolean }) {
               <span className="text-accent">already proven.</span>
             </h2>
             <p className="mt-5 max-w-md text-[16px] leading-relaxed text-muted">
-              Stop guessing what to post. Make what&rsquo;s already working, and get paid by brands
-              for it.
+              Stop guessing what to post. Make what&rsquo;s already working. Paid brand deals are
+              coming soon.
             </p>
 
             <ul className="mt-9 space-y-3">
@@ -71,7 +71,7 @@ export default function Creators({ asHero = false }: { asHero?: boolean }) {
             <div className="relative mx-auto aspect-[9/16] w-[250px] overflow-hidden rounded-[34px] border-[6px] border-ink bg-black shadow-[0_40px_80px_-24px_rgb(25_41_45/0.45)] sm:w-[270px]">
               <CardVideo name="mira" />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(0_0_0/0.35)_0%,transparent_25%,transparent_60%,rgb(0_0_0/0.65)_100%)]" />
-              <p className="absolute left-4 top-5 text-[12px] font-semibold text-white">@mira.moves</p>
+              <p className="absolute left-4 top-5 text-[12px] font-semibold text-white">@example.creator</p>
               <p className="absolute inset-x-5 bottom-6 text-center text-[14px] font-bold leading-snug text-white [text-shadow:0_2px_8px_rgb(0_0_0/0.7)]">
                 day 14 and I&rsquo;m genuinely shocked
               </p>

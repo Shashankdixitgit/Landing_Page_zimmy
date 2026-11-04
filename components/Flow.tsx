@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Check, RotateCcw, Target, Search, ScanSearch, Send, BarChart3, ShieldCheck } from "lucide-react";
 import Reveal from "./Reveal";
-import { PrimaryButton, SplitHead, DEMO_HREF } from "./ui";
+import { Chip, PrimaryButton, SplitHead, DEMO_HREF } from "./ui";
 import PlatformScorecard from "./PlatformScorecard";
 import CardVideo from "./CardVideo";
 
@@ -52,9 +52,9 @@ function StageView({ i }: { i: number }) {
       <div className="space-y-2.5 text-[13px]">
         {[
           ["App link", "apps.apple.com/app/streakly"],
-          ["Category", "Habit and productivity"],
+          ["Category", "AI habit coach"],
           ["Reviews say", "People love the 30-day streak"],
-          ["Market", "🇮🇳 India · English and Hindi"],
+          ["Market", "🇺🇸 US · English"],
         ].map(([k, v]) => (
           <div key={k} className="flex justify-between gap-4 rounded-xl bg-surface px-4 py-3">
             <span className="text-muted">{k}</span>
@@ -67,9 +67,9 @@ function StageView({ i }: { i: number }) {
     return (
       <div className="space-y-2">
         {[
-          ["🇮🇳 India", 18, "92%"],
+          ["🇺🇸 US", 18, "92%"],
+          ["🇬🇧 UK", 14, "78%"],
           ["🇪🇺 Europe", 11, "64%"],
-          ["🇺🇸 US & UK", 14, "78%"],
         ].map(([m, n, w]) => (
           <div key={m as string} className="rounded-xl bg-surface px-4 py-3">
             <div className="flex justify-between text-[13px]">
@@ -137,7 +137,12 @@ function StageView({ i }: { i: number }) {
   );
 }
 
-const HITRATE = ["Your competitors’ winning videos and ads", "Scripts and a calendar built from them", "AI UGC versions made and posted to test", "The winning format taken to creators and ads"];
+const HITRATE: [string, string][] = [
+  ["Your competitors’ winning videos and ads", "Live"],
+  ["Scripts and a calendar built from them", "Live"],
+  ["AI UGC versions made and posted to test", "Early access"],
+  ["The winning format taken to creators and ads", "Coming soon"],
+];
 const YOU = ["Paste your app link", "Approve every script and video", "Approve every post before it goes out", "Decide which winner to scale"];
 
 export default function Flow() {
@@ -238,9 +243,11 @@ export default function Flow() {
             <p className="text-[12.5px] text-accent">HitRate&rsquo;s part</p>
             <h3 className="display mt-3 text-[30px] text-ink">Everything in between.</h3>
             <ul className="mt-6 space-y-3">
-              {HITRATE.map((t) => (
+              {HITRATE.map(([t, st]) => (
                 <li key={t} className="flex items-center gap-3 text-[14px] text-ink/85">
-                  <Check className="h-4 w-4 text-accent" strokeWidth={2} /> {t}
+                  <Check className="h-4 w-4 shrink-0 text-accent" strokeWidth={2} />
+                  <span className="flex-1">{t}</span>
+                  <Chip tone={st === "Live" ? "mint" : "soft"}>{st}</Chip>
                 </li>
               ))}
             </ul>

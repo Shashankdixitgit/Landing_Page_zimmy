@@ -6,7 +6,7 @@ const RUNGS = [
   {
     n: "01",
     title: "Find what’s winning.",
-    body: "Paste your app link. See your competitors’ winning videos and ads, a summary of your store reviews, scripts and a content calendar.",
+    body: "Paste your app link. See the videos and ads winning for your competitors, or from any app or category your users watch, plus a summary of your store reviews, scripts and a content calendar.",
     status: "Live",
     box: "bg-sky",
     h: "lg:min-h-[220px]",

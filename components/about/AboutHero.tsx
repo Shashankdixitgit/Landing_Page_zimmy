@@ -1,11 +1,12 @@
 import { Sparkle, Search, PenLine, LineChart } from "lucide-react";
 import Reveal from "../Reveal";
 import CreatorCard, { CREATORS } from "../CreatorCard";
+import { Chip } from "../ui";
 
 const STEPS = [
-  { i: Search, t: "Finding what’s winning" },
-  { i: PenLine, t: "Testing it with AI UGC" },
-  { i: LineChart, t: "Scaling the winner" },
+  { i: Search, t: "Finding what’s winning", s: "Live" },
+  { i: PenLine, t: "Testing it with AI UGC", s: "Early access" },
+  { i: LineChart, t: "Scaling the winner", s: "Coming soon" },
 ];
 
 export default function AboutHero() {
@@ -31,7 +32,7 @@ export default function AboutHero() {
                 <Sparkle className="h-3 w-3" fill="currentColor" />
               </span>
               Find · Test · Scale
-              <span className="live-dot ml-auto h-2 w-2 rounded-full bg-accent" />
+              <span className="ml-auto text-[11.5px] font-medium text-faint">Example</span>
             </p>
             <div className="mt-4 space-y-2">
               {STEPS.map((r) => {
@@ -39,7 +40,8 @@ export default function AboutHero() {
                 return (
                   <div key={r.t} className="flex items-center gap-3 rounded-xl bg-soft px-3 py-2.5">
                     <Icon className="h-4 w-4 text-accent" strokeWidth={1.9} />
-                    <span className="text-[13.5px] text-ink">{r.t}</span>
+                    <span className="flex-1 text-[13.5px] text-ink">{r.t}</span>
+                    <Chip tone={r.s === "Live" ? "mint" : "soft"}>{r.s}</Chip>
                   </div>
                 );
               })}
@@ -49,6 +51,7 @@ export default function AboutHero() {
             <CreatorCard c={CREATORS[4]} className="w-[160px]" compact />
           </div>
         </Reveal>
+        <p className="relative z-[1] mt-6 text-[12.5px] font-medium text-white/85">Illustrative example</p>
         <div className="clouds pointer-events-none absolute inset-x-0 bottom-0 h-32" aria-hidden />
       </div>
     </section>

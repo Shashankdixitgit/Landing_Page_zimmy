@@ -6,7 +6,7 @@ import FormBackdrop from "@/components/FormBackdrop";
 
 export const metadata: Metadata = {
   title: "Join HitRate as a creator",
-  description: "Eight quick questions so we can match you with brand deals that fit your audience.",
+  description: "Eight quick questions so we can match you with brand deals that fit your audience when they open.",
   robots: { index: false },
 };
 
@@ -23,7 +23,7 @@ export default function JoinPage() {
         </Link>
       </div>
       <div className="mt-8 sm:mt-12">
-        <FormBackdrop title="How HitRate works for you." points={["Join in 3 minutes, autofilled from your profile", "Get matched with brands that fit your audience", "Get a clear brief in your own voice", "Post, grow and get paid on time"]}>
+        <FormBackdrop title="How HitRate works for you." points={["Join in 3 minutes", "Be first in line for brand deals that fit your audience (coming soon)", "Get a clear brief in your own voice", "Paid brand deals are coming soon"]}>
           <CreatorJoinForm />
         </FormBackdrop>
       </div>

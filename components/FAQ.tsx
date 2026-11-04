@@ -20,7 +20,7 @@ const FAQS = [
   },
   {
     q: "Whose accounts do the tests post from?",
-    a: "Your brand’s accounts, or warmed-up AI UGC accounts from our inventory if you’d rather not test on your own.",
+    a: "Your own accounts, or warmed-up AI UGC accounts from our inventory if you’d rather not test on your own. Testing is in early access, so this starts once you’re let in.",
   },
   {
     q: "Do I stay in control?",
@@ -32,7 +32,7 @@ const FAQS = [
   },
   {
     q: "What’s live today?",
-    a: "Paste your app link and see your competitors’ winning videos and ads, a summary of your product from its store reviews, AI-written scripts and a content calendar. Built but not yet switched on: AI video generation, auto-posting to social accounts, and the UGC and creator pipeline.",
+    a: "Paste your app link and see your competitors’ winning videos and ads, a summary of your product from its store reviews, AI-written scripts and a content calendar. Early access: AI UGC test videos and posting them. Coming soon: scaling the winner through UGC, real creators and paid ads.",
   },
 ];
 

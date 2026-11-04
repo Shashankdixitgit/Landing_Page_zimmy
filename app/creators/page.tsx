@@ -9,16 +9,16 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "HitRate for creators: your next post, already proven",
-  description: "Get paid brand deals that fit your audience, and learn why your best posts hit.",
+  description: "Make what’s already working. Paid brand deals that fit your audience are coming soon.",
   openGraph: {
     title: "HitRate for creators: your next post, already proven",
-    description: "Get paid brand deals that fit your audience, and learn why your best posts hit.",
+    description: "Make what’s already working. Paid brand deals that fit your audience are coming soon.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "HitRate for creators",
-    description: "Get paid brand deals that fit your audience, and learn why your best posts hit.",
+    description: "Make what’s already working. Paid brand deals that fit your audience are coming soon.",
   },
 };
 

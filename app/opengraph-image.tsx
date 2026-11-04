@@ -12,9 +12,9 @@ const SKY = "linear-gradient(180deg, #2e78b8 0%, #4f97cf 40%, #8cc0e4 75%, #cfe6
 
 // Illustrative creator cards, same look as the hero.
 const CARDS = [
-  { a: "#4cc9f0", b: "#3a0ca3", d: "#0b0a24", status: "Outlier · 6.2× usual", left: 40, top: 120, rotate: "-9deg", z: 1 },
-  { a: "#ffb703", b: "#fb5607", d: "#2a0d05", status: "Live AI test", left: 200, top: 70, rotate: "0deg", z: 3 },
-  { a: "#ff99c8", b: "#a05195", d: "#1e0c1f", status: "Winner · to creators", left: 360, top: 120, rotate: "9deg", z: 2 },
+  { a: "#4cc9f0", b: "#3a0ca3", d: "#0b0a24", status: "Example · 6.2× usual", left: 40, top: 120, rotate: "-9deg", z: 1 },
+  { a: "#ffb703", b: "#fb5607", d: "#2a0d05", status: "Example · AI UGC test", left: 200, top: 70, rotate: "0deg", z: 3 },
+  { a: "#ff99c8", b: "#a05195", d: "#1e0c1f", status: "Example · winner", left: 360, top: 120, rotate: "9deg", z: 2 },
 ];
 
 export default function OpengraphImage() {
@@ -98,7 +98,7 @@ export default function OpengraphImage() {
               <div
                 style={{
                   display: "flex",
-                  background: c.status.startsWith("Live") ? "#d6f5c9" : "rgba(255,255,255,0.92)",
+                  background: c.z === 3 ? "#d6f5c9" : "rgba(255,255,255,0.92)",
                   color: NIGHT,
                   fontSize: 15,
                   fontWeight: 700,

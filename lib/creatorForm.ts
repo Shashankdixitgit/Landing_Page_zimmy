@@ -39,8 +39,8 @@ export const PLATFORMS = [
 export const STEPS: Step[] = [
   {
     id: "contact",
-    title: "Where should we send your deals?",
-    help: "We'll only contact you about deals. Your country sets your currency.",
+    title: "How do we reach you?",
+    help: "We'll only contact you about brand deals, which are coming soon. Your country sets your currency.",
     fields: [
       { id: "email", label: "Email", type: "email", required: true, placeholder: "you@example.com" },
       { id: "whatsapp", label: "WhatsApp or phone (optional)", type: "tel", placeholder: "+91 98765 43210" },
@@ -124,10 +124,10 @@ export const STEPS: Step[] = [
   },
   {
     id: "deal_terms",
-    title: "What deals work for you?",
+    title: "What deals would work for you?",
     help: "Rates show in your currency, per Reel, TikTok or Short.",
     fields: [
-      { id: "deal_types", label: "Deals you're open to", type: "chips", required: true, options: ["Paid posts", "Gifted products", "Affiliate / commission", "Long-term ambassador", "Events & launches"], showFor: ["nano", "micro"] },
+      { id: "deal_types", label: "Deals you're open to", type: "chips", required: true, options: ["Paid posts", "Gifted products", "Long-term ambassador", "Events & launches"], showFor: ["nano", "micro"] },
       {
         id: "rate_card",
         label: "Your current rate per video",
@@ -143,7 +143,7 @@ export const STEPS: Step[] = [
   {
     id: "analytics",
     title: "Upload your analytics screenshots",
-    help: "So we can get you the deals you deserve. Verified numbers get better offers.",
+    help: "So we can match you well when brand deals open. Verified numbers get better offers.",
     fields: [
       { id: "analytics_screenshots", label: "Instagram Insights, TikTok analytics or YouTube Studio (up to 5 images)", type: "files", max: 5 },
     ],

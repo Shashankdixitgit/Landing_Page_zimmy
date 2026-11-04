@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Check, Sparkles } from "lucide-react";
 import Reveal from "./Reveal";
 import CardVideo from "./CardVideo";
-import { SplitHead } from "./ui";
+import { Chip, SplitHead } from "./ui";
 
 /* ---------- 1. Your best posts, against your own median ---------- */
 
@@ -66,7 +66,12 @@ function BestPosts() {
                 best posts hit.
               </>
             }
-            sub="Every post judged against your own median, not someone else’s. Then the reason, in plain words."
+            sub={
+              <>
+                <Chip>Coming soon</Chip>
+                <span className="mt-2 block">Every post will be judged against your own median, not someone else’s. Then the reason, in plain words.</span>
+              </>
+            }
           />
         </Reveal>
 
@@ -161,7 +166,12 @@ function DealScore() {
                 actually work?
               </>
             }
-            sub="A post can beat your median and still fail the brand. Every deal gets scored, so your next one lands."
+            sub={
+              <>
+                <Chip>Coming soon</Chip>
+                <span className="mt-2 block">A post can beat your median and still fail the brand. Every deal will be scored, so your next one lands.</span>
+              </>
+            }
           />
         </Reveal>
 

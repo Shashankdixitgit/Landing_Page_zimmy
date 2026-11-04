@@ -15,6 +15,9 @@ export default function CreatorJoin() {
             <br />
             Get paid for it.
           </h2>
+          <p className="mx-auto mt-5 max-w-md text-[15.5px] text-white [text-shadow:0_1px_12px_rgb(10_30_50/0.6)]">
+            Paid brand deals are coming soon. Sign up now to be first in line.
+          </p>
           <div className="mt-8 flex justify-center">
             <a
               href={CREATOR_JOIN_HREF}

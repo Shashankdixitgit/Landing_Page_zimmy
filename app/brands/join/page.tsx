@@ -5,8 +5,8 @@ import BrandJoinForm from "@/components/BrandJoinForm";
 import FormBackdrop from "@/components/FormBackdrop";
 
 export const metadata: Metadata = {
-  title: "Join HitRate as a brand",
-  description: "Eight quick questions so we can show you what's already working in your category.",
+  title: "Join HitRate as an app team",
+  description: "Eight quick questions so we can show you the videos and ads already winning for apps like yours.",
   robots: { index: false },
 };
 
@@ -23,7 +23,7 @@ export default function BrandJoinPage() {
           </Link>
         </div>
         <div className="mt-8 sm:mt-12">
-          <FormBackdrop title="Find, test and scale in one place." points={["Your competitors’ winning videos and ads", "A summary of your store reviews", "AI-written scripts and a content calendar", "AI UGC tests and creator scale-up, in early access"]}>
+          <FormBackdrop title="Find, test and scale in one place." points={["Your competitors’ winning videos and ads", "A summary of your store reviews", "AI-written scripts and a content calendar", "AI UGC tests in early access; creator and ad scale-up coming soon"]}>
             <BrandJoinForm />
           </FormBackdrop>
         </div>

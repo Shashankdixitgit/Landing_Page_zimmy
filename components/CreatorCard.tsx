@@ -17,61 +17,61 @@ export type Creator = {
 // the footage is free stock video from Pexels (IDs noted per entry), not real clients.
 export const CREATORS: Creator[] = [
   {
-    handle: "@noor.cooks",
+    handle: "@example.food",
     niche: "Food",
     followers: "212K",
     caption: "ok this replaced my whole morning routine",
-    status: "Hook decoded",
+    status: "Example · hook decoded",
     tone: "done",
     scene: ["#ff7a59", "#7b2cbf", "#1b0f2e"],
     media: "noor", // Pexels #8051336
   },
   {
-    handle: "@devwithjay",
+    handle: "@example.tech",
     niche: "Tech",
     followers: "84K",
     caption: "3 apps I actually use every day",
-    status: "Outlier · 6.2× usual",
+    status: "Example · 6.2× usual",
     tone: "work",
     scene: ["#4cc9f0", "#3a0ca3", "#0b0a24"],
     media: "jay", // Pexels #6324569
   },
   {
-    handle: "@mira.moves",
+    handle: "@example.fitness",
     niche: "Fitness",
     followers: "1.2M",
     caption: "day 14 and I’m genuinely shocked",
-    status: "AI UGC test · live on Reels",
-    tone: "live",
+    status: "Example · AI UGC test",
+    tone: "work",
     scene: ["#ffb703", "#fb5607", "#2a0d05"],
     media: "mira", // Pexels #6548012
   },
   {
-    handle: "@sana.skin",
+    handle: "@example.beauty",
     niche: "Beauty",
     followers: "560K",
     caption: "honest review, no filter",
-    status: "Winner · sent to creators",
+    status: "Example · winning format",
     tone: "done",
     scene: ["#ff99c8", "#a05195", "#1e0c1f"],
     media: "sana", // Pexels #5927936
   },
   {
-    handle: "@theweekendcamper",
+    handle: "@example.outdoors",
     niche: "Outdoors",
     followers: "39K",
     caption: "packed it all in one bag",
-    status: "Scaling as an ad",
-    tone: "live",
+    status: "Example · scale (coming soon)",
+    tone: "work",
     scene: ["#90e0a8", "#2d6a4f", "#07170f"],
     media: "camper", // Pexels #9130066
   },
   {
-    handle: "@budgetwithben",
+    handle: "@example.money",
     niche: "Finance",
     followers: "148K",
     caption: "how I stopped overspending",
-    status: "Next test queued",
+    status: "Example · next test",
     tone: "work",
     scene: ["#c8f560", "#3a7d44", "#0a1a0c"],
     media: "ben", // Pexels #6326935

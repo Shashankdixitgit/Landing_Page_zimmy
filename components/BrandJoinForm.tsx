@@ -32,7 +32,7 @@ export default function BrandJoinForm() {
       const v = a[f.id];
       if (!v || (Array.isArray(v) && v.length === 0) || (typeof v === "string" && !v.trim())) return `Please answer: ${f.label}`;
       if (f.type === "email" && typeof v === "string" && !/^\S+@\S+\.\S+$/.test(v)) return "That email doesn't look right.";
-      if (f.type === "url" && typeof v === "string" && !/^(https?:\/\/)?[^\s.]+\.[^\s]{2,}$/i.test(v.trim())) return "That website doesn't look right.";
+      if (f.type === "url" && typeof v === "string" && !/^(https?:\/\/)?[^\s.]+\.[^\s]{2,}$/i.test(v.trim())) return "That link doesn't look right.";
     }
     return "";
   };
@@ -178,7 +178,7 @@ export default function BrandJoinForm() {
         {s.fields.some((f) => prefilled.has(f.id)) ? (
           <div className="mt-5 rounded-2xl bg-mint px-4 py-3 text-[13.5px] text-accent">
             <p className="flex items-center gap-2 font-medium">
-              <Sparkles className="h-3.5 w-3.5" /> Filled from your website. Check it and edit anything that&rsquo;s off.
+              <Sparkles className="h-3.5 w-3.5" /> Filled from your link. Check it and edit anything that&rsquo;s off.
             </p>
             {s.id === "brand" && found ? <p className="mt-1.5 text-ink/70">We read: &ldquo;{found}&rdquo;</p> : null}
           </div>
@@ -209,7 +209,7 @@ export default function BrandJoinForm() {
           <button type="button" onClick={next} disabled={status !== "idle"} className="inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-accent-hover disabled:opacity-70">
             {status === "reading" ? (
               <>
-                <Loader2 className="h-4 w-4 animate-spin" /> Reading your website
+                <Loader2 className="h-4 w-4 animate-spin" /> Reading your link
               </>
             ) : status === "sending" ? (
               <>

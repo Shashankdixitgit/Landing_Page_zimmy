@@ -77,7 +77,7 @@ export default function Hero() {
             data-h
             className="mx-auto mt-6 max-w-2xl text-[16px] leading-relaxed text-white [text-shadow:0_1px_12px_rgb(10_30_50/0.6)] sm:text-[17px]"
           >
-            For consumer app teams. See the videos and ads winning for your competitors, test your own versions as AI UGC, and pay to scale only the one that brings users.
+            For consumer app teams. See the videos and ads winning for your competitors, or from any app or category your users watch. Test your own versions as AI UGC, and pay to scale only the one that brings users.
           </p>
           <div data-h className="mt-8 flex flex-col items-center gap-4">
             <a
@@ -122,7 +122,7 @@ export default function Hero() {
         {/* corner pills */}
         <span
           data-pill
-          className="absolute bottom-5 left-5 z-[60] hidden rounded-full bg-ink/55 px-3.5 py-1.5 text-[12.5px] font-medium text-white backdrop-blur-md sm:inline-flex"
+          className="absolute bottom-5 left-5 z-[60] inline-flex rounded-full bg-ink/55 px-3.5 py-1.5 text-[12.5px] font-medium text-white backdrop-blur-md"
         >
           Example videos
         </span>

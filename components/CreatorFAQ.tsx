@@ -7,15 +7,15 @@ import Reveal from "./Reveal";
 const FAQS = [
   {
     q: "What can I use today?",
-    a: "Sign-up. Paid brand deals are in early access: when a brand’s tested format is ready to scale, HitRate matches it with creators whose audience fits and sends a clear brief and agreed terms. The weekly content plan is coming soon.",
+    a: "Sign-up. Paid brand deals are coming soon: once a brand’s tested format is ready to scale, HitRate will match it with creators whose audience fits and send a clear brief and agreed terms. The weekly content plan is coming soon too.",
   },
   {
     q: "How do I join?",
-    a: "Email us your handle and niche. We’ll get back to you with next steps.",
+    a: "Fill in the short sign-up form. We’ll get back to you when brand deals open.",
   },
   {
     q: "Will brands tell me exactly what to say?",
-    a: "You get a brief with the hook and key points, written for your style. Your video still sounds like you.",
+    a: "When deals open, you’ll get a brief with the hook and key points, written for your style. Your video still sounds like you.",
   },
 ];
 
