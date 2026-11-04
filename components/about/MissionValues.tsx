@@ -32,7 +32,7 @@ export default function MissionValues() {
           <p className="mt-6 max-w-md text-[15.5px] leading-relaxed text-muted">
             Most app marketing spend goes on formats nobody knew would work until the money was
             already gone. HitRate helps consumer app teams find what&rsquo;s winning, test their own
-            version cheaply with AI UGC, and only then pay real creators and ads to scale it.
+            version cheaply with AI UGC, and only then scale it with UGC, real creators and paid ads.
           </p>
           <OutlineButton href="/#research" className="mt-8">
             Explore the product

@@ -23,7 +23,7 @@ const MARKETS: Market[] = [
     language: "English",
     board: [
       {
-        handle: "@jordanresets",
+        handle: "@example.creator1",
         multiple: "9.1× usual",
         why: "Says the uncomfortable number out loud, then shows how the app made it smaller.",
         chips: ["Hook: confession", "Talking head"],
@@ -31,7 +31,7 @@ const MARKETS: Market[] = [
         media: "ben",
       },
       {
-        handle: "@tinywins.uk",
+        handle: "@example.creator2",
         multiple: "5.6× usual",
         why: "Green-screen over the app’s progress chart. The proof is the background.",
         chips: ["Format: green screen", "UK"],
@@ -39,7 +39,7 @@ const MARKETS: Market[] = [
         media: "jay",
       },
       {
-        handle: "@habitlab.sam",
+        handle: "@example.creator3",
         multiple: "3.9× usual",
         why: "Ranks five habit apps fast. Ends on the one he still uses.",
         chips: ["Format: ranking", "Comparison"],
@@ -55,7 +55,7 @@ const MARKETS: Market[] = [
     language: "English and Hindi",
     board: [
       {
-        handle: "@dailyrituals.in",
+        handle: "@example.creator4",
         multiple: "8.4× usual",
         why: "Shows the streak screen in the first second. The payoff is visible before anyone reads a word.",
         chips: ["Hook: before/after", "Hindi + English"],
@@ -63,7 +63,7 @@ const MARKETS: Market[] = [
         media: "mira",
       },
       {
-        handle: "@studywithriya",
+        handle: "@example.creator5",
         multiple: "5.1× usual",
         why: "Opens on a question students already ask. The app answers it on screen.",
         chips: ["Hook: question", "Talking head"],
@@ -71,7 +71,7 @@ const MARKETS: Market[] = [
         media: "jay",
       },
       {
-        handle: "@the30dayguy",
+        handle: "@example.creator6",
         multiple: "3.7× usual",
         why: "Day-by-day sequence keeps people watching to see day 30.",
         chips: ["Format: diary", "Series"],
@@ -87,7 +87,7 @@ const MARKETS: Market[] = [
     language: "German, French and English",
     board: [
       {
-        handle: "@morgenroutine.lena",
+        handle: "@example.creator7",
         multiple: "7.2× usual",
         why: "Quiet, unhurried morning shot. The habit check-in appears as part of the routine, not as an ad.",
         chips: ["Format: routine", "German"],
@@ -95,7 +95,7 @@ const MARKETS: Market[] = [
         media: "noor",
       },
       {
-        handle: "@petitpas.camille",
+        handle: "@example.creator8",
         multiple: "4.6× usual",
         why: "Starts with a small failure everyone recognises, then shows one tiny fix.",
         chips: ["Hook: relatable fail", "French"],
@@ -103,7 +103,7 @@ const MARKETS: Market[] = [
         media: "sana",
       },
       {
-        handle: "@buildhabits.eu",
+        handle: "@example.creator9",
         multiple: "3.2× usual",
         why: "Three-second screen recording with big captions. Works with the sound off.",
         chips: ["Format: screen demo", "Captions"],

@@ -40,7 +40,7 @@ export const STEPS: Step[] = [
   {
     id: "contact",
     title: "How do we reach you?",
-    help: "We'll only contact you about brand deals, which are coming soon. Your country sets your currency.",
+    help: "We'll only contact you about brand deals, which are coming soon. Your country will set your currency.",
     fields: [
       { id: "email", label: "Email", type: "email", required: true, placeholder: "you@example.com" },
       { id: "whatsapp", label: "WhatsApp or phone (optional)", type: "tel", placeholder: "+91 98765 43210" },
@@ -82,7 +82,7 @@ export const STEPS: Step[] = [
   {
     id: "niche",
     title: "What do you post about?",
-    help: "Pick up to 3. Brands search by niche first.",
+    help: "Pick up to 3. Brands will search by niche first.",
     fields: [
       {
         id: "niches",
@@ -114,7 +114,7 @@ export const STEPS: Step[] = [
   {
     id: "how_you_work",
     title: "How do you work today?",
-    help: "This helps us match deals to where you are now.",
+    help: "This will help us match deals to where you are now.",
     fields: [
       { id: "posting_frequency", label: "How often do you post?", type: "select", required: true, options: ["Daily", "3–5 times a week", "1–2 times a week", "A few times a month"], showFor: ["nano", "micro"] },
       { id: "growth_goal", label: "Your main goal right now", type: "select", required: true, options: ["Grow my following", "Land my first paid deal", "Earn more per deal", "Go full-time", "Build long-term brand partnerships"], showFor: ["nano", "micro"] },
