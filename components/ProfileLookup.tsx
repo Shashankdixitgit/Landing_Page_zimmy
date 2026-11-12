@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Loader2, MessageCircle, RotateCcw, Search } from "lucide-react";
 import { Chip } from "./ui";
 import { PLATFORMS } from "@/lib/creatorForm";
+import { signinHref } from "@/lib/creatorAuth";
 import { lookupProfile, readHandle, type LookupPlatform, type ProfilePreview } from "@/lib/profilePreview";
 
 const fmt = (n: number) =>
@@ -45,6 +46,9 @@ export default function ProfileLookup({
     if (r.ok) {
       setPreview(r.preview);
       setStage("result");
+    } else if (r.signedOut) {
+      // The session ran out on this page: sign in again and come back to it.
+      window.location.assign(signinHref(`${window.location.pathname}${window.location.search}`));
     } else {
       setMessage(r.message);
       setStage("error");

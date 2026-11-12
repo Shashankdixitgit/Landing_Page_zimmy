@@ -4,10 +4,9 @@
 
 import { HITRATE_APP_PATH } from "@/components/ui";
 
-// The lookup calls the creator app directly rather than through the hitrate.sh proxy, so its
-// per-visitor rate limit sees the visitor's own IP and a slow lookup isn't cut off by the proxy.
-// It's a data request only; visitors never see this address.
-const LOOKUP_ORIGIN = (process.env.NEXT_PUBLIC_LOOKUP_ORIGIN || "https://hitrate-rosy.vercel.app").replace(/\/+$/, "");
+// Same-origin on purpose: the endpoint needs the creator's sign-in cookie, which only goes
+// with requests to hitrate.sh. Its limits are counted per signed-in account now, so it no
+// longer matters that the proxy hides the visitor's own IP.
 
 export type LookupPlatform = "instagram" | "tiktok" | "youtube" | "x";
 
@@ -44,16 +43,17 @@ export type ProfilePreview = {
   niches: string[];
 };
 
-export type LookupResult = { ok: true; preview: ProfilePreview } | { ok: false; message: string };
+export type LookupResult = { ok: true; preview: ProfilePreview } | { ok: false; message: string; signedOut?: boolean };
 
 const DOWN = "We couldn't read that profile just now. You can fill in your details by hand.";
 
 export async function lookupProfile(platform: LookupPlatform, handle: string): Promise<LookupResult> {
   try {
     const res = await fetch(
-      `${LOOKUP_ORIGIN}${HITRATE_APP_PATH}/api/public/profile-preview?platform=${platform}&handle=${encodeURIComponent(handle)}`,
-      { signal: AbortSignal.timeout(170_000) }
+      `${HITRATE_APP_PATH}/api/public/profile-preview?platform=${platform}&handle=${encodeURIComponent(handle)}`,
+      { signal: AbortSignal.timeout(170_000), credentials: "same-origin" }
     );
+    if (res.status === 401) return { ok: false, message: "Sign in to read your profile.", signedOut: true };
     const data = (await res.json().catch(() => null)) as { ok?: boolean; preview?: ProfilePreview; message?: string } | null;
     if (res.ok && data?.ok && data.preview) return { ok: true, preview: data.preview };
     return { ok: false, message: data?.message || DOWN };
