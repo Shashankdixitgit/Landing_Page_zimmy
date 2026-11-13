@@ -1,7 +1,7 @@
 import Reveal from "../Reveal";
 import LinkStart from "./LinkStart";
 import { SAMPLE_REPORT_HREF } from "../ui";
-import { PLATFORM_LIST, POSTS_READ } from "@/lib/planPhases";
+import { PLATFORM_LIST } from "@/lib/planPhases";
 
 export function SampleLink({ light = false }: { light?: boolean }) {
   return (
@@ -25,7 +25,7 @@ export default function CreatorsHero() {
           <span className="text-accent">Plan what to make next.</span>
         </h1>
         <p className="mx-auto mt-5 max-w-[640px] text-balance text-[16px] leading-relaxed text-muted sm:text-[17px]">
-          Your latest {POSTS_READ} posts, read against your own median. Your first 7 days, written.
+          Your latest posts, read against your own median. Your first 7 days, written.
         </p>
         <div className="mt-9">
           <LinkStart />

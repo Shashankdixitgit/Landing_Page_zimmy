@@ -49,9 +49,11 @@ export const PRO_PRICE_USD = 20;
 /**
  * Founding mode: Pro sales are paused until Dodo enables live payments, and the
  * app gives signed-in owners days 8-15 free meanwhile. The app reads its own
- * PRO_SALES_PAUSED env (lib/founding.ts); this site cannot, so flip this together
- * with that env and redeploy, or the FAQ and the Terms keep promising free days
- * the app has started charging for.
+ * PRO_SALES_PAUSED env (lib/founding.ts); this site cannot. Production opens
+ * sales only when that env is set to 0 (live Dodo keys alone do not open them).
+ * Flip this to false and redeploy this site in the same step as putting in the
+ * live Dodo keys and setting the app's PRO_SALES_PAUSED=0, or the FAQ and the
+ * Terms keep promising free days the app has started charging for.
  */
 export const PRO_SALES_PAUSED = true;
 

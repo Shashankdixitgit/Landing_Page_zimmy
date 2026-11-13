@@ -36,8 +36,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
   app, or both together, and check those three load before deploying the app or
   asking Dodo to review again. The app shipped first sends its Refunds link to a 404.
 - **Founding mode.** `PRO_SALES_PAUSED` in `lib/planPhases.ts` must match the
-  app's `PRO_SALES_PAUSED` env. When Pro sales open, set it to `false` and
-  redeploy, or the FAQ and the Terms keep promising days 8–15 free.
+  app's `PRO_SALES_PAUSED` env. Keep the app's production env at
+  `PRO_SALES_PAUSED=1` until sales open; the app only opens them when it is set to
+  `0`, never because live Dodo keys went in. When Pro sales open, do it all in one
+  step: put in the live Dodo keys, set the app's `PRO_SALES_PAUSED=0`, flip
+  `lib/planPhases.ts` `PRO_SALES_PAUSED` to `false` here and redeploy this site.
+  Otherwise the FAQ and the Terms keep promising days 8–15 free while the app
+  charges for them.
 
 ## Deploy on Vercel
 

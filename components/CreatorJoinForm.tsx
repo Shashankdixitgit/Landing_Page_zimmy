@@ -264,7 +264,7 @@ export default function CreatorJoinForm({ initialLink = "" }: { initialLink?: st
         <h2 className="display mt-6 text-[32px] text-ink sm:text-[40px]">Let&rsquo;s schedule your next 60 days of content.</h2>
         <p className="mx-auto mt-4 inline-flex rounded-full bg-mint px-4 py-1.5 text-[14px] font-medium text-accent">We&rsquo;ll reach out within 48 hours.</p>
         <p className="mt-3 text-[15.5px] leading-relaxed text-muted">
-          You&rsquo;re in as a <span className="font-medium text-ink">{tierInfo.label} creator</span>. Next, HitRate reads your latest 30 posts
+          You&rsquo;re in as a <span className="font-medium text-ink">{tierInfo.label} creator</span>. Next, HitRate reads your latest posts
           against your own median and writes your first 7 days of posts, free.
         </p>
         {plan ? (

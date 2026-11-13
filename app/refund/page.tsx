@@ -39,13 +39,13 @@ export default function RefundPage() {
           body: (
             <ul className={li}>
               <li>
-                <b className="text-ink">Your first payment:</b> if you are not happy, email <a className={a} href={`mailto:${LEGAL_EMAIL}`}>{LEGAL_EMAIL}</a> within 7 days of your first payment and we will refund it in full. Send it from, or mention, the email you signed in with.
+                <b className="text-ink">Your first payment:</b> if you are not happy, email <a className={a} href={`mailto:${LEGAL_EMAIL}`}>{LEGAL_EMAIL}</a> within 7 days of your first payment and we will refund it in full. Send it from, or mention, the email you signed in with. Refunding your first payment ends Pro straight away and cancels the subscription, so you are not charged again.
               </li>
               <li>
                 <b className="text-ink">Renewals:</b> the monthly payments after your first are not refunded. You can cancel any time before the next one and you won&rsquo;t be charged again.
               </li>
               <li>
-                <b className="text-ink">Mistakes:</b> if you were charged in error, for example twice or after you cancelled, email us and we will refund the wrong charge.
+                <b className="text-ink">Mistakes:</b> if you were charged in error, for example twice or after you cancelled, email us and we will refund the wrong charge. If another payment covers the month you are in, refunding the wrong one leaves Pro on until the end of that month.
               </li>
               <li>Refunds go back to the card or payment method you paid with. How long they take to show up depends on your bank.</li>
             </ul>

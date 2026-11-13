@@ -67,7 +67,7 @@ export default function TermsPage() {
           body: (
             <>
               <p>Some features are paid. Prices are shown before you pay. Payments are processed by Dodo Payments, our merchant of record.</p>
-              <p>You can cancel any time from Billing in the app and keep your paid plan until the end of the month you paid for. If you are not happy, email <a className={a} href={`mailto:${LEGAL_EMAIL}`}>{LEGAL_EMAIL}</a> within 7 days of your first payment for a full refund. Renewals are not refunded, but you can cancel before the next one. The full details are in our <a className={a} href="/refund">Refund &amp; Cancellation Policy</a>.</p>
+              <p>You can cancel any time from Billing in the app and keep your paid plan until the end of the month you paid for. If you are not happy, email <a className={a} href={`mailto:${LEGAL_EMAIL}`}>{LEGAL_EMAIL}</a> within 7 days of your first payment for a full refund, which ends your paid plan straight away. Renewals are not refunded, but you can cancel before the next one. The full details are in our <a className={a} href="/refund">Refund &amp; Cancellation Policy</a>.</p>
               <p>During the early preview, features may change and limits may apply.</p>
             </>
           ),
