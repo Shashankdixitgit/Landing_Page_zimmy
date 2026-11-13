@@ -46,6 +46,22 @@ export const FREE_DAYS = 7;
 export const WRITTEN_DAYS = 15;
 export const PRO_PRICE_USD = 20;
 
+/**
+ * Founding mode is off: Pro has been on sale since 13 Nov 2026, when Dodo enabled
+ * live payments. The app opens sales whenever live Dodo keys are in
+ * (hitrate lib/founding.ts); PRO_SALES_PAUSED=1 there is its emergency stop. If
+ * that switch is ever used, set this to true and redeploy this site in the same
+ * step, so the FAQ and the Terms describe the free days 8-15 the app then gives.
+ */
+export const PRO_SALES_PAUSED = false;
+
+/** What a scan reads (hitrate lib/scrape/types.ts POST_LIMIT): the newest 30 posts, 100 on X,
+ *  going further back than 60 days when an account posts less often. */
+export const POSTS_READ = 30;
+export const POSTS_READ_X = 100;
+/** How many signals each post is rated on (hitrate lib/constants.ts SIGNAL_COUNT). */
+export const SIGNAL_COUNT = 74;
+
 export const KIND_BY_DAY: ("proven" | "experiment")[] = [
   "proven", "proven", "experiment", "proven", "experiment", "proven", "experiment",
   "proven", "experiment", "proven", "proven", "experiment", "proven", "experiment", "proven",

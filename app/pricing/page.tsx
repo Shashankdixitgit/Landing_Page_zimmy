@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { DEMO_HREF, HITRATE_APP_PATH, OutlineButton, PrimaryButton } from "@/components/ui";
-import { FREE_DAYS, PRO_PRICE_USD, WRITTEN_DAYS } from "@/lib/planPhases";
+import { FREE_DAYS, PRO_PRICE_USD, PRO_SALES_PAUSED, WRITTEN_DAYS } from "@/lib/planPhases";
 
 const TITLE = "Pricing · HitRate";
 const DESCRIPTION = `HitRate for creators is free to start. Pro is $${PRO_PRICE_USD} a month. Brands start with a 4-week pilot.`;
@@ -46,7 +46,10 @@ const PLANS: Plan[] = [
     who: "For creators",
     price: `$${PRO_PRICE_USD}`,
     per: "/month",
-    note: "Billed monthly. Cancel any time.",
+    // Follows the app's emergency stop (landing lib/planPhases.ts), so this page never sells what the app won't.
+    note: PRO_SALES_PAUSED
+      ? `Sales are paused for now: signed-in owners get days ${FREE_DAYS + 1}–${WRITTEN_DAYS} of their own plan free.`
+      : "Billed monthly. Cancel any time.",
     features: [
       "Everything in Free",
       `Days ${FREE_DAYS + 1}–${WRITTEN_DAYS} of your plan, written in your voice`,

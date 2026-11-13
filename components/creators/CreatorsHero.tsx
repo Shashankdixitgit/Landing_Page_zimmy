@@ -25,7 +25,7 @@ export default function CreatorsHero() {
           <span className="text-accent">Plan what to make next.</span>
         </h1>
         <p className="mx-auto mt-5 max-w-[640px] text-balance text-[16px] leading-relaxed text-muted sm:text-[17px]">
-          Your last 60 days, read against your own median. Your first 7 days, written.
+          Your latest posts, read against your own median. Your first 7 days, written.
         </p>
         <div className="mt-9">
           <LinkStart />

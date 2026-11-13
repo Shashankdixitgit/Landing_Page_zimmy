@@ -6,7 +6,9 @@ import HowItWorks from "@/components/creators/HowItWorks";
 import { PlanSection, ProofSection, FaqSection, CloseSection } from "@/components/creators/CreatorsSections";
 
 const TITLE = "HitRate for creators: know why your posts work";
-const DESCRIPTION = "Your last 60 days, read against your own median. Your first 7 days, written.";
+// No number: a scan reads 30 posts on most platforms but up to 100 on X, and the
+// sample report under the hero is an X account rated on 49. Same words as the app.
+const DESCRIPTION = "Your latest posts, read against your own median. Your first 7 days, written.";
 
 export const metadata: Metadata = {
   title: TITLE,

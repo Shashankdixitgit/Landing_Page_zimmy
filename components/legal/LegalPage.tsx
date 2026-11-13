@@ -1,10 +1,11 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-export const LEGAL_EMAIL = "shashankdixit099@gmail.com";
+export const LEGAL_EMAIL = "shashank@hitrate.sh";
 export const LEGAL_UPDATED = "13 November 2026";
 
-export type Section = { h: string; body: React.ReactNode };
+/** `id` gives a section a stable anchor (e.g. /privacy#creators) so the creator app can link straight to it. */
+export type Section = { h: string; body: React.ReactNode; id?: string };
 
 export default function LegalPage({ title, intro, sections }: { title: string; intro: React.ReactNode; sections: Section[] }) {
   return (
@@ -16,7 +17,7 @@ export default function LegalPage({ title, intro, sections }: { title: string; i
           <h1 className="display mt-3 text-[34px] text-ink sm:text-[46px]">{title}</h1>
           <div className="mt-5 text-[16px] leading-relaxed text-muted">{intro}</div>
           {sections.map((s, i) => (
-            <section key={s.h} className="mt-10">
+            <section key={s.h} id={s.id} className="mt-10 scroll-mt-32">
               <h2 className="text-[19px] font-medium text-ink">{i + 1}. {s.h}</h2>
               <div className="legal mt-3 space-y-3 text-[15.5px] leading-relaxed text-muted">{s.body}</div>
             </section>

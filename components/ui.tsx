@@ -6,8 +6,10 @@ export const CREATOR_JOIN_HREF = "/creators/join";
 export const BRAND_JOIN_HREF = "/brands/join";
 /** The HitRate creator app, served on this domain through the /creators/app proxy (see next.config.ts). Use plain <a>, not <Link>: it is a different app. */
 export const HITRATE_APP_PATH = "/creators/app";
-/** The creator app's finished sample report. */
-export const SAMPLE_REPORT_HREF = `${HITRATE_APP_PATH}/s/demo-shashankdixit_x`;
+/** The creator app's onboarding. A profile link goes in ?u= and lands already in the box; signed-out visitors sign in first and come back. */
+export const APP_START_HREF = `${HITRATE_APP_PATH}/start`;
+/** The creator app's finished sample report. @idleshubh is the one public demo; the founder's own X demo is retired. */
+export const SAMPLE_REPORT_HREF = `${HITRATE_APP_PATH}/s/demo-idleshubh`;
 
 /** Two-line headline on the left, supporting copy on the right. */
 export function SplitHead({

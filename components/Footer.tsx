@@ -1,5 +1,5 @@
 import Logo from "./Logo";
-import { CREATOR_HREF, DEMO_HREF } from "./ui";
+import { CREATOR_HREF, CREATOR_JOIN_HREF, DEMO_HREF } from "./ui";
 
 const COLS = [
   {
@@ -18,6 +18,8 @@ const COLS = [
       { label: "About", href: "/about" },
       { label: "Book a demo", href: DEMO_HREF },
       { label: "Join as a creator", href: CREATOR_HREF },
+      // The brand-deal form. Named for what it is, so nobody takes it for the way into the plan.
+      { label: "Brand deals sign-up", href: CREATOR_JOIN_HREF },
     ],
   },
 ];
@@ -50,10 +52,10 @@ export default function Footer() {
         </div>
         <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-[13px] text-faint sm:flex-row">
           <p>© 2026 HitRate. All rights reserved.</p>
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center justify-center gap-x-5">
             <a href="/privacy" className="inline-block py-2 hover:text-ink">Privacy</a>
             <a href="/terms" className="inline-block py-2 hover:text-ink">Terms</a>
-            <a href="/refund" className="inline-block py-2 hover:text-ink">Refunds</a>
+            <a href="/refund" className="inline-block py-2 hover:text-ink">Refund policy</a>
           <a href={DEMO_HREF} className="inline-block py-2 hover:text-ink">
             Talk to the founders
           </a>

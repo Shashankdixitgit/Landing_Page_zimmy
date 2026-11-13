@@ -1,8 +1,9 @@
 import { ArrowRight } from "lucide-react";
 import Reveal from "../Reveal";
 import sample from "@/lib/creatorsSample.json";
+import { POSTS_READ, POSTS_READ_X } from "@/lib/planPhases";
 
-/** Illustrative only: the shape of a 60-day read, not anyone's numbers. */
+/** Illustrative only: the shape of a read, not anyone's numbers. */
 const BARS = [34, 52, 28, 46, 88, 40, 31, 62, 24, 44, 70, 38];
 
 const x = (n: number) => `${n.toFixed(2)}×`;
@@ -23,10 +24,10 @@ function Card({ children, tilt }: { children: React.ReactNode; tilt: "l" | "r" }
 
 function PasteLink() {
   return (
-    <div role="img" aria-label="A profile link, x.com/ShashankDixit_x, pasted into the box, tagged X" className="p-4">
+    <div role="img" aria-label="A profile link, x.com/idleshubh, pasted into the box, tagged X" className="p-4">
       <div className="flex items-center gap-2.5 rounded-full border border-line bg-paper py-2 pl-5 pr-2">
         <span className="min-w-0 flex-1 truncate text-[15px] font-medium text-ink">
-          x.com/ShashankDixit_x
+          x.com/idleshubh
           <i className="mk-caret ml-0.5 inline-block h-[1.1em] w-[2px] translate-y-[3px] bg-ink" />
         </span>
         <span className="rounded-md bg-sky px-2 py-0.5 text-[12px] font-medium text-[#235a80]">X</span>
@@ -94,9 +95,10 @@ function Week() {
 
 const STEPS = [
   { title: "Paste your link", body: "Any public profile. We spot the platform for you.", vis: <PasteLink /> },
-  { title: "We read 60 days", body: "Every post, scored against your own median.", vis: <Bars /> },
+  { title: "We read your posts", body: `Your latest ${POSTS_READ} posts (up to ${POSTS_READ_X} on X), each scored against your own median.`, vis: <Bars /> },
   { title: "See what works", body: "Subjects above and below your median, with post counts.", vis: <Report /> },
-  { title: "Get your first week", body: "Seven posts in your voice, dated from tomorrow.", vis: <Week /> },
+  // The app sets Day 1 when the plan is first opened (its components/Plan.tsx firstDay), not tomorrow.
+  { title: "Get your first week", body: "Seven posts in your voice, dated from the day you first open them.", vis: <Week /> },
 ];
 
 export default function HowItWorks() {
