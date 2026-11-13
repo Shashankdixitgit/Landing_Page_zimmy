@@ -1,37 +1,29 @@
 {
-  "_source": "Static snapshot of the HitRate sample report (hitrate repo, data/demo/ShashankDixit_x.json via lib/landing.ts preview(), scanned 29 Aug 2026). Fields copied verbatim. Entries that name a company are left out rather than edited: the 'works' list skips that subject and takes the next real 'works' subject, and the third draft is dropped, so day 4 of the calendar shows its plan line instead of a draft.",
-  "handle": "ShashankDixit_x",
+  "_source": "Static snapshot of the HitRate sample report (hitrate-creators repo, data/demo/idleshubh.json via lib/landing.ts preview(), the one public demo). Fields copied verbatim. Entries that name a company are left out rather than edited: the 'works' list skips 'Building @tryAlanAI', and all three drafts name a company (Apple, Linear, Slack, @tryAlanAI), so none is shown and each calendar day shows its plan line instead.",
+  "handle": "idleshubh",
   "works": [
     {
-      "name": "Money, Hustle & Ambition",
-      "lift": 2.01,
-      "n": 7
-    },
-    {
-      "name": "My Bangalore Life",
-      "lift": 1.37,
+      "name": "Reacting to my timeline",
+      "lift": 1.21,
       "n": 8
     },
     {
-      "name": "Jokes & Random Stuff",
-      "lift": 1.03,
-      "n": 15
+      "name": "My life & random thoughts",
+      "lift": 1.13,
+      "n": 10
     }
   ],
   "doesnt": [
     {
-      "name": "Life Lessons & Musings",
-      "lift": 0.66,
+      "name": "My startup grind",
+      "lift": 0.81,
       "n": 8
     },
     {
-      "name": "My Takes on Tech & Building",
-      "lift": 0.6,
-      "n": 7
+      "name": "My takes on AI & agents",
+      "lift": 0.78,
+      "n": 11
     }
   ],
-  "drafts": [
-    "That poker night at my new Bangalore place is happening!!\n\nThis isn't for your typical startup mixer crowd.\n\nBecause real trust isn't built over lukewarm coffee and a LinkedIn QR code. What happens over a poker table is you see how people handle pressure, risk, and luck.\n\nAmbition is tested when the chips are down, not when the slides are up.\n\nI've spent Sundays working instead of brunching to build a circle where this is possible.\n\nBangalore doesn't reward the best networker; it rewards the best player.",
-    "The cost of living in Bangalore is a feature, not a bug!!"
-  ]
+  "drafts": []
 }

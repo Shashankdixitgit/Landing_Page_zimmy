@@ -1,5 +1,5 @@
 import Logo from "./Logo";
-import { CREATOR_HREF, DEMO_HREF } from "./ui";
+import { CREATOR_HREF, CREATOR_JOIN_HREF, DEMO_HREF } from "./ui";
 
 const COLS = [
   {
@@ -17,6 +17,8 @@ const COLS = [
       { label: "About", href: "/about" },
       { label: "Book a demo", href: DEMO_HREF },
       { label: "Join as a creator", href: CREATOR_HREF },
+      // The brand-deal form. Named for what it is, so nobody takes it for the way into the plan.
+      { label: "Brand deals sign-up", href: CREATOR_JOIN_HREF },
     ],
   },
 ];

@@ -24,10 +24,10 @@ function Card({ children, tilt }: { children: React.ReactNode; tilt: "l" | "r" }
 
 function PasteLink() {
   return (
-    <div role="img" aria-label="A profile link, x.com/ShashankDixit_x, pasted into the box, tagged X" className="p-4">
+    <div role="img" aria-label="A profile link, x.com/idleshubh, pasted into the box, tagged X" className="p-4">
       <div className="flex items-center gap-2.5 rounded-full border border-line bg-paper py-2 pl-5 pr-2">
         <span className="min-w-0 flex-1 truncate text-[15px] font-medium text-ink">
-          x.com/ShashankDixit_x
+          x.com/idleshubh
           <i className="mk-caret ml-0.5 inline-block h-[1.1em] w-[2px] translate-y-[3px] bg-ink" />
         </span>
         <span className="rounded-md bg-sky px-2 py-0.5 text-[12px] font-medium text-[#235a80]">X</span>

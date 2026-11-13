@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
-import { BRAND_JOIN_HREF, CREATOR_HREF, CREATOR_JOIN_HREF } from "./ui";
+import { APP_START_HREF, BRAND_JOIN_HREF, CREATOR_HREF } from "./ui";
 
 const LINKS = [
   { label: "Research", href: "/#research" },
@@ -13,13 +13,18 @@ const LINKS = [
 ];
 
 /** `overHero` renders white text until the page scrolls past the hero frame. */
-/** `onCreators` swaps the creator button from "For creators" (a link to /creators) to "Join as a creator". */
+/**
+ * `onCreators` swaps the creator button from "For creators" (a link to /creators)
+ * to the creator app's start, the same place the page's own link box goes. It
+ * used to say "Join as a creator" and open /creators/join, the brand-deal form,
+ * which has no LinkedIn option: a dead end for the launch audience.
+ */
 export default function Navbar({ overHero = true, onCreators = false }: { overHero?: boolean; onCreators?: boolean }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const header = useRef<HTMLElement>(null);
-  const creatorHref = onCreators ? CREATOR_JOIN_HREF : CREATOR_HREF;
-  const creatorLabel = onCreators ? "Join as a creator" : "For creators";
+  const creatorHref = onCreators ? APP_START_HREF : CREATOR_HREF;
+  const creatorLabel = onCreators ? "Get my first 7 days free" : "For creators";
 
   // Close the mobile menu on Escape or a tap outside it.
   useEffect(() => {
