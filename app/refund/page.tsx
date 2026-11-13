@@ -36,8 +36,8 @@ export default function RefundPage() {
               </p>
               <p>
                 You can also email <a className={a} href={`mailto:${LEGAL_EMAIL}`}>{LEGAL_EMAIL}</a> from the address on your
-                account. If your email reaches us before your renewal date, you won’t be charged again, even if we process
-                it the next day.
+                account. If your email reaches us before your renewal date and that renewal is still charged, we refund it
+                in full.
               </p>
               <p>Cancelling stops all future charges. There is no cancellation fee.</p>
             </>
