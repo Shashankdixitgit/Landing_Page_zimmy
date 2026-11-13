@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const LEGAL_EMAIL = "shashankdixit099@gmail.com";
-export const LEGAL_UPDATED = "4 November 2026";
+export const LEGAL_UPDATED = "13 November 2026";
 
 export type Section = { h: string; body: React.ReactNode };
 

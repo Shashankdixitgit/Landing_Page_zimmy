@@ -47,7 +47,12 @@ export default function TermsPage() {
         },
         {
           h: "Fees",
-          body: <p>Some features may be paid. Prices are shown before you buy, and you can cancel any time. During the early preview, features may change and limits may apply.</p>,
+          body: (
+            <>
+              <p>Some features are paid. Current prices are on our <a className="text-accent underline-offset-4 hover:underline" href="/pricing">pricing page</a> and are shown again before you buy. Subscriptions renew each month until you cancel, and you can cancel any time.</p>
+              <p>Payments are processed by Dodo Payments, which acts as our merchant of record and handles payment, tax and receipts. Cancellations and refunds follow our <a className="text-accent underline-offset-4 hover:underline" href="/refund">refund &amp; cancellation policy</a>. During the early preview, features may change and limits may apply.</p>
+            </>
+          ),
         },
         {
           h: "No warranty and limits of liability",

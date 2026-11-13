@@ -6,6 +6,7 @@ const COLS = [
     title: "Product",
     links: [
       { label: "For creators", href: "/creators" },
+      { label: "Pricing", href: "/pricing" },
       { label: "Research", href: "/#research" },
       { label: "How it works", href: "/#how" },
       { label: "FAQ", href: "/#faq" },
@@ -52,6 +53,7 @@ export default function Footer() {
           <div className="flex items-center gap-5">
             <a href="/privacy" className="inline-block py-2 hover:text-ink">Privacy</a>
             <a href="/terms" className="inline-block py-2 hover:text-ink">Terms</a>
+            <a href="/refund" className="inline-block py-2 hover:text-ink">Refunds</a>
           <a href={DEMO_HREF} className="inline-block py-2 hover:text-ink">
             Talk to the founders
           </a>

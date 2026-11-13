@@ -57,6 +57,7 @@ export default function PrivacyPage() {
               <li>Composio (connecting and posting to your social and ad accounts)</li>
               <li>Higgsfield (AI video generation)</li>
               <li>Resend (sign-in and service emails)</li>
+              <li>Dodo Payments (checkout, billing and tax, as our merchant of record). Card details go to Dodo Payments, never to HitRate.</li>
             </ul>
           ),
         },
