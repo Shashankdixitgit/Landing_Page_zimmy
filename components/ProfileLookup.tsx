@@ -32,7 +32,8 @@ export default function ProfileLookup({
 }) {
   // A link pasted on /creators arrives as ?u= and is read straight away.
   const [first] = useState(() => (auto ? readHandle(initial, "instagram") : null));
-  const [platform, setPlatform] = useState<LookupPlatform>(first?.platform ?? "instagram");
+  // A link already in the box (coming back from the form) picks its own chip.
+  const [platform, setPlatform] = useState<LookupPlatform>(first?.platform ?? readHandle(initial, "instagram")?.platform ?? "instagram");
   const [input, setInput] = useState(initial);
   const [stage, setStage] = useState<Stage>(first ? "loading" : "ask");
   const [preview, setPreview] = useState<ProfilePreview | null>(null);
