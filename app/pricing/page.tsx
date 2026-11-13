@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   openGraph: { title: TITLE, description: DESCRIPTION, type: "website" },
 };
 
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
 type Plan = {
   name: string;
   who: string;
@@ -58,7 +60,7 @@ const PLANS: Plan[] = [
     who: "For brands",
     price: "$1,500",
     per: "/4 weeks",
-    note: "Paid as $750 at signing and $750 after week 1. Then $500/month if you continue.",
+    note: "Paid as $750 at signing and $750 after week 1. Then $500/month plus 5% of creator spend if you continue.",
     features: [
       "Research on what works for your closest competitors",
       "Scripts and creative briefs for your brand",
@@ -81,7 +83,7 @@ export default function PricingPage() {
               Start free. <span className="text-accent">Pay when it helps.</span>
             </h1>
             <p className="mt-5 text-[16px] leading-relaxed text-muted">
-              Prices are in US dollars. Any tax is shown at checkout before you pay.
+              Prices are in US dollars. For Pro, any tax is shown at checkout before you pay.
             </p>
           </div>
 
@@ -89,11 +91,11 @@ export default function PricingPage() {
             {PLANS.map((p) => (
               <section
                 key={p.name}
-                aria-labelledby={`plan-${p.name}`}
+                aria-labelledby={`plan-${slug(p.name)}`}
                 className={`flex flex-col rounded-[22px] border bg-surface p-6 sm:p-7 ${p.cta.primary ? "border-accent" : "border-line"}`}
               >
                 <p className="text-[13px] text-faint">{p.who}</p>
-                <h2 id={`plan-${p.name}`} className="mt-1 text-[19px] font-medium text-ink">{p.name}</h2>
+                <h2 id={`plan-${slug(p.name)}`} className="mt-1 text-[19px] font-medium text-ink">{p.name}</h2>
                 <p className="mt-5 flex items-baseline gap-1">
                   <span className="display text-[40px] text-ink">{p.price}</span>
                   {p.per ? <span className="text-[14px] text-muted">{p.per}</span> : null}
@@ -120,12 +122,13 @@ export default function PricingPage() {
 
           <div className="mx-auto mt-14 max-w-[720px] space-y-3 text-center text-[14px] leading-relaxed text-muted">
             <p>
-              Payments are processed by Dodo Payments, our merchant of record. You can cancel Pro any time, and your first
-              payment is refundable within 7 days. Details are in our{" "}
+              Pro is paid by card through Dodo Payments, our merchant of record. You can cancel Pro any time, and your
+              first Pro payment is refundable within 7 days. Details are in our{" "}
               <a className="text-accent underline-offset-4 hover:underline" href="/refund">refund &amp; cancellation policy</a>.
             </p>
             <p>
-              Creator fees on brand campaigns are agreed separately and are not charged through HitRate’s checkout.
+              Brand plans are billed under an order form. Creator videos on brand campaigns come from a separate creator
+              budget, at the creator’s fee plus HitRate’s 5%, and are not charged through the Pro checkout.
             </p>
           </div>
         </div>

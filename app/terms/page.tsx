@@ -50,7 +50,7 @@ export default function TermsPage() {
           body: (
             <>
               <p>Some features are paid. Current prices are on our <a className="text-accent underline-offset-4 hover:underline" href="/pricing">pricing page</a> and are shown again before you buy. Subscriptions renew each month until you cancel, and you can cancel any time.</p>
-              <p>Payments are processed by Dodo Payments, which acts as our merchant of record and handles payment, tax and receipts. Cancellations and refunds follow our <a className="text-accent underline-offset-4 hover:underline" href="/refund">refund &amp; cancellation policy</a>. During the early preview, features may change and limits may apply.</p>
+              <p>Online card purchases, such as HitRate Pro, are processed by Dodo Payments, which acts as our merchant of record and handles payment, tax and receipts. Brand plans are billed under an order form. Cancellations and refunds follow our <a className="text-accent underline-offset-4 hover:underline" href="/refund">refund &amp; cancellation policy</a> or, for brand plans, the order form. During the early preview, features may change and limits may apply.</p>
             </>
           ),
         },

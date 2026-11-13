@@ -15,11 +15,14 @@ export default function RefundPage() {
     <LegalPage
       title="Refund & Cancellation Policy"
       intro={
-        <p>
-          This policy covers paid HitRate plans, including HitRate Pro for creators (${PRO_PRICE_USD} a month). Payments are
-          processed by Dodo Payments, our merchant of record, so your card statement and receipt show Dodo Payments.
-          See <a className={a} href="/pricing">pricing</a> for what each plan includes.
-        </p>
+        <>
+          <p>
+            This policy covers HitRate Pro for creators (${PRO_PRICE_USD} a month). Pro is paid by card through Dodo
+            Payments, our merchant of record, so your card statement and receipt show Dodo Payments. See{" "}
+            <a className={a} href="/pricing">pricing</a> for what Pro includes.
+          </p>
+          <p>Brand plans, such as the Founding Pilot, are billed under an order form, and the refund terms in that order form apply to them instead.</p>
+        </>
       }
       sections={[
         {
@@ -27,13 +30,16 @@ export default function RefundPage() {
           body: (
             <>
               <p>
-                You can cancel Pro whenever you like. Email <a className={a} href={`mailto:${LEGAL_EMAIL}`}>{LEGAL_EMAIL}</a> from
-                the address on your account and we cancel it within 1 business day, then confirm by email.
+                In the HitRate app, open one of your reports and press <b className="text-ink">Billing</b> next to your email
+                at the top. It opens Dodo Payments’ billing page, where you can cancel, change your card and see your
+                invoices.
               </p>
               <p>
-                Cancelling stops the next renewal. Pro stays on until the end of the month you have already paid for, and
-                you won’t be charged again. There is no cancellation fee.
+                You can also email <a className={a} href={`mailto:${LEGAL_EMAIL}`}>{LEGAL_EMAIL}</a> from the address on your
+                account. If your email reaches us before your renewal date, you won’t be charged again, even if we process
+                it the next day.
               </p>
+              <p>Cancelling stops all future charges. There is no cancellation fee.</p>
             </>
           ),
         },
@@ -54,8 +60,7 @@ export default function RefundPage() {
                 feature didn’t work and we couldn’t fix it, we refund the affected payment in full.
               </li>
               <li>
-                <b className="text-ink">Brand plans:</b> pilots and custom brand plans follow the refund terms in your order
-                form. Where the order form says nothing, this policy applies.
+                <b className="text-ink">Brand plans:</b> refunded only as their order form says.
               </li>
             </ul>
           ),
@@ -65,7 +70,7 @@ export default function RefundPage() {
           body: (
             <p>
               Email <a className={a} href={`mailto:${LEGAL_EMAIL}`}>{LEGAL_EMAIL}</a> with the email address on your account
-              and the date of the charge. We reply within 2 business days. Approved refunds go back to the original payment
+              and the date of the charge. We reply within 2 business days. Approved Pro refunds go back to the original payment
               method through Dodo Payments and usually arrive in 5–10 business days, depending on your bank.
             </p>
           ),
