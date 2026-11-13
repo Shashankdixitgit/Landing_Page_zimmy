@@ -9,7 +9,8 @@ import ScrollFill from "./ScrollFill";
 import LinkStart from "./LinkStart";
 import { SampleLink } from "./CreatorsHero";
 import sample from "@/lib/creatorsSample.json";
-import { FREE_DAYS, WRITTEN_DAYS, PRO_PRICE_USD, PLATFORM_LIST, POSTS_READ, POSTS_READ_X, SIGNAL_COUNT } from "@/lib/planPhases";
+import { FREE_DAYS, WRITTEN_DAYS, PRO_PRICE_USD, PRO_SALES_PAUSED, PLATFORM_LIST, POSTS_READ, POSTS_READ_X, SIGNAL_COUNT } from "@/lib/planPhases";
+import { LEGAL_EMAIL } from "@/components/legal/LegalPage";
 
 export function PlanSection() {
   return (
@@ -58,12 +59,21 @@ const FAQS: { q: string; a: string }[] = [
   {
     q: "What's free?",
     // The price stays: Dodo's review needs it on the site. The last sentence is
-    // what a visitor really gets while sales are paused (the app's founding mode).
-    a: `The report and days 1–${FREE_DAYS} are free, and no card is taken. Days ${FREE_DAYS + 1}–${WRITTEN_DAYS} and the Brainstorm studio are Pro, at $${PRO_PRICE_USD} a month. While Pro sales are paused, signed-in owners get days ${FREE_DAYS + 1}–${WRITTEN_DAYS} of their own plan free, and the Brainstorm chat opens with Pro.`,
+    // what a visitor really gets while sales are paused (the app's founding mode),
+    // and goes away with PRO_SALES_PAUSED.
+    a:
+      `The report and days 1–${FREE_DAYS} are free, and no card is taken. Days ${FREE_DAYS + 1}–${WRITTEN_DAYS} and the Brainstorm chat are Pro, at $${PRO_PRICE_USD} a month.` +
+      (PRO_SALES_PAUSED
+        ? ` While Pro sales are paused, signed-in owners get days ${FREE_DAYS + 1}–${WRITTEN_DAYS} of their own plan free, and the Brainstorm chat opens with Pro.`
+        : ""),
   },
   { q: "Can it predict a viral post?", a: "No. It shows patterns in what you've posted, to test again." },
   { q: "What are hits and flops?", a: "Hits are the top quarter of your own posts, flops the bottom quarter." },
-  { q: "What do you keep?", a: "Your report and the public posts it was built from, saved to your email." },
+  // The private notes from onboarding are kept too, as the Privacy creator section says.
+  {
+    q: "What do you keep?",
+    a: `Your report, the public posts it was built from and any private notes you gave us, saved to your email. Email ${LEGAL_EMAIL} to delete them.`,
+  },
 ];
 
 function Item({ q, a }: { q: string; a: string }) {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import LegalPage, { LEGAL_EMAIL } from "@/components/legal/LegalPage";
-import { FREE_DAYS, PRO_PRICE_USD, WRITTEN_DAYS } from "@/lib/planPhases";
+import { FREE_DAYS, PRO_PRICE_USD, PRO_SALES_PAUSED, WRITTEN_DAYS } from "@/lib/planPhases";
 
 export const metadata: Metadata = {
   title: "Terms of Service · HitRate",
@@ -30,7 +30,7 @@ export default function TermsPage() {
               <li>Private notes you give us during onboarding are used only to write your plan and draft posts, to keep topics you asked us to avoid out of your report, and to answer you in the Brainstorm chat on your own report. They are never shown on a shared report link.</li>
               <li>Each report has its own link. Anyone you share it with can open it.</li>
               <li>You can ask us to delete a report at any time by emailing <a className={a} href={`mailto:${LEGAL_EMAIL}`}>{LEGAL_EMAIL}</a>.</li>
-              <li>The report and days 1&ndash;{FREE_DAYS} of the plan are free, with no card. Pro costs ${PRO_PRICE_USD} a month and adds days {FREE_DAYS + 1}&ndash;{WRITTEN_DAYS} and the Brainstorm chat. While Pro sales are paused, signed-in owners get days {FREE_DAYS + 1}&ndash;{WRITTEN_DAYS} of their own plan free, and the Brainstorm chat opens with Pro. Payments are processed by Dodo Payments, our merchant of record.</li>
+              <li>The report and days 1&ndash;{FREE_DAYS} of the plan are free, with no card. Pro costs ${PRO_PRICE_USD} a month and adds days {FREE_DAYS + 1}&ndash;{WRITTEN_DAYS} and the Brainstorm chat.{PRO_SALES_PAUSED && <> While Pro sales are paused, signed-in owners get days {FREE_DAYS + 1}&ndash;{WRITTEN_DAYS} of their own plan free, and the Brainstorm chat opens with Pro.</>} Payments are processed by Dodo Payments, our merchant of record.</li>
             </ul>
           ),
         },

@@ -46,6 +46,15 @@ export const FREE_DAYS = 7;
 export const WRITTEN_DAYS = 15;
 export const PRO_PRICE_USD = 20;
 
+/**
+ * Founding mode: Pro sales are paused until Dodo enables live payments, and the
+ * app gives signed-in owners days 8-15 free meanwhile. The app reads its own
+ * PRO_SALES_PAUSED env (lib/founding.ts); this site cannot, so flip this together
+ * with that env and redeploy, or the FAQ and the Terms keep promising free days
+ * the app has started charging for.
+ */
+export const PRO_SALES_PAUSED = true;
+
 /** What a scan reads (hitrate lib/scrape/types.ts POST_LIMIT): the newest 30 posts, 100 on X,
  *  going further back than 60 days when an account posts less often. */
 export const POSTS_READ = 30;

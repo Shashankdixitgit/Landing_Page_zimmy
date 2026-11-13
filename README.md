@@ -29,6 +29,16 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Release order with the creator app
+
+- **This site ships first.** The creator app (hitrate.sh/creators/app) links to
+  /refund, /privacy#creators and /terms#creators here. Deploy this site before the
+  app, or both together, and check those three load before deploying the app or
+  asking Dodo to review again. The app shipped first sends its Refunds link to a 404.
+- **Founding mode.** `PRO_SALES_PAUSED` in `lib/planPhases.ts` must match the
+  app's `PRO_SALES_PAUSED` env. When Pro sales open, set it to `false` and
+  redeploy, or the FAQ and the Terms keep promising days 8–15 free.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
