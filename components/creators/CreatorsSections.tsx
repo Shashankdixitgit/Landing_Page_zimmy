@@ -9,7 +9,7 @@ import ScrollFill from "./ScrollFill";
 import LinkStart from "./LinkStart";
 import { SampleLink } from "./CreatorsHero";
 import sample from "@/lib/creatorsSample.json";
-import { FREE_DAYS, WRITTEN_DAYS, PRO_PRICE_USD, PLATFORM_LIST } from "@/lib/planPhases";
+import { FREE_DAYS, WRITTEN_DAYS, PRO_PRICE_USD, PLATFORM_LIST, POSTS_READ, POSTS_READ_X, SIGNAL_COUNT } from "@/lib/planPhases";
 
 export function PlanSection() {
   return (
@@ -24,7 +24,7 @@ export function PlanSection() {
           </Reveal>
           <PlanCalendar drafts={sample.drafts} handle={sample.handle} />
           <p className="mx-auto mt-7 max-w-[600px] text-[14.5px] leading-relaxed text-white/65">
-            The day-15 re-read that rewrites days 16–60 isn&apos;t automated yet. Run a fresh report on day 15 to see what changed.
+            Days 16–60 aren&apos;t written yet. They depend on a re-read of your posts after day 15, which isn&apos;t automated.
           </p>
         </div>
       </div>
@@ -39,8 +39,8 @@ export function ProofSection() {
         <ScrollFill
           className="display text-[30px] leading-[1.18] text-ink sm:text-[50px]"
           parts={[
-            "Every post from your last 60 days, read for ",
-            "180 signals",
+            `Your latest ${POSTS_READ} posts (${POSTS_READ_X} on X), each read for `,
+            `${SIGNAL_COUNT} signals`,
             " and scored against ",
             "your own median,",
             " never against other creators. On ",

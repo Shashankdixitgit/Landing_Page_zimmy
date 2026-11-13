@@ -1,8 +1,9 @@
 import { ArrowRight } from "lucide-react";
 import Reveal from "../Reveal";
 import sample from "@/lib/creatorsSample.json";
+import { POSTS_READ, POSTS_READ_X } from "@/lib/planPhases";
 
-/** Illustrative only: the shape of a 60-day read, not anyone's numbers. */
+/** Illustrative only: the shape of a read, not anyone's numbers. */
 const BARS = [34, 52, 28, 46, 88, 40, 31, 62, 24, 44, 70, 38];
 
 const x = (n: number) => `${n.toFixed(2)}×`;
@@ -94,7 +95,7 @@ function Week() {
 
 const STEPS = [
   { title: "Paste your link", body: "Any public profile. We spot the platform for you.", vis: <PasteLink /> },
-  { title: "We read 60 days", body: "Every post, scored against your own median.", vis: <Bars /> },
+  { title: "We read your posts", body: `Your latest ${POSTS_READ} posts (${POSTS_READ_X} on X), each scored against your own median.`, vis: <Bars /> },
   { title: "See what works", body: "Subjects above and below your median, with post counts.", vis: <Report /> },
   { title: "Get your first week", body: "Seven posts in your voice, dated from tomorrow.", vis: <Week /> },
 ];

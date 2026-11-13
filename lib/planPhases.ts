@@ -46,6 +46,13 @@ export const FREE_DAYS = 7;
 export const WRITTEN_DAYS = 15;
 export const PRO_PRICE_USD = 20;
 
+/** What a scan reads (hitrate lib/scrape/types.ts POST_LIMIT): the newest 30 posts, 100 on X,
+ *  going further back than 60 days when an account posts less often. */
+export const POSTS_READ = 30;
+export const POSTS_READ_X = 100;
+/** How many signals each post is rated on (hitrate lib/constants.ts SIGNAL_COUNT). */
+export const SIGNAL_COUNT = 74;
+
 export const KIND_BY_DAY: ("proven" | "experiment")[] = [
   "proven", "proven", "experiment", "proven", "experiment", "proven", "experiment",
   "proven", "experiment", "proven", "proven", "experiment", "proven", "experiment", "proven",

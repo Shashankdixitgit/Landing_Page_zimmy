@@ -6,7 +6,7 @@ import HowItWorks from "@/components/creators/HowItWorks";
 import { PlanSection, ProofSection, FaqSection, CloseSection } from "@/components/creators/CreatorsSections";
 
 const TITLE = "HitRate for creators: know why your posts work";
-const DESCRIPTION = "Your last 60 days, read against your own median. Your first 7 days, written.";
+const DESCRIPTION = "Your latest 30 posts, read against your own median. Your first 7 days, written.";
 
 export const metadata: Metadata = {
   title: TITLE,
