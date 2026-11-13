@@ -117,7 +117,7 @@ export default function ProfileLookup({
     <div className="pop">
       <p className="text-[13px] font-medium text-accent">Start here</p>
       <h1 className="display mt-2 text-[32px] text-ink sm:text-[42px]">Where do you post most?</h1>
-      <p className="mt-2 text-[15px] text-muted">Enter your username and we&rsquo;ll read your public profile: your numbers, your top posts and who comments.</p>
+      <p className="mt-2 text-[15px] text-muted">Enter your username or paste your profile link, and we&rsquo;ll read your public profile: your numbers, your top posts and who comments.</p>
 
       <div className="mt-8 flex flex-wrap gap-2" role="radiogroup" aria-label="Platform">
         {PLATFORMS.map((p) => {

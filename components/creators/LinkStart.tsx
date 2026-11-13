@@ -10,9 +10,8 @@ export const CREATORS_CTA = "Get my first 7 days free";
  * The paste-a-link box from the creator app, re-themed. It does not start a scan
  * here: it carries the link straight to the creator app's onboarding, which reads
  * every platform the app supports, LinkedIn included. It used to go to
- * /creators/join, but that sign-up form only takes Instagram, TikTok, YouTube and
- * X handles, so a LinkedIn link dead-ended there. /creators/join stays as it is,
- * for its own brand-deal sign-up form.
+ * /creators/join, the brand-deal sign-up form, which now takes LinkedIn too but is
+ * a longer form than someone who only wants their plan needs.
  */
 export default function LinkStart({ dark = false }: { dark?: boolean }) {
   const [url, setUrl] = useState("");

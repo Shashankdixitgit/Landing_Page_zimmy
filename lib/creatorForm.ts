@@ -34,6 +34,7 @@ export const PLATFORMS = [
   { id: "tiktok", label: "TikTok" },
   { id: "youtube", label: "YouTube" },
   { id: "x", label: "X" },
+  { id: "linkedin", label: "LinkedIn" },
 ] as const;
 
 export const STEPS: Step[] = [
@@ -62,6 +63,7 @@ export const STEPS: Step[] = [
       { id: "handle_tiktok", label: "TikTok handle", type: "text", placeholder: "@yourname" },
       { id: "handle_youtube", label: "YouTube channel", type: "text", placeholder: "@yourchannel" },
       { id: "handle_x", label: "X (Twitter) handle", type: "text", placeholder: "@yourname" },
+      { id: "handle_linkedin", label: "LinkedIn profile", type: "text", placeholder: "linkedin.com/in/yourname" },
     ],
   },
   {

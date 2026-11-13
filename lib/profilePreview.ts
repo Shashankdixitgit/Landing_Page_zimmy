@@ -8,11 +8,11 @@ import { HITRATE_APP_PATH } from "@/components/ui";
 // with requests to hitrate.sh. Its limits are counted per signed-in account now, so it no
 // longer matters that the proxy hides the visitor's own IP.
 
-export type LookupPlatform = "instagram" | "tiktok" | "youtube" | "x";
+export type LookupPlatform = "instagram" | "tiktok" | "youtube" | "x" | "linkedin";
 
 /** The shape returned by GET /creators/app/api/public/profile-preview (hitrate repo, lib/preview.ts). */
 export type ProfilePreview = {
-  platform: LookupPlatform | "linkedin";
+  platform: LookupPlatform;
   handle: string;
   name: string;
   avatar: string | null;
@@ -67,6 +67,8 @@ const PATTERNS: { platform: LookupPlatform; re: RegExp }[] = [
   { platform: "instagram", re: /instagram\.com\/@?([A-Za-z0-9._]{1,30})/i },
   { platform: "tiktok", re: /tiktok\.com\/@([A-Za-z0-9._]{1,24})/i },
   { platform: "youtube", re: /youtube\.com\/@([A-Za-z0-9._-]{1,30})/i },
+  // Personal profiles only (linkedin.com/in/...); company pages are not read.
+  { platform: "linkedin", re: /linkedin\.com\/in\/([A-Za-z0-9_%-]{2,100})/i },
 ];
 
 /** A pasted profile link names its own platform; a bare handle keeps the one picked. */
@@ -86,6 +88,7 @@ export function profileUrl(platform: LookupPlatform, handle: string): string {
   if (platform === "x") return `https://x.com/${h}`;
   if (platform === "instagram") return `https://www.instagram.com/${h}`;
   if (platform === "tiktok") return `https://www.tiktok.com/@${h}`;
+  if (platform === "linkedin") return `https://www.linkedin.com/in/${h}`;
   return `https://www.youtube.com/@${h}`;
 }
 

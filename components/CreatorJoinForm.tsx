@@ -6,7 +6,11 @@ import { PLATFORMS, STEPS, TIERS, tierFor, type Field, type Tier } from "@/lib/c
 import { submitApplication, uploadScreenshot } from "@/lib/publicSupabase";
 import ProfileLookup from "./ProfileLookup";
 import { fetchMe, signinHref } from "@/lib/creatorAuth";
-import { ageGroupFor, audienceCountries, frequencyFor, genderFor, planHref, viewsBucket, type LookupPlatform, type ProfilePreview } from "@/lib/profilePreview";
+import { ageGroupFor, audienceCountries, frequencyFor, genderFor, planHref, readHandle, viewsBucket, type LookupPlatform, type ProfilePreview } from "@/lib/profilePreview";
+
+/** How a handle is written into the form: LinkedIn as its profile link, the rest as @name. */
+const shownHandle = (platform: LookupPlatform, handle: string) =>
+  platform === "linkedin" ? `linkedin.com/in/${handle}` : `@${handle}`;
 
 type Answers = Record<string, string | string[]>;
 
@@ -114,8 +118,9 @@ export default function CreatorJoinForm({ initialLink = "" }: { initialLink?: st
   };
 
   // Read public profiles (Instagram, TikTok, YouTube) and prefill steps 3-5. Only fills empty answers.
+  // X and LinkedIn are skipped: this lookup (Modash) does not cover them.
   const readProfiles = async () => {
-    const targets = platforms.filter((p) => p.id !== "x" && p.id !== previewed?.platform).map((p) => [p.id, String(a[`handle_${p.id}`]).trim()] as const);
+    const targets = platforms.filter((p) => p.id !== "x" && p.id !== "linkedin" && p.id !== previewed?.platform).map((p) => [p.id, String(a[`handle_${p.id}`]).trim()] as const);
     const sig = targets.map((t) => t.join(":")).join("|");
     if (!targets.length || sig === lookedUp) return;
     setLookedUp(sig);
@@ -172,7 +177,7 @@ export default function CreatorJoinForm({ initialLink = "" }: { initialLink?: st
     setAutoLookup(false);
     setPreviewed(pv);
     const id = pv.platform as LookupPlatform;
-    const fill: Answers = { [`handle_${id}`]: `@${pv.handle}` };
+    const fill: Answers = { [`handle_${id}`]: shownHandle(id, pv.handle) };
     const filled = new Set<string>([`handle_${id}`]);
     if (pv.followers > 0) {
       setFollowers((x) => ({ ...x, [id]: String(pv.followers) }));
@@ -198,16 +203,17 @@ export default function CreatorJoinForm({ initialLink = "" }: { initialLink?: st
 
   const manual = (picked: { platform: LookupPlatform; handle: string } | null) => {
     setAutoLookup(false);
-    if (picked) setA((x) => ({ ...x, [`handle_${picked.platform}`]: `@${picked.handle}` }));
+    if (picked) setA((x) => ({ ...x, [`handle_${picked.platform}`]: shownHandle(picked.platform, picked.handle) }));
     setLookingUp(false);
   };
 
   // The profile the 60-day plan starts from: the one we read, else the biggest one entered.
   const planFor = (): string | null => {
-    if (previewed && previewed.platform !== "linkedin") return planHref(previewed.platform, previewed.handle);
+    if (previewed) return planHref(previewed.platform, previewed.handle);
     const main = [...platforms].sort((x, y) => Number(followers[y.id] || 0) - Number(followers[x.id] || 0))[0];
-    const handle = main ? String(a[`handle_${main.id}`] ?? "").trim().replace(/^@/, "") : "";
-    return main && handle ? planHref(main.id, handle) : null;
+    // readHandle accepts "@name", a bare name or a full link (LinkedIn is usually a link).
+    const read = main ? readHandle(String(a[`handle_${main.id}`] ?? ""), main.id) : null;
+    return read ? planHref(read.platform, read.handle) : null;
   };
 
   const addFiles = (list: FileList | null) => {
