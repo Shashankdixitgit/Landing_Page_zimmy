@@ -92,6 +92,11 @@ export function profileUrl(platform: LookupPlatform, handle: string): string {
   return `https://www.youtube.com/@${h}`;
 }
 
+/** How a handle reads on screen: LinkedIn as its profile link (it has no @names), the rest as @name. */
+export function shownHandle(platform: LookupPlatform, handle: string): string {
+  return platform === "linkedin" ? `linkedin.com/in/${handle}` : `@${handle}`;
+}
+
 /** The creator app's onboarding, with the profile already in the box. */
 export function planHref(platform: LookupPlatform, handle: string): string {
   return `${HITRATE_APP_PATH}/start?u=${encodeURIComponent(profileUrl(platform, handle))}`;

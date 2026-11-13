@@ -5,7 +5,7 @@ import { ArrowRight, Loader2, MessageCircle, RotateCcw, Search } from "lucide-re
 import { Chip } from "./ui";
 import { PLATFORMS } from "@/lib/creatorForm";
 import { signinHref } from "@/lib/creatorAuth";
-import { lookupProfile, readHandle, type LookupPlatform, type ProfilePreview } from "@/lib/profilePreview";
+import { lookupProfile, readHandle, shownHandle, type LookupPlatform, type ProfilePreview } from "@/lib/profilePreview";
 
 const fmt = (n: number) =>
   n >= 1_000_000 ? `${(n / 1_000_000).toFixed(n >= 10_000_000 ? 0 : 1)}M` : n >= 10_000 ? `${Math.round(n / 1000)}K` : n >= 1000 ? `${(n / 1000).toFixed(1)}K` : String(n);
@@ -79,7 +79,7 @@ export default function ProfileLookup({
         <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-mint text-accent">
           <Loader2 className="h-6 w-6 animate-spin" />
         </span>
-        <h1 className="display mt-6 text-[30px] text-ink sm:text-[38px]">Reading @{target?.handle ?? ""}</h1>
+        <h1 className="display mt-6 text-[30px] text-ink sm:text-[38px]">Reading {target ? shownHandle(target.platform, target.handle) : ""}</h1>
         <p className="mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-muted">
           Your recent posts, your numbers and the comments people leave. This can take up to a minute.
         </p>
@@ -196,15 +196,20 @@ function ResultCard({ p, onContinue, onBack }: { p: ProfilePreview; onContinue: 
           <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-mint text-[20px] font-semibold text-accent">{(p.name || p.handle).charAt(0).toUpperCase()}</span>
         )}
         <div className="min-w-0">
-          <h1 className="display truncate text-[28px] text-ink sm:text-[34px]">{p.name || `@${p.handle}`}</h1>
+          <h1 className="display truncate text-[28px] text-ink sm:text-[34px]">{p.name || shownHandle(p.platform, p.handle)}</h1>
           <p className="text-[14px] text-muted">
-            @{p.handle} · {label}
+            {shownHandle(p.platform, p.handle)} · {label}
           </p>
         </div>
       </div>
 
       <div className="mt-7 grid grid-cols-2 gap-2.5">
-        <Stat label="Followers" value={fmt(p.followers)} />
+        {/* LinkedIn's public profile shows no follower count, so the read returns 0 there. */}
+        <Stat
+          label="Followers"
+          value={p.followers > 0 ? fmt(p.followers) : "Not shown"}
+          sub={p.followers > 0 ? undefined : `${label} doesn't show followers here`}
+        />
         <Stat
           label="Average views"
           value={p.avgViews != null ? fmt(p.avgViews) : "Hidden"}
@@ -213,7 +218,7 @@ function ResultCard({ p, onContinue, onBack }: { p: ProfilePreview; onContinue: 
         <Stat
           label="Engagement rate"
           value={p.engagementRate != null ? pct(p.engagementRate) : "–"}
-          sub={p.engagementBasis === "views" ? "Of views, typical post" : "Of followers, typical post"}
+          sub={p.engagementRate == null ? undefined : p.engagementBasis === "views" ? "Of views, typical post" : "Of followers, typical post"}
         />
         <Stat label="Posts read" value={String(p.postsRead)} sub={`Over the last ${p.spanDays} days`} />
       </div>

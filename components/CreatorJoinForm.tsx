@@ -6,11 +6,7 @@ import { PLATFORMS, STEPS, TIERS, tierFor, type Field, type Tier } from "@/lib/c
 import { submitApplication, uploadScreenshot } from "@/lib/publicSupabase";
 import ProfileLookup from "./ProfileLookup";
 import { fetchMe, signinHref } from "@/lib/creatorAuth";
-import { ageGroupFor, audienceCountries, frequencyFor, genderFor, planHref, readHandle, viewsBucket, type LookupPlatform, type ProfilePreview } from "@/lib/profilePreview";
-
-/** How a handle is written into the form: LinkedIn as its profile link, the rest as @name. */
-const shownHandle = (platform: LookupPlatform, handle: string) =>
-  platform === "linkedin" ? `linkedin.com/in/${handle}` : `@${handle}`;
+import { ageGroupFor, audienceCountries, frequencyFor, genderFor, planHref, profileUrl, readHandle, shownHandle, viewsBucket, type LookupPlatform, type ProfilePreview } from "@/lib/profilePreview";
 
 type Answers = Record<string, string | string[]>;
 
@@ -255,7 +251,7 @@ export default function CreatorJoinForm({ initialLink = "" }: { initialLink?: st
   if (lookingUp) {
     return (
       <div className="mx-auto max-w-2xl">
-        <ProfileLookup initial={previewed ? `@${previewed.handle}` : initialLink} auto={autoLookup} onContinue={applyPreview} onManual={manual} />
+        <ProfileLookup initial={previewed ? profileUrl(previewed.platform, previewed.handle) : initialLink} auto={autoLookup} onContinue={applyPreview} onManual={manual} />
       </div>
     );
   }

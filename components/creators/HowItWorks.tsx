@@ -95,7 +95,7 @@ function Week() {
 
 const STEPS = [
   { title: "Paste your link", body: "Any public profile. We spot the platform for you.", vis: <PasteLink /> },
-  { title: "We read your posts", body: `Your latest ${POSTS_READ} posts (up to ${POSTS_READ_X} on X), each scored against your own median.`, vis: <Bars /> },
+  { title: "We read your posts", body: `Up to your latest ${POSTS_READ} posts (${POSTS_READ_X} on X), each scored against your own median.`, vis: <Bars /> },
   { title: "See what works", body: "Subjects above and below your median, with post counts.", vis: <Report /> },
   // The app sets Day 1 when the plan is first opened (its components/Plan.tsx firstDay), not tomorrow.
   { title: "Get your first week", body: "Seven posts in your voice, dated from the day you first open them.", vis: <Week /> },

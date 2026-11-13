@@ -77,7 +77,8 @@ export const STEPS: Step[] = [
         label: "Typical views per Reel, TikTok or Short",
         type: "select",
         required: true,
-        options: ["Under 1K", "1K–10K", "10K–50K", "50K–250K", "250K–1M", "1M+"],
+        // "Not sure" for creators without short video (LinkedIn or X only), who would otherwise have to guess.
+        options: ["Under 1K", "1K–10K", "10K–50K", "50K–250K", "250K–1M", "1M+", "Not sure / no short video"],
       },
     ],
   },

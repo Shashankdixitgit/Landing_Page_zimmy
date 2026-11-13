@@ -40,7 +40,7 @@ export function ProofSection() {
         <ScrollFill
           className="display text-[30px] leading-[1.18] text-ink sm:text-[50px]"
           parts={[
-            `Your latest ${POSTS_READ} posts (up to ${POSTS_READ_X} on X), each read for `,
+            `Up to your latest ${POSTS_READ} posts (${POSTS_READ_X} on X), each read for `,
             `${SIGNAL_COUNT} signals`,
             " and scored against ",
             "your own median,",
