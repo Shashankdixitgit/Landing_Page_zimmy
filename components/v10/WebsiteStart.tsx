@@ -47,7 +47,14 @@ export default function WebsiteStart({ size = "lg" }: { size?: "lg" | "sm" }) {
     }
   };
 
-  const joinHref = `${BRAND_JOIN_HREF}?website=${encodeURIComponent(read?.website ?? site.trim())}`;
+  // Carry the read along, so the form doesn't fetch the same site a second time.
+  const joinHref = (() => {
+    const q = new URLSearchParams({ website: read?.website ?? site.trim() });
+    if (read?.brand_name) q.set("brand_name", read.brand_name);
+    if (read?.category) q.set("category", read.category);
+    if (read?.country) q.set("country", read.country);
+    return `${BRAND_JOIN_HREF}?${q.toString()}`;
+  })();
   const big = size === "lg";
 
   return (

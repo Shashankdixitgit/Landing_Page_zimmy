@@ -94,14 +94,14 @@ export default function V10Nav() {
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="ml-auto grid h-9 w-9 place-items-center rounded-[9px] border border-ok-line text-ok-text md:hidden"
+            className="ml-auto grid h-9 w-9 place-items-center rounded-[9px] border border-ok-line text-ok-text lg:hidden"
           >
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </nav>
 
         {open ? (
-          <div className="border-t border-ok-hair px-5 py-3 md:hidden">
+          <div className="border-t border-ok-hair px-5 py-3 lg:hidden">
             {LINKS.map((l) => (
               <a
                 key={l.label}
@@ -112,6 +112,13 @@ export default function V10Nav() {
                 {l.label}
               </a>
             ))}
+            <a
+              href={CREATOR_HREF}
+              onClick={() => setOpen(false)}
+              className="block py-2.5 text-[15px] text-ok-muted"
+            >
+              For creators
+            </a>
             <a
               href="#top"
               onClick={() => setOpen(false)}

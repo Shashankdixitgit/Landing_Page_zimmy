@@ -196,7 +196,7 @@ function usePrefersReducedMotion() {
   );
 }
 
-export default function ChatBox({ compact = false }: { compact?: boolean }) {
+export default function ChatBox() {
   const [si, setSi] = useState(0);
   const [typed, setTyped] = useState("");
   const [phase, setPhase] = useState<"type" | "think" | "reply">("type");
@@ -212,8 +212,11 @@ export default function ChatBox({ compact = false }: { compact?: boolean }) {
 
   // One effect per phase, each scheduling the next.
   useEffect(() => {
-    if (still || compact) return;
+    if (still) return;
     const { prompt, steps } = SCENES[si];
+
+    // One pending timer at a time, always cleared, so nothing fires after unmount.
+    let hand: ReturnType<typeof setTimeout> | undefined;
 
     if (phase === "type") {
       let n = 0;
@@ -222,10 +225,13 @@ export default function ChatBox({ compact = false }: { compact?: boolean }) {
         setTyped(prompt.slice(0, n));
         if (n >= prompt.length) {
           clearInterval(id);
-          setTimeout(() => setPhase("think"), 420);
+          hand = setTimeout(() => setPhase("think"), 420);
         }
       }, 26);
-      return () => clearInterval(id);
+      return () => {
+        clearInterval(id);
+        clearTimeout(hand);
+      };
     }
 
     if (phase === "think") {
@@ -235,10 +241,13 @@ export default function ChatBox({ compact = false }: { compact?: boolean }) {
         setShown(n);
         if (n >= steps.length) {
           clearInterval(id);
-          setTimeout(() => setPhase("reply"), 520);
+          hand = setTimeout(() => setPhase("reply"), 520);
         }
       }, 620);
-      return () => clearInterval(id);
+      return () => {
+        clearInterval(id);
+        clearTimeout(hand);
+      };
     }
 
     const id = setTimeout(() => {
@@ -248,23 +257,7 @@ export default function ChatBox({ compact = false }: { compact?: boolean }) {
       setPhase("type");
     }, 4200);
     return () => clearTimeout(id);
-  }, [phase, si, still, compact]);
-
-  if (compact) {
-    return (
-      <div className="rounded-xl border border-ok-line bg-ok-card p-2">
-        <div className="flex items-center gap-3 px-2.5 py-1.5">
-          <Paperclip className="h-4 w-4 shrink-0 text-ok-faint" />
-          <span className="flex-1 truncate text-left text-[14.5px] text-ok-faint">
-            Ask for anything your marketing team would do…
-          </span>
-          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-[9px] bg-ok-text text-ok-bg">
-            <ArrowUp className="h-4 w-4" />
-          </span>
-        </div>
-      </div>
-    );
-  }
+  }, [phase, si, still]);
 
   return (
     <div className="rounded-xl border border-ok-line bg-ok-card p-2 sm:p-2.5">

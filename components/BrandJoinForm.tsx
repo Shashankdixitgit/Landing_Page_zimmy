@@ -8,15 +8,21 @@ import { DEMO_HREF } from "./ui";
 
 type Answers = Record<string, string | string[]>;
 
-/** `initialWebsite` lets a page hand the form a link the visitor already typed (see /v10). */
-export default function BrandJoinForm({ initialWebsite }: { initialWebsite?: string }) {
+/**
+ * `initialAnswers` lets a page hand the form answers the visitor already gave it
+ * (see /v10, which reads the website itself and passes the result on). When it
+ * includes a website, the form trusts that read and does not fetch it again.
+ */
+export default function BrandJoinForm({ initialAnswers }: { initialAnswers?: Answers }) {
   const [step, setStep] = useState(0);
-  const [a, setA] = useState<Answers>(initialWebsite ? { website: initialWebsite } : {});
+  const [a, setA] = useState<Answers>(initialAnswers ?? {});
   const [error, setError] = useState("");
   const [status, setStatus] = useState<"idle" | "reading" | "sending" | "done">("idle");
-  const [prefilled, setPrefilled] = useState<Set<string>>(new Set());
+  const [prefilled, setPrefilled] = useState<Set<string>>(
+    new Set(Object.keys(initialAnswers ?? {}).filter((k) => k !== "website")),
+  );
   const [found, setFound] = useState<string | null>(null);
-  const [readSite, setReadSite] = useState("");
+  const [readSite, setReadSite] = useState(String(initialAnswers?.website ?? ""));
 
   const total = BRAND_STEPS.length;
   const s = BRAND_STEPS[step];
