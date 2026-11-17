@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import Reveal from "../Reveal";
-import { DEMO_HREF, TextLink } from "../ui";
+import { DEMO_HREF } from "../ui";
 
 const FAQS = [
   {
@@ -35,20 +35,20 @@ const FAQS = [
 function Item({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-line">
+    <div className="border-b border-ok-hair">
       <button
         onClick={() => setOpen((v) => !v)}
         className="flex w-full items-center justify-between gap-4 py-5 text-left"
         aria-expanded={open}
       >
-        <span className="text-[15.5px] font-medium text-ink">{q}</span>
+        <span className="text-[15.5px] font-medium text-ok-text">{q}</span>
         <Plus
-          className={`h-4 w-4 shrink-0 text-muted transition-transform duration-300 ${open ? "rotate-45" : ""}`}
+          className={`h-4 w-4 shrink-0 text-ok-faint transition-transform duration-300 ${open ? "rotate-45" : ""}`}
         />
       </button>
       <div className={`grid transition-all duration-400 ease-out ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
         <div className="overflow-hidden">
-          <p className="max-w-2xl pb-5 pr-8 text-[14.5px] leading-relaxed text-muted">{a}</p>
+          <p className="max-w-2xl pb-5 pr-8 text-[14.5px] leading-relaxed text-ok-muted">{a}</p>
         </div>
       </div>
     </div>
@@ -57,20 +57,20 @@ function Item({ q, a }: { q: string; a: string }) {
 
 export default function ChatFAQ() {
   return (
-    <section id="faq" className="px-5 py-24 sm:py-32">
+    <section id="faq" className="border-b border-ok-hair px-5 py-24 sm:py-28">
       <div className="mx-auto grid max-w-[1100px] gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
         <Reveal>
-          <h2 className="display text-[38px] text-ink sm:text-[46px]">
-            Fair
-            <br />
-            questions.
-          </h2>
-          <p className="mt-5 max-w-xs text-[15px] leading-relaxed text-muted">
+          <p className="ok-label text-ok-faint">FAQ</p>
+          <h2 className="ok-h mt-4 text-[36px] text-white sm:text-[44px]">Fair questions.</h2>
+          <p className="mt-5 max-w-xs text-[15px] leading-relaxed text-ok-muted">
             Anything else, ask a founder directly.
           </p>
-          <div className="mt-5">
-            <TextLink href={DEMO_HREF}>Book a demo</TextLink>
-          </div>
+          <a
+            href={DEMO_HREF}
+            className="mt-5 inline-flex items-center gap-2 rounded-[9px] border border-ok-line px-3.5 py-2 text-[14px] font-medium text-ok-text transition-colors hover:border-ok-faint"
+          >
+            Book a demo
+          </a>
         </Reveal>
         <Reveal delay={0.1}>
           {FAQS.map((f) => (

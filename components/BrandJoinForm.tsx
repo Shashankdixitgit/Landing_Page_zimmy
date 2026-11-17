@@ -8,9 +8,10 @@ import { DEMO_HREF } from "./ui";
 
 type Answers = Record<string, string | string[]>;
 
-export default function BrandJoinForm() {
+/** `initialWebsite` lets a page hand the form a link the visitor already typed (see /v10). */
+export default function BrandJoinForm({ initialWebsite }: { initialWebsite?: string }) {
   const [step, setStep] = useState(0);
-  const [a, setA] = useState<Answers>({});
+  const [a, setA] = useState<Answers>(initialWebsite ? { website: initialWebsite } : {});
   const [error, setError] = useState("");
   const [status, setStatus] = useState<"idle" | "reading" | "sending" | "done">("idle");
   const [prefilled, setPrefilled] = useState<Set<string>>(new Set());

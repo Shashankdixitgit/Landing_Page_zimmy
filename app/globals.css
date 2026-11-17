@@ -22,6 +22,21 @@
   --color-highlight: #d6f5c9;    /* text highlight */
   --color-logo: #f2493a;        /* logo mark only */
 
+  /* /v10 only: the okara-style warm near-black set */
+  --color-ok-bg: #110f0e;
+  --color-ok-raise: #1a1817;
+  --color-ok-card: #292524;
+  --color-ok-line: #322e2a;
+  --color-ok-hair: #242120;
+  --color-ok-text: #f3f0ec;
+  --color-ok-muted: #a8a29e;
+  --color-ok-faint: #78716c;
+  --color-ok-green: #5ccf98;
+
+  --font-display: var(--f-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-text: var(--f-dm), ui-sans-serif, system-ui, sans-serif;
+  --font-code: var(--f-jet), ui-monospace, SFMono-Regular, monospace;
+
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
@@ -155,12 +170,43 @@ html.lenis body { height: auto; }
   .mk-caret, .day-in { animation: none; }
 }
 
-/* ── /v10 (single chat box variant) ────────────────────── */
-/* Faint graph paper behind the dark frames, so they read as a surface not a slab */
+/* ── /v10 (single chat box variant, okara-style dark) ── */
+/* Scoped to the route: every rule here needs .okara on an ancestor, so the rest
+   of the site keeps the HitRate light theme untouched. */
+html:has(.okara) { background: var(--color-ok-bg); }
+
+.okara {
+  background: var(--color-ok-bg);
+  color: var(--color-ok-text);
+  font-family: var(--font-text);
+  font-size: 16px;
+}
+.okara h1, .okara h2, .okara h3 { font-family: var(--font-display); }
+
+/* Okara's display setting: Sora 600, very tight tracking, 1.05 leading */
+.ok-h { font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; text-wrap: balance; }
+
+/* The small uppercase mono labels used above every section */
+.ok-label {
+  font-family: var(--font-code);
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+/* Hairline cell grid (the logo wall look): one shared border per cell */
+.ok-cells > * { border-right: 1px solid var(--color-ok-hair); border-bottom: 1px solid var(--color-ok-hair); }
+
+/* Faint graph paper behind the hero */
 .v10-grid {
   background-image:
     linear-gradient(to right, #ffffff 1px, transparent 1px),
     linear-gradient(to bottom, #ffffff 1px, transparent 1px);
   background-size: 56px 56px;
-  mask-image: radial-gradient(70% 60% at 50% 35%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(70% 60% at 50% 30%, #000 0%, transparent 75%);
 }
+
+/* Promo ticker across the top */
+@keyframes ok-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ok-ticker { animation: ok-ticker 38s linear infinite; display: flex; width: max-content; }
+@media (prefers-reduced-motion: reduce) { .ok-ticker { animation: none; } }

@@ -1,55 +1,83 @@
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  BarChart3,
+  CalendarDays,
+  Clapperboard,
+  Megaphone,
+  PenLine,
+  Search,
+  Send,
+  Users,
+  Video,
+} from "lucide-react";
 import ChatBox from "./ChatBox";
-import { DEMO_HREF } from "../ui";
+import WebsiteStart from "./WebsiteStart";
 
-/**
- * /v10 hero. Dark frame so the chat box is the only bright thing on screen —
- * the whole page argues that one input replaces a marketing stack, so the input
- * has to be the hero, not a screenshot beside it.
- */
+/** The pill row okara puts under its hero — one chip per job the box can do. */
+const PILLS = [
+  { icon: Search, label: "Competitors" },
+  { icon: Video, label: "Winning videos" },
+  { icon: Megaphone, label: "Markets" },
+  { icon: PenLine, label: "Scripts" },
+  { icon: CalendarDays, label: "Calendar" },
+  { icon: Clapperboard, label: "AI UGC" },
+  { icon: Send, label: "Posting" },
+  { icon: Users, label: "Creators" },
+  { icon: BarChart3, label: "Results" },
+];
+
 export default function ChatHero() {
   return (
-    <section id="top" className="px-2 pt-2 sm:px-3 sm:pt-3">
-      <div className="relative isolate overflow-hidden rounded-[28px] bg-night sm:rounded-[36px]">
-        {/* glow + grid so the dark panel has depth without an image */}
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_55%_at_50%_-5%,rgb(92_207_152/0.22),transparent_70%),radial-gradient(50%_40%_at_85%_20%,rgb(63_134_201/0.18),transparent_70%)]"
-          aria-hidden
-        />
-        <div className="v10-grid pointer-events-none absolute inset-0 opacity-[0.07]" aria-hidden />
+    <section id="top" className="relative isolate overflow-hidden border-b border-ok-hair px-5 pb-20 pt-16 sm:pt-24">
+      <div className="v10-grid pointer-events-none absolute inset-0 opacity-[0.05]" aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(55%_60%_at_50%_0%,rgb(92_207_152/0.10),transparent_75%)]"
+        aria-hidden
+      />
 
-        <div className="relative mx-auto max-w-[1100px] px-5 pb-14 pt-32 sm:pb-20 sm:pt-40">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3 py-1 text-[12.5px] font-medium text-white/75">
-              <span className="live-dot h-1.5 w-1.5 rounded-full bg-accent-bright" />
-              One box instead of a marketing stack
-            </span>
+      <div className="relative mx-auto max-w-[1100px] text-center">
+        <a
+          href="#how"
+          className="inline-flex items-center gap-2.5 rounded-full border border-ok-line bg-ok-card py-1 pl-1 pr-3 text-[13px] text-ok-muted transition-colors hover:border-ok-faint"
+        >
+          <span className="ok-label rounded-full bg-ok-bg px-2.5 py-1 text-ok-text">New</span>
+          Run your marketing from one chat box
+          <ArrowRight className="h-3.5 w-3.5" />
+        </a>
 
-            <h1 className="display mx-auto mt-6 max-w-[22ch] text-balance text-[38px] text-white sm:text-[58px] md:text-[66px]">
-              Run your whole marketing from one chat box.
-            </h1>
+        <h1 className="ok-h mx-auto mt-7 max-w-[17ch] text-[44px] text-white sm:text-[62px] md:text-[70px]">
+          Meet HitRate, the AI growth team.
+        </h1>
 
-            <p className="mx-auto mt-6 max-w-xl text-[16.5px] leading-relaxed text-white/65">
-              Ask for it the way you would ask a team. HitRate finds the videos already winning in your category, writes
-              the scripts, makes the test videos, posts the ones you approve, and tells you which one brought users.
-            </p>
+        <p className="mx-auto mt-6 max-w-lg text-[17px] leading-relaxed text-ok-muted">
+          One chat box that finds what&rsquo;s already winning in your category, writes it, makes it and tests it —
+          before you pay a single creator.
+        </p>
 
-            <div className="mt-8 flex flex-col items-center gap-3.5">
-              <a
-                href={DEMO_HREF}
-                className="group inline-flex items-center gap-3 rounded-full bg-white px-7 py-3.5 text-[15.5px] font-medium text-ink transition-transform duration-300 hover:-translate-y-0.5"
+        <div className="mt-9">
+          <WebsiteStart />
+        </div>
+
+        <p className="ok-label mt-14 text-ok-faint">One box runs nine jobs for you</p>
+        <div className="mx-auto mt-5 flex max-w-3xl flex-wrap justify-center gap-2">
+          {PILLS.map((p) => {
+            const Icon = p.icon;
+            return (
+              <span
+                key={p.label}
+                className="inline-flex items-center gap-2 rounded-[9px] border border-ok-line bg-ok-card px-3 py-1.5 text-[13.5px] text-ok-text"
               >
-                Book a demo
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-              </a>
-              <p className="text-[13px] text-white/45">For consumer app teams · you approve everything before it goes out</p>
-            </div>
-          </div>
+                <Icon className="h-3.5 w-3.5 text-ok-green" strokeWidth={1.9} />
+                {p.label}
+              </span>
+            );
+          })}
+        </div>
 
-          <div className="mx-auto mt-12 max-w-[560px] sm:mt-14">
-            <ChatBox />
-            <p className="mt-3 text-center text-[12px] text-white/35">An example thread. Statuses are HitRate&rsquo;s today.</p>
-          </div>
+        {/* the product itself, the way okara drops a dashboard under the fold line */}
+        <div className="mx-auto mt-16 max-w-[620px]">
+          <ChatBox />
+          <p className="mt-3 text-[12.5px] text-ok-faint">An example thread. The statuses are HitRate&rsquo;s today.</p>
         </div>
       </div>
     </section>
