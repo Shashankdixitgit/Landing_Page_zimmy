@@ -154,3 +154,13 @@ html.lenis body { height: auto; }
 @media (prefers-reduced-motion: reduce) {
   .mk-caret, .day-in { animation: none; }
 }
+
+/* ── /v10 (single chat box variant) ────────────────────── */
+/* Faint graph paper behind the dark frames, so they read as a surface not a slab */
+.v10-grid {
+  background-image:
+    linear-gradient(to right, #ffffff 1px, transparent 1px),
+    linear-gradient(to bottom, #ffffff 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(70% 60% at 50% 35%, #000 0%, transparent 75%);
+}
