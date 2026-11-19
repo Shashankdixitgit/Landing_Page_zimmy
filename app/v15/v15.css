@@ -1,0 +1,307 @@
+/* ── /v15 and /v16: sky, serif, one input ─────────────────────
+   Every rule needs .bd on an ancestor, so nothing here reaches the rest of the
+   site. Colours are near-black and greys; green only marks "yes" (ticks, a
+   finished ring, "Live") and the logo.
+
+   The whole file sits in Tailwind's components layer, so a utility class on the
+   same element (hidden, tracking-*, ...) always wins over these rules. */
+
+/* Outside the layer on purpose: globals.css sets html/body unlayered, and an
+   unlayered rule always beats a layered one. */
+html:has(.bd),
+body:has(.bd) {
+  background: #ffffff;
+}
+
+@layer components {
+  .bd {
+    --bd-ink: #111111;
+    --bd-text: #1d1d1f;
+    --bd-muted: #63666a; /* 5.8:1 on white */
+    --bd-faint: #6e7175; /* 4.9:1 on white, 4.7:1 on #fafafa: the lightest text colour */
+    --bd-line: #e9e9eb;
+    --bd-soft: #f6f6f7;
+    --bd-green: #1f9d63;
+    background: #ffffff;
+    color: var(--bd-text);
+  }
+
+  .bd .serif {
+    font-family: var(--f-serif), "Iowan Old Style", Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    font-optical-sizing: auto;
+  }
+
+  /* The sky: a pale blue-grey morning with a soft sun in the top left and low
+     cloud banks, fading to white so the page below reads on plain white. */
+  .bd-sky {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background:
+      radial-gradient(50% 44% at 3% 0%, rgb(255 252 242 / 0.95) 0%, rgb(252 248 236 / 0.5) 30%, transparent 62%),
+      linear-gradient(180deg, #c3d4df 0%, #d2dfe7 26%, #e2ebf0 48%, #f3f6f8 68%, #ffffff 86%);
+  }
+  .bd-sky::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 28%;
+    background: linear-gradient(180deg, transparent, #ffffff);
+  }
+  .bd-cloud {
+    position: absolute;
+    border-radius: 9999px;
+    background: #ffffff;
+    filter: blur(38px);
+    opacity: 0.85;
+    pointer-events: none;
+  }
+
+  /* Floating icons, some in focus and some blurred, for depth. Display comes
+     from the markup (grid, or grid md:hidden). */
+  .bd-tile {
+    position: absolute;
+    place-items: center;
+    border-radius: 24%;
+    box-shadow:
+      0 1px 0 rgb(255 255 255 / 0.55) inset,
+      0 14px 34px -10px rgb(28 52 74 / 0.32),
+      0 3px 8px rgb(28 52 74 / 0.1);
+    animation: bd-float var(--d, 8s) ease-in-out var(--delay, 0s) infinite alternate;
+    transition: opacity 0.6s ease;
+    will-change: transform;
+  }
+  .bd-tile svg {
+    width: 46%;
+    height: 46%;
+  }
+  /* While a run is on screen the icons step back, so the run has the sky to itself. */
+  .bd-sky[data-quiet] .bd-tile {
+    opacity: 0 !important;
+  }
+
+  /* The input: a white pill (or a chat box) with a soft lift. */
+  .bd-field {
+    background: #ffffff;
+    border: 1px solid rgb(17 17 17 / 0.08);
+    box-shadow:
+      0 1px 2px rgb(17 17 17 / 0.04),
+      0 18px 40px -18px rgb(30 60 90 / 0.28);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .bd-field:focus-within {
+    border-color: rgb(17 17 17 / 0.2);
+    box-shadow:
+      0 0 0 4px rgb(17 17 17 / 0.05),
+      0 18px 40px -18px rgb(30 60 90 / 0.32);
+  }
+
+  .bd-chip {
+    background: rgb(255 255 255 / 0.75);
+    border: 1px solid rgb(17 17 17 / 0.07);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .bd-card {
+    background: #ffffff;
+    border: 1px solid var(--bd-line);
+    box-shadow: 0 1px 2px rgb(17 17 17 / 0.03), 0 12px 32px -20px rgb(17 17 17 / 0.18);
+  }
+
+  .bd-dialog::backdrop {
+    background: rgb(0 0 0 / 0.25);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+
+  /* The ring around the app's initials. */
+  .bd-ring {
+    transform: rotate(-90deg);
+  }
+  .bd-ring circle {
+    transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.4s ease;
+  }
+  .bd-ring-spin {
+    animation: bd-spin 1.4s linear infinite;
+    transform-origin: 50% 50%;
+  }
+
+  .bd-spinner {
+    width: 16px;
+    height: 16px;
+    border-radius: 9999px;
+    border: 1.75px solid rgb(17 17 17 / 0.12);
+    border-top-color: rgb(17 17 17 / 0.7);
+    animation: bd-spin-plain 0.8s linear infinite;
+  }
+
+  /* Each changing line rises in, so a change is seen. */
+  .bd-rise {
+    animation: bd-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .bd-caret {
+    animation: bd-blink 1s steps(1) infinite;
+  }
+  .bd-dot {
+    animation: bd-pulse 1.2s ease-in-out infinite;
+  }
+
+  /* Sections slide in once, on first sight (components/v15/Reveal). Hidden only
+     when scripts run, so with no JavaScript everything is simply visible. */
+  @media (scripting: enabled) {
+    .bd-reveal:not([data-shown]) {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+  }
+  .bd-reveal {
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .bd details > summary {
+    list-style: none;
+  }
+  .bd details > summary::-webkit-details-marker {
+    display: none;
+  }
+  .bd details[open] .bd-plus {
+    transform: rotate(45deg);
+  }
+
+  /* ── /v16 sections ───────────────────────────────────────── */
+
+  /* Bars in the ask console grow from the left. */
+  .bd-grow {
+    transform-origin: left center;
+    animation: bd-grow 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  /* How long until the console moves to the next question. */
+  .bd-timer {
+    transform-origin: left center;
+    animation: bd-grow linear both;
+  }
+
+  /* The week: the old way is struck through, then the chat box's way arrives. */
+  .bd-strike {
+    background: linear-gradient(currentColor, currentColor) no-repeat 0 58% / 0% 1.5px;
+    transition: background-size 0.8s cubic-bezier(0.65, 0, 0.35, 1) 0.2s;
+  }
+  .bd-week-row[data-shown] .bd-strike {
+    background-size: 100% 1.5px;
+  }
+  .bd-week-new {
+    transition: opacity 0.6s ease 0.85s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.85s;
+  }
+  @media (scripting: enabled) {
+    .bd-week-row:not([data-shown]) .bd-week-new {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+
+  /* How it works: the line draws through the three steps, each step rises in
+     after it, the branches draw, and Approve gives one small pulse. */
+  .bd-steps-line {
+    transform-origin: left center;
+    transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.1s;
+  }
+  .bd-step,
+  .bd-step-in {
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .bd-step {
+    transition-delay: calc(var(--s, 0) * 0.35s + 0.1s);
+  }
+  .bd-step-in {
+    transition-delay: calc(var(--k, 0) * 0.1s + 0.5s);
+  }
+  .bd-branch {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.8s ease calc(var(--k, 0) * 0.08s + 0.8s);
+  }
+  @media (scripting: enabled) {
+    .bd-steps:not([data-shown]) .bd-steps-line {
+      transform: scaleX(0);
+    }
+    .bd-steps:not([data-shown]) .bd-step,
+    .bd-steps:not([data-shown]) .bd-step-in {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    .bd-steps:not([data-shown]) .bd-branch {
+      stroke-dashoffset: 1;
+    }
+  }
+  .bd-steps[data-shown] .bd-yes {
+    animation: bd-pulse-once 0.9s ease 2s both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bd-tile,
+    .bd-ring-spin,
+    .bd-spinner,
+    .bd-rise,
+    .bd-caret,
+    .bd-dot,
+    .bd-grow,
+    .bd-timer,
+    .bd-yes {
+      animation: none !important;
+    }
+    .bd-strike {
+      background-size: 100% 1.5px !important;
+      transition: none;
+    }
+    .bd-week-new,
+    .bd-step,
+    .bd-step-in,
+    .bd-steps-line,
+    .bd-branch {
+      opacity: 1 !important;
+      transform: none !important;
+      stroke-dashoffset: 0 !important;
+      transition: none !important;
+    }
+    .bd-reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none;
+    }
+  }
+}
+
+@keyframes bd-float {
+  from { transform: translate3d(0, 0, 0) rotate(var(--r, 0deg)); }
+  to   { transform: translate3d(0, -12px, 0) rotate(calc(var(--r, 0deg) + 2deg)); }
+}
+@keyframes bd-spin {
+  from { transform: rotate(-90deg); }
+  to   { transform: rotate(270deg); }
+}
+@keyframes bd-spin-plain {
+  to { transform: rotate(360deg); }
+}
+@keyframes bd-rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes bd-blink {
+  50% { opacity: 0; }
+}
+@keyframes bd-pulse {
+  50% { opacity: 0.35; }
+}
+@keyframes bd-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes bd-pulse-once {
+  0%, 100% { box-shadow: 0 0 0 0 rgb(17 17 17 / 0); }
+  40%      { box-shadow: 0 0 0 6px rgb(17 17 17 / 0.12); }
+}

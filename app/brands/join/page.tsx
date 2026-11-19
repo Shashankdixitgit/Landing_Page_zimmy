@@ -42,6 +42,8 @@ export default async function BrandJoinPage({
       brand_name: one("brand_name"),
       category: pick("category", "category"),
       country: pick("country", "country"),
+      // /v16 carries a question asked in its chat box, so the founders see it.
+      notes: one("notes"),
     }).filter(([, v]) => v),
   ) as Record<string, string>;
 
