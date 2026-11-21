@@ -23,7 +23,7 @@ import Sky, { type SkyIcon, type Spot } from "../v15/Sky";
 import { InstagramIcon, MetaIcon, ShortsIcon, TikTokIcon, YouTubeIcon } from "../v15/Brands";
 import { fitHandoff, isBlank, linkIn, MAX_PROMPT } from "@/lib/appHandoff";
 import { CAMPAIGNS, SOON, parseCampaign, type CampaignKey } from "@/lib/campaigns";
-import CampaignMenu, { PICK_EVENT, StatusTag } from "./CampaignMenu";
+import CampaignMenu, { PICK_EVENT } from "./CampaignMenu";
 import { CampaignIcon, SOON_SHORT } from "./campaignIcons";
 
 /**
@@ -233,7 +233,6 @@ export default function ChatHero() {
                 }
               }}
               placeholder={askLink && !link ? "Paste your app's website, or its App Store or Google Play link" : c.placeholder}
-              aria-describedby="v16-campaign-note v16-signin-note"
               className="block w-full resize-none bg-transparent px-3.5 pb-1 pt-3 text-[16px] leading-relaxed text-[var(--bd-ink)] outline-none placeholder:text-[#767676]"
             />
             <div className="flex items-center justify-between gap-3 px-1.5 pb-0.5">
@@ -351,13 +350,6 @@ export default function ChatHero() {
             ) : null}
           </div>
 
-          {/* What the picked campaign does today, with its status. Read out when it changes. */}
-          <p id="v16-campaign-note" aria-live="polite" className="mx-auto mt-4 max-w-[600px] text-balance text-center text-[13.5px] leading-relaxed text-[var(--bd-text)]">
-            <span className="mr-1.5 inline-flex align-[1px]">
-              <StatusTag status={c.status} />
-            </span>
-            {c.blurb}
-          </p>
           {cut ? (
             <p className="mt-2 text-center text-[12.5px] text-[var(--bd-muted)]" role="status">
               That&rsquo;s a long message, so the end will be cut to fit.
@@ -365,32 +357,7 @@ export default function ChatHero() {
           ) : null}
         </div>
 
-        <div className="mx-auto mt-5 max-w-[720px]">
-          <ul key={key} className="flex flex-wrap justify-center gap-2" aria-label="Examples to start from">
-            {c.examples.map((t, i) => (
-              <li key={t} className="bd-rise" style={{ animationDelay: `${i * 0.05}s` }}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    // Keep a link that's already typed, so picking an example never loses it.
-                    setText(link ? `${t}\n${link}` : t);
-                    caretToEnd(box.current);
-                  }}
-                  className="bd-chip rounded-full px-3 py-1.5 text-[13px] text-[var(--bd-text)] transition-colors hover:bg-white"
-                >
-                  {t}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Sign-in comes before anything runs, and nothing goes out on its own: both said up front. */}
-        <p id="v16-signin-note" className="mx-auto mt-7 max-w-[560px] text-balance text-[12.5px] text-[var(--bd-muted)]">
-          When you send, you&rsquo;ll sign in with Google or an email code. Nothing posts, spends or sends without your OK.
-        </p>
-
-        <p className="mt-4 text-[13px] text-[var(--bd-muted)]">
+        <p className="mt-8 text-[13px] text-[var(--bd-muted)]">
           A creator, not an app?{" "}
           <Link href={CREATOR_HREF} className="text-[var(--bd-ink)] underline decoration-black/25 underline-offset-4 hover:decoration-black/60">
             See HitRate for creators

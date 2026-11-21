@@ -6,6 +6,9 @@ import Reveal from "@/components/v15/Reveal";
 import ChatHero from "@/components/v16/ChatHero";
 import CampaignCards from "@/components/v16/CampaignCards";
 import ExampleThread from "@/components/v16/ExampleThread";
+import AskConsole from "@/components/v16/AskConsole";
+import BusyWeek from "@/components/v16/BusyWeek";
+import OneRead from "@/components/v16/OneRead";
 import StartClosing from "@/components/v16/StartClosing";
 
 /**
@@ -110,6 +113,11 @@ export default function ChatHome({ home }: { home: string }) {
             </div>
           </Reveal>
         </section>
+
+        {/* The earlier /v16 sections, back in their original order after the example thread. */}
+        <AskConsole />
+        <BusyWeek />
+        <OneRead />
 
         <Questions id="faq" items={QA} />
         <StartClosing />
