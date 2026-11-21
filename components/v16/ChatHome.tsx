@@ -1,4 +1,4 @@
-import { CheckCheck, Megaphone, Search } from "lucide-react";
+import { CheckCheck, MessageSquare, TrendingUp } from "lucide-react";
 import { Nav, Footer } from "@/components/v16/Chrome";
 import Proof from "@/components/v15/Proof";
 import Questions from "@/components/v16/Questions";
@@ -92,9 +92,9 @@ export default function ChatHome({ home }: { home: string }) {
             </>
           }
           gets={[
-            { Icon: Search, big: "One read", small: "of your category, before a word is written" },
-            { Icon: Megaphone, big: "Two to start", small: "Meta ads and creator marketing, in early access. UGC, email and WhatsApp next." },
-            { Icon: CheckCheck, big: "Your yes", small: "before anything posts, spends or sends" },
+            { Icon: MessageSquare, big: "One chat box", small: "Meta ads, creators and content, all run from one conversation." },
+            { Icon: TrendingUp, big: "Built on winners", small: "Every campaign starts from the ads already working for apps like yours." },
+            { Icon: CheckCheck, big: "You just say yes", small: "HitRate does the work. Nothing posts, spends or sends until you approve." },
           ]}
         />
 
