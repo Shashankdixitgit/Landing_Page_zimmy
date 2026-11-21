@@ -2,12 +2,9 @@ import { CheckCheck, MessageSquare, TrendingUp } from "lucide-react";
 import { Nav, Footer } from "@/components/v16/Chrome";
 import Proof from "@/components/v15/Proof";
 import Questions from "@/components/v16/Questions";
-import Reveal from "@/components/v15/Reveal";
 import ChatHero from "@/components/v16/ChatHero";
 import CampaignCards from "@/components/v16/CampaignCards";
-import ExampleThread from "@/components/v16/ExampleThread";
 import AskConsole from "@/components/v16/AskConsole";
-import BusyWeek from "@/components/v16/BusyWeek";
 import OneRead from "@/components/v16/OneRead";
 import StartClosing from "@/components/v16/StartClosing";
 
@@ -100,23 +97,10 @@ export default function ChatHome({ home }: { home: string }) {
 
         <CampaignCards />
 
-        {/* id="how": an anchor for "How it works" links to this page (/v16#how). */}
-        <section id="how" className="bg-[#fafafa] px-5 py-24 sm:py-32">
-          <Reveal className="mx-auto max-w-[640px] text-center">
-            <p className="text-[12.5px] font-medium uppercase tracking-[0.12em] text-[var(--bd-faint)]">How a chat runs · illustrative example</p>
-            <h2 className="serif mt-3 text-balance text-[34px] leading-tight text-[var(--bd-ink)] sm:text-[44px]">You ask once. It asks the rest.</h2>
-            <p className="mx-auto mt-4 max-w-[500px] text-balance text-[15px] text-[var(--bd-muted)]">
-              One sentence starts the chat. Then HitRate does the work and asks one question at a time, and you answer with a click. Pathly is a made-up career app with made-up numbers; the reels are real, by @unscripted.nishant.
-            </p>
-            <div className="mt-10">
-              <ExampleThread />
-            </div>
-          </Reveal>
-        </section>
-
-        {/* The earlier /v16 sections, back in their original order after the example thread. */}
+        {/* Removed on Shashank's ask (22 Nov): the "You ask once" example thread and the
+            Monday–Saturday busywork week. ExampleThread.tsx stays because AskConsole and
+            OneRead use its StatusChip. */}
         <AskConsole />
-        <BusyWeek />
         <OneRead />
 
         <Questions id="faq" items={QA} />
