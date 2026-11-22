@@ -22,7 +22,7 @@
  */
 
 export type CampaignKey = "ads" | "creators" | "aiugc" | "research";
-export type SoonKey = "ugc" | "email" | "whatsapp";
+export type SoonKey = "ugc" | "email" | "whatsapp" | "x" | "linkedin";
 
 /**
  * Campaigns are grouped by the job they do, like a menu of marketing jobs (idea from runable.com's
@@ -114,6 +114,9 @@ export const SOON: { key: SoonKey; group: CampaignGroup; label: string; blurb: s
   { key: "ugc", group: "creators", label: "UGC", blurb: "Real creators make videos for your own channels and ads." },
   { key: "email", group: "outreach", label: "Email campaigns", blurb: "Plan, write and send email campaigns." },
   { key: "whatsapp", group: "outreach", label: "WhatsApp", blurb: "Broadcasts and follow-ups on WhatsApp." },
+  // Added 22 Nov 2026 (Shashank): X and LinkedIn campaigns, shown as Soon next to Meta ads.
+  { key: "x", group: "ads", label: "X campaigns", blurb: "Plan and run ad campaigns on X." },
+  { key: "linkedin", group: "ads", label: "LinkedIn campaigns", blurb: "Reach the right professionals with LinkedIn ad campaigns." },
 ];
 
 const KEYS = new Set<string>(CAMPAIGNS.map((c) => c.key));
