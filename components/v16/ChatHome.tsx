@@ -3,7 +3,6 @@ import { Nav, Footer } from "@/components/v16/Chrome";
 import Proof from "@/components/v15/Proof";
 import Questions from "@/components/v16/Questions";
 import ChatHero from "@/components/v16/ChatHero";
-import CampaignCards from "@/components/v16/CampaignCards";
 import AskConsole from "@/components/v16/AskConsole";
 import OneRead from "@/components/v16/OneRead";
 import StartClosing from "@/components/v16/StartClosing";
@@ -94,8 +93,6 @@ export default function ChatHome({ home }: { home: string }) {
             { Icon: CheckCheck, big: "You just say yes", small: "HitRate does the work. Nothing posts, spends or sends until you approve." },
           ]}
         />
-
-        <CampaignCards />
 
         {/* Removed on Shashank's ask (22 Nov): the "You ask once" example thread and the
             Monday–Saturday busywork week. ExampleThread.tsx stays because AskConsole and
