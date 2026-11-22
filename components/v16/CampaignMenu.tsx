@@ -2,15 +2,17 @@
 
 import { useEffect, useRef, useState, type KeyboardEvent, type MouseEvent, type RefObject } from "react";
 import { Check, ChevronRight } from "lucide-react";
-import { CAMPAIGNS, GROUPS, SOON, campaignOf, type CampaignGroup, type CampaignKey } from "@/lib/campaigns";
-import { CampaignIcon, firstSentence } from "./campaignIcons";
+import { GROUPS, type CampaignGroup } from "@/lib/campaigns";
+import { CampaignIcon, ENTRIES, entryOf, type AnyKey, type Entry } from "./campaignIcons";
 
 /**
- * The grouped campaign menu: groups on the left (Paid ads, Creators & UGC,
- * Messaging, Research, from GROUPS in lib/campaigns.ts), and that group's
- * campaigns on the right, each with its icon, name and one-line blurb. What's
- * coming later sits greyed with a "Soon" tag and can't be picked. The pattern is
- * borrowed from runable.com's "Grow" menu; the words are ours.
+ * The grouped campaign menu: groups on the left (Paid ads, Social media,
+ * Creators & UGC, Messaging, Research, from GROUPS in lib/campaigns.ts), and that
+ * group's campaigns and channels on the right, each with its icon, name and
+ * one-line blurb. Every item can be picked, built or not (Shashank, 22 Nov: /v16
+ * is only seen by the team, so no "Soon" tags and nothing greyed); one not built
+ * yet starts a research chat in the app for now. The pattern is borrowed from
+ * runable.com's "Grow" menu; the words are ours.
  *
  * Used twice: behind the chat box's "More" chip (picking sets the campaign) and
  * behind "Campaigns" in the top bar (picking sets the chat box's campaign and
@@ -23,22 +25,13 @@ import { CampaignIcon, firstSentence } from "./campaignIcons";
 
 /** Window event the top bar's menu sends; the chat box listens and switches to that campaign. */
 export const PICK_EVENT = "hitrate:pick-campaign";
-export const pickCampaign = (key: CampaignKey) => window.dispatchEvent(new CustomEvent<CampaignKey>(PICK_EVENT, { detail: key }));
+export const pickCampaign = (key: AnyKey) => window.dispatchEvent(new CustomEvent<AnyKey>(PICK_EVENT, { detail: key }));
 
-type Row =
-  | { live: true; key: CampaignKey; label: string; blurb: string; status: "live" | "early" }
-  | { live: false; key: (typeof SOON)[number]["key"]; label: string; blurb: string };
+/** A group's campaigns and channels: the built ones first, then the rest, in lib/campaigns.ts's order. */
+const rowsOf = (group: CampaignGroup): Entry[] => ENTRIES.filter((e) => e.group === group);
 
-/** A group's campaigns: the startable ones first, then the ones coming soon. */
-function rowsOf(group: CampaignGroup): Row[] {
-  return [
-    ...CAMPAIGNS.filter((c) => c.group === group).map((c): Row => ({ live: true, key: c.key, label: c.label, blurb: firstSentence(c.blurb), status: c.status })),
-    ...SOON.filter((s) => s.group === group).map((s): Row => ({ live: false, key: s.key, label: s.label, blurb: s.blurb })),
-  ];
-}
-
-/** "Live" with a green dot (green only marks what's live), or a grey "Early access" or "Soon". */
-export function StatusTag({ status }: { status: "live" | "early" | "soon" }) {
+/** "Live" with a green dot (green only marks what's live), or a grey "Early access". Built campaigns only. */
+export function StatusTag({ status }: { status: "live" | "early" }) {
   if (status === "live")
     return (
       <span className="inline-flex shrink-0 items-center gap-1 text-[11px] font-medium text-[var(--bd-ink)]">
@@ -48,7 +41,7 @@ export function StatusTag({ status }: { status: "live" | "early" | "soon" }) {
     );
   return (
     <span className="inline-flex shrink-0 rounded-full bg-[var(--bd-soft)] px-1.5 py-px text-[10.5px] font-medium text-[var(--bd-muted)]">
-      {status === "early" ? "Early access" : "Soon"}
+      Early access
     </span>
   );
 }
@@ -71,17 +64,17 @@ export default function CampaignMenu({
   /** What a screen reader calls the menu, e.g. "All campaigns". */
   label: string;
   /** The campaign picked now: its group opens first and it carries a tick. */
-  current?: CampaignKey | null;
+  current?: AnyKey | null;
   /** The button that opened the menu. Clicks on it don't count as "outside", and focus goes back to it. */
   trigger: RefObject<HTMLElement | null>;
-  onPick: (key: CampaignKey, e: MouseEvent) => void;
+  onPick: (key: AnyKey, e: MouseEvent) => void;
   onClose: () => void;
   /** When set, campaigns are real links (so they also work opened in a new tab). */
-  hrefFor?: (key: CampaignKey) => string;
+  hrefFor?: (key: AnyKey) => string;
   /** Where it sits: the parent positions it. */
   className?: string;
 }) {
-  const [group, setGroup] = useState<CampaignGroup>(() => (current ? campaignOf(current).group : GROUPS[0].key));
+  const [group, setGroup] = useState<CampaignGroup>(() => (current ? entryOf(current).group : GROUPS[0].key));
   const root = useRef<HTMLDivElement>(null);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   // Hovering a group shows it after a short pause, so a mouse moving across to a
@@ -171,12 +164,13 @@ export default function CampaignMenu({
       }}
       className={`bd-rise flex flex-col gap-1 rounded-[20px] border border-black/[0.08] bg-white p-2 text-left shadow-[0_1px_2px_rgb(17_17_17/0.05),0_24px_48px_-20px_rgb(30_60_90/0.35)] sm:flex-row sm:gap-2 ${className}`}
     >
-      {/* the groups: a row of pills on phones, a column on wider screens */}
+      {/* the groups: pills that wrap onto a second line on phones (so none is hidden off
+          the edge), a column on wider screens */}
       <div
         role="tablist"
         aria-label="Campaign groups"
         onKeyDown={onTabsKey}
-        className="flex shrink-0 gap-1 overflow-x-auto p-0.5 [scrollbar-width:none] sm:w-[172px] sm:flex-col sm:overflow-visible"
+        className="flex shrink-0 flex-wrap gap-1 p-0.5 sm:w-[172px] sm:flex-col sm:flex-nowrap"
       >
         {GROUPS.map((g, i) => {
           const on = g.key === group;
@@ -209,17 +203,19 @@ export default function CampaignMenu({
         })}
       </div>
 
-      {/* the open group's campaigns */}
+      {/* the open group's campaigns and channels: every one can be picked */}
       <div
         id={`${id}-panel`}
         role="tabpanel"
         aria-labelledby={`${id}-tab-${group}`}
-        // A group with nothing to click yet (Messaging: all "Soon") can still be reached with Tab, to read it.
-        tabIndex={rows.some((r) => r.live) ? undefined : 0}
-        className="min-w-0 flex-1 border-t border-[var(--bd-line)] pt-1 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#111] sm:border-l sm:border-t-0 sm:pl-2 sm:pt-0"
+        className="min-w-0 flex-1 border-t border-[var(--bd-line)] pt-1 sm:border-l sm:border-t-0 sm:pl-2 sm:pt-0"
       >
         <ul key={group} onKeyDown={onItemsKey} aria-label={openLabel} className="space-y-0.5">
           {rows.map((r) => {
+            const on = r.key === current;
+            const pick = (e: MouseEvent) => onPick(r.key, e);
+            const cls =
+              "flex w-full items-start gap-3 rounded-[14px] px-2.5 py-2.5 text-left transition-colors hover:bg-[var(--bd-soft)] focus-visible:bg-[var(--bd-soft)] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#111]";
             const body = (
               <>
                 <span className="mt-px grid h-8 w-8 shrink-0 place-items-center rounded-[10px] bg-[var(--bd-soft)] text-[var(--bd-ink)]">
@@ -228,11 +224,11 @@ export default function CampaignMenu({
                 <span className="min-w-0 flex-1">
                   <span className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[14px] font-medium text-[var(--bd-ink)]">
                     {r.label}
-                    <StatusTag status={r.live ? r.status : "soon"} />
+                    {r.status ? <StatusTag status={r.status} /> : null}
                   </span>
-                  <span className="mt-0.5 block text-[12.5px] leading-snug text-[var(--bd-muted)]">{r.blurb}</span>
+                  <span className="mt-0.5 block text-[12.5px] leading-snug text-[var(--bd-muted)]">{r.line}</span>
                 </span>
-                {r.live && r.key === current ? (
+                {on ? (
                   <>
                     <Check className="mt-1 h-4 w-4 shrink-0 text-[var(--bd-ink)]" aria-hidden />
                     {/* Buttons say it with aria-pressed; links need the words. */}
@@ -241,27 +237,14 @@ export default function CampaignMenu({
                 ) : null}
               </>
             );
-            const row = "flex w-full items-start gap-3 rounded-[14px] px-2.5 py-2.5 text-left";
-            if (!r.live) {
-              // Coming later: shown so nobody hunts for it, but it can't be picked or focused.
-              // Plain text, not a button, so there is nothing to click; its "Soon" tag says why.
-              return (
-                <li key={r.key} className={`${row} cursor-default opacity-60`}>
-                  {body}
-                </li>
-              );
-            }
-            const live = r.key;
-            const pick = (e: MouseEvent) => onPick(live, e);
-            const cls = `${row} transition-colors hover:bg-[var(--bd-soft)] focus-visible:bg-[var(--bd-soft)] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#111]`;
             return (
               <li key={r.key}>
                 {hrefFor ? (
-                  <a href={hrefFor(live)} onClick={pick} className={cls}>
+                  <a href={hrefFor(r.key)} onClick={pick} className={cls}>
                     {body}
                   </a>
                 ) : (
-                  <button type="button" onClick={pick} aria-pressed={live === current} className={cls}>
+                  <button type="button" onClick={pick} aria-pressed={on} className={cls}>
                     {body}
                   </button>
                 )}

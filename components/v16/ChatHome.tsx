@@ -3,6 +3,7 @@ import { Nav, Footer } from "@/components/v16/Chrome";
 import Proof from "@/components/v15/Proof";
 import Questions from "@/components/v16/Questions";
 import ChatHero from "@/components/v16/ChatHero";
+import ChannelSections from "@/components/v16/ChannelSections";
 import AskConsole from "@/components/v16/AskConsole";
 import OneRead from "@/components/v16/OneRead";
 import StartClosing from "@/components/v16/StartClosing";
@@ -14,7 +15,8 @@ import StartClosing from "@/components/v16/StartClosing";
  * section says one thing:
  * 1. the chat box, with the campaigns as chips under it;
  * 2. the belief and the three things you get;
- * 3. every campaign as a card you can start from;
+ * 3. the channels as cards you can start from, in two sections: Paid ads and
+ *    Social media (ChannelSections);
  * 4. one example chat, to show how a chat runs (one ask, then one question at
  *    a time, every step waiting for your OK);
  * 5. questions, and a last nudge back to the box.
@@ -25,7 +27,7 @@ import StartClosing from "@/components/v16/StartClosing";
  * Only /v16 renders this (noindex; hitrate.sh/ keeps its own home page). It must
  * sit inside <SkyTheme> with app/v15/v15.css loaded (app/v16/layout.tsx does both).
  *
- * The chat box and the campaign cards both hand off to the app's chat workspace
+ * The chat box and the channel cards both hand off to the app's chat workspace
  * (app.hitrate.sh/research), which signs the visitor in and runs.
  */
 
@@ -93,6 +95,7 @@ export default function ChatHome({ home }: { home: string }) {
             { Icon: CheckCheck, big: "You just say yes", small: "HitRate does the work. Nothing posts, spends or sends until you approve." },
           ]}
         />
+        <ChannelSections />
 
         {/* Removed on Shashank's ask (22 Nov): the "You ask once" example thread and the
             Monday–Saturday busywork week. ExampleThread.tsx stays because AskConsole and

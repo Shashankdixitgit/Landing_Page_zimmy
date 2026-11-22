@@ -67,9 +67,10 @@ function Competitors() {
   return (
     <div>
       <p className="text-[12px] text-[var(--bd-muted)]">Apps your users also use</p>
-      <ul className="mt-3 space-y-2">
+      {/* Two columns on wider screens, so this answer fits the console's fixed height (see ASK_PANEL_H). */}
+      <ul className="mt-3 grid gap-2 sm:grid-cols-2">
         {RIVALS.map((r, i) => (
-          <li key={r.name} className="bd-rise flex items-center gap-3 rounded-[12px] border border-[var(--bd-line)] bg-white px-3 py-2" style={delay(i)}>
+          <li key={r.name} className="bd-rise flex min-w-0 items-center gap-3 rounded-[12px] border border-[var(--bd-line)] bg-white px-3 py-2" style={delay(i)}>
             <span className="relative h-8 w-8 shrink-0 overflow-hidden rounded-[9px] bg-white shadow-[0_0_0_1px_rgb(17_17_17/0.07)]">
               <Image src={r.icon} alt="" fill sizes="32px" className="object-contain p-0.5" />
             </span>
@@ -97,11 +98,13 @@ function Winners() {
         </a>
         &rsquo;s reels from 45 days, against his usual of {NISHANT.usual} views
       </p>
-      <div className="mt-3 grid grid-cols-3 gap-2.5">
+      {/* A fixed size (100px wide each) rather than stretching to the panel, so this answer fits the
+          console's fixed height and the panel doesn't jump between questions (see ASK_PANEL_H). */}
+      <div className="mt-3 grid max-w-[320px] grid-cols-3 gap-2.5">
         {top.map((r, i) => (
-          <div key={r.code} className="bd-rise" style={delay(i, 0.12)}>
-            <ReelCard reel={r} className="w-full" stats sizes="(min-width: 1024px) 170px, 30vw" />
-            <p className="mt-1.5 truncate text-[12px] font-medium text-[var(--bd-ink)]">
+          <div key={r.code} className="bd-rise min-w-0" style={delay(i, 0.12)}>
+            <ReelCard reel={r} className="w-full" stats sizes="100px" />
+            <p className="mt-1.5 truncate text-[11.5px] font-medium text-[var(--bd-ink)]" title={`${r.kind}: ${r.title.replace(/^Ranking /, "")}`}>
               {r.kind}: {r.title.replace(/^Ranking /, "")}
             </p>
           </div>
@@ -526,7 +529,9 @@ export default function AskConsole() {
           </div>
 
           {/* the answer */}
-          <div id="ask-panel" role="tabpanel" aria-label={a.ask} className="flex min-h-[460px] min-w-0 flex-col bg-[#f7f8f9] p-4 sm:p-6">
+          {/* ASK_PANEL_H: on desktop the answer has one fixed height (516px), the height of the question list
+              beside it, so the console never grows or jumps as the questions change. Phones stack and grow. */}
+          <div id="ask-panel" role="tabpanel" aria-label={a.ask} className="flex min-h-[460px] min-w-0 flex-col bg-[#f7f8f9] p-4 sm:p-6 lg:h-[516px] lg:overflow-hidden">
             <div className="flex items-center justify-between gap-3">
               <span className="text-[11.5px] font-medium uppercase tracking-[0.1em] text-[var(--bd-faint)]">{a.real ? "A real read by HitRate" : "Illustrative · Pathly, a made-up career app"}</span>
               <StatusChip status={a.status} />

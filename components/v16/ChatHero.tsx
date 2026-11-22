@@ -21,15 +21,15 @@ import Link from "next/link";
 import { CREATOR_HREF } from "../ui";
 import Sky, { type SkyIcon, type Spot } from "../v15/Sky";
 import { InstagramIcon, MetaIcon, ShortsIcon, TikTokIcon, YouTubeIcon } from "../v15/Brands";
-import { fitHandoff, isBlank, linkIn, MAX_PROMPT } from "@/lib/appHandoff";
-import { CAMPAIGNS, SOON, parseCampaign, type CampaignKey } from "@/lib/campaigns";
+import { isBlank, linkIn, MAX_PROMPT } from "@/lib/appHandoff";
+import { CAMPAIGNS, CHIPS } from "@/lib/campaigns";
 import CampaignMenu, { PICK_EVENT } from "./CampaignMenu";
-import { CampaignIcon, SOON_SHORT } from "./campaignIcons";
+import { CampaignIcon, entryOf, handoff, isKey, parseKey, type AnyKey } from "./campaignIcons";
 
 /**
  * The jobs the box does (or will do: the mail and chat bubbles are email and
- * WhatsApp, coming soon), floating in the sky instead of app icons. Decoration
- * only: every claim is made in words below, with its status.
+ * WhatsApp, not built yet), floating in the sky instead of app icons.
+ * Decoration only: every claim is made in words below.
  */
 const WHITE = "linear-gradient(150deg,#ffffff,#e9ebee)";
 const JOBS: SkyIcon[] = [
@@ -113,24 +113,30 @@ function caretToEnd(el: HTMLTextAreaElement | null) {
 
 const CHIP =
   "flex h-11 min-w-0 items-center gap-2 rounded-[14px] border px-3 text-left text-[13.5px] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111]";
+/** The picked chip, and the others (their border colour is added where they're used). */
+const CHIP_ON = "border-[#111]/80 bg-white font-medium text-[var(--bd-ink)] shadow-[0_1px_3px_rgb(17_17_17/0.08)]";
+const CHIP_OFF = "bg-white/80 text-[var(--bd-text)] backdrop-blur-sm hover:border-black/15 hover:bg-white";
 
 /**
  * The hero: the chat box itself. The box comes first; under it, the campaigns
- * as a grid of chips (3 to a row, 2 on phones): the four you can start, the
- * three coming soon (greyed, can't be picked) and "More", which opens the
- * grouped menu. Picking a chip swaps the box's placeholder and example prompts.
+ * and channels as a grid of chips (3 to a row, 2 on phones), in CHIPS order from
+ * lib/campaigns.ts, then "More", which opens the grouped menu. Every chip can be
+ * picked, built or not (Shashank, 22 Nov: /v16 is only seen by the team, so no
+ * "Soon" tags and nothing greyed). Picking one swaps the box's placeholder; a
+ * channel not built yet uses its example as the placeholder.
  *
  * Sending hands the prompt to the app's chat workspace
  * (app.hitrate.sh/research?prompt&intent&link), which asks you to sign in and
- * then runs that campaign. Nothing is answered on this page, so nothing here can
- * promise more than the app does.
+ * then runs that campaign. A channel not built yet goes as its own key
+ * (intent=google), and the app starts a research chat for it until it's built.
+ * Nothing is answered on this page.
  */
 export default function ChatHero() {
   const [text, setText] = useState("");
   // The campaign: the one picked here, else one named in the address, else the first (Meta ads).
-  const [picked, setPicked] = useState<CampaignKey | null>(null);
+  const [picked, setPicked] = useState<AnyKey | null>(null);
   const fromUrl = useSyncExternalStore(noSubscribe, intentInUrl, () => null);
-  const key: CampaignKey = picked ?? (fromUrl ? parseCampaign(fromUrl) : CAMPAIGNS[0].key);
+  const key: AnyKey = picked ?? (fromUrl ? parseKey(fromUrl) : CAMPAIGNS[0].key);
   // After "Add your app's link", the box asks for the link itself.
   const [askLink, setAskLink] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -140,11 +146,13 @@ export default function ChatHero() {
   // not state, so the box keeps its text: Back from the sign-in page shows it again.
   const sending = useRef(false);
 
-  const c = CAMPAIGNS.find((x) => x.key === key) ?? CAMPAIGNS[0];
+  const c = entryOf(key);
+  // Picked from "More" and not one of the chips: the "More" chip shows it, so the pick stays visible.
+  const extra = CHIPS.includes(key) ? null : c;
   const link = linkIn(text);
   const blank = isBlank(text);
   // Cheap enough on every key: the text is at most MAX_PROMPT characters.
-  const cut = !blank && fitHandoff(text, key).cut;
+  const cut = !blank && handoff(text, key).cut;
 
   // Coming back with Back restores this page from the browser's memory (the
   // back-forward cache) as it was, so the "sending" flag has to be lifted again.
@@ -160,8 +168,8 @@ export default function ChatHero() {
   // box into view and put the cursor in it.
   useEffect(() => {
     const onPick = (e: Event) => {
-      const k = (e as CustomEvent<CampaignKey>).detail;
-      if (!CAMPAIGNS.some((x) => x.key === k)) return;
+      const k = (e as CustomEvent<unknown>).detail;
+      if (!isKey(k)) return;
       setPicked(k);
       setMenuOpen(false);
       const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -176,10 +184,10 @@ export default function ChatHero() {
     if (blank || sending.current) return;
     sending.current = true;
     // A full page load, not a client-side route: the workspace is a different app.
-    window.location.assign(fitHandoff(text, key).href);
+    window.location.assign(handoff(text, key).href);
   };
 
-  const choose = (k: CampaignKey) => {
+  const choose = (k: AnyKey) => {
     setPicked(k);
     setMenuOpen(false);
     box.current?.focus();
@@ -189,7 +197,10 @@ export default function ChatHero() {
     // 990px, not the 960px the icons were laid out on: the lines under the box add
     // height, and the bottom icons hang from the hero's bottom edge, so they move
     // down with it and keep their 50px of sky from the text.
-    <section className="relative isolate min-h-[800px] overflow-hidden px-5 pb-28 pt-[176px] md:min-h-[990px] md:pb-40 md:pt-[184px]">
+    // No overflow-hidden here: the sky clips its own clouds and icons (.bd-sky has
+    // overflow: hidden), and the "More" menu has to be able to reach past the
+    // hero's bottom edge. z-10 draws that menu over the section below (Proof).
+    <section className="relative isolate z-10 min-h-[800px] px-5 pb-28 pt-[176px] md:min-h-[990px] md:pb-40 md:pt-[184px]">
       <Sky icons={JOBS} spots={SPOTS_V16} base={960} />
 
       <div className="relative mx-auto max-w-[1000px] text-center">
@@ -276,25 +287,23 @@ export default function ChatHero() {
             </div>
           </form>
 
-          {/* The campaigns, as chips under the box. The greyed ones are coming: shown so
-              nobody hunts for them, but they can't be picked. "More" opens the grouped menu. */}
+          {/* The campaigns and channels, as chips under the box, in CHIPS order: every one
+              can be picked. "More" opens the grouped menu with the rest. */}
           <div className="relative mt-3">
             <div role="group" aria-label="Pick a campaign" className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-              {CAMPAIGNS.map((x) => {
-                const on = x.key === key;
+              {CHIPS.map((k) => {
+                const x = entryOf(k);
+                const on = k === key;
                 return (
                   <button
-                    key={x.key}
+                    key={k}
                     type="button"
                     aria-pressed={on}
-                    onClick={() => choose(x.key)}
-                    className={`${CHIP} ${
-                      on
-                        ? "border-[#111]/80 bg-white font-medium text-[var(--bd-ink)] shadow-[0_1px_3px_rgb(17_17_17/0.08)]"
-                        : "border-black/[0.07] bg-white/80 text-[var(--bd-text)] backdrop-blur-sm hover:border-black/15 hover:bg-white"
-                    }`}
+                    title={x.line}
+                    onClick={() => choose(k)}
+                    className={`${CHIP} ${on ? CHIP_ON : `${CHIP_OFF} border-black/[0.07]`}`}
                   >
-                    <CampaignIcon k={x.key} className="h-4 w-4" />
+                    <CampaignIcon k={k} className="h-4 w-4" />
                     <span className="truncate">
                       {/* Phones get the short name ("Creators"), so two chips fit a row. */}
                       <span className="sm:hidden">{x.short}</span>
@@ -303,23 +312,7 @@ export default function ChatHero() {
                   </button>
                 );
               })}
-              {SOON.map((s) => (
-                // Plain text, not a button: nothing to click. The hidden words tell screen readers why.
-                <div
-                  key={s.key}
-                  title={s.blurb}
-                  className={`${CHIP} cursor-default border-black/[0.05] bg-white/45 text-[#8a8d92]`}
-                >
-                  <CampaignIcon k={s.key} className="h-4 w-4 opacity-70" />
-                  <span className="truncate">
-                    <span className="sm:hidden">{SOON_SHORT[s.key]}</span>
-                    <span className="hidden sm:inline">{s.label}</span>
-                  </span>
-                  <span className="ml-auto shrink-0 rounded-full bg-black/[0.05] px-1.5 py-px text-[10.5px] font-semibold text-[var(--bd-muted)]">
-                    Soon<span className="sr-only">: coming later, can&rsquo;t be started yet</span>
-                  </span>
-                </div>
-              ))}
+              {/* Once something only in "More" is picked (Facebook, say), this chip shows it. */}
               <button
                 ref={moreBtn}
                 type="button"
@@ -327,16 +320,29 @@ export default function ChatHero() {
                 aria-expanded={menuOpen}
                 aria-controls={menuOpen ? "v16-more" : undefined}
                 onClick={() => setMenuOpen((o) => !o)}
-                className={`${CHIP} bg-white/80 text-[var(--bd-text)] backdrop-blur-sm hover:border-black/15 hover:bg-white ${
-                  menuOpen ? "border-black/20" : "border-black/[0.07]"
-                }`}
+                className={`${CHIP} ${extra ? CHIP_ON : `${CHIP_OFF} ${menuOpen ? "border-black/20" : "border-black/[0.07]"}`}`}
               >
-                More
-                <span className="sr-only"> campaigns</span>
+                {extra ? (
+                  <>
+                    <CampaignIcon k={extra.key} className="h-4 w-4" />
+                    <span className="truncate">
+                      <span className="sm:hidden">{extra.short}</span>
+                      <span className="hidden sm:inline">{extra.label}</span>
+                    </span>
+                    <span className="sr-only">, picked. More campaigns</span>
+                  </>
+                ) : (
+                  <>
+                    More
+                    <span className="sr-only"> campaigns</span>
+                  </>
+                )}
                 <ArrowRight className={`ml-auto h-4 w-4 shrink-0 transition-transform ${menuOpen ? "rotate-90" : ""}`} aria-hidden />
               </button>
             </div>
 
+            {/* Phones: the menu sits in the page under the chips, so the hero grows and every
+                row can be reached. From tablets up it floats over what's below. */}
             {menuOpen ? (
               <CampaignMenu
                 id="v16-more"
@@ -345,7 +351,7 @@ export default function ChatHero() {
                 trigger={moreBtn}
                 onPick={(k) => choose(k)}
                 onClose={() => setMenuOpen(false)}
-                className="absolute inset-x-0 top-full z-30 mt-2"
+                className="relative z-30 mt-2 sm:absolute sm:inset-x-0 sm:top-full"
               />
             ) : null}
           </div>

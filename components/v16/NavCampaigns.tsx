@@ -6,11 +6,13 @@ import CampaignMenu, { pickCampaign } from "./CampaignMenu";
 
 /**
  * "Campaigns" in /v16's top bar (components/v16/Chrome.tsx): the same grouped
- * menu as the chat box's "More". Picking a campaign sets it on the chat box at
- * the top of the page and puts the cursor there, so the next step is typing.
- * Each campaign is also a real link (/v16?intent=ads#start), so it works opened
- * in a new tab, or before the page's scripts have loaded: the chat box reads
- * ?intent= when the page opens.
+ * menu as the chat box's "More", groups from GROUPS (Paid ads, Social media,
+ * Creators & UGC, Messaging, Research). Every item can be picked, built or not:
+ * picking one sets it on the chat box at the top of the page and puts the cursor
+ * there, so the next step is typing. Each item is also a real link
+ * (/v16?intent=ads#start, /v16?intent=instagram#start), so it works opened in a
+ * new tab, or before the page's scripts have loaded: the chat box reads ?intent=
+ * when the page opens.
  *
  * The menu is placed against the nearest positioned parent (the top bar's link
  * group, which is `relative`), so on a narrow window it opens leftwards from the

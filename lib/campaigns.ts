@@ -22,16 +22,17 @@
  */
 
 export type CampaignKey = "ads" | "creators" | "aiugc" | "research";
-export type SoonKey = "ugc" | "email" | "whatsapp" | "x" | "linkedin";
+export type SoonKey = "google" | "x" | "instagram" | "xsocial" | "linkedin" | "facebook" | "tiktok" | "ugc" | "email" | "whatsapp";
 
 /**
  * Campaigns are grouped by the job they do, like a menu of marketing jobs (idea from runable.com's
  * "Grow" menu: Running ads / Social / Outreach / Listening). Pickers show the groups in this order, with
  * each item's one-line blurb, and "Soon" items sit greyed next to the live ones.
  */
-export type CampaignGroup = "ads" | "creators" | "outreach" | "research";
+export type CampaignGroup = "ads" | "social" | "creators" | "outreach" | "research";
 export const GROUPS: { key: CampaignGroup; label: string }[] = [
   { key: "ads", label: "Paid ads" },
+  { key: "social", label: "Social media" },
   { key: "creators", label: "Creators & UGC" },
   { key: "outreach", label: "Messaging" },
   { key: "research", label: "Research" },
@@ -110,14 +111,26 @@ export const CAMPAIGNS: Campaign[] = [
   },
 ];
 
-export const SOON: { key: SoonKey; group: CampaignGroup; label: string; blurb: string }[] = [
-  { key: "ugc", group: "creators", label: "UGC", blurb: "Real creators make videos for your own channels and ads." },
-  { key: "email", group: "outreach", label: "Email campaigns", blurb: "Plan, write and send email campaigns." },
-  { key: "whatsapp", group: "outreach", label: "WhatsApp", blurb: "Broadcasts and follow-ups on WhatsApp." },
-  // Added 22 Nov 2026 (Shashank): X and LinkedIn campaigns, shown as Soon next to Meta ads.
-  { key: "x", group: "ads", label: "X campaigns", blurb: "Plan and run ad campaigns on X." },
-  { key: "linkedin", group: "ads", label: "LinkedIn campaigns", blurb: "Reach the right professionals with LinkedIn ad campaigns." },
+/**
+ * Channels and campaign types not built yet. Shown in the chat box, the menus and the /v16 cards like the
+ * others (no "Soon" tag: /v16 and the new app pages are only seen by the team for now, Shashank 22 Nov).
+ * Picking one starts a research chat until its own steps exist. `example` is the prompt its card offers.
+ */
+export const SOON: { key: SoonKey; group: CampaignGroup; label: string; blurb: string; example: string }[] = [
+  { key: "google", group: "ads", label: "Google Ads", blurb: "Search and YouTube ads, built from what already works in your category.", example: "Set up Google Ads for my app" },
+  { key: "x", group: "ads", label: "X ads", blurb: "Ad campaigns on X, written and set up for you.", example: "Run X ads for our launch" },
+  { key: "instagram", group: "social", label: "Instagram", blurb: "Plan, make and post to your Instagram, and keep up with comments.", example: "Manage my Instagram and post every week" },
+  { key: "xsocial", group: "social", label: "X", blurb: "Posts, threads and replies on a steady schedule that grows your audience.", example: "Run my X account and grow my audience" },
+  { key: "linkedin", group: "social", label: "LinkedIn", blurb: "Regular posts that build your company's presence.", example: "Grow my LinkedIn with regular posts" },
+  { key: "facebook", group: "social", label: "Facebook", blurb: "Keep your Page active with posts and replies to comments.", example: "Manage my Facebook page and post regularly" },
+  { key: "tiktok", group: "social", label: "TikTok", blurb: "Short videos for your brand, posted week after week.", example: "Create and post TikTok videos for my app" },
+  { key: "ugc", group: "creators", label: "UGC", blurb: "Real creators make videos for your own channels and ads.", example: "Get real creators to make videos for our ads" },
+  { key: "email", group: "outreach", label: "Email campaigns", blurb: "Plan, write and send email campaigns.", example: "Plan and write our next email campaign" },
+  { key: "whatsapp", group: "outreach", label: "WhatsApp", blurb: "Broadcasts and follow-ups on WhatsApp.", example: "Send a WhatsApp broadcast to our users" },
 ];
+
+/** The chips under the chat box, in order (a 3 x 3 grid with "More" last). Everything else is in "More". */
+export const CHIPS: (CampaignKey | SoonKey)[] = ["ads", "creators", "aiugc", "research", "google", "x", "instagram", "linkedin"];
 
 const KEYS = new Set<string>(CAMPAIGNS.map((c) => c.key));
 
