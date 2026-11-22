@@ -399,9 +399,12 @@ export default function AskConsole() {
   // Picking the question already on screen leaves it as it is: resetting the
   // typing without changing the question would leave the answer blank.
   const activeRef = useRef(0);
+  /** Time spent on the current question, in ms; drives the progress bar (see below). */
+  const elapsed = useRef(0);
   const pick = useCallback((i: number) => {
     if (i === activeRef.current) return;
     activeRef.current = i;
+    elapsed.current = 0; // reset before the new question renders, so its bar starts empty
     setActive(i);
     setTyped(0);
   }, []);
@@ -430,11 +433,29 @@ export default function AskConsole() {
   }, [active, still]);
 
   // Then the next one, unless they are pointing at it, reading it, or asked for less motion.
+  // One clock drives both the move to the next question and the progress bar under the
+  // active one, so the bar always shows the real time left. Pausing (hover, focus, scrolled
+  // away) stops the clock where it is; it carries on from there, never from the start.
   const playing = inView && !hold && !still;
+  const fill = useRef<HTMLSpanElement>(null);
   useEffect(() => {
     if (!playing) return;
-    const t = setTimeout(() => pick((active + 1) % ASKS.length), STAY_MS);
-    return () => clearTimeout(t);
+    let raf = 0;
+    let last = performance.now();
+    const tick = (now: number) => {
+      elapsed.current += now - last;
+      last = now;
+      const p = Math.min(1, elapsed.current / STAY_MS);
+      // Written straight to the element, so the bar moves smoothly without re-rendering the console.
+      if (fill.current) fill.current.style.transform = `scaleX(${p})`;
+      if (p >= 1) {
+        pick((activeRef.current + 1) % ASKS.length);
+        return;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, [active, playing, pick]);
 
   const a = ASKS[active];
@@ -486,8 +507,16 @@ export default function AskConsole() {
                         className={`h-1.5 w-1.5 shrink-0 rounded-full ${q.status === "Live" ? "bg-[var(--bd-green)]" : "bg-[#c4c7cb]"}`}
                         aria-hidden
                       />
-                      {on && playing ? (
-                        <span key={active} className="bd-timer absolute inset-x-3 bottom-0 h-[2px] rounded-full bg-[#111]/70" style={{ animationDuration: `${STAY_MS}ms` }} aria-hidden />
+                      {on && !still ? (
+                        // The progress bar: a light track that fills while this question is on screen.
+                        <span className="absolute inset-x-3 bottom-1 h-[3px] overflow-hidden rounded-full bg-[#111]/10" aria-hidden>
+                          <span
+                            key={active}
+                            ref={fill}
+                            className="block h-full w-full origin-left rounded-full bg-[#111]"
+                            style={{ transform: `scaleX(${elapsed.current / STAY_MS})` }}
+                          />
+                        </span>
                       ) : null}
                     </button>
                   </li>
